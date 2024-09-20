@@ -1,0 +1,28 @@
+:root {
+    --color-dark: #161a1e;
+    --color-light: #f0eeed;
+    --color-gray: #414851;
+    --color-yellow: #f5d805;
+    --color-pink: #fd02d1;
+  }
+  
+  /* También puedes agregar algunos estilos globales si lo necesitas */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+}

@@ -1,0 +1,17 @@
+.notfound {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.notfound h1 {
+    font-size: 5rem;
+    color: var(--color-pink);
+    margin: 25px;
+}
+
+@media (min-width: 768px) {
+    .notfound h1 {
+        font-size: 9rem;
+    }
+  }
