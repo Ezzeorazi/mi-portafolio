@@ -37,7 +37,7 @@ const Home = () => {
         <div className={styles.imageContainer}>
           <NavLink to="/sobremi" className={styles.link}>
             <img
-              src="AvatarMaker.svg"
+              src="./src/assets/img/AvatarMaker.png"
               alt="Eze-foto-avatar"
               className={styles.image}
             />
