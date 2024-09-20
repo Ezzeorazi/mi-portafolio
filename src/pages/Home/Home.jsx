@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Home.module.css";
 import Typed from "typed.js";
+ 
 
 const Home = () => {
 
@@ -36,7 +37,7 @@ const Home = () => {
         <div className={styles.imageContainer}>
           <NavLink to="/sobremi" className={styles.link}>
             <img
-              src="./src/assets/img/AvatarMaker.svg"
+              src="AvatarMaker.svg"
               alt="Eze-foto-avatar"
               className={styles.image}
             />
