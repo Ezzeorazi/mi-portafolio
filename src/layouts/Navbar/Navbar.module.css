@@ -53,6 +53,7 @@
 
 .menuOpen {
   display: block;
+  background-color: rgba(0, 0, 0, 0.136);
 }
 
 @media (max-width: 768px) {
@@ -74,6 +75,7 @@
 
   .menuOpen {
     display: flex;
+    background-color: rgba(0, 0, 0, 0.724);
   }
 
   .menu a {
