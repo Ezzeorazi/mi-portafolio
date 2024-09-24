@@ -1,22 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Contacto.module.css";
 import useForm from "../../hooks/useForm";
 import validate from "./validate";
+import emailjs from "emailjs-com";
 
-const Contacto = ({}) => {
-  const { values, errors, handleChange, handleSubmit } = useForm(
+const Contacto = () => {
+  const { values, errors, handleChange, setErrors } = useForm(
     { name: "", email: "", message: "" },
     validate
   );
+  const [successMessage, setSuccessMessage] = useState("");
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    const validationErrors = validate(values);
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      emailjs
+        .sendForm(
+          "service_copygr7", // Reemplaza con tu Service ID
+          "template_zcj98ca", // Reemplaza con tu Template ID
+          e.target,
+          "hwJPseHoQzkxc6nR1" // Reemplaza con tu User ID de EmailJS
+        )
+        .then(
+          (result) => {
+            console.log(result.text);
+            setSuccessMessage("Mensaje enviado con éxito!");
+          },
+          (error) => {
+            console.log(error.text);
+            setSuccessMessage("Hubo un error al enviar el mensaje.");
+          }
+        );
+    }
+  };
+
   return (
     <div className={styles.contactForm}>
       <h2>Contacto</h2>
-      <form onSubmit={handleSubmit}>
-        <div
-          className={styles.formGroup}
-          action="https://formsubmit.co/ezequiel.orazi90@gmail.com"
-          method="POST"
-        >
+      {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
+      <form action="" method="POST" onSubmit={sendEmail}>
+        <div className={styles.formGroup}>
           <label htmlFor="name">Nombre</label>
           <input
             type="text"

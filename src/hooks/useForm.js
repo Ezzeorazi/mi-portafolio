@@ -8,7 +8,7 @@ const useForm = (initialValues, validate) => {
     const { name, value } = e.target;
     setValues({
       ...values,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -17,13 +17,12 @@ const useForm = (initialValues, validate) => {
     const validationErrors = validate(values);
     setErrors(validationErrors);
 
-    // Si no hay errores, aquí podrías agregar el código para enviar el formulario
     if (Object.keys(validationErrors).length === 0) {
       console.log("Formulario enviado con éxito", values);
     }
   };
 
-  return { values, errors, handleChange, handleSubmit };
+  return { values, errors, handleChange, handleSubmit, setErrors };
 };
 
 export default useForm;

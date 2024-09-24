@@ -58,3 +58,9 @@
     color: var(--color-light);
   }
   
+  .successMessage {
+    color: green;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
