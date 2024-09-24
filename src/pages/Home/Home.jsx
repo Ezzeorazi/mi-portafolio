@@ -12,7 +12,7 @@ const Home = () => {
   useEffect(() => {
     const options = {
       strings: [
-        "¡Hola! Soy Ezequiel Orazi, desarrollador Fullstack.", "Bienvenidos a mi espacio creativo."
+       "¡Hola! Soy Ezequiel Orazi, desarrollador Fullstack.", "Bienvenidos a mi espacio de trabajo."
       ],
       typeSpeed: 50,
       backSpeed: 30,

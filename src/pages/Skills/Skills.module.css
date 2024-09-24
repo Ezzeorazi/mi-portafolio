@@ -1,6 +1,72 @@
 .skills {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 250px;
+    padding: 40px 20px;
+    background-color: var(--color-light);
+    color: var(--color-dark);
 }
+
+.skillsContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 50px;
+  }
+
+  .subtitle {
+    font-size: 2rem;
+    margin: 20px 0;
+  }
+  
+  .skillsList,
+  .certList {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .skillsList li,
+  .certList li {
+    background-color: var(--color-yellow);
+    color: var(--color-dark);
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1rem;
+    transition: all 0.5s;
+    cursor: default;
+
+  }
+
+  .skillsList li:hover {
+    background-color: var(--color-pink);
+    color: var(--color-light);
+  }
+
+  .certList li:hover {
+    background-color: var(--color-pink);
+    color: var(--color-light);
+  }
+
+   /* Responsive Design */
+   @media (min-width: 768px) {
+    .skillsList,
+    .certList {
+      grid-template-columns: 1fr 1fr;
+    }
+  
+   .subtitle {
+      text-align: left;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .skillsList {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  
+    .certList {
+      grid-template-columns: 1fr 1fr;
+    }
+  
+  }

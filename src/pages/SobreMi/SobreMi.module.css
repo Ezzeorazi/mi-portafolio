@@ -7,7 +7,8 @@
   .aboutContainer {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
+    padding-top: 90px;
   }
   
   .title {
@@ -23,30 +24,51 @@
     text-align: justify;
   }
   
-  .subtitle {
-    font-size: 2rem;
-    margin: 20px 0;
+ 
+
+  
+  .aboutSection {
+    padding: 20px;
+    background-color: #f9f9f9;
   }
   
-  .skillsList,
-  .certList {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-  
-  .skillsList li,
-  .certList li {
-    background-color: var(--color-yellow);
-    color: var(--color-dark);
-    padding: 10px;
-    border-radius: 8px;
+  .aboutContainer {
+    max-width: 800px;
+    margin: 0 auto;
     text-align: center;
-    font-size: 1rem;
   }
   
+  .title {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .bio {
+    font-size: 1.2em;
+    line-height: 1.6;
+  }
+  
+  .cardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin: 10px;
+    
+  }
+  
+ 
+  .card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;    
+  }
+
+  .card:hover {
+    transform: scale(1.1);
+  }
+  
+   
   /* Responsive Design */
   @media (min-width: 768px) {
     .skillsList,
@@ -54,22 +76,20 @@
       grid-template-columns: 1fr 1fr;
     }
   
-    .title, .subtitle {
+    .title{
       text-align: left;
     }
+
+    .cardsContainer {
+      margin: 30px;
+    }
+   
   }
   
   @media (min-width: 1024px) {
-    .skillsList {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  
-    .certList {
-      grid-template-columns: 1fr 1fr;
-    }
+    
   
     .bio {
       font-size: 1.4rem;
     }
   }
-  

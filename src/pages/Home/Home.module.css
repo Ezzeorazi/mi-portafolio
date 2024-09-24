@@ -8,7 +8,7 @@
   justify-content: space-between;
   align-items: center;
   padding-bottom: 80px;
-  padding-top: 10px;
+  padding-top: 100px;
 }
 
 .main h1 {
@@ -37,12 +37,10 @@
   font-size: 1.2rem;
   color: var(--color-dark);
   animation: bounce 2s infinite;
-  /* al pasar el cursor que no haga anda solo quede la flecha */
   cursor: default;
 }
 
 .image:hover {
-  /* una sombra detras de la imagen grande */
   box-shadow: 0 0 10px 5px var(--color-pink);
 }
 

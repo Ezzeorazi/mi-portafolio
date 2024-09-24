@@ -1,4 +1,4 @@
-export * from './Proyectos';
+export * from './Project';
 export * from './Skills';
 export * from './SobreMi';
 export * from './Contacto';
