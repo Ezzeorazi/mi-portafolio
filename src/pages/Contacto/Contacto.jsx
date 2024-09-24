@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Contacto.module.css";
 import useForm from "../../hooks/useForm";
 import validate from "./validate";
 import emailjs from "emailjs-com";
+import Loading from "../../components/Loading/Loading";
 
 const Contacto = () => {
   const { values, errors, handleChange, setErrors } = useForm(
@@ -10,6 +11,14 @@ const Contacto = () => {
     validate
   );
   const [successMessage, setSuccessMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simula una carga de datos
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000); // Ajusta el tiempo de carga según sea necesario
+  }, []);
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -37,10 +46,16 @@ const Contacto = () => {
     }
   };
 
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <div className={styles.contactForm}>
       <h2>Contacto</h2>
-      {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
+      {successMessage && (
+        <p className={styles.successMessage}>{successMessage}</p>
+      )}
       <form action="" method="POST" onSubmit={sendEmail}>
         <div className={styles.formGroup}>
           <label htmlFor="name">Nombre</label>

@@ -1,0 +1,29 @@
+.blogEntry {
+    border: 1px solid #ddd;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    background-color: #fff;
+  }
+
+  .image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+  
+  .title {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  
+  .date {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 16px;
+  }
+  
+  .content {
+    font-size: 16px;
+  }

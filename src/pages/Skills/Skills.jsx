@@ -1,8 +1,21 @@
-"use client";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Skills.module.css';
+import Loading from '../../components/Loading/Loading';
 
 const Skills = ({}) => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simula una carga de datos
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000); // Ajusta el tiempo de carga según sea necesario
+  }, []);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
 	return (
 		<section className={styles.skills}>
  			 {/* Habilidades */}

@@ -1,6 +1,10 @@
 .blog {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 250px;
+  padding: 50px;
+  padding-top: 100px;
+  background-color: #f9f9f9;
+}
+
+.blog h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
