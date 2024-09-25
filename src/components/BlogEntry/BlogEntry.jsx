@@ -5,10 +5,12 @@ import styles from './BlogEntry.module.css';
 const BlogEntry = ({ title, date, content, imageUrl }) => {
   return (
     <div className={styles.blogEntry}>
-      {imageUrl && <img src={imageUrl} alt={title} className={styles.image} />}
-      <h2 className={styles.title}>{title}</h2>
-      <p className={styles.date}>{date}</p>
-      <p className={styles.content}>{content}</p>
+      <img src={imageUrl} alt={title} className={styles.image} />
+      <div className={styles.content}>
+        <h3 className={styles.title}>{title}</h3>
+        <p className={styles.date}>{date}</p>
+        <p>{content}</p>
+      </div>
     </div>
   );
 };

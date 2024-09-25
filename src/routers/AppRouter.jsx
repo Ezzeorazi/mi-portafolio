@@ -1,12 +1,23 @@
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Blog, Contacto, Curriculum, Home, Skills, SobreMi, NotFound, Project } from "../pages";
+import {
+  Blog,
+  Contacto,
+  Curriculum,
+  Home,
+  Skills,
+  SobreMi,
+  NotFound,
+  Project,
+} from "../pages";
 
 import { Navbar, Footer } from "../layouts";
 
 export const AppRouter = () => {
   return (
     <Router>
-        <Navbar/>
+      <Navbar />
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/sobremi" element={<SobreMi />} />
@@ -17,7 +28,8 @@ export const AppRouter = () => {
         <Route path="/contacto" element={<Contacto />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer/>
+      
+      <Footer />
     </Router>
   );
 };

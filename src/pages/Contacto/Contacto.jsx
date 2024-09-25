@@ -2,15 +2,13 @@ import React, { useEffect, useState } from "react";
 import styles from "./Contacto.module.css";
 import useForm from "../../hooks/useForm";
 import validate from "./validate";
-import emailjs from "emailjs-com";
 import Loading from "../../components/Loading/Loading";
 
 const Contacto = () => {
-  const { values, errors, handleChange, setErrors } = useForm(
+  const { values, errors, handleChange, sendEmail, formStatus } = useForm(
     { name: "", email: "", message: "" },
     validate
   );
-  const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -20,32 +18,6 @@ const Contacto = () => {
     }, 1000); // Ajusta el tiempo de carga según sea necesario
   }, []);
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-    const validationErrors = validate(values);
-    setErrors(validationErrors);
-
-    if (Object.keys(validationErrors).length === 0) {
-      emailjs
-        .sendForm(
-          "service_copygr7", // Reemplaza con tu Service ID
-          "template_zcj98ca", // Reemplaza con tu Template ID
-          e.target,
-          "hwJPseHoQzkxc6nR1" // Reemplaza con tu User ID de EmailJS
-        )
-        .then(
-          (result) => {
-            console.log(result.text);
-            setSuccessMessage("Mensaje enviado con éxito!");
-          },
-          (error) => {
-            console.log(error.text);
-            setSuccessMessage("Hubo un error al enviar el mensaje.");
-          }
-        );
-    }
-  };
-
   if (isLoading) {
     return <Loading />;
   }
@@ -53,8 +25,10 @@ const Contacto = () => {
   return (
     <div className={styles.contactForm}>
       <h2>Contacto</h2>
-      {successMessage && (
-        <p className={styles.successMessage}>{successMessage}</p>
+      {formStatus.success && (
+        <p className={styles.successMessage} aria-live="polite">
+          {formStatus.success}
+        </p>
       )}
       <form action="" method="POST" onSubmit={sendEmail}>
         <div className={styles.formGroup}>
@@ -66,7 +40,11 @@ const Contacto = () => {
             value={values.name}
             onChange={handleChange}
           />
-          {errors.name && <p className={styles.error}>{errors.name}</p>}
+          {errors.name && (
+            <p className={styles.error} aria-live="polite">
+              {errors.name}
+            </p>
+          )}
         </div>
 
         <div className={styles.formGroup}>
@@ -78,7 +56,11 @@ const Contacto = () => {
             value={values.email}
             onChange={handleChange}
           />
-          {errors.email && <p className={styles.error}>{errors.email}</p>}
+          {errors.email && (
+            <p className={styles.error} aria-live="polite">
+              {errors.email}
+            </p>
+          )}
         </div>
 
         <div className={styles.formGroup}>
@@ -89,10 +71,16 @@ const Contacto = () => {
             value={values.message}
             onChange={handleChange}
           ></textarea>
-          {errors.message && <p className={styles.error}>{errors.message}</p>}
+          {errors.message && (
+            <p className={styles.error} aria-live="polite">
+              {errors.message}
+            </p>
+          )}
         </div>
 
-        <button type="submit">Enviar</button>
+        <button type="submit" disabled={formStatus.isLoading}>
+          {formStatus.isLoading ? "Enviando..." : "Enviar"}
+        </button>
       </form>
     </div>
   );
