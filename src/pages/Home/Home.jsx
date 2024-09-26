@@ -21,7 +21,7 @@ const Home = () => {
     if (!isLoading && el.current) {
       const options = {
         strings: [
-          "¡Hola! Soy Ezequiel Orazi, desarrollador Fullstack.",
+          
           "Bienvenidos a mi espacio de trabajo."
         ],
         typeSpeed: 50,
@@ -47,6 +47,7 @@ const Home = () => {
     <div className={styles.home}>
       <div className={styles.main}>
       <h1>
+      ¡Hola! Soy Ezequiel Orazi, desarrollador Fullstack.<br />
         <span ref={el} />
       </h1>
         <div className={styles.imageContainer}>
