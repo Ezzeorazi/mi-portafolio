@@ -1,8 +1,74 @@
-# React + Vite
+# Mi Portafolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este es el repositorio de mi portafolio personal, donde muestro mis habilidades, proyectos y experiencia.
 
-Currently, two official plugins are available:
+## Tabla de Contenidos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Descripción](#descripción)
+- [Tecnologías](#tecnologías)
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Contribuciones](#contribuciones)
+- [Licencia](#licencia)
+- [Contacto](#contacto)
+
+## Descripción
+
+Este proyecto es una aplicación web de portafolio personal desarrollada con React. Incluye secciones para mostrar información sobre mí, mis habilidades, proyectos, currículum, blog y una forma de contacto.
+
+## Tecnologías
+
+- React
+- React Router DOM
+- Styled Components
+- Vite
+
+## Instalación
+
+Para instalar y ejecutar este proyecto localmente, sigue estos pasos:
+
+1. Clona el repositorio desde:
+   git clone https://github.com/Ezzeorazi/mi-portafolio.git
+
+## Estructura del proyecto
+
+mi-portafolio/
+├── public/
+    ├── pdf/
+├── src/
+│   ├── assets/
+|       ├── img
+│   ├── components/
+│   │   ├── BlogEntry/
+│   │   ├── BurguerButton/
+│   │   └── Loading/
+│   │   └── Experience/
+│   │   └── Gallery/
+│   │   └── ProjectCard/
+│   ├── layouts/
+│   │   └── Navbar/
+│   │   └── Footer/
+│   ├── hooks/
+│   │   └── useForm.js
+│   ├── pages/
+│   │   ├── Blog/
+│   │   ├── Contacto/
+│   │   ├── Curriculum/
+│   │   ├── Home/
+│   │   ├── Project/
+│   │   ├── Skills/
+│   │   └── SobreMi/
+│   │   └── NotFound/
+│   ├── routers/
+│   │   └── AppRouter.jsx
+│   ├── styles/
+│   │   └── global.css
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+├── .gitignore
+├── package.json
+├── README.md
+└── vite.config.js
+
