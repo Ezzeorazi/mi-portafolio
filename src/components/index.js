@@ -4,3 +4,4 @@ export * from './Experience';
 export * from './Loading'
 export * from './BlogEntry'
 export * from './BurgerButton'
+export * from './Education'

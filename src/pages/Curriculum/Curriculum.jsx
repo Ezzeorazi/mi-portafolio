@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Curriculum.module.css";
 import Experience from "../../components/Experience/Experience";
 import Loading from "../../components/Loading/Loading";
+import { Education } from "../../components";
 
 const Curriculum = ({}) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,6 +22,7 @@ const Curriculum = ({}) => {
   return (
     <section className={styles.curriculum}>
       <Experience />
+      <Education />
       <div className={styles.cvDownload}>
         <a href="/pdf/Ezequiel_Orazi_CV.pdf" download="Ezequiel_Orazi_CV.pdf">
           <img

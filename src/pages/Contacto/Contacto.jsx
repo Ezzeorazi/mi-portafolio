@@ -11,6 +11,13 @@ const Contacto = () => {
   );
   const [isLoading, setIsLoading] = useState(true);
 
+  // Datos personales
+  const personalInfo = {
+    phone: "+54 3415957226",
+    city: "Rosario, Santa Fe, Argentina",
+    email: "Ezequiel.orazi90@gmail.com",
+  };
+
   useEffect(() => {
     // Simula una carga de datos
     setTimeout(() => {
@@ -25,6 +32,7 @@ const Contacto = () => {
   return (
     <div className={styles.contactForm}>
       <h2>Contacto</h2>
+
       {formStatus.success && (
         <p className={styles.successMessage} aria-live="polite">
           {formStatus.success}
@@ -82,6 +90,24 @@ const Contacto = () => {
           {formStatus.isLoading ? "Enviando..." : "Enviar"}
         </button>
       </form>
+      <div className={styles.personalInfo}>
+        <p>
+          <strong>Teléfono:</strong>{" "}
+          <a href={`tel:${personalInfo.phone}`} className={styles.phone}>
+            {personalInfo.phone}
+          </a>
+        </p>
+        <p>
+          <strong>Ciudad de Residencia:</strong>{" "}
+          <span className={styles.city}>{personalInfo.city}</span>
+        </p>
+        <p>
+          <strong>Email:</strong>{" "}
+          <a href={`mailto:${personalInfo.email}`} className={styles.email}>
+            {personalInfo.email}
+          </a>
+        </p>
+      </div>
     </div>
   );
 };

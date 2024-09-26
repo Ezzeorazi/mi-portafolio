@@ -1,0 +1,30 @@
+.educationContainer {
+    margin: 20px 0;
+  }
+
+.educationContainer h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+  
+  .educationCard {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .educationCard h3 {
+    margin-bottom: 10px;
+    color: var(--color-yellow);
+  }
+  
+  .educationCard p {
+    margin: 5px 0;
+  }
+  
+  .educationCard strong {
+    color: var(--color-yellow);
+  }
