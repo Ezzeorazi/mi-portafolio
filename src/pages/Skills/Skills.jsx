@@ -34,13 +34,15 @@ const Skills = ({}) => {
           <li>IntelliJ IDEA, VSCode</li>
           <li>SEO (Optimización para motores de búsqueda)</li>
           <li>WordPress & WooCommerce</li>
+          <li>PostgreSQL</li>
+
         </ul>
 
         {/* Logros y Certificaciones */}
         <h3 className={styles.subtitle}>Logros y Certificaciones</h3>
         <ul className={styles.certList}>
-          <li>Certificación en Java y React – <strong>NEORIS Labs</strong></li>
-          <li>Participación en el programa <strong>NEORIS Labs - LAB JAVA+REACT</strong> (2024)</li>
+          <li>Certificación en Desarrollo Fullstack con tecnologías MERN <strong>Devschool Academy</strong>(2023)</li>
+          <li>Participación en el programa <strong>NEORIS Labs - LAB JAVA+SPRINGBOOT+REACT</strong> (2024)</li>
           <li>Más de 3 años de experiencia en desarrollo web con <strong>WordPress</strong> y <strong>VTEX</strong></li>
         </ul>
 		</div>
