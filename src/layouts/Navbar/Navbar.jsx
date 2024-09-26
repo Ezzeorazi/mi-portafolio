@@ -1,52 +1,148 @@
-import React, { useState } from "react";
-import styles from "./Navbar.module.css";
-import { NavLink } from "react-router-dom";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+import BurguerButton from '../../components/BurgerButton/BurgerButton';
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+function Navbar() {
+  const [clicked, setClicked] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
+  const handleClick = () => {
+    setClicked(!clicked);
   };
 
   const closeMenu = () => {
-    setIsOpen(false);
+    setClicked(false);
   };
 
   return (
-    <nav className={styles.navbar}>
-      <div className={styles.logo}>
-        <NavLink to="/" onClick={closeMenu}>
-          Ezequiel Orazi
-        </NavLink>
-      </div>
-      <div className={styles.hamburger} onClick={toggleMenu}>
-        <div className={isOpen ? styles.barOpen : styles.bar}></div>
-        <div className={isOpen ? styles.barOpen : styles.bar}></div>
-        <div className={isOpen ? styles.barOpen : styles.bar}></div>
-      </div>
-      <div className={`${styles.menu} ${isOpen ? styles.menuOpen : ""}`}>
-        <NavLink to="/sobremi" onClick={closeMenu}>
-          Sobre Mi
-        </NavLink>
-        <NavLink to="/skills" onClick={closeMenu}>
-          Skills
-        </NavLink>
-        <NavLink to="/project" onClick={closeMenu}>
-          Proyectos
-        </NavLink>
-        <NavLink to="/curriculum" onClick={closeMenu}>
-          Curriculum
-        </NavLink>
-        <NavLink to="/blog" onClick={closeMenu}>
-          Blog
-        </NavLink>
-        <NavLink to="/contacto" onClick={closeMenu}>
-          Contacto
-        </NavLink>
-      </div>
-    </nav>
+    <>
+      <NavContainer>
+        <div className="logo">
+          <NavLink to="/" onClick={closeMenu}>
+            Ezequiel Orazi
+          </NavLink>
+        </div>
+        <div className={`links ${clicked ? 'active' : ''}`}>
+          <NavLink to="/sobremi" onClick={closeMenu}>
+            Sobre Mi
+          </NavLink>
+          <NavLink to="/skills" onClick={closeMenu}>
+            Skills
+          </NavLink>
+          <NavLink to="/project" onClick={closeMenu}>
+            Proyectos
+          </NavLink>
+          <NavLink to="/curriculum" onClick={closeMenu}>
+            Curriculum
+          </NavLink>
+          <NavLink to="/blog" onClick={closeMenu}>
+            Blog
+          </NavLink>
+          <NavLink to="/contacto" onClick={closeMenu}>
+            Contacto
+          </NavLink>
+        </div>
+        <div className="burguer">
+          <BurguerButton clicked={clicked} handleClick={handleClick} />
+        </div>
+        <BgDiv className={`initial ${clicked ? 'active' : ''}`}></BgDiv>
+      </NavContainer>
+    </>
   );
-};
+}
 
 export default Navbar;
+
+const NavContainer = styled.nav`
+  padding: .4rem;
+  background-color: var(--color-dark);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000; /* Asegúrate de que el navbar esté por encima del contenido */
+
+  .logo {
+    z-index: 1100; /* Asegúrate de que el logo esté por encima del fondo */
+  }
+
+  .logo a {
+    color: var(--color-yellow);
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.5rem;
+  }
+
+  .links {
+    position: absolute;
+    top: -700px;
+    left: -2000px;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    transition: all .5s ease;
+    z-index: 1000; /* Asegúrate de que los enlaces estén por encima del contenido */
+    a {
+      color: var(--color-yellow);
+      font-size: 2rem;
+      display: block;
+      text-decoration: none;
+      margin-top: 1rem;
+    }
+    @media(min-width: 768px) {
+      position: initial;
+      margin: 0;
+      a {
+        font-size: 1rem;
+        color: var(--color-yellow);
+        display: inline;
+        margin-right: 1rem;
+      }
+      display: block;
+    }
+  }
+
+  .links.active {
+    width: 100%;
+    display: block;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    top: 30%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 1000; /* Asegúrate de que los enlaces activos estén por encima del contenido */
+    a {
+      font-size: 2rem;
+      margin-top: 1rem;
+      color: var(--color-yellow);
+    }
+  }
+
+  .burguer {
+    z-index: 1100; /* Asegúrate de que el botón esté por encima del fondo */
+    @media(min-width: 768px) {
+      display: none;
+    }
+  }
+`;
+
+const BgDiv = styled.div`
+  background-color: rgba(0, 0, 0, 0.8); /* Fondo con transparencia */
+  position: absolute;
+  top: -1000px;
+  left: -1000px;
+  width: 100%;
+  height: 100%;
+  z-index: 999; /* Asegúrate de que el fondo esté justo debajo del navbar */
+  transition: all .6s ease;
+
+  &.active {
+    border-radius: 0 0 80% 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+`;
