@@ -33,7 +33,7 @@ const Gallery = ({}) => {
       repoLink: "https://github.com/Ezzeorazi/GoldenReact.git",
     },
     {
-      id: 3,
+      id: 4,
       title: "FitBites",
       description:
         "Un sitio web de venta de alimentos saludables creado con Wordpress. Cuenta con una tienda online y un blog.",

@@ -6,10 +6,11 @@
   text-align: center;
   margin: 1rem;
   width: 300px; /* Establecer un ancho fijo */
-  height: 400px; /* Establecer una altura fija */
+  height: auto; /* Establecer una altura fija */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden; /* Asegurar que el contenido no se salga */
 }
 
 .card img {
@@ -29,6 +30,12 @@
   color: var(--color-gray);
   font-size: 0.875rem; /* Ajustar el tamaño de la fuente */
   margin: 0.25rem 0; /* Reducir el margin */
+  overflow: hidden; /* Asegurar que el contenido no se salga */
+  text-overflow: ellipsis; /* Añadir puntos suspensivos si el texto es demasiado largo */
+}
+
+.card .technologies {
+  margin-top: 0.5rem; /* Añadir margen superior para separar de la descripción */
 }
 
 .links {
@@ -61,7 +68,9 @@
   font-size: 1.5rem;
   margin: 0 1rem;
   transition: color 0.3s ease;
-  border: none;
+  display: flex;
+  align-items: center;
+  justify-items: center;
 }
 
 .link .githubIcon:hover {
