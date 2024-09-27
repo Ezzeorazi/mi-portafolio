@@ -23,12 +23,12 @@ const SobreMi = () => {
         <h2 className={styles.title}>Sobre mí</h2>
         <p className={styles.bio}>
           Soy Ezequiel Orazi, desarrollador Fullstack con experiencia en la
-          creación de aplicaciones web eficientes y escalables. Luego de 8 años
+          creación de aplicaciones web. Luego de 8 años
           de trabajo en la industria de la construcción, decidí enfocarme en mi
-          verdadera pasión: el desarrollo web. Actualmente, me especializo en
+          verdadera pasión: sistemas, datos y sitios web. Actualmente, me especializo en
           tecnologías como <strong>React</strong>,<strong> Node.js</strong>,{" "}
           <strong>Spring Boot</strong>, <strong>Next.js</strong> y <strong>Wordpress</strong> siempre
-          buscando soluciones innovadoras a desafíos complejos.
+          buscando soluciones a grandes desafíos.
           <br />
           <br />
           Mi enfoque en el trabajo está guiado por la eficiencia, utilizando
