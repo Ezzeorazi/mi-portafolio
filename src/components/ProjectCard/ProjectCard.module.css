@@ -2,7 +2,7 @@
   background-color: var(--color-light);
   padding: 1rem;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   text-align: center;
   margin: 1rem;
   width: 300px; /* Establecer un ancho fijo */

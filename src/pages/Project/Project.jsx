@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './Project.module.css';
 import Gallery from '../../components/Gallery/Gallery';
 import Loading from '../../components/Loading/Loading';
+import GalleryPractice from '../../components/GalleryPractice/GalleryPractice';
 
 const Project = ({ }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -19,8 +20,10 @@ const Project = ({ }) => {
 
   return (
     <div className={styles.project}>
-      <h2>Mis Proyectos</h2>
+      <h2>Mis sitios web</h2>
       <Gallery />
+      <h2>Proyectos de practica</h2>
+      <GalleryPractice />
     </div>
   );
 };
