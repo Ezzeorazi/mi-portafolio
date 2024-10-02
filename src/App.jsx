@@ -2,13 +2,14 @@ import React, { Suspense } from 'react'
 import './App.css'
 import { AppRouter } from './routers/AppRouter'
 import './styles/global.css';
+import { Loading } from './components';
 
 function App() {
 
   return (
     <>
-      <Suspense>
-      <AppRouter />
+      <Suspense fallback={<Loading/>}>
+        <AppRouter />
       </Suspense>
     </>
   )

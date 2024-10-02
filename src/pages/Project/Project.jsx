@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Project.module.css";
 import Gallery from "../../components/Gallery/Gallery";
-import Loading from "../../components/Loading/Loading";
+// import Loading from "../../components/Loading/Loading";
 import GalleryPractice from "../../components/GalleryPractice/GalleryPractice";
 
 const Project = ({}) => {
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    // Simula una carga de datos
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000); // Ajusta el tiempo de carga según sea necesario
-  }, []);
+  // useEffect(() => {
+  //   // Simula una carga de datos
+  //   setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 2000); // Ajusta el tiempo de carga según sea necesario
+  // }, []);
 
-  if (isLoading) {
-    return <Loading />;
-  }
+  // if (isLoading) {
+  //   return <Loading />;
+  // }
 
   return (
     <div className={styles.project}>

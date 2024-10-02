@@ -1,21 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styles from "./SobreMi.module.css";
 import { NavLink } from "react-router-dom";
-import Loading from "../../components/Loading/Loading";
 
 const SobreMi = () => {
-  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    // Simula una carga de datos
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1000); // Ajusta el tiempo de carga según sea necesario
-  }, []);
-
-  if (isLoading) {
-    return <Loading />;
-  }
   return (
     <section className={styles.aboutSection}>
       <div className={styles.aboutContainer}>

@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Blog.module.css';
 import BlogEntry from '../../components/BlogEntry/BlogEntry';
-import Loading from '../../components/Loading/Loading';
 
 const Blog = () => {
-  const [isLoading, setIsLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredEntries, setFilteredEntries] = useState([]);
 
@@ -17,13 +15,7 @@ const Blog = () => {
 	  }
   ];
 
-  useEffect(() => {
-    // Simula una carga de datos
-    setTimeout(() => {
-      setIsLoading(false);
-      setFilteredEntries(entries); // Inicializa las entradas filtradas
-    }, 1000); // Ajusta el tiempo de carga según sea necesario
-  }, []);
+
 
   useEffect(() => {
     setFilteredEntries(
@@ -34,9 +26,6 @@ const Blog = () => {
     );
   }, [searchTerm]);
 
-  if (isLoading) {
-    return <Loading />;
-  }
 
   return (
     <div className={styles.blog}>

@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import styles from "./Contacto.module.css";
 import useForm from "../../hooks/useForm";
 import validate from "./validate";
-import Loading from "../../components/Loading/Loading";
 
 const Contacto = () => {
   const { values, errors, handleChange, sendEmail, formStatus } = useForm(
     { name: "", email: "", message: "" },
     validate
   );
-  const [isLoading, setIsLoading] = useState(true);
 
   // Datos personales
   const personalInfo = {
@@ -18,16 +16,6 @@ const Contacto = () => {
     email: "Ezequiel.orazi90@gmail.com",
   };
 
-  useEffect(() => {
-    // Simula una carga de datos
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 1000); // Ajusta el tiempo de carga según sea necesario
-  }, []);
-
-  if (isLoading) {
-    return <Loading />;
-  }
 
   return (
     <div className={`animate__animated animate__flipInY ${styles.contactForm}`}>
