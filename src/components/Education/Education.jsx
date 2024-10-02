@@ -35,8 +35,9 @@ const Education = () => {
     // Agrega más estudios aquí
   ];
   return (
-    <div className={styles.educationContainer}>
+    <>
       <h2>Educación</h2>
+      <div className={styles.educationContainer}>
       {education.map((edu) => (
         <div key={edu.id} 
         className={`animate__animated animate__flipInX ${styles.educationCard}`}>
@@ -52,7 +53,8 @@ const Education = () => {
           <p>{edu.description}</p>
         </div>
       ))}
-    </div>
+      </div>
+    </>
   );
 };
 

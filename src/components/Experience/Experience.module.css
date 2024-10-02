@@ -1,11 +1,13 @@
 .experienceSection {
     padding: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     width: 60%;
   }
 
-.experienceSection h2 {
-    margin-bottom: 20px;
+h2 {
     font-size: 2rem;
+    /* centrar  en la pantalla*/
 }
   
   .experienceCard {

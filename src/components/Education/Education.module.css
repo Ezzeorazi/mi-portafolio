@@ -1,11 +1,12 @@
 .educationContainer {
   padding: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   width: 60%;
 
 }
 
 .educationContainer h2 {
-  margin-bottom: 20px;
   font-size: 2rem;
 }
   
