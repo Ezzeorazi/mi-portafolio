@@ -5,7 +5,7 @@ import styles from "./CvDownload.module.css";
 const CvDownload = ({}) => {
   return (
     <div className={styles.cvDownload}>
-      <a href="/pdf/Ezequiel_Orazi_CV.pdf" download="Ezequiel_Orazi_CV.pdf">
+      <a href="/pdf/Ezequiel_Orazi-CV.pdf" download="Ezequiel_Orazi-CV.pdf">
         <img
           src="Descargar.png"
           alt="Descargar CV"
