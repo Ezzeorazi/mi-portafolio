@@ -20,8 +20,11 @@ const SobreMi = () => {
     <section className={styles.aboutSection}>
       <div className={styles.aboutContainer}>
         {/* Biografía */}
-        <h2 className={styles.title}>Sobre mí</h2>
-        <p className={styles.bio}>
+        <h2 
+        className={`animate__animated animate__slideInLeft ${styles.title}`}
+        
+        >Sobre mí</h2>
+        <p className={`animate__animated animate__slideInLeft ${styles.bio}`}>
           Soy Ezequiel Orazi, desarrollador Fullstack con experiencia en la
           creación de aplicaciones web. Luego de 8 años
           de trabajo en la industria de la construcción, decidí enfocarme en mi

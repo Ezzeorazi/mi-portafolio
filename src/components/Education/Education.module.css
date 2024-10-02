@@ -1,10 +1,12 @@
 .educationContainer {
-    margin: 20px 0;
-  }
+  padding: 50px;
+  width: 60%;
+
+}
 
 .educationContainer h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
+  margin-bottom: 20px;
+  font-size: 2rem;
 }
   
   .educationCard {
@@ -27,4 +29,13 @@
   
   .educationCard strong {
     color: var(--color-yellow);
+  }
+
+
+  @media screen and (max-width: 768px) {
+    .educationContainer {
+      padding: 20px;
+      width: 100%;
+    }
+    
   }

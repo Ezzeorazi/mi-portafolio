@@ -1,5 +1,6 @@
 .experienceSection {
-    padding: 20px;
+    padding: 50px;
+    width: 60%;
   }
 
 .experienceSection h2 {
@@ -29,3 +30,10 @@
     color: var(--color-yellow);
   }
   
+  @media screen and (max-width: 768px) {
+    .experienceSection {
+      padding: 20px;
+      width: 100%;
+    }
+    
+  }

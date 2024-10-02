@@ -20,8 +20,10 @@ const Skills = ({}) => {
 		<section className={styles.skills}>
  			 {/* Habilidades */}
 			 <div className={styles.skillsContainer}>
-			  <h3 className={styles.subtitle}>Habilidades Técnicas</h3>
-        <ul className={styles.skillsList}>
+			  <h3 className={`animate__animated animate__slideInLeft ${styles.subtitle}`}
+        >Habilidades Técnicas</h3>
+        <ul 
+        className={`animate__animated animate__flipInX ${styles.skillsList}`}>
           <li>HTML5</li>
           <li>CSS3 (incluyendo CSS Modules)</li>
           <li>JavaScript (ES6+)</li>
@@ -40,8 +42,10 @@ const Skills = ({}) => {
         </ul>
 
         {/* Logros y Certificaciones */}
-        <h3 className={styles.subtitle}>Logros y Certificaciones</h3>
-        <ul className={styles.certList}>
+        <h3 className={`animate__animated animate__slideInLeft ${styles.subtitle}`}
+        >
+          Logros y Certificaciones</h3>
+        <ul className={`animate__animated animate__flipInX ${styles.certList}`}>
           <li>Certificación en Desarrollo Fullstack con tecnologías MERN en <strong>Devschool Academy</strong>(2023)</li>
           <li>Participación en el programa <strong>NEORIS Labs - LAB JAVA+SPRINGBOOT+REACT</strong> (2024)</li>
           <li>Más de 3 años de experiencia en desarrollo web con <strong>WordPress</strong> y <strong>VTEX</strong></li>
