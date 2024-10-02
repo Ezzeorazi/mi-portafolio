@@ -36,7 +36,7 @@ const Education = () => {
   ];
   return (
     <>
-      <h2>Educación</h2>
+      <h2 className={`animate__animated animate__slideInLeft ${styles.title}`}>Educación</h2>
       <div className={styles.educationContainer}>
       {education.map((edu) => (
         <div key={edu.id} 

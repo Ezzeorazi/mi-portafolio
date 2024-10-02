@@ -24,6 +24,7 @@ const Burguer = styled.div`
     cursor: pointer;
     display: inline-block;
   }
+
   .nav-icon-5 span {
     background-color: var(--color-yellow);
     position: absolute;

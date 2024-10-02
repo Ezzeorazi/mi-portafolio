@@ -42,6 +42,7 @@
   display: flex;
   justify-content: center;
   gap: 0.5rem; /* Espacio entre los enlaces */
+  transition: 0.5s;
 }
 
 .links a {
@@ -56,6 +57,7 @@
   transition: color 0.3s ease;
   font-size: 0.875rem; /* Ajustar el tamaño de la fuente */
   font-weight: 600;
+  transition: 0.5s;
 }
 
 .links a:hover {

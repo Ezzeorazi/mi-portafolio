@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import BurguerButton from '../../components/BurgerButton/BurgerButton';
+import styles from './Navbar.module.css';
+
 
 function Navbar() {
   const [clicked, setClicked] = useState(false);
@@ -17,7 +19,7 @@ function Navbar() {
   return (
     <>
       <NavContainer>
-        <div className="logo">
+        <div className={styles.logo}>
           <NavLink to="/" onClick={closeMenu}>
             Ezequiel Orazi
           </NavLink>

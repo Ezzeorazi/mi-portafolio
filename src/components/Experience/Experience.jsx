@@ -57,7 +57,7 @@ const Experience = ({}) => {
 
   return (
     <>
-      <h2>Experiencia Laboral</h2>
+      <h2 className={`animate__animated animate__slideInLeft`}>Experiencia Laboral</h2>
       <div className={styles.experienceSection}>
       {experiences.map((experience) => (
         <div key={experience.id} 
