@@ -1,6 +1,4 @@
 User-agent: *
-Disallow: /admin/
-Disallow: /login/
 Allow: /
 
 Sitemap: http://ezequiel-orazi.online/sitemap.xml
