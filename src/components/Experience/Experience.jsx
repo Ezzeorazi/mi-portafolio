@@ -41,7 +41,7 @@ const Experience = ({}) => {
       endDate: "Septiembre 2023",
       description:
         "Desarrollé y mantuve relaciones sólidas con clientes comprendiendo sus necesidades y proporcionando asesoramiento personalizado para lograr los resultados deseados. Utilicé habilidades de comunicación efectiva para explicar características técnicas y beneficios de los productos a clientes con diferentes niveles de conocimiento. Demostré habilidades de resolución de problemas al identificar y solucionar los desafíos relacionados con la elección de colores y técnicas de aplicación para obtener resultados óptimos. Trabajé en colaboración con un equipo diverso, incluidos pintores, contratistas y proveedores, para asegurar una entrega y servicio eficientes a los clientes.",
-      technologies: [],
+      technologies: ["vtex", "wordpress", "excel", "word", "powerpoint", "outlook", "Meridiano Soft"],
     },
     {
       id: 4,
@@ -51,7 +51,7 @@ const Experience = ({}) => {
       endDate: "Septiembre 2020",
       description:
         "Como jefe de taller en una constructora, lideré equipos de trabajo para proyectos de reparación de maquinaria pesada, donde implementé tecnologías y soluciones innovadoras para mejorar la eficiencia y la calidad de los resultados. Utilicé herramientas digitales y de gestión de proyectos para planificar y monitorear el progreso de los proyectos, asegurando una ejecución eficiente y dentro de los plazos establecidos. Fomenté la colaboración entre los equipos de construcción y tecnología, trabajando estrechamente con profesionales de IT para implementar soluciones técnicas y optimizar los procesos internos. Desarrollé y mantuve una cultura de aprendizaje continuo, alentando a los miembros del equipo a adquirir habilidades técnicas relevantes.",
-      technologies: [],
+      technologies: ["Tango Gestión", "Excel", "Word", "PowerPoint", "Outlook", "PLC"],
     },
   ];
 
