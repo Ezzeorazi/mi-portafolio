@@ -1,6 +1,7 @@
 .project {
 padding-top: 20px;
 background-color: var(--color-light);
+overflow-x: hidden; /* Evita el desplazamiento horizontal */
 }
 
 .project h2 {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./Project.module.css";
 import Gallery from "../../components/Gallery/Gallery";
 import GalleryPractice from "../../components/GalleryPractice/GalleryPractice";
