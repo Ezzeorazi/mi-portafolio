@@ -1,5 +1,5 @@
 .aboutSection {
-    padding: 40px 20px;
+    padding: 20px;
     background-color: var(--color-light);
     color: var(--color-dark);
   }
@@ -8,7 +8,6 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 10px;
-    padding-top: 90px;
   }
   
   .title {
