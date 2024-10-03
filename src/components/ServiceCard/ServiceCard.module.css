@@ -1,0 +1,32 @@
+.card {
+    background-color: var(--color-light);
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    margin: 1rem;
+    width: 300px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+  
+  .icon {
+    font-size: 3rem;
+    color: var(--color-dark);
+    margin-bottom: 1rem;
+  }
+  
+  h3 {
+    color: var(--color-dark);
+    margin-top: 0.5rem;
+    font-size: 1.25rem;
+  }
+  
+  p {
+    color: var(--color-gray);
+    font-size: 0.875rem;
+    margin: 0.25rem 0;
+  }

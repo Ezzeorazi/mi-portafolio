@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Home.module.css";
 import Typed from "typed.js";
+import { Services } from "../../components";
 
 const Home = () => {
   const el = useRef(null); // Crea una referencia al elemento DOM donde renderizar Typed.js
@@ -46,6 +47,7 @@ const Home = () => {
           <div className={styles.animatedText}>Haz click sobre la imagen</div>
         </div>
       </div>
+      <Services/>
     </div>
   );
 };
