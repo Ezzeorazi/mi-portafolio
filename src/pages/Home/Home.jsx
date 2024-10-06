@@ -36,6 +36,8 @@ const Home = () => {
           ¡Hola! Soy Ezequiel Orazi, desarrollador Fullstack.<br />
           <span ref={el} />
         </h1>
+
+
         <div className={styles.imageContainer}>
           <NavLink to="/sobremi" className={styles.link}>
             <img
@@ -46,8 +48,15 @@ const Home = () => {
           </NavLink>
           <div className={styles.animatedText}>Haz click sobre la imagen</div>
         </div>
+        <p className={styles.subtitle}>
+          En este espacio podrás conocer más sobre mi trayectoria como desarrollador Fullstack, 
+          los proyectos en los que he trabajado, y las tecnologías que domino. 
+          A lo largo del portafolio, encontrarás ejemplos de aplicaciones web que he construido, 
+          soluciones a problemas complejos, y mis enfoques para mejorar 
+          la experiencia del usuario. 
+        </p>
       </div>
-      <Services/>
+      <Services />
     </div>
   );
 };
