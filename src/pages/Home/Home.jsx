@@ -49,7 +49,7 @@ const Home = () => {
           <div className={styles.animatedText}>Haz click sobre la imagen</div>
         </div>
         <p className={styles.subtitle}>
-          En este espacio podrás conocer más sobre mi trayectoria como desarrollador Fullstack, 
+          En este espacio podrás conocer sobre mi trayectoria como desarrollador Fullstack, 
           los proyectos en los que he trabajado, y las tecnologías que domino. 
           A lo largo del portafolio, encontrarás ejemplos de aplicaciones web que he construido, 
           soluciones a problemas complejos, y mis enfoques para mejorar 
