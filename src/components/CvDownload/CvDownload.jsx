@@ -7,7 +7,7 @@ const CvDownload = ({}) => {
     <div className={styles.cvDownload}>
       <a href="/pdf/Ezequiel_Orazi-CV.pdf" download="Ezequiel_Orazi-CV.pdf">
         <img
-          src="Descargar.png"
+          src="Descargar.svg"
           alt="Descargar CV"
           className={styles.cvImage}
         />
