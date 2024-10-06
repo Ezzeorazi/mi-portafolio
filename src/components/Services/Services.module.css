@@ -5,8 +5,11 @@
     gap: 1rem;
   }
 
-.title {
+h2{
+    /* centrat titulo */
+    text-align: center;
     font-size: 2rem;
     margin-bottom: 1rem;
+    
   }
 

@@ -13,8 +13,8 @@
     padding: 15px;
     background-color: var(--color-dark);
     color: var(--color-light);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   }
   
   .educationCard h3 {
@@ -24,6 +24,7 @@
   
   .educationCard p {
     margin: 5px 0;
+    color: var(--color-light);
   }
   
   .educationCard strong {

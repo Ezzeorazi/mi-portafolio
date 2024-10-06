@@ -8,6 +8,7 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    
   }
 
   .subtitle {
@@ -25,29 +26,28 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
+    
   }
   
   .skillsList li,
   .certList li {
-    background-color: var(--color-yellow);
-    color: var(--color-dark);
+    background-color: var(--color-dark);
+    color: var(--color-light);
     padding: 10px;
     border-radius: 8px;
     text-align: center;
     font-size: 1rem;
     transition: all 0.5s;
     cursor: default;
-
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   }
 
   .skillsList li:hover {
-    background-color: var(--color-pink);
-    color: var(--color-light);
+    box-shadow: 0 0 10px 5px var(--color-pink);
   }
 
   .certList li:hover {
-    background-color: var(--color-pink);
-    color: var(--color-light);
+    box-shadow: 0 0 10px 5px var(--color-pink);
   }
 
    /* Responsive Design */
