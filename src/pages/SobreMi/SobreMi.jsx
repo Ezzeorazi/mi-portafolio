@@ -40,24 +40,24 @@ const SobreMi = () => {
       <div className={styles.cardsContainer}>
         <NavLink to="/skills" aria-label="Ver más sobre habilidades técnicas">
           <div className={styles.card}>
-            <img src="skills-logo.png" alt="Habilidades Técnicas" />
+            <img src="skills-logo.svg" alt="Habilidades Técnicas" />
           </div>
         </NavLink>
 
         <div className={styles.card}>
           <NavLink to="/project" aria-label="Ver más sobre proyectos">
-            <img src="projects-logo.png" alt="Proyectos" />
+            <img src="projects-logo.svg" alt="Proyectos" />
           </NavLink>
         </div>
 
         <div className={styles.card}>
           <NavLink to="/curriculum" aria-label="Ver más sobre curriculum">
-            <img src="curriculum-logo.png" alt="Curriculum" />
+            <img src="curriculum-logo.svg" alt="Curriculum" />
           </NavLink>
         </div>
         <div className={styles.card}>
           <NavLink to="/blog" aria-label="Ver más sobre blog">
-            <img src="blog-logo.png" alt="Blog" />
+            <img src="blog-logo.svg" alt="Blog" />
           </NavLink>
         </div>
       </div>
