@@ -12,10 +12,11 @@
     justify-content: space-between;
     overflow: hidden;
     cursor: default;
+    transition: 0.5s;
   }
 
   .card:hover {
-    box-shadow: 0 0 10px 5px var(--color-pink);
+    box-shadow: 0 0 8px 4px var(--color-yellow);
   }
   
   .icon {

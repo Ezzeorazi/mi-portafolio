@@ -1,5 +1,5 @@
 .home {
-  padding: 1rem;
+  padding: 0;
 }
 
 .main {
@@ -7,8 +7,8 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 80px;
-  padding-top: 100px;
+  padding-bottom: 50px;
+  padding-top: 80px;
 }
 
 .main h1 {
@@ -17,6 +17,7 @@
   color: var(--color-dark);
   font-size: 2rem; /* Tamaño más pequeño en móviles */
   min-height: 160px; /* Ajusta el tamaño mínimo para evitar desplazamientos */
+  padding-left: 1rem;
 }
 
 .subtitle {
@@ -24,7 +25,7 @@
     margin-bottom: 0;
     line-height: 1.3;
     width: 100%;
-    padding: 0;
+    padding: 1rem;
 }
 
 

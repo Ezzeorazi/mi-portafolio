@@ -34,10 +34,10 @@
     background-color: var(--color-dark);
     color: var(--color-light);
     padding: 10px;
-    border-radius: 8px;
+    border-radius: 10px;
     text-align: center;
     font-size: 1rem;
-    transition: all 0.5s;
+    transition: 0.5s;
     cursor: default;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   }

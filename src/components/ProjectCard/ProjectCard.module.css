@@ -11,6 +11,11 @@
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden; /* Asegurar que el contenido no se salga */
+  transition: 0.5s;
+}
+
+.card:hover {
+  box-shadow: 0 0 10px 4px var(--color-pink);
 }
 
 .card img {
