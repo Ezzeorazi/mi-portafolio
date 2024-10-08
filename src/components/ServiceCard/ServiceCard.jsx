@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./ServiceCard.module.css";
 import 'animate.css';
+import { Link } from "react-router-dom";
 
 
 

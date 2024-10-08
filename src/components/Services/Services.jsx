@@ -27,6 +27,12 @@ const Services = () => {
           icon={<FaDatabase />}
         />
       </div>
+      <div className={styles.btnReunion}>
+        <a href="https://calendly.com/ezequiel-orazi90/30min"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Agendar reunión</a>
+      </div>
     </>
   );
 };
