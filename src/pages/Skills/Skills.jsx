@@ -5,7 +5,7 @@ const Skills = ({}) => {
 
 
 	return (
-		<section className={styles.skills}>
+		<section className={`animate_animated animate__fadeIn ${styles.skills}`}>
  			 {/* Habilidades */}
 			 <div className={styles.skillsContainer}>
 			  <h3 className={`animate__animated animate__slideInLeft ${styles.subtitle}`}

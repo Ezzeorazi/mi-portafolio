@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const SobreMi = () => {
 
   return (
-    <section className={styles.aboutSection}>
+    <section className={`animate_animated animate__fadeIn ${styles.aboutSection}`}>
       <div className={styles.aboutContainer}>
         {/* Biografía */}
         <h2 

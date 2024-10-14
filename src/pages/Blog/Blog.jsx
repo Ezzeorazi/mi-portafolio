@@ -20,7 +20,7 @@ const Blog = () => {
     setArticles(filterData)
   }
   return (
-    <div className={styles.blog}>
+    <div className={`animate_animated animate__fadeIn ${styles.blog}`}>
       <h2>Blog</h2>
 
       <ButtonList categories={categories} filterCategory={filterCategory}/>

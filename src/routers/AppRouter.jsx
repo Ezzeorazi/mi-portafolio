@@ -2,6 +2,7 @@ import React, { lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { Navbar, Footer } from "../layouts";
+import ScrollToTop from "./ScrollToTop";
 
 const Home = lazy(() => import("../pages/Home/Home"));
 const SobreMi = lazy(() => import("../pages/SobreMi/SobreMi"));
@@ -15,6 +16,7 @@ const NotFound = lazy(() => import("../pages/NotFound/NotFound"));
 export const AppRouter = () => {
   return (
     <Router>
+      <ScrollToTop/>
       <Navbar />
       
       <Routes>

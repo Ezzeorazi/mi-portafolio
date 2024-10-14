@@ -8,7 +8,7 @@ const Curriculum = ({}) => {
 
 
   return (
-    <section className={styles.curriculum}>
+    <section className={`animate_animated animate__fadeIn ${styles.curriculum}`}>
       <Experience />
       <Education />
       <CvDownload />

@@ -6,7 +6,7 @@ import GalleryPractice from "../../components/GalleryPractice/GalleryPractice";
 const Project = ({}) => {
 
   return (
-    <div className={styles.project}>
+    <div className={`animate_animated animate__fadeIn ${styles.project}`}>
       <h2 className={`animate__animated animate__slideInLeft`}>
         Mis sitios web
       </h2>

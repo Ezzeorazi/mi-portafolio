@@ -4,6 +4,7 @@ import styles from "./Home.module.css";
 import Typed from "typed.js";
 import { Services } from "../../components";
 
+
 const Home = () => {
   const el = useRef(null); // Crea una referencia al elemento DOM donde renderizar Typed.js
   const typed = useRef(null); // Guarda la instancia de Typed.js
@@ -30,7 +31,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className={styles.home}>
+    <div className={`animate_animated animate__fadeIn ${styles.home}`}>
       <div className={styles.main}>
         <h1>
           ¡Hola! Soy Ezequiel Orazi, desarrollador Fullstack.<br />

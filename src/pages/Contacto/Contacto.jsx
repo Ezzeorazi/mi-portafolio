@@ -18,7 +18,7 @@ const Contacto = () => {
 
 
   return (
-    <div className={`animate__animated animate__flipInY ${styles.contactForm}`}>
+    <div className={`animate_animated animate__fadeIn ${styles.contactForm}`}>
       <h2>Contacto</h2>
 
       {formStatus.success && (
