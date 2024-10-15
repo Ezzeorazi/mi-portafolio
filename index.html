@@ -1,17 +1,17 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon-perfil.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon-perfil.svg" title="Logo de Ezequiel Orazi"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Eze Orazi - Servicios para su web</title>
 
         <!-- Meta Descripción -->
-        <meta name="description" content="Ezequiel Orazi servicios para su sitio web, desarrollador fullstack especializado en React, wordpress y Spring Boot.">
+        <meta name="description" content="Ezequiel Orazi, desarrollador fullstack especializado en servicios web. Ofrezco soluciones a medida en desarrollo de aplicaciones, diseño y mantenimiento de sitios web, optimización y más.">
         <meta name="robots" content="index,follow">
 
         <!-- Meta Keywords -->
-        <meta name="keywords" content="Ezequiel Orazi, portafolio, desarrollador, servicios web, fullstack, React, Spring Boot, JavaScript, HTML, CSS">
+        <meta name="keywords" content="Ezequiel Orazi, desarrollador web, servicios web, React, WordPress, Spring Boot, soluciones digitales, desarrollo de aplicaciones, diseño web, mantenimiento web">
     
         <!-- Meta Author -->
         <meta name="author" content="Ezequiel Orazi">
@@ -22,6 +22,9 @@
         <meta property="og:url" content="http://ezequiel-orazi.online">
         <meta property="og:type" content="website">
         <meta property="og:image" content="pagePortafolio.jpg">
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:site_name" content="Ezequiel Orazi - Servicios Digitales" />
 
 
     <!-- Canonical URL -->
@@ -62,16 +65,52 @@
       "addressRegion": "Santa Fe",
       "addressCountry": "AR"
     },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "email": "contacto@pixelmaker.com.ar",
+      "telephone": "+54-341-000-0000",
+      "areaServed": "AR",
+      "availableLanguage": ["Spanish", "English"]
+    },
     "knowsAbout": ["React", "Spring Boot", "JavaScript", "HTML", "CSS", "Desarrollo Web"],
     "alumniOf": {
       "@type": "EducationalOrganization",
       "name": "Neoris Labs"
-    }
+    },
+    "service": [
+      {
+        "@type": "Service",
+        "serviceType": "Desarrollo Web",
+        "description": "Desarrollo de aplicaciones web dinámicas y responsivas utilizando tecnologías como React, Spring Boot y WordPress."
+      },
+      {
+        "@type": "Service",
+        "serviceType": "Diseño Web",
+        "description": "Diseño de interfaces web atractivas y optimizadas para mejorar la experiencia de usuario."
+      },
+      {
+        "@type": "Service",
+        "serviceType": "Optimización SEO",
+        "description": "Servicios de optimización SEO para mejorar la visibilidad de tu sitio en motores de búsqueda."
+      },
+      {
+        "@type": "Service",
+        "serviceType": "Mantenimiento Web",
+        "description": "Mantenimiento continuo de sitios web para garantizar su seguridad, rendimiento y actualización constante."
+      },
+      {
+        "@type": "Service",
+        "serviceType": "Consultoría Digital",
+        "description": "Asesoramiento para la implementación de soluciones digitales eficientes y a medida."
+      }
+    ]
   }
-  </script>  
+  </script>
+  
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script async type="module" src="/src/main.jsx"></script>
   </body>
 </html>
