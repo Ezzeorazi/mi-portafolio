@@ -56,9 +56,10 @@ h2 {
 }
 
 .error {
-  color: var(--color-pink);
-  font-size: 0.875rem;
+  color: red;
+  font-size: 0.9rem;
   margin-top: 0.5rem;
+  font-weight: bold;
 }
 
 button {
