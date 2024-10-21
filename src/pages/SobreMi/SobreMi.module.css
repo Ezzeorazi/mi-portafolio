@@ -53,7 +53,6 @@
     justify-content: center;
     gap: 16px;
     margin: 10px;
-    
   }
   
  
@@ -61,6 +60,10 @@
     width: 100%;
     height: auto;
     border-radius: 8px;    
+  }
+
+  .card {
+    transition: 0.5s;
   }
 
   .card:hover {
