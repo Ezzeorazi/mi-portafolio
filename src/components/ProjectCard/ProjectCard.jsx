@@ -21,7 +21,7 @@ const ProjectCard = ({
       </p>
       <div className={styles.links}>
         <a href={liveLink} target="_blank" rel="noopener noreferrer">
-          Ver Proyecto
+          Visitar
         </a>
         {repoLink && (
           <div className={styles.link}>
