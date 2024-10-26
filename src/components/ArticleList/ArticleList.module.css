@@ -34,6 +34,7 @@ img {
 	width: 100%;
 	height: auto;
 	display: block;
+	max-height: 500px;
 }
 
 .imgContainer img:hover {

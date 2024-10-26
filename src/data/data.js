@@ -65,6 +65,28 @@ const data = [
 		"date": "Publicado el 21 de octubre de 2024",
 		"ReadingTime": "5 min de lectura",
 		"content": "flujo-de-trabajo-con-git.html"
+	},
+	{
+		"id": 7,
+		"slug": "como-aprender-desarrollo-web",
+		"image": "trabajando-ia-pc.webp",
+		"title": "Guía Completa para Aprender Desarrollo Web",
+		"category": "Desarrollo Web",
+		"description": "Explora los fundamentos del desarrollo web, desde cómo comenzar hasta las áreas de front-end, back-end y full stack.",
+		"date": "Publicado el 25 de octubre de 2024",
+		"readingTime": "12 min de lectura",
+		"content":"como-aprender-desarrollo-web.html"
+	},
+	{
+		"id": 8,
+		"slug": "introduccion-a-javascript",
+		"image": "JavaScript-blog-new-logo.png",
+		"title": "Introducción a JavaScript: Todo lo que necesitas saber",
+		"category": "Javascript",
+		"description": "Descubre qué es JavaScript, cómo funciona, quién lo creó y dónde puedes aprender este poderoso lenguaje.",
+		"date": "Publicado el 26 de octubre de 2024",
+		"readingTime": "10 min de lectura",
+		"content": "introduccion-a-javascript.html"
 	}
 	
 ];
