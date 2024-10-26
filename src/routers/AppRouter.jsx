@@ -12,6 +12,7 @@ const Curriculum = lazy(() => import("../pages/Curriculum/Curriculum"));
 const Blog = lazy(() => import("../pages/Blog/Blog"));
 const Contacto = lazy(() => import("../pages/Contacto/Contacto"));
 const NotFound = lazy(() => import("../pages/NotFound/NotFound"));
+const BlogEntry = lazy(() => import("../components/BlogEntry/BlogEntry"))
 
 export const AppRouter = () => {
   return (
@@ -26,6 +27,7 @@ export const AppRouter = () => {
         <Route path="/project" element={<Project />} />
         <Route path="/curriculum" element={<Curriculum />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogEntry />} /> {/* Ruta dinámica */}
         <Route path="/contacto" element={<Contacto />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
