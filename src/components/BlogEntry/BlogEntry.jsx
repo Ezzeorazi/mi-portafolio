@@ -30,6 +30,7 @@ const BlogEntry = () => {
       <p>{article.date} · {article.ReadingTime}</p>
       {/* Inserta el HTML del contenido cargado */}
       <div dangerouslySetInnerHTML={{ __html: content }} />
+      <NavLink to="/blog" className={styles.backLink}>← Volver al blog</NavLink>
     </div>
   );
 };
