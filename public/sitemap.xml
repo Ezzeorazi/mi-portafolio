@@ -36,10 +36,48 @@
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
-    <url>
-        <loc>https://ezequiel-orazi.online/contacto</loc>
-        <lastmod>2024-10-01</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+  <url>
+    <loc>https://ezequiel-orazi.online/contacto</loc>
+    <lastmod>2024-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Entradas del blog -->
+  <url>
+    <loc>https://ezequiel-orazi.online/blog/entendiendo-las-promesas-en-javascript</loc>
+    <lastmod>2024-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ezequiel-orazi.online/blog/como-usar-grid-y-flexbox-en-css</loc>
+    <lastmod>2024-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ezequiel-orazi.online/blog/como-mejorar-el-rendimiento-en-next-con-imagenes-optimizadas</loc>
+    <lastmod>2024-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ezequiel-orazi.online/blog/configurando-un-servidor-express-en-node</loc>
+    <lastmod>2024-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ezequiel-orazi.online/blog/introduccion-a-los-hooks-de-react</loc>
+    <lastmod>2024-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ezequiel-orazi.online/blog/flujo-de-trabajo-con-git</loc>
+    <lastmod>2024-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
