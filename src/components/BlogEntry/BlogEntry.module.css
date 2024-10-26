@@ -38,7 +38,13 @@
   font-weight: 300;
   line-height: 25px;
   color: var(--color-light); 
+  width: 70%;
+  margin-left: 15%;
 }
+
+.blogEntry .date {
+  margin-left: 0;
+} 
 
 /* Estilos de las listas */
 .blogEntry ul {
@@ -113,6 +119,8 @@
 
   .blogEntry p {
     font-size: 14px;
+    width: 100%;
+    margin-left: 0;
   }
 
   .backLink {

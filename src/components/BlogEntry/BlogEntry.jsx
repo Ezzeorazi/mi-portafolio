@@ -27,7 +27,7 @@ const BlogEntry = () => {
       <NavLink to="/blog" className={styles.backLink}>← Volver al blog</NavLink>
       <h1>{article.title}</h1>
       <img src={`/${article.image}`} alt={article.title} />
-      <p>{article.date} · {article.ReadingTime}</p>
+      <p className={styles.date}>{article.date} · {article.ReadingTime}</p>
       {/* Inserta el HTML del contenido cargado */}
       <div dangerouslySetInnerHTML={{ __html: content }} />
       <NavLink to="/blog" className={styles.backLink}>← Volver al blog</NavLink>
