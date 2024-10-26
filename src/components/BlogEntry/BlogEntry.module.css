@@ -1,51 +1,130 @@
+/* Estilos generales del contenedor */
 .blogEntry {
-  background-color: var(--color-dark);
-  color: var(--color-light);
+  max-width: 100%;
+  margin: 0 auto;
   padding: 20px;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: var(--color-dark); /* Fondo oscuro */
+  color: var(--color-light); /* Texto claro */
 }
 
+/* Estilos para el título */
 .blogEntry h1 {
-  font-size: 32px; /* Tamaño del título principal */
-  margin-bottom: 15px; /* Espaciado inferior */
+  font-size: 32px;
+  color: var(--color-light);
+  margin-bottom: 15px;
   font-weight: 700;
 }
 
-.blogEntry img {
-  max-width: 60%; /* Asegura que la imagen no exceda el ancho del contenedor */
-  border-radius: 15px; /* Bordes redondeados para la imagen */
-  margin-bottom: 15px; /* Espaciado inferior */
+/* Estilo de los subtítulos */
+.blogEntry h2 {
+  font-size: 24px;
+  color: var(--color-yellow); /* Color diferenciado para subtítulos */
+  border-bottom: 2px solid #444; /* Borde con tono oscuro */
+  padding-bottom: 0.3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
 }
 
+.blogEntry h3 {
+  color: var(--color-light);
+}
+
+/* Estilo de los párrafos */
 .blogEntry p {
-  font-size: 16px; /* Tamaño de texto del párrafo */
-  margin-bottom: 10px; /* Espaciado inferior */
-  font-weight: 300; /* Peso de la fuente */
-  line-height: 25px; /* Altura de línea */
-  color: var(--color-light); /* Color del texto */
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: 300;
+  line-height: 25px;
+  color: var(--color-light); 
 }
 
+/* Estilos de las listas */
+.blogEntry ul {
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.blogEntry ul li {
+  list-style-type: disc;
+  margin-bottom: 0.5rem;
+  color: var(--color-light);
+}
+
+/* Estilos para texto en negrita */
+.blogEntry strong {
+  color: var(--color-light);
+  font-weight: 600;
+}
+
+/* Estilos para imágenes */
+.blogEntry img {
+  max-width: 60%; /* Ajuste del ancho máximo */
+  border-radius: 15px; /* Bordes redondeados */
+  margin-bottom: 15px;
+}
+
+/* Bloques de código y preformateados */
+.blogEntry pre {
+  white-space: pre-wrap; /* Permite que el texto se ajuste y no cause desbordamiento */
+    word-wrap: break-word; /* Asegura que las líneas largas se corten */
+    text-align: start; /* Alineación al inicio */
+    overflow-x: auto; /* Agrega un scroll horizontal si fuera necesario */
+    padding: 10px; /* Espaciado alrededor del bloque de código */
+    background-color: #333; /* Fondo para resaltar el bloque */
+    border-radius: 8px; /* Bordes redondeados */
+    max-width: 60%;
+}
+
+.blogEntry code {
+  background-color: #333; /* Fondo más claro */
+  color: #ffb6c1; /* Color de texto llamativo */
+  font-family: Consolas, monospace;
+  border-radius: 4px;
+}
+
+/* Estilo para el enlace de regreso */
 .backLink {
-  display: inline-block; /* Hacer que el enlace sea un bloque en línea */
-  margin-bottom: 20px; /* Espaciado inferior */
-  color: var(--color-light); /* Color del texto */
-  text-decoration: none; /* Sin subrayado */
-  font-weight: 500; /* Peso de la fuente */
+  display: inline-block;
+  margin-bottom: 20px;
+  color: var(--color-light);
+  text-decoration: none;
+  font-weight: 500;
 }
 
 .backLink:hover {
-  text-decoration: underline; /* Subrayado al pasar el mouse */
+  text-decoration: underline;
 }
 
+/* Media query para pantallas pequeñas */
 @media (max-width: 520px) {
+  .blogEntry img {
+    max-width: 100%;
+  }
+
   .blogEntry h1 {
-      font-size: 28px; /* Tamaño del título principal en pantallas pequeñas */
+    font-size: 28px;
+  }
+
+  .blogEntry h2 {
+    font-size: 20px;
   }
 
   .blogEntry p {
-      font-size: 14px; /* Tamaño de texto del párrafo en pantallas pequeñas */
+    font-size: 14px;
   }
 
   .backLink {
-      font-size: 14px; /* Tamaño del enlace de regreso en pantallas pequeñas */
+    font-size: 14px;
   }
+  .blogEntry pre {
+        font-size: 12px; /* Tamaño de fuente ajustado para móviles */
+        padding: 8px; /* Espaciado reducido en móviles */
+        
+  }
+
+  
+
+  
 }

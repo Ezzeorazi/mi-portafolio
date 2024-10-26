@@ -1,0 +1,101 @@
+<h2>Introducción</h2>
+    <p>En el diseño web moderno, construir layouts flexibles y responsivos es esencial. Dos de las herramientas más poderosas en CSS para este propósito son <strong>CSS Grid</strong> y <strong>Flexbox</strong>. Cada uno tiene sus fortalezas y casos de uso, y en este artículo exploraremos cómo funcionan, en qué se diferencian, y cuándo deberías utilizar uno sobre el otro. Al final, tendrás una mejor comprensión de cómo emplear ambos para crear interfaces web adaptables y bien estructuradas.</p>
+
+    <h2>¿Qué es Flexbox?</h2>
+    <p>Flexbox, abreviatura de "Flexible Box Layout", es un sistema de layout de una dimensión que permite alinear y distribuir elementos en un contenedor, ya sea en dirección de fila o columna. Flexbox es ideal para construir layouts simples y para alinear elementos de manera dinámica.</p>
+
+    <h3>Ejemplo de Flexbox</h3>
+    <pre>
+    <code>
+    .contenedor {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .item {
+        flex: 1;
+        padding: 10px;
+        background-color: #ddd;
+    }
+    </code>
+    </pre>
+
+    <h2>¿Qué es CSS Grid?</h2>
+    <p>CSS Grid es un sistema de layout bidimensional que permite crear diseños de cuadrícula en filas y columnas. A diferencia de Flexbox, Grid es especialmente útil para layouts complejos y estructurados donde se necesita una mayor precisión en la colocación de los elementos.</p>
+
+    <h3>Ejemplo de CSS Grid</h3>
+    <pre>
+        <code>
+    .grid-contenedor {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    .grid-item {
+        background-color: #ccc;
+        padding: 20px;
+    }
+        </code>
+    </pre>
+
+    <h2>Comparación: Flexbox vs. Grid</h2>
+    <p>Tanto Flexbox como Grid son útiles, pero se destacan en diferentes aspectos. Aquí hay una comparación rápida:</p>
+    <ul>
+        <li><strong>Flexbox:</strong> Mejor para layouts lineales de una dimensión, ya que facilita la alineación y el espaciado entre elementos en una dirección (horizontal o vertical).</li>
+        <li><strong>Grid:</strong> Ideal para layouts bidimensionales complejos, ya que permite controlar filas y columnas de manera independiente.</li>
+    </ul>
+
+    <h2>Casos de Uso para Flexbox</h2>
+    <p>Algunos escenarios donde Flexbox es especialmente útil:</p>
+    <ul>
+        <li>Centraje de elementos en un contenedor.</li>
+        <li>Creación de menús de navegación horizontales.</li>
+        <li>Alineación de elementos en una sola fila o columna.</li>
+    </ul>
+
+    <h2>Casos de Uso para Grid</h2>
+    <p>Algunos escenarios donde Grid es ideal:</p>
+    <ul>
+        <li>Diseño de layouts de página completos.</li>
+        <li>Creación de galerías de imágenes en cuadrícula.</li>
+        <li>Distribución de elementos en filas y columnas complejas.</li>
+    </ul>
+
+    <h2>Ejemplo de Layout Combinado</h2>
+    <p>En muchos casos, combinar Flexbox y Grid puede ser la solución más efectiva. Aquí un ejemplo de cómo puedes utilizar ambos para crear un layout flexible:</p>
+    <pre>
+        <code>
+    .pagina {
+        display: grid;
+        grid-template-areas: 
+            "header header"
+            "menu principal"
+            "footer footer";
+        grid-template-rows: auto 1fr auto;
+        grid-template-columns: 200px 1fr;
+    }
+    .header {
+        grid-area: header;
+    }
+    .menu {
+        grid-area: menu;
+        display: flex;
+        flex-direction: column;
+    }
+    .principal {
+        grid-area: principal;
+    }
+    .footer {
+        grid-area: footer;
+    }
+        </code>
+    </pre>
+
+    <h2>Conclusión</h2>
+    <p>Grid y Flexbox son herramientas poderosas y complementarias en CSS. Utiliza Flexbox para layouts lineales y de una sola dimensión y CSS Grid para estructuras de cuadrícula más complejas. A medida que te familiarices con ambos, descubrirás que muchas veces puedes combinarlos para lograr layouts más versátiles y adaptables.</p>
+
+    <h2>Citas y Fuentes</h2>
+    <ul>
+        <li>MDN Web Docs sobre Flexbox: "Flexbox es un modelo de layout diseñado para interfaces de usuario complejas y responsivas".</li>
+        <li>MDN Web Docs sobre Grid: "CSS Grid Layout es el primer método de layout de CSS diseñado explícitamente para construir interfaces de usuario complejas".</li>
+    </ul>

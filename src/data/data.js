@@ -8,7 +8,7 @@ const data = [
 		"description": "Una guía para comprender y usar promesas en JavaScript para manejar operaciones asíncronas.",
 		"date": "Publicado el 21 de octubre de 2024",
 		"ReadingTime": "7 min de lectura",
-		"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel volutpat lorem. Ut porttitor arcu dolor, in ultrices ante iaculis tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacus nulla, mollis nec tortor et, interdum faucibus mi. Maecenas eu quam non justo accumsan ornare eget ac est. Sed congue, urna at efficitur commodo, odio elit scelerisque eros, vitae posuere nibh odio a nisl. Mauris dapibus viverra massa, in vehicula purus ultrices blandit. Phasellus hendrerit ultricies finibus. Phasellus iaculis sem id nibh maximus venenatis. Nam eget tempus dolor, eu posuere libero. Quisque vel feugiat diam. Nullam vehicula sit amet est a pharetra."
+		"content": "entendiendo-las-promesas-en-javascript.html"
 
 	},
 	{
@@ -20,7 +20,7 @@ const data = [
 		"description": "Una comparación práctica entre Grid y Flexbox para construir layouts responsivos en CSS.",
 		"date": "Publicado el 21 de octubre de 2024",
 		"ReadingTime": "6 min de lectura",
-		"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel volutpat lorem. Ut porttitor arcu dolor, in ultrices ante iaculis tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacus nulla, mollis nec tortor et, interdum faucibus mi. Maecenas eu quam non justo accumsan ornare eget ac est. Sed congue, urna at efficitur commodo, odio elit scelerisque eros, vitae posuere nibh odio a nisl. Mauris dapibus viverra massa, in vehicula purus ultrices blandit. Phasellus hendrerit ultricies finibus. Phasellus iaculis sem id nibh maximus venenatis. Nam eget tempus dolor, eu posuere libero. Quisque vel feugiat diam. Nullam vehicula sit amet est a pharetra."
+		"content": "como-usar-grid-y-flexbox-en-css.html"
 	},
 	{
 		"id": 3,
@@ -31,7 +31,7 @@ const data = [
 		"description": "Aprende a optimizar imágenes en aplicaciones Next.js usando el componente Image para mejorar el rendimiento.",
 		"date": "Publicado el 21 de octubre de 2024",
 		"ReadingTime": "5 min de lectura",
-		"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel volutpat lorem. Ut porttitor arcu dolor, in ultrices ante iaculis tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacus nulla, mollis nec tortor et, interdum faucibus mi. Maecenas eu quam non justo accumsan ornare eget ac est. Sed congue, urna at efficitur commodo, odio elit scelerisque eros, vitae posuere nibh odio a nisl. Mauris dapibus viverra massa, in vehicula purus ultrices blandit. Phasellus hendrerit ultricies finibus. Phasellus iaculis sem id nibh maximus venenatis. Nam eget tempus dolor, eu posuere libero. Quisque vel feugiat diam. Nullam vehicula sit amet est a pharetra."
+		"content": "como-mejorar-el rendimiento-en-Next-con-imagenes-optimizadas.html"
 	},
 	{
 		"id": 4,
@@ -42,7 +42,7 @@ const data = [
 		"description": "Guía paso a paso para configurar un servidor básico con Express.js en Node.js.",
 		"date": "Publicado el 21 de octubre de 2024",
 		"ReadingTime": "8 min de lectura",
-		"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel volutpat lorem. Ut porttitor arcu dolor, in ultrices ante iaculis tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacus nulla, mollis nec tortor et, interdum faucibus mi. Maecenas eu quam non justo accumsan ornare eget ac est. Sed congue, urna at efficitur commodo, odio elit scelerisque eros, vitae posuere nibh odio a nisl. Mauris dapibus viverra massa, in vehicula purus ultrices blandit. Phasellus hendrerit ultricies finibus. Phasellus iaculis sem id nibh maximus venenatis. Nam eget tempus dolor, eu posuere libero. Quisque vel feugiat diam. Nullam vehicula sit amet est a pharetra."
+		"content": "configurando-un-servidor-Express-en-Node.html"
 	},
 	{
 		"id": 5,
@@ -53,7 +53,7 @@ const data = [
 		"description": "Descubre cómo usar los hooks de React, como useState y useEffect, para manejar el estado y los efectos secundarios.",
 		"date": "Publicado el 21 de octubre de 2024",
 		"ReadingTime": "6 min de lectura",
-		"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel volutpat lorem. Ut porttitor arcu dolor, in ultrices ante iaculis tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacus nulla, mollis nec tortor et, interdum faucibus mi. Maecenas eu quam non justo accumsan ornare eget ac est. Sed congue, urna at efficitur commodo, odio elit scelerisque eros, vitae posuere nibh odio a nisl. Mauris dapibus viverra massa, in vehicula purus ultrices blandit. Phasellus hendrerit ultricies finibus. Phasellus iaculis sem id nibh maximus venenatis. Nam eget tempus dolor, eu posuere libero. Quisque vel feugiat diam. Nullam vehicula sit amet est a pharetra."
+		"content": "introduccion-a-los-hooks-de-react.html"
 	},
 	{
 		"id": 6,
@@ -64,7 +64,7 @@ const data = [
 		"description": "Cómo trabajar con ramas y realizar fusiones en Git para gestionar el control de versiones de forma efectiva.",
 		"date": "Publicado el 21 de octubre de 2024",
 		"ReadingTime": "5 min de lectura",
-		"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vel volutpat lorem. Ut porttitor arcu dolor, in ultrices ante iaculis tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacus nulla, mollis nec tortor et, interdum faucibus mi. Maecenas eu quam non justo accumsan ornare eget ac est. Sed congue, urna at efficitur commodo, odio elit scelerisque eros, vitae posuere nibh odio a nisl. Mauris dapibus viverra massa, in vehicula purus ultrices blandit. Phasellus hendrerit ultricies finibus. Phasellus iaculis sem id nibh maximus venenatis. Nam eget tempus dolor, eu posuere libero. Quisque vel feugiat diam. Nullam vehicula sit amet est a pharetra."
+		"content": "flujo-de-trabajo-con-git.html"
 	}
 	
 ];

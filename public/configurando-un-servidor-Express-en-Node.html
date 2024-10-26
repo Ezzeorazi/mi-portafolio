@@ -1,0 +1,129 @@
+<h2>Introducción</h2>
+<p>Express.js es un framework minimalista de Node.js que permite crear servidores y manejar rutas de forma sencilla y eficiente. Con Express, puedes configurar un servidor en pocos pasos y comenzar a manejar solicitudes HTTP de manera organizada. En esta guía, aprenderás cómo crear y configurar un servidor básico en Node.js usando Express.</p>
+
+<h2>Instalación de Node.js y Express</h2>
+<p>Antes de comenzar, asegúrate de tener Node.js instalado en tu sistema. Puedes verificarlo ejecutando el siguiente comando en la terminal:</p>
+
+<pre>
+  <code>
+    node -v
+  </code>
+</pre>
+
+<p>Si Node.js está instalado correctamente, verás la versión actual. A continuación, crea una nueva carpeta para tu proyecto, navega a ella y ejecuta <code>npm init -y</code> para iniciar un proyecto Node.js:</p>
+
+<pre>
+  <code>
+    mkdir mi-servidor-express
+    cd mi-servidor-express
+    npm init -y
+  </code>
+</pre>
+
+<p>Luego, instala Express usando el comando <code>npm install express</code>:</p>
+
+<pre>
+  <code>
+    npm install express
+  </code>
+</pre>
+
+<h2>Configuración básica del servidor</h2>
+<p>Una vez que Express esté instalado, crea un archivo llamado <code>server.js</code> en el directorio principal del proyecto. Este archivo contendrá la configuración básica para tu servidor Express. Aquí tienes un ejemplo de configuración básica:</p>
+
+<pre>
+  <code>
+    // server.js
+    const express = require('express');
+    const app = express();
+    const PORT = 3000;
+
+    app.get('/', (req, res) => {
+      res.send('¡Hola, mundo desde Express!');
+    });
+
+    app.listen(PORT, () => {
+      console.log(`Servidor escuchando en http://localhost:${PORT}`);
+    });
+  </code>
+</pre>
+
+<p>En este ejemplo, estamos creando una aplicación Express, definiendo una ruta simple <code>/</code> que responde con el mensaje "¡Hola, mundo desde Express!" y configurando el servidor para que escuche en el puerto 3000.</p>
+
+<h2>Manejo de rutas en Express</h2>
+<p>Express facilita la creación de rutas para manejar diferentes solicitudes HTTP. Aquí tienes un ejemplo de cómo definir rutas <code>GET</code>, <code>POST</code>, <code>PUT</code>, y <code>DELETE</code>:</p>
+
+<pre>
+  <code>
+    app.get('/api', (req, res) => {
+      res.send('Solicitud GET recibida');
+    });
+
+    app.post('/api', (req, res) => {
+      res.send('Solicitud POST recibida');
+    });
+
+    app.put('/api', (req, res) => {
+      res.send('Solicitud PUT recibida');
+    });
+
+    app.delete('/api', (req, res) => {
+      res.send('Solicitud DELETE recibida');
+    });
+  </code>
+</pre>
+
+<p>Cada una de estas rutas responde a un tipo específico de solicitud HTTP y devuelve un mensaje de confirmación.</p>
+
+<h2>Uso de middleware</h2>
+<p>El middleware en Express es una función que se ejecuta antes de que la solicitud llegue a la ruta final. Puedes usar middleware para tareas como registrar solicitudes, verificar autenticación o procesar datos. A continuación, se muestra un ejemplo de middleware que registra cada solicitud:</p>
+
+<pre>
+  <code>
+    app.use((req, res, next) => {
+      console.log(`${req.method} ${req.url}`);
+      next();
+    });
+  </code>
+</pre>
+
+<p>En este ejemplo, el middleware registra el método y la URL de cada solicitud y luego llama a <code>next()</code> para pasar el control a la siguiente función de middleware o a la ruta.</p>
+
+<h2>Configuración de rutas dinámicas</h2>
+<p>Express permite definir rutas con parámetros para manejar solicitudes dinámicas. Por ejemplo:</p>
+
+<pre>
+  <code>
+    app.get('/usuario/:id', (req, res) => {
+      const userId = req.params.id;
+      res.send(`Usuario ID: ${userId}`);
+    });
+  </code>
+</pre>
+
+<p>En esta ruta, <code>:id</code> es un parámetro que se captura a partir de la URL. Cuando un usuario accede a <code>/usuario/123</code>, el servidor responderá con "Usuario ID: 123".</p>
+
+<h2>Servir archivos estáticos</h2>
+<p>Para servir archivos estáticos como imágenes, CSS, o JavaScript, usa el middleware <code>express.static</code>. Primero, crea una carpeta llamada <code>public</code> en el directorio de tu proyecto y coloca allí tus archivos. Luego, configura Express para servir esta carpeta:</p>
+
+<pre>
+  <code>
+    app.use(express.static('public'));
+  </code>
+</pre>
+
+<p>Ahora, puedes acceder a los archivos estáticos en la carpeta <code>public</code> desde cualquier ruta. Por ejemplo, si tienes un archivo <code>public/imagen.png</code>, puedes acceder a él en <code>http://localhost:3000/imagen.png</code>.</p>
+
+<h2>Escuchando solicitudes en un puerto</h2>
+<p>Por último, configura el servidor para escuchar en un puerto determinado. Este es el código necesario para que tu servidor escuche en el puerto 3000:</p>
+
+<pre>
+  <code>
+    app.listen(PORT, () => {
+      console.log(`Servidor escuchando en http://localhost:${PORT}`);
+    });
+  </code>
+</pre>
+
+<h2>Conclusión</h2>
+<p>En este artículo, hemos cubierto los conceptos básicos para configurar un servidor con Express en Node.js, desde la instalación hasta la creación de rutas y el uso de middleware. Express hace que sea sencillo y rápido configurar un servidor y manejar rutas, lo que lo convierte en una excelente opción para desarrolladores que buscan eficiencia y flexibilidad en sus proyectos Node.js. ¡Ahora estás listo para comenzar a construir aplicaciones más complejas con Express!</p>
