@@ -1,25 +1,24 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styles from './BlogEntry.module.css';
+import React from "react";
+import { useParams, Link } from "react-router-dom";
+import data from "../../data/data";
+import ReactMarkdown from "react-markdown";
+import styles from './BlogEntry.module.css'; // Importa tus estilos si es necesario
 
-const BlogEntry = ({ title, date, content, imageUrl }) => {
+const BlogEntry = () => {
+  const { slug } = useParams();
+  const article = data.find(item => item.slug === slug);
+
+  if (!article) return <p>Artículo no encontrado</p>;
+
   return (
     <div className={styles.blogEntry}>
-      <img src={imageUrl} alt={title} className={styles.image} />
-      <div className={styles.content}>
-        <h3 className={styles.title}>{title}</h3>
-        <p className={styles.date}>{date}</p>
-        <p>{content}</p>
-      </div>
+      <Link to="/blog" className={styles.backLink}>← Volver al blog</Link>
+      <h1>{article.title}</h1>
+      <img src={`/${article.image}`} alt={article.title} />
+      <p>{article.date} · {article.ReadingTime}</p>
+      <ReactMarkdown>{article.content}</ReactMarkdown>
     </div>
   );
-};
-
-BlogEntry.propTypes = {
-  title: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string,
 };
 
 export default BlogEntry;

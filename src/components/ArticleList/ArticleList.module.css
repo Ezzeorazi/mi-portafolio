@@ -66,6 +66,10 @@ img {
 	font-weight: 500;
 }
 
+.articleLink {
+	text-decoration: none;
+}
+
 @media (max-width: 520px) {
 	.title h2 {
 		font-size: 40px;

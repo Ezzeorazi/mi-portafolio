@@ -1,54 +1,51 @@
 .blogEntry {
-  border: 1px solid #ddd;
-  padding: 16px;
-  margin-bottom: 16px;
-  border-radius: 8px;
-  background-color: #fff;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  padding: 20px;
 }
 
-.image {
-  width: 25%;
-  height: auto;
-  border-radius: 8px;
-  margin-right: 16px;
+.blogEntry h1 {
+  font-size: 32px; /* Tamaño del título principal */
+  margin-bottom: 15px; /* Espaciado inferior */
+  font-weight: 700;
 }
 
-.content {
-  width: 60%;
+.blogEntry img {
+  max-width: 60%; /* Asegura que la imagen no exceda el ancho del contenedor */
+  border-radius: 15px; /* Bordes redondeados para la imagen */
+  margin-bottom: 15px; /* Espaciado inferior */
 }
 
-.title {
-  font-size: 24px;
-  margin-bottom: 8px;
+.blogEntry p {
+  font-size: 16px; /* Tamaño de texto del párrafo */
+  margin-bottom: 10px; /* Espaciado inferior */
+  font-weight: 300; /* Peso de la fuente */
+  line-height: 25px; /* Altura de línea */
+  color: var(--color-light); /* Color del texto */
 }
 
-.date {
-  font-size: 14px;
-  color: #888;
-  margin-bottom: 16px;
+.backLink {
+  display: inline-block; /* Hacer que el enlace sea un bloque en línea */
+  margin-bottom: 20px; /* Espaciado inferior */
+  color: var(--color-light); /* Color del texto */
+  text-decoration: none; /* Sin subrayado */
+  font-weight: 500; /* Peso de la fuente */
 }
 
-.content p {
-  margin: 0;
+.backLink:hover {
+  text-decoration: underline; /* Subrayado al pasar el mouse */
 }
 
-/* Media query para dispositivos móviles */
-@media (max-width: 768px) {
-  .blogEntry {
-    flex-direction: column;
-    align-items: center;
+@media (max-width: 520px) {
+  .blogEntry h1 {
+      font-size: 28px; /* Tamaño del título principal en pantallas pequeñas */
   }
 
-  .image {
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 16px;
+  .blogEntry p {
+      font-size: 14px; /* Tamaño de texto del párrafo en pantallas pequeñas */
   }
 
-  .content {
-    width: 100%;
+  .backLink {
+      font-size: 14px; /* Tamaño del enlace de regreso en pantallas pequeñas */
   }
 }
