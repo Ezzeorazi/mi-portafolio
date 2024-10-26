@@ -121,7 +121,7 @@
   .blogEntry pre {
         font-size: 12px; /* Tamaño de fuente ajustado para móviles */
         padding: 8px; /* Espaciado reducido en móviles */
-        
+        max-width: 100%;
   }
 
   
