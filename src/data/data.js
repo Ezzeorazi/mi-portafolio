@@ -100,15 +100,15 @@ const data = [
 		"content": "introduccion-a-material-ui.html"
 	},
 	{
-  "id": 10,
-  "slug": "html-fundamento-desarrollo-web",
-  "image": "html-blog.png",
-  "title": "HTML: El Fundamento del Desarrollo Web",
-  "category": "HTML",
-  "description": "Conoce los principios y evolución de HTML, su estructura, etiquetas clave, y su integración con CSS y JavaScript.",
-  "date": "Publicado el 13 de noviembre de 2024",
-  "ReadingTime": "8 min de lectura",
-  "content": "que-es-html.html"
+  		"id": 10,
+ 		"slug": "html-fundamento-desarrollo-web",
+  		"image": "html-logo.png",
+  		"title": "HTML: El Fundamento del Desarrollo Web",
+  		"category": "HTML",
+  		"description": "Conoce los principios y evolución de HTML, su estructura, etiquetas clave, y su integración con CSS y JavaScript.",
+  		"date": "Publicado el 13 de noviembre de 2024",
+  		"ReadingTime": "8 min de lectura",
+  		"content": "que-es-html.html"
 }
 	
 ];
