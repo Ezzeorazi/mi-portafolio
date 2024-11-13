@@ -91,7 +91,7 @@ const data = [
 	{
 		"id": 9,
 		"slug": "introduccion-a-material-ui",
-		"image": "JavaScript-blog-new-logo.png",
+		"image": "material-ui-logo.webp",
 		"title": "Introducción a Material UI: Diseño Moderno y Consistente",
 		"category": "Material UI",
 		"description": "Explora Material UI, la biblioteca de componentes basada en Material Design que permite a los desarrolladores construir interfaces de usuario modernas y uniformes de manera rápida y sencilla.",
