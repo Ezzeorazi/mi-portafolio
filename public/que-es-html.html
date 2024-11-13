@@ -1,0 +1,99 @@
+  <h1>HTML: El Fundamento del Desarrollo Web</h1>
+
+  <h2>¿Qué es HTML?</h2>
+  <p>HTML, o HyperText Markup Language (Lenguaje de Marcado de Hipertexto), es el lenguaje estándar para estructurar y dar significado al contenido de una página web. Es un lenguaje de marcado, lo que significa que utiliza "etiquetas" para organizar los elementos en una página. Las etiquetas HTML indican al navegador cómo deben verse y comportarse ciertos tipos de contenido, tales como párrafos, encabezados, imágenes, listas y enlaces.</p>
+
+  <h2>Historia de HTML y su Evolución</h2>
+  <p>HTML fue creado por Tim Berners-Lee en 1989 para facilitar la distribución de documentos en la recién concebida World Wide Web. Desde entonces, ha evolucionado considerablemente, con múltiples versiones que han ampliado sus capacidades. La versión actual, HTML5, introdujo nuevas características, como etiquetas multimedia (<code>&lt;video&gt;</code>, <code>&lt;audio&gt;</code>), gráficos (<code>&lt;canvas&gt;</code>), y almacenamiento local, permitiendo un desarrollo más interactivo y enriquecido en el navegador.</p>
+
+  <h2>Estructura Básica de un Documento HTML</h2>
+  <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Mi Primer Documento HTML&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Bienvenido a HTML&lt;/h1&gt;
+    &lt;p&gt;Este es un párrafo en HTML.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+  </code></pre>
+
+  <h2>Principales Etiquetas de HTML</h2>
+  <h3>1. Etiquetas de Estructura de Documento</h3>
+  <p><code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>: Estas etiquetas ayudan a estructurar el contenido de manera semántica, lo que permite a los motores de búsqueda y herramientas de accesibilidad entender mejor el contenido.</p>
+
+  <h3>2. Etiquetas de Texto</h3>
+  <p><strong>Encabezados</strong> (<code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code>): Los encabezados organizan la jerarquía del contenido. <code>&lt;h1&gt;</code> es el más importante y grande, mientras que <code>&lt;h6&gt;</code> es el más pequeño.</p>
+  
+  <h3>3. Etiquetas de Enlaces</h3>
+  <p><code>&lt;a&gt;</code>: Permite crear hipervínculos que pueden enlazar a otras páginas o secciones.</p>
+
+  <h2>Formularios en HTML</h2>
+  <pre><code>
+&lt;form action="/submit" method="POST"&gt;
+  &lt;label for="name"&gt;Nombre:&lt;/label&gt;
+  &lt;input type="text" id="name" name="name"&gt;
+  &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;
+  </code></pre>
+
+  <h2>Integración de HTML con CSS</h2>
+  <p>HTML proporciona la estructura, pero el diseño y la apariencia de una página web son gestionados por CSS (Cascading Style Sheets). CSS permite cambiar colores, fuentes, disposición de elementos y mucho más, lo que es crucial para una experiencia de usuario agradable.</p>
+  <pre><code>
+&lt;head&gt;
+  &lt;style&gt;
+    body { font-family: Arial, sans-serif; background-color: #f0f0f0; }
+    h1 { color: #333; }
+  &lt;/style&gt;
+&lt;/head&gt;
+  </code></pre>
+
+  <h2>Interacción de HTML con JavaScript</h2>
+  <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+  &lt;head&gt;
+    &lt;title&gt;Interacción HTML con JavaScript&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1 id="saludo"&gt;¡Hola, Mundo!&lt;/h1&gt;
+    &lt;button onclick="cambiarSaludo()"&gt;Haz clic aquí&lt;/button&gt;
+    &lt;script&gt;
+      function cambiarSaludo() {
+        document.getElementById('saludo').textContent = '¡Hola desde JavaScript!';
+      }
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+  </code></pre>
+
+  <h2>SEO y HTML</h2>
+  <p>El SEO (Search Engine Optimization) es esencial para mejorar la visibilidad de una página web en los motores de búsqueda. HTML contribuye al SEO mediante el uso adecuado de etiquetas:</p>
+  <ul>
+    <li><strong>Metaetiquetas:</strong> La etiqueta <code>&lt;meta&gt;</code> proporciona información sobre el contenido, como la descripción y las palabras clave, lo cual es útil para los motores de búsqueda.</li>
+    <li><strong>Encabezados jerárquicos:</strong> Los encabezados <code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code> ayudan a organizar el contenido, haciendo que los motores de búsqueda lo analicen mejor.</li>
+    <li><strong>Etiquetas ALT en imágenes:</strong> La propiedad <code>alt</code> en <code>&lt;img&gt;</code> describe las imágenes y ayuda en la accesibilidad y SEO.</li>
+  </ul>
+
+  <h2>Buenas Prácticas en HTML</h2>
+  <ul>
+    <li><strong>Usa etiquetas semánticas:</strong> Etiquetas como <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, y <code>&lt;section&gt;</code> mejoran la accesibilidad y SEO.</li>
+    <li><strong>Mantén el código limpio y ordenado:</strong> Asegúrate de que el HTML esté correctamente indentado y sin código innecesario.</li>
+    <li><strong>Añade atributos ALT a las imágenes:</strong> Facilita la accesibilidad y es importante para el SEO.</li>
+    <li><strong>Usa etiquetas title y meta descriptivas:</strong> Ayudan en SEO y ofrecen un mejor contexto al contenido.</li>
+  </ul>
+
+  <h2>Herramientas para Aprender HTML</h2>
+  <p>Para comenzar con HTML, puedes acceder a una variedad de herramientas en línea que te permiten experimentar con código:</p>
+  <ul>
+    <li><strong>MDN Web Docs:</strong> Una excelente documentación sobre HTML.</li>
+    <li><strong>W3Schools:</strong> Ofrece ejemplos y un entorno de práctica.</li>
+    <li><strong>CodePen:</strong> Un editor en línea donde puedes practicar HTML, CSS y JavaScript juntos.</li>
+  </ul>
+
+  <h2>Conclusión</h2>
+  <p>HTML es el cimiento de cualquier sitio web y, aunque puede parecer sencillo al principio, dominarlo es fundamental para crear aplicaciones y sitios efectivos. Con la integración de CSS y JavaScript, HTML permite desarrollar interfaces modernas, funcionales y estéticas que mejoran la experiencia del usuario.</p>
