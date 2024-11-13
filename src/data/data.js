@@ -87,6 +87,17 @@ const data = [
 		"date": "Publicado el 26 de octubre de 2024",
 		"readingTime": "10 min de lectura",
 		"content": "introduccion-a-javascript.html"
+	},
+	{
+		"id": 9,
+		"slug": "introduccion-a-material-ui",
+		"image": "JavaScript-blog-new-logo.png",
+		"title": "Introducción a Material UI: Diseño Moderno y Consistente",
+		"category": "Material UI",
+		"description": "Explora Material UI, la biblioteca de componentes basada en Material Design que permite a los desarrolladores construir interfaces de usuario modernas y uniformes de manera rápida y sencilla.",
+  		"date": "Publicado el 26 de octubre de 2024",
+  		"readingTime": "10 min de lectura",
+		"content": "introduccion-a-material-ui.html"
 	}
 	
 ];
