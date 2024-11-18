@@ -109,6 +109,17 @@ const data = [
   		"date": "Publicado el 13 de noviembre de 2024",
   		"ReadingTime": "8 min de lectura",
   		"content": "que-es-html.html"
+},
+	{
+  		"id": 11,
+ 		"slug": "que-es-docker",
+  		"image": "html-logo.png",
+  		"title": "¿Que es Docker?",
+  		"category": "Docker",
+  		"description": "Aprende qué es Docker, cómo funciona, y por qué es esencial para el desarrollo y despliegue de aplicaciones modernas. Descubre sus ventajas, casos de uso y recursos para estudiar Docker. ¡Una guía completa para principiantes y expertos!",
+  		"date": "Publicado el 17 de noviembre de 2024",
+  		"ReadingTime": "10 min de lectura",
+  		"content": "que-es-docker.html"
 }
 	
 ];
