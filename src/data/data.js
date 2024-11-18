@@ -113,7 +113,7 @@ const data = [
 	{
   		"id": 11,
  		"slug": "que-es-docker",
-  		"image": "html-logo.png",
+  		"image": "docker-logo.png",
   		"title": "¿Que es Docker?",
   		"category": "Docker",
   		"description": "Aprende qué es Docker, cómo funciona, y por qué es esencial para el desarrollo y despliegue de aplicaciones modernas. Descubre sus ventajas, casos de uso y recursos para estudiar Docker. ¡Una guía completa para principiantes y expertos!",
