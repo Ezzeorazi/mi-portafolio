@@ -53,6 +53,15 @@ const Experience = ({}) => {
         "Como jefe de taller en una constructora, lideré equipos de trabajo para proyectos de reparación de maquinaria pesada, donde implementé tecnologías y soluciones innovadoras para mejorar la eficiencia y la calidad de los resultados. Utilicé herramientas digitales y de gestión de proyectos para planificar y monitorear el progreso de los proyectos, asegurando una ejecución eficiente y dentro de los plazos establecidos. Fomenté la colaboración entre los equipos de construcción y tecnología, trabajando estrechamente con profesionales de IT para implementar soluciones técnicas y optimizar los procesos internos. Desarrollé y mantuve una cultura de aprendizaje continuo, alentando a los miembros del equipo a adquirir habilidades técnicas relevantes.",
       technologies: ["Tango Gestión", "Excel", "Word", "PowerPoint", "Outlook", "PLC"],
     },
+    {id: 5,
+      company: "Watchman",
+      role: "Guardia de seguridad",
+      startDate: "Noviembre 2024",
+      endDate: "Actualidad",
+      description:
+        "Como guardia de seguridad en Watchman, estoy comprometido con la protección y vigilancia de instalaciones y personas. Utilizo mis habilidades en ciberseguridad para monitorear y responder a posibles amenazas, asegurando la integridad de los sistemas y la información. Manejo sistemas de cámaras de seguridad para la vigilancia continua, y empleo herramientas como Excel para el registro y análisis de datos relevantes. Mi enfoque se centra en mantener un ambiente seguro y protegido, aplicando conocimientos técnicos y atención al detalle.",
+      technologies: ["Excel","Ciberseguridad","Camaras de seguridad"],
+    }
   ];
 
   return (
