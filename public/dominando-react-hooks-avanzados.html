@@ -1,0 +1,167 @@
+<h2>Introducción</h2>
+<p>Los hooks de React son una de las características más poderosas y útiles que se han introducido en las versiones más recientes de la biblioteca. Permiten a los desarrolladores usar el estado y otros aspectos de React sin escribir una clase. En este artículo, exploraremos hooks avanzados como <code>useContext</code>, <code>useReducer</code>, <code>useMemo</code> y <code>useCallback</code>, y cómo pueden ayudarte a construir componentes más funcionales y eficientes.</p>
+
+<h2>¿Qué son los Hooks Avanzados?</h2>
+<p>Los hooks avanzados son funciones que extienden las capacidades de los hooks básicos, permitiendo una gestión más sofisticada del estado y del rendimiento en componentes funcionales. Estos hooks son esenciales para optimizar aplicaciones React complejas y mejorar la organización del código.</p>
+
+<h2>Uso de useContext</h2>
+<p>El hook <code>useContext</code> te permite acceder al Context API de React, facilitando la compartición de datos entre componentes sin necesidad de pasar props manualmente.</p>
+
+<pre>
+  <code>
+    import React, { createContext, useContext, useState } from 'react';
+
+    const TemaContext = createContext();
+
+    export function ProveedorTema({ children }) {
+      const [tema, setTema] = useState('claro');
+
+      const cambiarTema = () => {
+        setTema(tema === 'claro' ? 'oscuro' : 'claro');
+      };
+
+      return (
+        &lt;TemaContext.Provider value={{ tema, cambiarTema }}&gt;
+          {children}
+        &lt;/TemaContext.Provider&gt;
+      );
+    }
+
+    export function useTema() {
+      return useContext(TemaContext);
+    }
+  </code>
+</pre>
+
+<p>Y luego utilizarlo de esta forma:</p>
+
+<pre>
+  <code>
+    import React from 'react';
+    import { ProveedorTema, useTema } from './TemaContext';
+
+    function ComponenteTema() {
+      const { tema, cambiarTema } = useTema();
+
+      return (
+        &lt;div style={{ backgroundColor: tema === 'claro' ? '#fff' : '#333', color: tema === 'claro' ? '#000' : '#fff' }}&gt;
+          &lt;p&gt;Tema actual: {tema}&lt;/p&gt;
+          &lt;button onClick={cambiarTema}&gt;Cambiar tema&lt;/button&gt;
+        &lt;/div&gt;
+      );
+    }
+
+    function App() {
+      return (
+        &lt;ProveedorTema&gt;
+          &lt;ComponenteTema /&gt;
+        &lt;/ProveedorTema&gt;
+      );
+    }
+
+    export default App;
+  </code>
+</pre>
+
+<h2>Uso de useReducer</h2>
+<p>El hook <code>useReducer</code> es útil para gestionar estados complejos en componentes funcionales. Permite manejar el estado de forma más predecible y organizada.</p>
+
+<pre>
+  <code>
+    import React, { useReducer } from 'react';
+
+    const initialState = { count: 0 };
+
+    function reducer(state, action) {
+      switch (action.type) {
+        case 'increment':
+          return { count: state.count + 1 };
+        case 'decrement':
+          return { count: state.count - 1 };
+        default:
+          throw new Error();
+      }
+    }
+
+    function Contador() {
+      const [state, dispatch] = useReducer(reducer, initialState);
+
+      return (
+        &lt;div&gt;
+          &lt;p&gt;Contador: {state.count}&lt;/p&gt;
+          &lt;button onClick={() => dispatch({ type: 'increment' })}&gt;Incrementar&lt;/button&gt;
+          &lt;button onClick={() => dispatch({ type: 'decrement' })}&gt;Decrementar&lt;/button&gt;
+        &lt;/div&gt;
+      );
+    }
+
+    export default Contador;
+  </code>
+</pre>
+
+<h2>Uso de useMemo</h2>
+<p>El hook <code>useMemo</code> memoriza el resultado de una función, evitando recalcular valores costosos en cada renderizado. Esto mejora el rendimiento de componentes que realizan cálculos complejos.</p>
+
+<pre>
+  <code>
+    import React, { useState, useMemo } from 'react';
+
+    function CalculoComplejo({ valor }) {
+      const resultado = useMemo(() => {
+        let sum = 0;
+        for (let i = 0; i &lt; valor; i++) {
+          sum += i;
+        }
+        return sum;
+      }, [valor]);
+
+      return &lt;p&gt;Resultado: {resultado}&lt;/p&gt;;
+    }
+
+    function App() {
+      const [numero, setNumero] = useState(10);
+
+      return (
+        &lt;div&gt;
+          &lt;input type="number" value={numero} onChange={(e) => setNumero(parseInt(e.target.value))}/&gt;
+          &lt;CalculoComplejo valor={numero} /&gt;
+        &lt;/div&gt;
+      );
+    }
+
+    export default App;
+  </code>
+</pre>
+
+<h2>Uso de useCallback</h2>
+<p>El hook <code>useCallback</code> memoriza funciones, evitando recrearlas en cada renderizado. Esto es útil para optimizar componentes que pasan funciones como props a componentes hijos.</p>
+
+<pre>
+  <code>
+    import React, { useState, useCallback } from 'react';
+
+    function Boton({ onClick, children }) {
+      return &lt;button onClick={onClick}&gt;{children}&lt;/button&gt;;
+    }
+
+    function App() {
+      const [count, setCount] = useState(0);
+
+      const incrementar = useCallback(() => {
+        setCount(count + 1);
+      }, [count]);
+
+      return (
+        &lt;div&gt;
+          &lt;p&gt;Contador: {count}&lt;/p&gt;
+          &lt;Boton onClick={incrementar}&gt;Incrementar&lt;/Boton&gt;
+        &lt;/div&gt;
+      );
+    }
+
+    export default App;
+  </code>
+</pre>
+
+<h2>Conclusión</h2>
+<p>Los hooks avanzados de React, como <code>useContext</code>, <code>useReducer</code>, <code>useMemo</code> y <code>useCallback</code>, son herramientas poderosas que permiten manejar el estado y el rendimiento de manera más efectiva. Con estos hooks, puedes escribir componentes funcionales más limpios, eficientes y reutilizables. ¡Empieza a experimentar con ellos y lleva tus aplicaciones React al siguiente nivel!</p>

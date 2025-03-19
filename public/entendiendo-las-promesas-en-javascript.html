@@ -1,136 +1,135 @@
+<h2>Introducción</h2>
+<p>JavaScript, conocido por su naturaleza asincrónica, ha evolucionado considerablemente a lo largo de los años. Uno de los conceptos más importantes en esta evolución es el manejo de operaciones asincrónicas a través de promesas. En este artículo, exploraremos en profundidad qué son las promesas en JavaScript, cómo funcionan, y cómo puedes utilizarlas para manejar operaciones asincrónicas de manera más eficiente. A medida que avancemos, también discutiremos algunas mejores prácticas y patrones de uso.</p>
 
-    <h2>Introducción</h2>
-      <p>JavaScript, conocido por su naturaleza asincrónica, ha evolucionado considerablemente a lo largo de los años. Uno de los conceptos más importantes en esta evolución es el manejo de operaciones asincrónicas a través de promesas. En este artículo, exploraremos en profundidad qué son las promesas en JavaScript, cómo funcionan, y cómo puedes utilizarlas para manejar operaciones asincrónicas de manera más eficiente. A medida que avancemos, también discutiremos algunas mejores prácticas y patrones de uso.</p>
+<h2>¿Qué es una Promesa?</h2>
+<p>Una promesa en JavaScript es un objeto que representa la eventual finalización (o falla) de una operación asincrónica y su valor resultante. En otras palabras, es un mecanismo que permite manejar la asincronía de manera más legible y manejable. Al contrario de las callbacks, que pueden llevar a un código confuso conocido como "callback hell", las promesas permiten estructurar el código de una manera más limpia y ordenada.</p>
 
-      <h2>¿Qué es una Promesa?</h2>
-      <p>Una promesa en JavaScript es un objeto que representa la eventual finalización (o falla) de una operación asincrónica y su valor resultante. En otras palabras, es un mecanismo que permite manejar la asincronía de manera más legible y manejable. Al contrario de las callbacks, que pueden llevar a un código confuso conocido como "callback hell", las promesas permiten estructurar el código de una manera más limpia y ordenada.</p>
+<h2>Estados de una Promesa</h2>
+<p>Una promesa puede estar en uno de tres estados:</p>
+<ul>
+  <li><strong>Pendiente (Pending)</strong>: El estado inicial. La operación aún no ha completado.</li>
+  <li><strong>Cumplida (Fulfilled)</strong>: La operación se completó exitosamente.</li>
+  <li><strong>Rechazada (Rejected)</strong>: La operación falló.</li>
+</ul>
+<p>Esto es fundamental para entender cómo funcionan las promesas. Puedes encadenar acciones que deben llevarse a cabo una vez que la promesa se haya cumplido o rechazado.</p>
 
-      <h2>Estados de una Promesa</h2>
-      <p>Una promesa puede estar en uno de tres estados:</p>
-      <ul>
-        <li><strong>Pendiente (Pending)</strong>: El estado inicial. La operación aún no ha completado.</li>
-        <li><strong>Cumplida (Fulfilled)</strong>: La operación se completó exitosamente.</li>
-        <li><strong>Rechazada (Rejected)</strong>: La operación falló.</li>
-      </ul>
-      <p>Esto es fundamental para entender cómo funcionan las promesas. Puedes encadenar acciones que deben llevarse a cabo una vez que la promesa se haya cumplido o rechazado.</p>
+<h2>Sintaxis de las Promesas</h2>
+<p>Para crear una promesa, utilizamos el constructor Promise. Este constructor toma una función como argumento, que a su vez tiene dos parámetros: resolve y reject. Aquí hay un ejemplo básico:</p>
 
-      <h2>Sintaxis de las Promesas</h2>
-      <p>Para crear una promesa, utilizamos el constructor Promise. Este constructor toma una función como argumento, que a su vez tiene dos parámetros: resolve y reject. Aquí hay un ejemplo básico:</p>
+<pre>
+  <code>
+    const miPromesa = new Promise((resolve, reject) => {
+      const exito = true; // Cambia esto para probar el manejo de errores
+      if (exito) {
+        resolve("La operación fue exitosa.");
+      } else {
+        reject("La operación falló.");
+      }
+    });
+  </code>
+</pre>
 
-      <pre>
-        <code>
-      const miPromesa = new Promise((resolve, reject) => {
-        const exito = true; // Cambia esto para probar el manejo de errores
-        if (exito) {
-          resolve("La operación fue exitosa.");
-        } else {
-          reject("La operación falló.");
-        }
+<h2>Uso de Promesas</h2>
+<p>Una vez que tenemos una promesa, podemos utilizar sus métodos .then() y .catch() para manejar los resultados:</p>
+
+<pre>
+  <code>
+    miPromesa
+      .then((resultado) => {
+        console.log(resultado); // "La operación fue exitosa."
+      })
+      .catch((error) => {
+        console.error(error); // "La operación falló."
       });
-        </code>
-      </pre>
+  </code>
+</pre>
 
-      <h2>Uso de Promesas</h2>
-      <p>Una vez que tenemos una promesa, podemos utilizar sus métodos .then() y .catch() para manejar los resultados:</p>
+<h2>Encadenando Promesas</h2>
+<p>Uno de los mayores beneficios de las promesas es su capacidad para encadenarse. Esto permite que se puedan ejecutar múltiples operaciones asincrónicas de forma secuencial:</p>
 
-      <pre>
-        <code>
-      miPromesa
-        .then((resultado) => {
-          console.log(resultado); // "La operación fue exitosa."
-        })
-        .catch((error) => {
-          console.error(error); // "La operación falló."
+<pre>
+  <code>
+    miPromesa
+      .then((resultado) => {
+        console.log(resultado);
+        return new Promise((resolve) => {
+          resolve("Segunda operación completada.");
         });
-        </code>
-      </pre>
+      })
+      .then((segundoResultado) => {
+        console.log(segundoResultado);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  </code>
+</pre>
 
-      <h2>Encadenando Promesas</h2>
-      <p>Uno de los mayores beneficios de las promesas es su capacidad para encadenarse. Esto permite que se puedan ejecutar múltiples operaciones asincrónicas de forma secuencial:</p>
+<h2>Ejemplo Práctico: Llamada a una API</h2>
+<p>Veamos un ejemplo más práctico. Supongamos que queremos hacer una llamada a una API para obtener datos. Aquí utilizamos la API fetch, que devuelve una promesa.</p>
 
-      <pre>
-        <code>
-      miPromesa
-        .then((resultado) => {
-          console.log(resultado);
-          return new Promise((resolve) => {
-            resolve("Segunda operación completada.");
-          });
-        })
-        .then((segundoResultado) => {
-          console.log(segundoResultado);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-        </code>
-      </pre>
-
-      <h2>Ejemplo Práctico: Llamada a una API</h2>
-      <p>Veamos un ejemplo más práctico. Supongamos que queremos hacer una llamada a una API para obtener datos. Aquí utilizamos la API fetch, que devuelve una promesa.</p>
-
-      <pre>
-        <code>
-      fetch("https://api.example.com/datos")
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.json(); // Procesa el JSON en caso de éxito
-        })
-        .then((data) => {
-          console.log(data);
-        })
-        .catch((error) => {
-          console.error("Hubo un problema con la solicitud:", error);
-        });
-        </code>
-      </pre>
-
-      <h2>Casos de Uso Comunes</h2>
-      <ul>
-        <li>Llamadas a APIs: Como se mostró en el ejemplo anterior, las promesas son extremadamente útiles para manejar respuestas de APIs.</li>
-        <li>Lectura de archivos: En un entorno de Node.js, puedes usar promesas para leer archivos de forma asincrónica utilizando el módulo fs.</li>
-        <li>Operaciones en bases de datos: En aplicaciones web, puedes manejar operaciones asincrónicas con bases de datos usando promesas.</li>
-      </ul>
-
-      <h2>Ventajas de Usar Promesas</h2>
-      <ul>
-        <li>Código más limpio: Al eliminar el "callback hell", el código se vuelve más legible y fácil de seguir.</li>
-        <li>Manejo de errores simplificado: Puedes capturar errores en cualquier parte de la cadena de promesas usando un solo .catch().</li>
-        <li>Encadenamiento: Puedes encadenar múltiples operaciones asincrónicas de manera lógica.</li>
-      </ul>
-
-      <h2>Comparación con Async/Await</h2>
-      <p>Desde ECMAScript 2017, JavaScript introdujo async/await, que es una forma más sencilla de trabajar con promesas. Este patrón permite escribir código asincrónico que parece sincrónico, facilitando la lectura y el mantenimiento. Aquí hay un ejemplo usando async/await:</p>
-
-      <pre>
-        <code>
-      const obtenerDatos = async () => {
-        try {
-          const response = await fetch("https://api.example.com/datos");
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          const data = await response.json();
-          console.log(data);
-        } catch (error) {
-          console.error("Hubo un problema con la solicitud:", error);
+<pre>
+  <code>
+    fetch("https://api.example.com/datos")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
         }
-      };
+        return response.json(); // Procesa el JSON en caso de éxito
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error("Hubo un problema con la solicitud:", error);
+      });
+  </code>
+</pre>
 
-      obtenerDatos();
-        </code>
-      </pre>
+<h2>Casos de Uso Comunes</h2>
+<ul>
+  <li>Llamadas a APIs: Como se mostró en el ejemplo anterior, las promesas son extremadamente útiles para manejar respuestas de APIs.</li>
+  <li>Lectura de archivos: En un entorno de Node.js, puedes usar promesas para leer archivos de forma asincrónica utilizando el módulo fs.</li>
+  <li>Operaciones en bases de datos: En aplicaciones web, puedes manejar operaciones asincrónicas con bases de datos usando promesas.</li>
+</ul>
 
-      <h2>Mejoras Prácticas para el Uso de Promesas</h2>
-      <ul>
-        <li>Siempre manejar errores: Asegúrate de usar .catch() o bloques try/catch para manejar posibles errores.</li>
-        <li>Usar Promise.all para paralelismo: Si necesitas ejecutar múltiples promesas al mismo tiempo, Promise.all puede ser muy útil.</li>
-      </ul>
+<h2>Ventajas de Usar Promesas</h2>
+<ul>
+  <li>Código más limpio: Al eliminar el "callback hell", el código se vuelve más legible y fácil de seguir.</li>
+  <li>Manejo de errores simplificado: Puedes capturar errores en cualquier parte de la cadena de promesas usando un solo .catch().</li>
+  <li>Encadenamiento: Puedes encadenar múltiples operaciones asincrónicas de manera lógica.</li>
+</ul>
 
-      <pre>
-        <code>
+<h2>Comparación con Async/Await</h2>
+<p>Desde ECMAScript 2017, JavaScript introdujo async/await, que es una forma más sencilla de trabajar con promesas. Este patrón permite escribir código asincrónico que parece sincrónico, facilitando la lectura y el mantenimiento. Aquí hay un ejemplo usando async/await:</p>
+
+<pre>
+  <code>
+    const obtenerDatos = async () => {
+      try {
+        const response = await fetch("https://api.example.com/datos");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error("Hubo un problema con la solicitud:", error);
+      }
+    };
+
+    obtenerDatos();
+  </code>
+</pre>
+
+<h2>Mejoras Prácticas para el Uso de Promesas</h2>
+<ul>
+  <li>Siempre manejar errores: Asegúrate de usar .catch() o bloques try/catch para manejar posibles errores.</li>
+  <li>Usar Promise.all para paralelismo: Si necesitas ejecutar múltiples promesas al mismo tiempo, Promise.all puede ser muy útil.</li>
+</ul>
+
+<pre>
+  <code>
     const promesa1 = fetch("https://api.example.com/datos1");
     const promesa2 = fetch("https://api.example.com/datos2");
 
@@ -142,16 +141,16 @@
       .catch((error) => {
         console.error("Hubo un problema con una de las solicitudes:", error);
       });
-        </code>
-      </pre>
+  </code>
+</pre>
 
-      <h2>Citas y Fuentes</h2>
-      <ul>
-        <li>Según MDN Web Docs, "Las promesas son un mecanismo que permite que los scripts asíncronos puedan ser manejados de una manera más estructurada."</li>
-        <li>En palabras de Jake Archibald, "Las promesas son el futuro de JavaScript."</li>
-      </ul>
+<h2>Citas y Fuentes</h2>
+<ul>
+  <li>Según MDN Web Docs, "Las promesas son un mecanismo que permite que los scripts asíncronos puedan ser manejados de una manera más estructurada."</li>
+  <li>En palabras de Jake Archibald, "Las promesas son el futuro de JavaScript."</li>
+</ul>
 
-      <h2>Conclusión</h2>
-      <p>Las promesas son una herramienta fundamental en JavaScript para manejar operaciones asincrónicas de forma efectiva. Con su capacidad de encadenarse, manejar errores y simplificar el código, se han convertido en una parte esencial de la programación moderna en JavaScript. A medida que sigas desarrollando tus habilidades, te encontrarás con situaciones en las que las promesas serán imprescindibles.</p>
+<h2>Conclusión</h2>
+<p>Las promesas son una herramienta fundamental en JavaScript para manejar operaciones asincrónicas de forma efectiva. Con su capacidad de encadenarse, manejar errores y simplificar el código, se han convertido en una parte esencial de la programación moderna en JavaScript. A medida que sigas desarrollando tus habilidades, te encontrarás con situaciones en las que las promesas serán imprescindibles.</p>
 
-      <p>Al final del día, el uso de promesas no solo mejora la calidad de tu código, sino que también hace que el proceso de desarrollo sea más eficiente y menos propenso a errores. Recuerda siempre seguir las mejores prácticas y explorar nuevas formas de aprovechar el potencial de las promesas en tus aplicaciones.</p>
+<p>Al final del día, el uso de promesas no solo mejora la calidad de tu código, sino que también hace que el proceso de desarrollo sea más eficiente y menos propenso a errores. Recuerda siempre seguir las mejores prácticas y explorar nuevas formas de aprovechar el potencial de las promesas en tus aplicaciones.</p>

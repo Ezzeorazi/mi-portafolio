@@ -120,6 +120,17 @@ const data = [
   		"date": "Publicado el 17 de noviembre de 2024",
   		"ReadingTime": "10 min de lectura",
   		"content": "que-es-docker.html"
+},
+{
+    "id": 12, // Incrementa el ID para el nuevo artículo
+    "slug": "dominando-react-hooks-avanzados",
+    "image": "react-hooks-avanzados.png", // Asegúrate de tener una imagen relevante
+    "title": "Dominando React Hooks Avanzados: Lleva tus Componentes al Siguiente Nivel",
+    "category": "React",
+    "description": "Explora los React Hooks avanzados como useContext, useReducer, useMemo y useCallback para optimizar tus componentes y mejorar la gestión del estado.",
+    "date": "Publicado el [18 de marzo de 2025]", // Reemplaza con la fecha real
+    "readingTime": "8 min de lectura", // Estima el tiempo de lectura
+    "content": "dominando-react-hooks-avanzados.html" // Nombre del archivo HTML del artículo
 }
 	
 ];

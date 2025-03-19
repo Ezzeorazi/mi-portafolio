@@ -108,6 +108,12 @@
     <loc>https://ezequiel-orazi.online/blog/que-es-docker</loc>
     <lastmod>2024-11-17</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ezequiel-orazi.online/blog/dominando-react-hooks-avanzados</loc>
+    <lastmod>2025-03-18</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 </urlset>

@@ -25,12 +25,12 @@
       const [count, setCount] = useState(0);
 
       return (
-        < div> 
-          < p>Has hecho clic {count} veces< /p>
-          < button onClick={() => setCount(count + 1)}>
+        &lt;div&gt;
+          &lt;p&gt;Has hecho clic {count} veces&lt;/p&gt;
+          &lt;button onClick={() => setCount(count + 1)}&gt;
             Haz clic aquí
-          < /button>
-        < /div>
+          &lt;/button&gt;
+        &lt;/div&gt;
       );
     };
 
@@ -57,9 +57,9 @@
       }, []); // El array vacío significa que este efecto solo se ejecuta una vez
 
       return (
-        < div>
-          {data ? < p>{data}</ p> : < p>Cargando...</ p>}
-        < /div>
+        &lt;div&gt;
+          {data ? &lt;p&gt;{data}&lt;/p&gt; : &lt;p&gt;Cargando...&lt;/p&gt;}
+        &lt;/div&gt;
       );
     };
 
@@ -107,9 +107,9 @@
     const ComponenteDatos = () => {
       const { data, loading } = useFetch('https://api.example.com/datos');
 
-      if (loading) return < p>Cargando...< /p>;
+      if (loading) return &lt;p&gt;Cargando...&lt;/p&gt;;
 
-      return < p>{data}< /p>;
+      return &lt;p&gt;{data}&lt;/p&gt;;
     };
 
     export default ComponenteDatos;
