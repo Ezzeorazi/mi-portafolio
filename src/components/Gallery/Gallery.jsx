@@ -7,7 +7,7 @@ const Gallery = ({}) => {
     {
       id: 1,
       title: "Portfolio Website",
-      description: "Un sitio web de portafolio creado con React y CSS Modules.",
+      description: "Mi sitio personal donde muestro proyectos destacados, habilidades y experiencia. Desarrollado con React y estilizado con CSS Modules para lograr un diseño limpio, moderno y totalmente responsive.",
       image: "pagePortafolio.jpg",
       technologies: ["React", "CSS Modules", "Vite"],
       liveLink: "https://ezequiel-orazi.online",
@@ -16,7 +16,7 @@ const Gallery = ({}) => {
     {
       id: 2,
       title: "Pixel Maker",
-      description: "Un sitio web de venta de servicios web creado con React.",
+      description: "Landing page para un estudio creativo enfocado en desarrollo web y branding. Construido con React, ofrece una interfaz fluida y profesional para presentar servicios y captar clientes.",
       image: "pagePixelMaker.jpg",
       technologies: ["React", "Vite"],
       liveLink: "https://pixelmaker.com.ar",
@@ -25,8 +25,7 @@ const Gallery = ({}) => {
     {
       id: 3,
       title: "Golden Horses",
-      description:
-        "Un sitio web alimento para caballos creado con React. Pero desplegado con Html, css y javascript.",
+      description: "Sitio institucional para una marca de alimentos premium para caballos. Si bien fue maquetado y desplegado usando HTML, CSS y JavaScript puro, su desarrollo se basó en componentes React como punto de partida.",
       image: "pageGoldenHorses.jpg",
       technologies: ["React", "Vite"],
       liveLink: "https://goldenhorses.com.ar",
@@ -35,13 +34,30 @@ const Gallery = ({}) => {
     {
       id: 4,
       title: "FitBites",
-      description:
-        "Un sitio web de venta de alimentos saludables creado con Wordpress. Cuenta con una tienda online y un blog.",
+      description: "E-commerce desarrollado en WordPress para una tienda de alimentos saludables. Cuenta con una tienda funcional, integración con WooCommerce y un blog para generar contenido y mejorar el SEO.",
       image: "pageFitbites.jpg",
       technologies: ["Wordpress", "Woocomerce", "Astra"],
       liveLink: "https://fitbitescr.com",
     },
-    // Otros proyectos aquí
+    {
+      id: 5,
+      title: "Creador de Prompts",
+      description: "Aplicación que permite generar y guardar prompts personalizados para utilizar con herramientas de inteligencia artificial. Está hecha con React y Material UI, ofreciendo una experiencia simple e intuitiva.",
+      image: "prompt-generator.png",
+      technologies: ["React", "Material ui", "vite"],
+      liveLink: "https://prompt-generate.netlify.app/",
+      repoLink: "https://github.com/Ezzeorazi/prompt-generator-v2",
+    },
+    {
+      id: 6,
+      title: "Presupuestos para sistema de vigilancia",
+      description: "Herramienta web pensada para generar presupuestos dinámicos de sistemas de seguridad y videovigilancia. Desarrollada con React y Bootstrap, permite una experiencia rápida y efectiva.",
+      image: "presup-aura.png",
+      technologies: ["React", "Bootstrap", "vite"],
+      liveLink: "https://clever-peony-9c92b7.netlify.app/",
+      repoLink: "https://github.com/Ezzeorazi/presup-generator",
+    }
+    
   ];
 
   return (
