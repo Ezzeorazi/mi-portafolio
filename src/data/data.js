@@ -131,7 +131,19 @@ const data = [
     "date": "Publicado el [18 de marzo de 2025]", // Reemplaza con la fecha real
     "readingTime": "8 min de lectura", // Estima el tiempo de lectura
     "content": "dominando-react-hooks-avanzados.html" // Nombre del archivo HTML del artículo
+},
+{
+    "id": 13, // Incrementa el ID respecto al último artículo
+    "slug": "el-nuevo-paradigma-de-las-apps",
+    "image": "apps-calmadas.png", // Asegurate de tener una imagen con este nombre en tu carpeta de assets
+    "title": "El nuevo paradigma de las apps: tecnología que no te grita",
+    "category": "Diseño UX",
+    "description": "Descubrí cómo un nuevo enfoque en el diseño de apps prioriza la calma, la claridad y el bienestar emocional del usuario por encima del ruido digital.",
+    "date": "Publicado el 16 de abril de 2025",
+    "readingTime": "6 min de lectura",
+    "content": "el-nuevo-paradigma-de-las-apps.html"
 }
+
 	
 ];
 
