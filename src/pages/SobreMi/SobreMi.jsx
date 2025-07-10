@@ -8,31 +8,26 @@ const SobreMi = () => {
     <section className={`animate_animated animate__fadeIn ${styles.aboutSection}`}>
       <div className={styles.aboutContainer}>
         {/* Biografía */}
-        <h2 
-        className={`animate__animated animate__slideInLeft ${styles.title}`}
-        
+        <h2
+          className={`animate__animated animate__slideInLeft ${styles.title}`}
+
         >Sobre mí</h2>
         <p className={`animate__animated animate__slideInLeft ${styles.bio}`}>
-          Soy Ezequiel Orazi, desarrollador Fullstack con experiencia en la
-          creación de aplicaciones web. Luego de 8 años
-          de trabajo en la industria de la construcción, decidí enfocarme en mi
-          verdadera pasión: sistemas, datos y sitios web. Actualmente, me especializo en
-          tecnologías como <strong>React</strong>,<strong> Node.js</strong>,{" "}
-          <strong>Spring Boot</strong>, <strong>Next.js</strong> y <strong>Wordpress</strong> siempre
-          buscando soluciones a grandes desafíos.
+          Hola, soy Ezequiel Orazi, desarrollador fullstack apasionado por crear aplicaciones web y soluciones digitales personalizadas. 
+          Tras más de ocho años en roles operativos y técnicos, decidí reorientar mi carrera hacia lo que realmente me motiva: la tecnología, 
+          los datos y el desarrollo web. <br />
           <br />
+          Trabajo con tecnologías como React, Node.js, Spring Boot, Next.js y WordPress, enfocándome en construir productos funcionales, 
+          con alto rendimiento y una excelente experiencia de usuario. Me apoyo en metodologías ágiles como Scrum y herramientas como 
+          Git Flow para asegurar un trabajo colaborativo y organizado. <br />
           <br />
-          Mi enfoque en el trabajo está guiado por la eficiencia, utilizando
-          metodologías ágiles como <strong>Scrum</strong> y control de versiones
-          con <strong>Git Flow</strong>. Colaboro con una diseñadora gráfica y
-          un especialista en SEO para ofrecer experiencias completas y de
-          calidad, siempre priorizando la experiencia de usuario.
+          Completé una capacitación en ERP/SAP (Universidad de Minnesota, Coursera) y actualmente estoy cursando un programa intensivo de 
+          Machine Learning con Python en Udemy, lo que me permite sumar una perspectiva analítica a mis proyectos. <br />
           <br />
-          <br />
-          Mi filosofía profesional es comprender las necesidades del cliente
-          como si fueran propias, aplicando creatividad y atención al detalle en
-          cada proyecto. Me apasionan los desafíos "locos" o complejos que me
-          permiten crecer y aprender constantemente.
+
+          Además de programar, también me encargo del diseño visual, la redacción de contenido optimizado y el SEO de los sitios 
+          que desarrollo. Me motiva aprender constantemente y aportar valor real a través de la tecnología, 
+          siempre con los pies en la tierra y la mente abierta a nuevos desafíos.
         </p>
       </div>
 
