@@ -116,7 +116,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  <loc>https://ezequiel-orazi.online/blog/el-nuevo-paradigma-de-las-apps</loc>
+  <url>
+    <loc>https://ezequiel-orazi.online/blog/el-nuevo-paradigma-de-las-apps</loc>
     <lastmod>2025-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
