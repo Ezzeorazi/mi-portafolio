@@ -74,7 +74,7 @@ const data = [
 		"category": "Desarrollo Web",
 		"description": "Explora los fundamentos del desarrollo web, desde cómo comenzar hasta las áreas de front-end, back-end y full stack.",
 		"date": "Publicado el 25 de octubre de 2024",
-		"readingTime": "12 min de lectura",
+		"ReadingTime": "12 min de lectura",
 		"content":"como-aprender-desarrollo-web.html"
 	},
 	{
@@ -85,7 +85,7 @@ const data = [
 		"category": "Javascript",
 		"description": "Descubre qué es JavaScript, cómo funciona, quién lo creó y dónde puedes aprender este poderoso lenguaje.",
 		"date": "Publicado el 26 de octubre de 2024",
-		"readingTime": "10 min de lectura",
+		"ReadingTime": "10 min de lectura",
 		"content": "introduccion-a-javascript.html"
 	},
 	{
@@ -96,7 +96,7 @@ const data = [
 		"category": "Material UI",
 		"description": "Explora Material UI, la biblioteca de componentes basada en Material Design que permite a los desarrolladores construir interfaces de usuario modernas y uniformes de manera rápida y sencilla.",
   		"date": "Publicado el 13 de noviembre de 2024",
-  		"readingTime": "10 min de lectura",
+  		"ReadingTime": "10 min de lectura",
 		"content": "introduccion-a-material-ui.html"
 	},
 	{
@@ -129,7 +129,7 @@ const data = [
     "category": "React",
     "description": "Explora los React Hooks avanzados como useContext, useReducer, useMemo y useCallback para optimizar tus componentes y mejorar la gestión del estado.",
     "date": "Publicado el [18 de marzo de 2025]", // Reemplaza con la fecha real
-    "readingTime": "8 min de lectura", // Estima el tiempo de lectura
+    "ReadingTime": "8 min de lectura", // Estima el tiempo de lectura
     "content": "dominando-react-hooks-avanzados.html" // Nombre del archivo HTML del artículo
 },
 {
@@ -140,7 +140,7 @@ const data = [
     "category": "Diseño UX",
     "description": "Descubrí cómo un nuevo enfoque en el diseño de apps prioriza la calma, la claridad y el bienestar emocional del usuario por encima del ruido digital.",
     "date": "Publicado el 16 de abril de 2025",
-    "readingTime": "6 min de lectura",
+    "ReadingTime": "6 min de lectura",
     "content": "el-nuevo-paradigma-de-las-apps.html"
 }
 
