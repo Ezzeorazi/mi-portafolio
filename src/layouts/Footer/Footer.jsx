@@ -10,7 +10,7 @@ const Footer = () => {
           href="https://github.com/Ezzeorazi"
           target="_blank"
           rel="noopener noreferrer"
-          aria_label="Github de Ezequiel Orazi"
+          aria-label="Github de Ezequiel Orazi"
         >
           <FaGithub />
         </a>
@@ -18,14 +18,14 @@ const Footer = () => {
           href="https://instagram.com/Ezze.o"
           target="_blank"
           rel="noopener noreferrer"
-          aria_label="Instagram de Ezequiel Orazi"
+          aria-label="Instagram de Ezequiel Orazi"
         >
           <FaInstagram />
         </a>
         <a
           href="https://www.linkedin.com/in/ezequiel-orazi32/"
           target="_blank" rel="noopener noreferrer"
-          aria_label="Linkedin de Ezequiel Orazi"
+          aria-label="Linkedin de Ezequiel Orazi"
         >
           <FaLinkedin />
         </a>
