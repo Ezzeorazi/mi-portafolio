@@ -1,74 +1,82 @@
-# Mi Portafolio
+# Portafolio de Ezequiel Orazi
 
-Este es el repositorio de mi portafolio personal, donde muestro mis habilidades, proyectos y experiencia.
+Bienvenido al código de mi sitio personal. Este proyecto nació con el objetivo de mostrar mis habilidades en desarrollo web y servir como carta de presentación para nuevas oportunidades laborales.
 
-## Tabla de Contenidos
+## Demo
 
-- [Descripción](#descripción)
-- [Tecnologías](#tecnologías)
-- [Instalación](#instalación)
-- [Uso](#uso)
-- [Estructura del Proyecto](#estructura-del-proyecto)
-- [Contribuciones](#contribuciones)
-- [Licencia](#licencia)
-- [Contacto](#contacto)
+El sitio está desplegado en: [https://ezequiel-orazi.online](https://ezequiel-orazi.online)
 
-## Descripción
+## Características principales
 
-Este proyecto es una aplicación web de portafolio personal desarrollada con React. Incluye secciones para mostrar información sobre mí, mis habilidades, proyectos, currículum, blog y una forma de contacto.
+- **React + Vite** para una carga rápida y una experiencia de desarrollo moderna.
+- **Ruteo dinámico** con React Router DOM y "lazy loading" de páginas para optimizar el rendimiento.
+- **Blog estático** gestionado con archivos Markdown convertidos a HTML.
+- **Formulario de contacto** conectado a EmailJS para recibir mensajes directamente en mi correo.
+- **Diseño responsive** y animaciones con `styled-components` y `animate.css`.
 
-## Tecnologías
+## Tecnologías utilizadas
 
-- React
+- React 18
+- Vite
 - React Router DOM
 - Styled Components
-- Vite
+- EmailJS
+- Animate.css
+- React Icons
 
 ## Instalación
 
-Para instalar y ejecutar este proyecto localmente, sigue estos pasos:
+```bash
+# Clona el repositorio
+git clone https://github.com/Ezzeorazi/mi-portafolio.git
+cd mi-portafolio
 
-1. Clona el repositorio desde:
-   git clone https://github.com/Ezzeorazi/mi-portafolio.git
+# Instala las dependencias
+npm install
+```
+
+### Scripts disponibles
+
+- `npm run dev` – Inicia el servidor de desarrollo.
+- `npm run build` – Genera los archivos listos para producción en la carpeta `dist`.
+- `npm run preview` – Sirve el build generado para hacer pruebas locales.
+- `npm test` – Ejecuta las pruebas con Vitest (requiere instalar `vitest`).
+
+## Variables de entorno
+
+Para que el formulario de contacto funcione necesitas tus credenciales de EmailJS. Crea un archivo `.env` a partir de `.env.example` y coloca allí los valores correspondientes:
+
+```
+VITE_EMAILJS_SERVICE_ID=tu_service_id
+VITE_EMAILJS_TEMPLATE_ID=tu_template_id
+VITE_EMAILJS_PUBLIC_KEY=tu_public_key
+```
 
 ## Estructura del proyecto
 
+```
 mi-portafolio/
 ├── public/
-    ├── pdf/
+│   └── pdf/
 ├── src/
 │   ├── assets/
-|       ├── img
 │   ├── components/
-│   │   ├── BlogEntry/
-│   │   ├── BurguerButton/
-│   │   └── Loading/
-│   │   └── Experience/
-│   │   └── Gallery/
-│   │   └── ProjectCard/
 │   ├── layouts/
-│   │   └── Navbar/
-│   │   └── Footer/
 │   ├── hooks/
-│   │   └── useForm.js
 │   ├── pages/
-│   │   ├── Blog/
-│   │   ├── Contacto/
-│   │   ├── Curriculum/
-│   │   ├── Home/
-│   │   ├── Project/
-│   │   ├── Skills/
-│   │   └── SobreMi/
-│   │   └── NotFound/
 │   ├── routers/
-│   │   └── AppRouter.jsx
 │   ├── styles/
-│   │   └── global.css
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── index.css
-├── .gitignore
+│   └── main.jsx
 ├── package.json
-├── README.md
 └── vite.config.js
+```
 
+## Contribuciones
+
+Las propuestas de mejora son bienvenidas. Puedes abrir un issue o enviar un pull request si deseas colaborar.
+
+## Contacto
+
+Si quieres saber más sobre mi experiencia o tienes alguna propuesta laboral, puedes escribirme a [ezequiel.orazi90@gmail.com](mailto:ezequiel.orazi90@gmail.com) o contactar conmigo a través del formulario del sitio.
+
+¡Gracias por visitar mi proyecto!
