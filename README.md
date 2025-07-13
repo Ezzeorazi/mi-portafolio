@@ -70,6 +70,16 @@ mi-portafolio/
 ├── package.json
 └── vite.config.js
 ```
+## Cómo crear un nuevo post
+
+Sigue estos pasos para publicar una entrada en el blog:
+
+1. Escribe tu artículo en formato HTML (puedes convertirlo desde Markdown si lo prefieres) y colócalo en la carpeta `public`.
+2. Añade una imagen relacionada en `public/` y toma nota de su nombre.
+3. Registra la entrada en `src/data/data.js` incluyendo `id`, `slug`, `image`, `title`, `category`, `description`, `date`, `ReadingTime` y el nombre del archivo HTML en `content`.
+4. Actualiza `public/sitemap.xml` agregando un nuevo elemento `<url>` con la ruta y la fecha de publicación.
+
+Con estos cambios el post aparecerá en la lista del blog y podrá ser indexado por buscadores.
 
 ## Contribuciones
 
