@@ -142,6 +142,17 @@ const data = [
     "date": "Publicado el 16 de abril de 2025",
     "ReadingTime": "6 min de lectura",
     "content": "el-nuevo-paradigma-de-las-apps.html"
+},
+{
+    "id": 14,
+    "slug": "ia-y-programacion",
+    "image": "ia-programacion.png",
+    "title": "IA y Programación: Innovación y Oportunidades Empresariales",
+    "category": "Inteligencia Artificial",
+    "description": "Explora cómo la inteligencia artificial impulsa la programación moderna, casos de éxito y los beneficios que obtienen las empresas que la adoptan.",
+    "date": "Publicado el 13 de julio de 2025",
+    "ReadingTime": "15 min de lectura",
+    "content": "ia-y-programacion.html"
 }
 
 	
