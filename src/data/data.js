@@ -153,6 +153,17 @@ const data = [
     "date": "Publicado el 13 de julio de 2025",
     "ReadingTime": "15 min de lectura",
     "content": "ia-y-programacion.html"
+},
+{
+    "id": 15,
+    "slug": "machine-learning-para-empresas",
+    "image": "machine-learning.png",
+    "title": "Machine Learning para Empresas: Transformación y Oportunidades",
+    "category": "Machine Learning",
+    "description": "Casos de éxito, beneficios y desafíos del machine learning en el mundo empresarial.",
+    "date": "Publicado el 15 de julio de 2025",
+    "ReadingTime": "18 min de lectura",
+    "content": "machine-learning-para-empresas.html"
 }
 
 	
