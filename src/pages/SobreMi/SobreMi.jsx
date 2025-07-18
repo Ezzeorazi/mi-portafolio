@@ -1,8 +1,10 @@
 import React from "react";
 import styles from "./SobreMi.module.css";
 import { NavLink } from "react-router-dom";
+import useTranslation from "../../hooks/useTranslation";
 
 const SobreMi = () => {
+  const { t } = useTranslation();
 
   return (
     <section className={`animate_animated animate__fadeIn ${styles.aboutSection}`}>
@@ -11,23 +13,9 @@ const SobreMi = () => {
         <h2
           className={`animate__animated animate__slideInLeft ${styles.title}`}
 
-        >Sobre mí</h2>
+        >{t('about_title')}</h2>
         <p className={`animate__animated animate__slideInLeft ${styles.bio}`}>
-          Hola, soy Ezequiel Orazi, desarrollador fullstack apasionado por crear aplicaciones web y soluciones digitales personalizadas. 
-          Tras más de ocho años en roles operativos y técnicos, decidí reorientar mi carrera hacia lo que realmente me motiva: la tecnología, 
-          los datos y el desarrollo web. <br />
-          <br />
-          Trabajo con tecnologías como React, Node.js, Spring Boot, Next.js y WordPress, enfocándome en construir productos funcionales, 
-          con alto rendimiento y una excelente experiencia de usuario. Me apoyo en metodologías ágiles como Scrum y herramientas como 
-          Git Flow para asegurar un trabajo colaborativo y organizado. <br />
-          <br />
-          Completé una capacitación en ERP/SAP (Universidad de Minnesota, Coursera) y actualmente estoy cursando un programa intensivo de 
-          Machine Learning con Python en Udemy, lo que me permite sumar una perspectiva analítica a mis proyectos. <br />
-          <br />
-
-          Además de programar, también me encargo del diseño visual, la redacción de contenido optimizado y el SEO de los sitios 
-          que desarrollo. Me motiva aprender constantemente y aportar valor real a través de la tecnología, 
-          siempre con los pies en la tierra y la mente abierta a nuevos desafíos.
+          {t('about_bio')}
         </p>
       </div>
 

@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./Contacto.module.css";
 import useForm from "../../hooks/useForm";
 import validate from "./validate";
+import useTranslation from "../../hooks/useTranslation";
 
 const Contacto = () => {
+  const { t } = useTranslation();
   const { values, errors, handleChange, sendEmail, formStatus } = useForm(
     { name: "", email: "", message: "" },
     validate
@@ -19,16 +21,16 @@ const Contacto = () => {
 
   return (
     <div className={`animate_animated animate__fadeIn ${styles.contactForm}`}>
-      <h2>Contacto</h2>
+      <h2>{t('contact_title')}</h2>
 
       {formStatus.success && (
         <p className={styles.successMessage} aria-live="polite">
-          {formStatus.success}
+          {t('contact_success')}
         </p>
       )}
       <form action="" method="POST" onSubmit={sendEmail}>
         <div className={styles.formGroup}>
-          <label htmlFor="name">Nombre</label>
+          <label htmlFor="name">{t('contact_name')}</label>
           <input
             type="text"
             id="name"
@@ -44,7 +46,7 @@ const Contacto = () => {
         </div>
 
         <div className={styles.formGroup}>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">{t('contact_email')}</label>
           <input
             type="email"
             id="email"
@@ -60,7 +62,7 @@ const Contacto = () => {
         </div>
 
         <div className={styles.formGroup}>
-          <label htmlFor="message">Mensaje</label>
+          <label htmlFor="message">{t('contact_message')}</label>
           <textarea
             id="message"
             name="message"
@@ -75,18 +77,18 @@ const Contacto = () => {
         </div>
 
         <button type="submit" disabled={formStatus.isLoading}>
-          {formStatus.isLoading ? "Enviando..." : "Enviar"}
+          {formStatus.isLoading ? t('contact_sending') : t('contact_send')}
         </button>
       </form>
       <div className={styles.personalInfo}>
         <p>
-          <strong>Teléfono:</strong>{" "}
+          <strong>{t('contact_phone')}:</strong>{" "}
           <a href={`tel:${personalInfo.phone}`} className={styles.phone}>
             {personalInfo.phone}
           </a>
         </p>
         <p>
-          <strong>Ciudad de Residencia:</strong>{" "}
+          <strong>{t('contact_city')}:</strong>{" "}
           <span className={styles.city}>{personalInfo.city}</span>
         </p>
         <p>
