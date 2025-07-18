@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import BurguerButton from '../../components/BurgerButton/BurgerButton';
 import styles from './Navbar.module.css';
+import { LanguageContext } from '../../context/LanguageContext';
+import useTranslation from '../../hooks/useTranslation';
 
 
 function Navbar() {
   const [clicked, setClicked] = useState(false);
+  const { toggleLanguage } = useContext(LanguageContext);
+  const { t } = useTranslation();
 
   const handleClick = () => {
     setClicked(!clicked);
@@ -26,24 +30,27 @@ function Navbar() {
         </div>
         <div className={`links ${clicked ? 'active' : ''}`}>
           <NavLink to="/sobremi" onClick={closeMenu}>
-            Sobre Mi
+            {t('nav_about')}
           </NavLink>
           <NavLink to="/skills" onClick={closeMenu}>
-            Skills
+            {t('nav_skills')}
           </NavLink>
           <NavLink to="/project" onClick={closeMenu}>
-            Proyectos
+            {t('nav_projects')}
           </NavLink>
           <NavLink to="/curriculum" onClick={closeMenu}>
-            Curriculum
+            {t('nav_cv')}
           </NavLink>
           <NavLink to="/blog" onClick={closeMenu}>
-            Blog
+            {t('nav_blog')}
           </NavLink>
           <NavLink to="/contacto" onClick={closeMenu}>
-            Contacto
+            {t('nav_contact')}
           </NavLink>
         </div>
+        <button className={styles.toggle} onClick={toggleLanguage} aria-label="toggle language">
+          {t('toggle_lang')}
+        </button>
         <div className="burguer">
           <BurguerButton clicked={clicked} handleClick={handleClick} />
         </div>

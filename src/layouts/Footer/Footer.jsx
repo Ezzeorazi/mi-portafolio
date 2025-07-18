@@ -1,8 +1,10 @@
 import React from 'react';
 import styles from './Footer.module.css';
 import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import useTranslation from '../../hooks/useTranslation';
 
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <footer className={styles.footer}>
       <div className={styles.socialIcons}>
@@ -30,7 +32,7 @@ const Footer = () => {
           <FaLinkedin />
         </a>
       </div>
-      <p>&copy; {new Date().getFullYear()} Ezequiel Orazi. Todos los derechos reservados.</p>
+      <p>&copy; {new Date().getFullYear()} Ezequiel Orazi. {t('footer_rights')}</p>
     </footer>
   );
 };
