@@ -122,20 +122,20 @@ const data = [
   		"content": "que-es-docker.html"
 },
 {
-    "id": 12, // Incrementa el ID para el nuevo artículo
+    "id": 12, 
     "slug": "dominando-react-hooks-avanzados",
-    "image": "react-hooks-avanzados.png", // Asegúrate de tener una imagen relevante
+    "image": "react-hooks-avanzados.png",
     "title": "Dominando React Hooks Avanzados: Lleva tus Componentes al Siguiente Nivel",
     "category": "React",
     "description": "Explora los React Hooks avanzados como useContext, useReducer, useMemo y useCallback para optimizar tus componentes y mejorar la gestión del estado.",
-    "date": "Publicado el [18 de marzo de 2025]", // Reemplaza con la fecha real
-    "ReadingTime": "8 min de lectura", // Estima el tiempo de lectura
-    "content": "dominando-react-hooks-avanzados.html" // Nombre del archivo HTML del artículo
+    "date": "Publicado el 18 de marzo de 2025",
+    "ReadingTime": "8 min de lectura", 
+    "content": "dominando-react-hooks-avanzados.html"
 },
 {
-    "id": 13, // Incrementa el ID respecto al último artículo
+    "id": 13, 
     "slug": "el-nuevo-paradigma-de-las-apps",
-    "image": "apps-calmadas.png", // Asegurate de tener una imagen con este nombre en tu carpeta de assets
+    "image": "apps-calmadas.png", 
     "title": "El nuevo paradigma de las apps: tecnología que no te grita",
     "category": "Diseño UX",
     "description": "Descubrí cómo un nuevo enfoque en el diseño de apps prioriza la calma, la claridad y el bienestar emocional del usuario por encima del ruido digital.",
@@ -164,7 +164,19 @@ const data = [
     "date": "Publicado el 15 de julio de 2025",
     "ReadingTime": "18 min de lectura",
     "content": "machine-learning-para-empresas.html"
-}
+},
+{
+    "id": 16,
+    "slug": "nimbus-crm-saas-mi-nuevo-proyecto",
+    "image": "nimbus-crm.svg",
+    "title": "Nimbus CRM SaaS: Mi Nuevo Proyecto",
+    "category": "Proyectos",
+    "description": "Descubre Nimbus CRM, la plataforma en la nube que estoy desarrollando para gestionar clientes de forma simple.",
+    "date": "Publicado el 19 de julio de 2025",
+    "ReadingTime": "5 min de lectura",
+    "content": "nimbus-crm-saas-mi-nuevo-proyecto.html"
+},
+
 
 	
 ];
