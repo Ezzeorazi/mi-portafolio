@@ -1,23 +1,30 @@
 .home {
-  padding: 0;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.home section {
+  margin: 2rem auto;
+  padding: 1rem;
 }
 
 .main {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding-bottom: 50px;
-  padding-top: 80px;
+  gap: 2rem;
+  padding: 80px 0 50px;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .main h1 {
-  flex: 1 1 70%;
+  flex: 1 1 300px;
   margin: 0;
   color: var(--color-dark);
   font-size: 2rem; /* Tamaño más pequeño en móviles */
   min-height: 160px; /* Ajusta el tamaño mínimo para evitar desplazamientos */
-  padding-left: 1rem;
 }
 
 .subtitle {
@@ -94,8 +101,7 @@
 @media (min-width: 768px) {
   .main {
     flex-direction: row;
-    justify-content: start;
-    text-align: left;
+    justify-content: center;
   }
 
   .main h1 {
@@ -105,7 +111,7 @@
 
   img {
     width: 50%;
-    
+
   }
 
   .subtitle {

@@ -63,7 +63,7 @@ function Navbar() {
 export default Navbar;
 
 const NavContainer = styled.nav`
-  padding: .4rem;
+  padding: 0.5rem 1rem;
   background-color: var(--color-dark);
   display: flex;
   align-items: center;
@@ -75,7 +75,7 @@ const NavContainer = styled.nav`
   }
 
   .logo a {
-    color: var(--color-yellow);
+    color: var(--color-light);
     font-weight: bold;
     text-decoration: none;
     font-size: 1.5rem;
@@ -92,7 +92,7 @@ const NavContainer = styled.nav`
     transition: all .5s ease;
     z-index: 1000; /* Asegúrate de que los enlaces estén por encima del contenido */
     a {
-      color: var(--color-yellow);
+      color: var(--color-light);
       font-size: 2rem;
       display: block;
       text-decoration: none;
@@ -103,7 +103,7 @@ const NavContainer = styled.nav`
       margin: 0;
       a {
         font-size: 1rem;
-        color: var(--color-yellow);
+        color: var(--color-light);
         display: inline;
         margin-right: 1rem;
       }
@@ -125,7 +125,7 @@ const NavContainer = styled.nav`
     a {
       font-size: 2rem;
       margin-top: 1rem;
-      color: var(--color-yellow);
+      color: var(--color-light);
     }
   }
 

@@ -5,12 +5,13 @@ const Home = () => {
     <main className={styles.home}>
       <header className={styles.main}>
         <h1>Desarrollador Fullstack – Soluciones Web a Medida</h1>
-        <nav className={styles.nav}>
-          <a href="#servicios">Servicios</a>
-          <a href="#portafolio">Portafolio</a>
-          <a href="#sobre-mi">Sobre mí</a>
-          <a href="#contacto">Contacto</a>
-        </nav>
+        <div className={styles.imageContainer}>
+          <img
+            src="/image-perfil.jpeg"
+            alt="Retrato de Ezequiel Orazi"
+            className={styles.image}
+          />
+        </div>
       </header>
 
       <section id="servicios">
