@@ -8,9 +8,9 @@ const translations = {
     nav_blog: 'Blog',
     nav_contact: 'Contacto',
     toggle_lang: 'EN',
-    home_title: '¡Hola! Soy Ezequiel Orazi, desarrollador Fullstack.',
-    home_typed: 'Bienvenidos a mi espacio de trabajo.',
-    home_subtitle: 'En este espacio podrás conocer sobre mi trayectoria como desarrollador Fullstack, los proyectos en los que he trabajado, y las tecnologías que domino. A lo largo del portafolio, encontrarás ejemplos de aplicaciones web que he construido, soluciones a problemas complejos, y mis enfoques para mejorar la experiencia del usuario.',
+    home_title: '¡Hola! Soy Ezequiel Orazi, programador Fullstack.',
+    home_typed: 'Transformando ideas en código funcional.',
+    home_subtitle: 'Soy programador fullstack y me dedico 100% a desarrollar soluciones web modernas, funcionales y optimizadas. En este portafolio vas a encontrar proyectos reales, tecnologías que domino y la experiencia que me respalda. Mi objetivo es ayudarte a convertir tu visión en productos digitales de calidad, listos para escalar.',
     home_click_image: 'Haz click sobre la imagen',
     contact_title: 'Contacto',
     contact_name: 'Nombre',
@@ -23,11 +23,11 @@ const translations = {
     contact_success: 'Mensaje enviado correctamente',
     footer_rights: 'Todos los derechos reservados.',
     projects_sites: 'Mis sitios web',
-    projects_practice: 'Proyectos de practica',
+    projects_practice: 'Proyectos de práctica',
     skills_title: 'Habilidades Técnicas',
     skills_certifications: 'Logros y Certificaciones',
     about_title: 'Sobre mí',
-    about_bio: 'Hola, soy Ezequiel Orazi, desarrollador fullstack apasionado por crear aplicaciones web y soluciones digitales personalizadas. Tras más de ocho años en roles operativos y técnicos, decidí reorientar mi carrera hacia lo que realmente me motiva: la tecnología, los datos y el desarrollo web. Trabajo con tecnologías como React, Node.js, Spring Boot, Next.js y WordPress, enfocándome en construir productos funcionales, con alto rendimiento y una excelente experiencia de usuario. Me apoyo en metodologías ágiles como Scrum y herramientas como Git Flow para asegurar un trabajo colaborativo y organizado. Completé una capacitación en ERP/SAP (Universidad de Minnesota, Coursera) y actualmente estoy cursando un programa intensivo de Machine Learning con Python en Udemy, lo que me permite sumar una perspectiva analítica a mis proyectos. Además de programar, también me encargo del diseño visual, la redacción de contenido optimizado y el SEO de los sitios que desarrollo. Me motiva aprender constantemente y aportar valor real a través de la tecnología, siempre con los pies en la tierra y la mente abierta a nuevos desafíos.'
+    about_bio: 'Soy programador fullstack especializado en crear aplicaciones web robustas y a medida. Me dedico profesionalmente al desarrollo con tecnologías como React, Node.js, Spring Boot y WordPress. Ayudo a empresas y emprendedores a transformar sus necesidades en soluciones digitales reales. Con más de ocho años de experiencia previa en roles técnicos, trabajo con metodologías ágiles, priorizando la calidad, el rendimiento y el enfoque al usuario. Además del código, también me ocupo del diseño visual, redacción estratégica y posicionamiento SEO. Si estás buscando a alguien que programe con compromiso y resultados, estás en el lugar correcto.'
   },
   en: {
     nav_home: 'Home',
@@ -38,9 +38,9 @@ const translations = {
     nav_blog: 'Blog',
     nav_contact: 'Contact',
     toggle_lang: 'ES',
-    home_title: "Hi! I'm Ezequiel Orazi, Fullstack developer.",
-    home_typed: 'Welcome to my workspace.',
-    home_subtitle: 'In this space you can learn about my career as a Fullstack developer, the projects I have worked on, and the technologies I master. Throughout the portfolio you will find examples of web applications I have built, solutions to complex problems, and my approaches to improve user experience.',
+    home_title: "Hi! I'm Ezequiel Orazi, Fullstack Programmer.",
+    home_typed: 'Turning ideas into working code.',
+    home_subtitle: 'I am a professional fullstack programmer, fully focused on building modern, high-performance and SEO-optimized web solutions. In this portfolio, you’ll find real-world projects, tools I master and results that speak for themselves. Let’s build something that works and grows.',
     home_click_image: 'Click on the image',
     contact_title: 'Contact',
     contact_name: 'Name',
@@ -57,9 +57,7 @@ const translations = {
     skills_title: 'Technical Skills',
     skills_certifications: 'Achievements and Certifications',
     about_title: 'About Me',
-    about_bio: "Hi, I'm Ezequiel Orazi, a fullstack developer passionate about creating web applications and custom digital solutions. After more than eight years in operational and technical roles, I decided to refocus my career on what truly motivates me: technology, data, and web development. I work with technologies such as React, Node.js, Spring Boot, Next.js, and WordPress, focusing on building high-performance products with great user experience. I rely on agile methodologies like Scrum and tools like Git Flow to ensure collaborative and organized work. I completed ERP/SAP training (University of Minnesota, Coursera) and I am currently taking an intensive Machine Learning program with Python on Udemy, allowing me to add an analytical perspective to my projects. In addition to coding, I handle visual design, optimized content writing, and SEO for the sites I develop. I'm motivated to constantly learn and provide real value through technology, keeping my feet on the ground and an open mind to new challenges."
-    
-    
+    about_bio: "I'm a professional fullstack programmer who builds solid, scalable web applications tailored to each project. I work with technologies like React, Node.js, Spring Boot and WordPress, helping businesses and creators turn their needs into real digital products. With years of technical experience behind me, I use agile methodologies to ensure quality and impact. I also handle design, SEO and content to deliver complete, conversion-focused solutions. If you're looking for someone who codes with purpose and delivers value, let's connect."
   }
 };
 
