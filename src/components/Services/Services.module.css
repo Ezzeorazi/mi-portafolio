@@ -1,48 +1,41 @@
+/* Services.module.css */
 .services {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    background-color: var(--color-dark);
-    gap: 1rem;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: var(--color-dark);
+  gap: 1rem;
+  padding: 2rem 1rem;
+}
 
-h2{
-    /* centrat titulo */
-    text-align: center;
-    font-size: 2rem;
-    padding: 0.3rem;
-    padding-top: 1.5rem;
-    
+.title {
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+  margin: 0;
+  padding: 1rem 0;
+  border-top: 1px solid var(--color-yellow);
+  background-color: var(--color-dark);
+}
 
-  }
+.btnReunion {
+  background-color: var(--color-dark);
+  text-align: center;
+  padding: 3rem 1rem;
+}
 
-  .title {
-    color: white;
-    margin: 0;
-    background-color: var(--color-dark);
-    color: white;
-    border-top: 1px solid var(--color-yellow);
-  }
+.btnReunion a {
+  background-color: var(--color-yellow);
+  color: var(--color-dark);
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
 
-  .btnReunion {
-    background-color: var(--color-dark);
-    text-align: center;
-    padding: 50px;
-  }
-
-  .btnReunion a {
-    background-color: var(--color-yellow);
-	  color: var(--color-dark);
-    padding: 8px 10px;
-	  border: none;
-    cursor: pointer;
-    border-radius: 10px;
-    font-weight: 700;
-	  font-size: 16px;
-    transition: all 0.4s cubic-bezier(1, -0, 0.6, 1.35);
-    text-decoration: none;
-  }
-
-  .btnReunion a:hover {
-    color: var(--color-pink);
-  }
+.btnReunion a:hover {
+  color: var(--color-pink);
+}

@@ -1,38 +1,35 @@
+/* ServiceCard.module.css */
 .card {
-    background-color: var(--color-light);
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    margin: 1rem;
-    width: 300px;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
-    cursor: default;
-    transition: 0.5s;
-  }
+  background-color: var(--color-light);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
 
-  .card:hover {
-    box-shadow: 0 0 8px 4px var(--color-yellow);
-  }
-  
-  .icon {
-    font-size: 3rem;
-    color: var(--color-dark);
-    margin-bottom: 1rem;
-  }
-  
-  h3 {
-    color: var(--color-dark);
-    margin-top: 0.5rem;
-    font-size: 1.25rem;
-  }
-  
-  p {
-    color: var(--color-gray);
-    font-size: 0.875rem;
-    margin: 0.25rem 0;
-  }
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 10px 4px var(--color-yellow);
+}
+
+.icon {
+  font-size: 3rem;
+  color: var(--color-dark);
+  margin-bottom: 1rem;
+}
+
+h3 {
+  color: var(--color-dark);
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  color: var(--color-gray);
+  font-size: 0.9rem;
+  margin: 0;
+}
