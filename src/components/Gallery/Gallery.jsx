@@ -56,6 +56,15 @@ const Gallery = ({}) => {
       technologies: ["React", "Bootstrap", "vite"],
       liveLink: "https://clever-peony-9c92b7.netlify.app/",
       repoLink: "https://github.com/Ezzeorazi/presup-generator",
+    },
+    {
+      id: 7,
+      title: "Nimbus CRM",
+      description: "Nimbus CRM es una plataforma para gestionar clientes, ventas y procesos de tu empresa de forma centralizada. Creado con el stack MERN y 100% en la nube. 'La joya de la casa.'",
+      image: "nimbus-crm.png",
+      technologies: ["React", "Tailwind", "Mongo", "Express.js, Node.js"],
+      liveLink: "https://taupe-crisp-4638a8.netlify.app/",
+      repoLink: "https://github.com/Ezzeorazi/CRM-Saas",
     }
     
   ];
