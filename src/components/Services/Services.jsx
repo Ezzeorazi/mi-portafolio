@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Services.module.css";
 import ServiceCard from "../ServiceCard/ServiceCard";
 import { FaReact, FaWordpress, FaDatabase } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   return (
@@ -35,6 +36,14 @@ const Services = () => {
         >
           Agendar reunión
         </a>
+        <Link 
+          to="/project"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles["btn-link"]}
+        >
+          Ver proyectos
+        </Link>
       </div>
     </>
   );
