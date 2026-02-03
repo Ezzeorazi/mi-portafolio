@@ -93,10 +93,10 @@
 /* Estilo para el enlace de regreso */
 .backLink {
   display: inline-block;
-  margin-bottom: 20px;
   color: var(--color-light);
   text-decoration: none;
   font-weight: 500;
+  margin-top: 25px;
 }
 
 .backLink:hover {
