@@ -1,14 +1,11 @@
-import { useContext, useMemo } from 'react';
+import { useContext } from 'react';
 import { LanguageContext } from '../context/LanguageContext';
 import translations from '../context/translations';
 
 const useTranslation = () => {
   const { language } = useContext(LanguageContext);
 
-  const t = useMemo(
-    () => (key) => translations[language][key] || key,
-    [language]
-  );
+  const t = (key) => translations[language][key] || key;
 
   return { t };
 };
