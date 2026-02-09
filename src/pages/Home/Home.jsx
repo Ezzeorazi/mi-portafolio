@@ -1,12 +1,14 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Home.module.css";
 import Typed from "typed.js";
 import { Services } from "../../components";
 import useTranslation from "../../hooks/useTranslation";
+import { LanguageContext } from "../../context/LanguageContext";
 
 const Home = () => {
   const { t } = useTranslation();
+  const { language } = useContext(LanguageContext);
   const el = useRef(null);
   const typed = useRef(null);
 
@@ -23,7 +25,7 @@ const Home = () => {
         typed.current.destroy();
       };
     }
-  }, [t]);
+  }, [language, t]);
 
   return (
     <div className={`animate_animated animate__fadeIn ${styles.home}`}>
