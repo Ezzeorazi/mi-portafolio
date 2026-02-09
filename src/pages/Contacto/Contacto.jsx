@@ -13,8 +13,8 @@ const Contacto = () => {
 
   // Datos personales
   const personalInfo = {
-    phone: "+54 3415957226",
-    city: "Rosario, Santa Fe, Argentina",
+    phone: "+52 9982017863",
+    city: "Playa del carmen, Quintana Roo, México",
     email: "Ezequiel.orazi90@gmail.com",
   };
 

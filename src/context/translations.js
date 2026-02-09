@@ -1,34 +1,43 @@
 const translations = {
   es: {
     nav_home: 'Inicio',
-    nav_about: 'Sobre Mi',
+    nav_about: 'Sobre mí',
     nav_skills: 'Skills',
     nav_projects: 'Proyectos',
-    nav_cv: 'Curriculum',
+    nav_cv: 'Currículum',
     nav_blog: 'Blog',
     nav_contact: 'Contacto',
     toggle_lang: 'EN',
-    home_title: '¡Hola! Soy Ezequiel Orazi, programador Fullstack.',
+
+    home_title: 'Hola, soy Ezequiel Orazi — Desarrollador Fullstack.',
     home_typed: 'Transformando ideas en código funcional.',
-    home_subtitle: 'Soy programador fullstack y me dedico 100% a desarrollar soluciones web modernas, funcionales y optimizadas. En este portafolio vas a encontrar proyectos reales, tecnologías que domino y la experiencia que me respalda. Mi objetivo es ayudarte a convertir tu visión en productos digitales de calidad, listos para escalar.',
+    home_subtitle:
+      'Soy desarrollador fullstack con foco en aplicaciones web modernas, escalables y optimizadas para negocio. En este portafolio vas a encontrar proyectos reales, tecnologías que utilizo a diario y experiencia aplicada a resultados concretos. Busco oportunidades remotas donde pueda aportar valor, crecer profesionalmente y construir productos digitales de calidad.',
     home_click_image: 'Haz click sobre la imagen',
+
+    about_title: 'Sobre mí',
+    about_bio:
+      'Soy desarrollador fullstack con experiencia en la creación de aplicaciones web robustas y orientadas a negocio. Trabajo con tecnologías como React, Node.js, Spring Boot y WordPress, desarrollando soluciones reales para empresas y emprendedores. Cuento con más de ocho años de experiencia previa en entornos técnicos, lo que me permite abordar los proyectos con una visión profesional, organizada y enfocada en resultados. Trabajo con metodologías ágiles, priorizando calidad, rendimiento y experiencia de usuario. Además del desarrollo, integro diseño, contenido y SEO para entregar productos digitales completos y listos para escalar.',
+
+    skills_title: 'Habilidades Técnicas',
+    skills_certifications: 'Logros y Certificaciones',
+
+    projects_sites: 'Mis sitios web',
+    projects_practice: 'Proyectos de práctica',
+
     contact_title: 'Contacto',
     contact_name: 'Nombre',
     contact_email: 'Email',
+    contact_phone: 'Teléfono',
+    contact_city: 'Ciudad de Residencia',
     contact_message: 'Mensaje',
     contact_send: 'Enviar',
     contact_sending: 'Enviando...',
-    contact_phone: 'Teléfono',
-    contact_city: 'Ciudad de Residencia',
     contact_success: 'Mensaje enviado correctamente',
-    footer_rights: 'Todos los derechos reservados.',
-    projects_sites: 'Mis sitios web',
-    projects_practice: 'Proyectos de práctica',
-    skills_title: 'Habilidades Técnicas',
-    skills_certifications: 'Logros y Certificaciones',
-    about_title: 'Sobre mí',
-    about_bio: 'Soy programador fullstack especializado en crear aplicaciones web robustas y a medida. Me dedico profesionalmente al desarrollo con tecnologías como React, Node.js, Spring Boot y WordPress. Ayudo a empresas y emprendedores a transformar sus necesidades en soluciones digitales reales. Con más de ocho años de experiencia previa en roles técnicos, trabajo con metodologías ágiles, priorizando la calidad, el rendimiento y el enfoque al usuario. Además del código, también me ocupo del diseño visual, redacción estratégica y posicionamiento SEO. Si estás buscando a alguien que programe con compromiso y resultados, estás en el lugar correcto.'
+
+    footer_rights: 'Todos los derechos reservados.'
   },
+
   en: {
     nav_home: 'Home',
     nav_about: 'About Me',
@@ -38,26 +47,34 @@ const translations = {
     nav_blog: 'Blog',
     nav_contact: 'Contact',
     toggle_lang: 'ES',
-    home_title: "Hi! I'm Ezequiel Orazi, Fullstack Programmer.",
+
+    home_title: "Hi, I'm Ezequiel Orazi — Fullstack Developer.",
     home_typed: 'Turning ideas into working code.',
-    home_subtitle: 'I am a professional fullstack programmer, fully focused on building modern, high-performance and SEO-optimized web solutions. In this portfolio, you’ll find real-world projects, tools I master and results that speak for themselves. Let’s build something that works and grows.',
+    home_subtitle:
+      'I am a fullstack developer focused on building modern, scalable and business-oriented web applications. This portfolio showcases real-world projects, proven technologies and hands-on experience. I am currently seeking remote opportunities where I can contribute, grow and build high-quality digital products.',
     home_click_image: 'Click on the image',
+
+    about_title: 'About Me',
+    about_bio:
+      "I'm a fullstack developer with experience building robust, business-driven web applications. I work with technologies such as React, Node.js, Spring Boot and WordPress, delivering real solutions for companies and entrepreneurs. With years of technical background, I approach projects with a structured, results-oriented mindset. I work using agile methodologies and prioritize performance, quality and user experience. I also integrate design, content and SEO to deliver complete, scalable digital products.",
+
+    skills_title: 'Technical Skills',
+    skills_certifications: 'Achievements and Certifications',
+
+    projects_sites: 'My Websites',
+    projects_practice: 'Practice Projects',
+
     contact_title: 'Contact',
     contact_name: 'Name',
     contact_email: 'Email',
+    contact_phone: 'Phone',
+    contact_city: 'City of Residence',
     contact_message: 'Message',
     contact_send: 'Send',
     contact_sending: 'Sending...',
-    contact_phone: 'Phone',
-    contact_city: 'City of Residence',
     contact_success: 'Message sent successfully',
-    footer_rights: 'All rights reserved.',
-    projects_sites: 'My websites',
-    projects_practice: 'Practice projects',
-    skills_title: 'Technical Skills',
-    skills_certifications: 'Achievements and Certifications',
-    about_title: 'About Me',
-    about_bio: "I'm a professional fullstack programmer who builds solid, scalable web applications tailored to each project. I work with technologies like React, Node.js, Spring Boot and WordPress, helping businesses and creators turn their needs into real digital products. With years of technical experience behind me, I use agile methodologies to ensure quality and impact. I also handle design, SEO and content to deliver complete, conversion-focused solutions. If you're looking for someone who codes with purpose and delivers value, let's connect."
+
+    footer_rights: 'All rights reserved.'
   }
 };
 
