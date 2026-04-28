@@ -187,6 +187,17 @@ const posts: Post[] = [
     ReadingTime: '5 min de lectura',
     content: 'nimbus-crm-saas-mi-nuevo-proyecto.html',
   },
+  {
+    id: 17,
+    slug: 'claude-ia-guia-prompts-profesionales',
+    image: 'claude-guia-prompts.svg',
+    title: 'Claude de Anthropic: Cómo Aprovecharlo al Máximo — Parte 1',
+    category: 'Inteligencia Artificial',
+    description: 'Guía práctica para sacarle el máximo partido a Claude: qué lo hace diferente, los 5 pilares de un buen prompt y ejemplos reales para RRHH, administrativos, programadores y Scrum Masters.',
+    date: 'Publicado el 27 de abril de 2026',
+    ReadingTime: '15 min de lectura',
+    content: 'claude-ia-guia-prompts-profesionales.html',
+  },
 ];
 
 export default posts;

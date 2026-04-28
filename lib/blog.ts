@@ -3,7 +3,7 @@ import posts, { type Post } from '@/data/posts';
 export type { Post };
 
 export function getAllPosts(): Post[] {
-  return posts;
+  return [...posts].reverse();
 }
 
 export function getPostBySlug(slug: string): Post | undefined {

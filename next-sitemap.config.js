@@ -2,6 +2,7 @@
 const config = {
   siteUrl: 'https://ezequiel-orazi.online',
   generateRobotsTxt: true,
+  generateIndexSitemap: false,
   changefreq: 'monthly',
   priority: 0.7,
   robotsTxtOptions: {
