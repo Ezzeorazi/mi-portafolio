@@ -93,7 +93,7 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="mb-10">
           <Link
             href="/blog"
-            className="text-sm text-yellow hover:text-pink transition-colors duration-300 mb-6 inline-block"
+            className="text-sm text-muted hover:text-dark transition-colors duration-300 mb-6 inline-block font-medium"
           >
             ← Volver al blog
           </Link>
@@ -112,10 +112,10 @@ export default async function BlogPostPage({ params }: Props) {
           <span className="text-xs text-pink font-semibold uppercase tracking-wide">
             {post.category}
           </span>
-          <h1 className="text-yellow font-bold text-2xl md:text-4xl mt-2 mb-4 leading-tight">
+          <h1 className="text-dark font-bold text-2xl md:text-4xl mt-2 mb-4 leading-tight">
             {post.title}
           </h1>
-          <div className="flex items-center gap-3 text-sm text-light/50">
+          <div className="flex items-center gap-3 text-sm text-muted/70">
             <span>{post.date}</span>
             <span>·</span>
             <span>{post.ReadingTime}</span>
@@ -131,10 +131,10 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
 
         {/* Footer */}
-        <div className="mt-12 pt-8 border-t border-yellow/20">
+        <div className="mt-12 pt-8 border-t border-muted/20">
           <Link
             href="/blog"
-            className="text-yellow hover:text-pink transition-colors duration-300 font-medium"
+            className="text-muted hover:text-dark transition-colors duration-300 font-medium"
           >
             ← Volver al blog
           </Link>
