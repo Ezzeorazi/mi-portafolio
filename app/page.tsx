@@ -4,6 +4,8 @@ import Image from 'next/image';
 import TypedText from '@/components/TypedText';
 import Services from '@/components/Services';
 import ScrollReveal from '@/components/ScrollReveal';
+import ArticleCard from '@/components/ArticleCard';
+import { getAllPosts } from '@/lib/blog';
 
 export const metadata: Metadata = {
   title: 'Eze Orazi | Desarrollador Fullstack — Inicio',
@@ -12,6 +14,8 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
+  const latestPosts = getAllPosts().slice(0, 3);
+
   return (
     <>
       {/* Hero */}
@@ -66,6 +70,28 @@ export default function HomePage() {
 
       {/* Services */}
       <Services />
+
+      {/* Latest Posts */}
+      <section className="bg-light py-20 px-4">
+        <div className="max-w-5xl mx-auto">
+          <ScrollReveal direction="up">
+            <div className="flex items-center justify-between mb-10">
+              <h2 className="text-dark font-bold text-2xl md:text-3xl">Últimos posts del blog</h2>
+              <Link
+                href="/blog"
+                className="text-sm font-semibold text-pink hover:underline underline-offset-4 transition-colors"
+              >
+                Ver todos →
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {latestPosts.map((post) => (
+                <ArticleCard key={post.id} post={post} />
+              ))}
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
     </>
   );
 }
