@@ -4,3 +4,31 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Security headers applied to every response
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Prevents the site from being embedded in iframes (clickjacking)
+    X-Frame-Options = "DENY"
+
+    # Prevents browsers from guessing content types (MIME sniffing)
+    X-Content-Type-Options = "nosniff"
+
+    # Controls how much referrer info is sent to third parties
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+    # Forces HTTPS for 1 year, includes subdomains
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+    # Disables access to sensitive browser APIs not used by this site
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=()"
+
+    # Content Security Policy
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://api.emailjs.com https://www.google-analytics.com https://stats.g.doubleclick.net https://www.googletagmanager.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'"
+
+# Cache static assets aggressively
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

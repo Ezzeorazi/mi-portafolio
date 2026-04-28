@@ -1,10 +1,10 @@
 {
   "/_not-found/page": "/_not-found",
-  "/blog/page": "/blog",
-  "/contacto/page": "/contacto",
   "/blog/[slug]/page": "/blog/[slug]",
-  "/proyectos/page": "/proyectos",
   "/curriculum/page": "/curriculum",
+  "/contacto/page": "/contacto",
+  "/blog/page": "/blog",
+  "/proyectos/page": "/proyectos",
   "/page": "/",
   "/skills/page": "/skills",
   "/sobre-mi/page": "/sobre-mi"

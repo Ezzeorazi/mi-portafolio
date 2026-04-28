@@ -1,4 +1,5 @@
 'use client';
+import { useState, FormEvent } from 'react';
 import { useForm } from '@/hooks/useForm';
 import ScrollReveal from '@/components/ScrollReveal';
 
@@ -15,15 +16,43 @@ function validate(values: Record<string, string>) {
 }
 
 export default function ContactForm() {
-  const { values, errors, handleChange, sendEmail, formStatus } = useForm(
+  const { values, errors, handleChange, sendEmail, formStatus, cooldown } = useForm(
     { name: '', email: '', message: '' },
     validate
   );
 
+  // Honeypot: bots llenan este campo, humanos no lo ven
+  const [honeypot, setHoneypot] = useState('');
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    if (honeypot) {
+      e.preventDefault();
+      return;
+    }
+    sendEmail(e);
+  };
+
+  const isDisabled = formStatus.isLoading || cooldown > 0;
+
   return (
     <div className="grid md:grid-cols-2 gap-10">
       <ScrollReveal direction="up">
-        <form onSubmit={sendEmail} className="flex flex-col gap-5">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
+
+          {/* Honeypot – invisible para humanos, bots lo completan */}
+          <div aria-hidden="true" className="absolute opacity-0 pointer-events-none h-0 w-0 overflow-hidden">
+            <label htmlFor="website">Website</label>
+            <input
+              id="website"
+              type="text"
+              name="website"
+              value={honeypot}
+              onChange={(e) => setHoneypot(e.target.value)}
+              tabIndex={-1}
+              autoComplete="off"
+            />
+          </div>
+
           {formStatus.success && (
             <p className="text-green-400 bg-green-400/10 border border-green-400/30 px-4 py-3 rounded-lg text-sm">
               {formStatus.success}
@@ -45,6 +74,7 @@ export default function ContactForm() {
               name="name"
               value={values.name}
               onChange={handleChange}
+              autoComplete="name"
               className="bg-dark text-light border border-yellow/30 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-yellow transition-colors"
             />
             {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
@@ -60,6 +90,7 @@ export default function ContactForm() {
               name="email"
               value={values.email}
               onChange={handleChange}
+              autoComplete="email"
               className="bg-dark text-light border border-yellow/30 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-yellow transition-colors"
             />
             {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
@@ -82,10 +113,14 @@ export default function ContactForm() {
 
           <button
             type="submit"
-            disabled={formStatus.isLoading}
+            disabled={isDisabled}
             className="bg-yellow text-dark font-bold py-3 rounded-lg hover:bg-pink hover:text-white transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {formStatus.isLoading ? 'Enviando...' : 'Enviar'}
+            {formStatus.isLoading
+              ? 'Enviando...'
+              : cooldown > 0
+              ? `Podés reenviar en ${cooldown}s`
+              : 'Enviar'}
           </button>
         </form>
       </ScrollReveal>
