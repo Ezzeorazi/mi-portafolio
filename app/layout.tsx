@@ -31,8 +31,6 @@ export const metadata: Metadata = {
     languages: {
       'es-MX': 'https://ezequiel-orazi.online/',
       'es-AR': 'https://ezequiel-orazi.online/',
-      'en': 'https://ezequiel-orazi.online/en',
-      'x-default': 'https://ezequiel-orazi.online/',
     },
   },
   openGraph: {

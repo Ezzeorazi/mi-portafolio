@@ -21,8 +21,8 @@ const variants: Record<Direction, Variants> = {
     visible: { opacity: 1, x: 0 },
   },
   flip: {
-    hidden: { opacity: 0, rotateX: 80, scale: 0.95 },
-    visible: { opacity: 1, rotateX: 0, scale: 1 },
+    hidden: { opacity: 0, y: 20, scale: 0.97 },
+    visible: { opacity: 1, y: 0, scale: 1 },
   },
   fade: {
     hidden: { opacity: 0 },

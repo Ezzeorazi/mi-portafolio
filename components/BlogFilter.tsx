@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import ArticleCard from './ArticleCard';
 import type { Post } from '@/data/posts';
 
@@ -15,7 +16,6 @@ export default function BlogFilter({ posts, categories }: BlogFilterProps) {
 
   return (
     <div>
-      {/* Category filter */}
       <div className="flex flex-wrap gap-2 mb-10">
         {['Todos', ...categories].map((cat) => (
           <button
@@ -24,7 +24,7 @@ export default function BlogFilter({ posts, categories }: BlogFilterProps) {
             className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-all duration-300 ${
               active === cat
                 ? 'bg-yellow text-dark border-yellow'
-                : 'border-yellow/40 text-yellow hover:border-pink hover:text-pink'
+                : 'border-muted/40 text-muted hover:border-yellow hover:text-dark'
             }`}
           >
             {cat}
@@ -32,10 +32,16 @@ export default function BlogFilter({ posts, categories }: BlogFilterProps) {
         ))}
       </div>
 
-      {/* Articles grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {filtered.map((post) => (
-          <ArticleCard key={post.id} post={post} />
+        {filtered.map((post, i) => (
+          <motion.div
+            key={`${post.id}-${active}`}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35, ease: 'easeOut', delay: i * 0.07 }}
+          >
+            <ArticleCard post={post} />
+          </motion.div>
         ))}
       </div>
     </div>

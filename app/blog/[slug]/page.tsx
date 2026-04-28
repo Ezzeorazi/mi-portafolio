@@ -123,10 +123,12 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
 
         {/* Content */}
-        <div
-          className="blog-content"
-          dangerouslySetInnerHTML={{ __html: htmlContent }}
-        />
+        <div className="bg-dark rounded-xl p-6 md:p-10">
+          <div
+            className="blog-content"
+            dangerouslySetInnerHTML={{ __html: htmlContent }}
+          />
+        </div>
 
         {/* Footer */}
         <div className="mt-12 pt-8 border-t border-yellow/20">
