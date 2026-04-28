@@ -1,0 +1,213 @@
+<h2>Introducción</h2>
+<p>Claude es el asistente de inteligencia artificial desarrollado por Anthropic, una empresa fundada con una misión concreta: construir IA que sea segura, honesta y beneficiosa para la humanidad. A diferencia de otras herramientas de IA que priorizan la velocidad o la cantidad de respuestas, Claude fue entrenado con un enfoque particular en el razonamiento profundo, la honestidad intelectual y la capacidad de sostener conversaciones largas y complejas sin perder el hilo. En esta guía, la primera de una serie, te voy a mostrar cómo aprovechar Claude al máximo según tu rol profesional, con ejemplos de prompts concretos y técnicas que marcan la diferencia entre una respuesta genérica y una respuesta verdaderamente útil.</p>
+
+<h2>¿Qué hace único a Claude?</h2>
+<p>Hay varios asistentes de IA disponibles hoy en día, y todos tienen sus fortalezas. Claude se destaca en áreas muy específicas. En primer lugar, es capaz de sostener contextos muy largos: puede leer y analizar documentos de cientos de páginas, conversaciones extensas o código complejo sin "olvidarse" de lo que está procesando. En segundo lugar, Claude tiene una disposición natural hacia la honestidad: si no sabe algo, lo dice. Si una pregunta tiene múltiples interpretaciones, las aclara antes de responder. Eso reduce enormemente las respuestas incorrectas con apariencia de certeza.</p>
+<p>En tercer lugar, y esto es especialmente relevante para entornos profesionales, Claude es excepcionalmente bueno para tareas que requieren razonamiento estructurado: análisis de pros y contras, redacción formal, revisión crítica, planificación de proyectos y descomposición de problemas complejos. No improvisa respuestas; razona paso a paso, lo cual se nota especialmente en temas técnicos o sensibles. Finalmente, Claude respeta el tono y el formato que le pedís. Si le decís que escriba en estilo formal ejecutivo, lo hace. Si le pedís respuestas cortas y directas, no va a generar parrafadas innecesarias.</p>
+
+<h2>Cómo piensa Claude: la clave para aprovechar su potencial</h2>
+<p>Para sacar el máximo provecho de Claude, es fundamental entender cómo procesa los prompts. Claude no "busca" información como un motor de búsqueda: razona sobre lo que le presentás. Esto significa que cuanto más contexto le des, mejor será su respuesta. Si le preguntás "¿cómo mejorar la retención del equipo?" obtendrás una respuesta genérica. Pero si le decís "Soy directora de RRHH en una empresa de tecnología de 80 personas, nuestro turnover anual es del 35% y los principales motivos de renuncia son falta de crecimiento y salarios por debajo del mercado; ¿qué estrategias concretas debería implementar en los próximos 90 días?", la respuesta será específica, accionable y adaptada a tu realidad.</p>
+<p>Este principio es la base de todo lo que viene a continuación. Un buen prompt no es solo una pregunta; es un briefing. Le estás dando a Claude un rol, un contexto, un objetivo y un formato esperado. Cuando hacés eso, Claude puede trabajar como un consultor especializado y no como un buscador.</p>
+
+<h2>Los 5 pilares de un prompt efectivo</h2>
+<p>Antes de pasar a los ejemplos por profesión, te comparto el marco que uso para construir prompts poderosos. Estos cinco elementos, cuando están presentes, transforman una respuesta mediocre en una respuesta de alto valor:</p>
+<ul>
+  <li><strong>Rol:</strong> Decile a Claude quién debe ser. "Actuá como un experto en comunicación organizacional" o "Sos un senior developer con 10 años de experiencia en sistemas distribuidos". Esto calibra el nivel y el enfoque de la respuesta.</li>
+  <li><strong>Contexto:</strong> Describí tu situación actual. Empresa, industria, tamaño del equipo, problema específico, restricciones. Cuanto más concreto, mejor.</li>
+  <li><strong>Objetivo claro:</strong> ¿Qué querés obtener exactamente? ¿Un plan de acción? ¿Una lista? ¿Un borrador de email? ¿Un análisis comparativo? Sé específico sobre el output que esperás.</li>
+  <li><strong>Formato esperado:</strong> Indicá si querés bullets, tablas, pasos numerados, texto corrido, un documento formal, etc. Claude respeta las instrucciones de formato con mucha fidelidad.</li>
+  <li><strong>Restricciones o límites:</strong> Qué no debe hacer. "Sin tecnicismos", "Máximo 300 palabras", "No incluyas soluciones que requieran inversión superior a 5000 dólares", "Evitá el lenguaje corporativo vacío".</li>
+</ul>
+<p>No siempre necesitás los cinco, pero cuando los usás todos juntos, la calidad del output sube exponencialmente. Ahora veamos ejemplos reales por perfil profesional.</p>
+
+<h2>Prompts para Recursos Humanos</h2>
+<p>RRHH es uno de los campos donde Claude puede generar más valor inmediato, porque combina redacción, análisis de personas, planificación estratégica y comunicación sensible. Estos son los casos de uso más poderosos:</p>
+
+<p><strong>Ejemplo 1 — Descripción de puesto de trabajo</strong></p>
+<pre><code>Actuá como un especialista en employer branding con experiencia en el sector tecnológico.
+Necesito redactar una descripción de puesto para un rol de "Product Manager Senior"
+en una startup de fintech de 60 personas, cultura ágil y remoto-first.
+El salario es competitivo pero no el más alto del mercado.
+Nuestro diferencial es el impacto real y la autonomía.
+Redactá la descripción en español neutro, tono cercano pero profesional,
+con estas secciones: Sobre nosotros (3 líneas), El rol, Responsabilidades (bullets),
+Requisitos (bullets), Qué ofrecemos. Máximo 500 palabras.</code></pre>
+
+<p><strong>Ejemplo 2 — Análisis de entrevista y evaluación de candidato</strong></p>
+<pre><code>Sos un consultor de selección de personal. Te voy a dar las respuestas de un candidato
+a una entrevista por competencias para un puesto de líder de equipo.
+Analizá cada respuesta según el método STAR (Situación, Tarea, Acción, Resultado)
+e indicá qué competencias demostró, cuáles están ausentes,
+y una recomendación final con una calificación del 1 al 10.
+
+Respuesta del candidato:
+[pegá aquí las respuestas textuales]</code></pre>
+
+<p><strong>Ejemplo 3 — Política de desvinculación sensible</strong></p>
+<pre><code>Soy directora de RRHH y necesito comunicar la desvinculación de un empleado de 5 años
+a su equipo directo de 8 personas. La razón es reestructuración, no rendimiento.
+Redactá el mensaje para la reunión, que sea honesto, empático y que cierre posibles
+rumores. Tono: humano, directo, no corporativo. Máximo 200 palabras.</code></pre>
+
+<p><strong>Ejemplo 4 — Plan de onboarding en 30-60-90 días</strong></p>
+<pre><code>Actuá como un especialista en desarrollo organizacional.
+Diseñá un plan de onboarding para un nuevo desarrollador backend (mid-level)
+en una empresa de ecommerce de 120 personas con metodología Scrum.
+Usá el formato 30-60-90 días. Para cada etapa: objetivo principal,
+actividades clave, personas clave con las que debe reunirse,
+y métricas de éxito. Formato tabla.</code></pre>
+
+<h2>Prompts para Perfiles Administrativos</h2>
+<p>Los perfiles administrativos y de gestión tienen en Claude un aliado para reducir el tiempo en tareas repetitivas de alto desgaste: redacción de informes, resúmenes ejecutivos, organización de información y comunicaciones internas. Estos prompts son especialmente útiles:</p>
+
+<p><strong>Ejemplo 1 — Resumen ejecutivo de reunión</strong></p>
+<pre><code>Tengo las notas crudas de una reunión de 2 horas con el equipo directivo.
+Convertí estas notas en un resumen ejecutivo formal de máximo una página A4.
+Secciones: Contexto, Decisiones tomadas, Próximos pasos con responsables y fechas,
+Temas pendientes. Tono formal. Eliminá redundancias y ordená por prioridad.
+
+Notas de la reunión:
+[pegá aquí tus notas]</code></pre>
+
+<p><strong>Ejemplo 2 — Respuesta a email difícil</strong></p>
+<pre><code>Sos un experto en comunicación corporativa.
+Un cliente importante está enojado porque su pedido llegó con 3 días de retraso
+y el producto tenía un defecto menor. Ya fue solucionado, pero el cliente envió
+un email muy agresivo amenazando con cambiar de proveedor.
+Redactá la respuesta: reconoce el problema sin excusas, explica brevemente lo que pasó,
+ofrece compensación concreta (descuento del 15% en próxima compra) y reafirma el vínculo.
+Tono: profesional, empático, sin servilismo. Máximo 180 palabras.</code></pre>
+
+<p><strong>Ejemplo 3 — Informe de gestión mensual</strong></p>
+<pre><code>Actuá como analista de gestión. Te voy a dar los datos del mes de marzo:
+ventas, costos, incidencias, avance de proyectos y KPIs del área.
+Generá un informe de gestión mensual estructurado para presentar a la gerencia.
+Resaltá variaciones respecto al mes anterior, identifica los 3 principales problemas
+y proponé recomendaciones. Formato: secciones con subtítulos, usar tablas donde aplique.
+
+Datos:
+[pegá aquí tus datos]</code></pre>
+
+<p><strong>Ejemplo 4 — Documentar un procedimiento interno</strong></p>
+<pre><code>Soy el responsable administrativo de una empresa de servicios.
+Necesito documentar el procedimiento de "Alta de nuevo proveedor"
+que actualmente existe solo en la cabeza del equipo.
+El proceso incluye: solicitud de área, validación comercial, firma de contrato,
+alta en sistema ERP y comunicación al área solicitante.
+Redactá el procedimiento como un documento formal con:
+objetivo, alcance, responsables, pasos detallados numerados,
+diagrama de flujo textual (usando →) y criterios de excepción.</code></pre>
+
+<h2>Prompts para Programadores</h2>
+<p>Para desarrolladores, Claude es una herramienta de pair programming, revisión de código, generación de documentación y resolución de bugs. Lo que lo diferencia de una búsqueda en Stack Overflow es que puede razonar sobre tu código específico y tu contexto, no sobre ejemplos genéricos. Estos son los patrones más efectivos:</p>
+
+<p><strong>Ejemplo 1 — Code review profundo</strong></p>
+<pre><code>Actuá como un senior developer con experiencia en TypeScript y arquitectura de software limpia.
+Hacé un code review de la siguiente función.
+Evaluá: correctitud, manejo de errores, legibilidad, performance, posibles edge cases
+y adherencia a principios SOLID. Sé específico y directo, sin suavizar los problemas.
+
+[pegá aquí tu código]</code></pre>
+
+<p><strong>Ejemplo 2 — Explicar un bug complejo</strong></p>
+<pre><code>Tengo un bug en producción que no logro reproducir en desarrollo.
+El stack trace es el siguiente y el contexto es una API REST con Node.js + Express
+que maneja autenticación JWT. Analizá el stack trace, explicá la causa más probable
+y dame 3 hipótesis ordenadas por probabilidad, con pasos para verificar cada una.
+
+Stack trace:
+[pegá aquí el error]</code></pre>
+
+<p><strong>Ejemplo 3 — Diseñar la arquitectura de una feature</strong></p>
+<pre><code>Sos un arquitecto de software. Tengo una aplicación Next.js con App Router,
+PostgreSQL y autenticación con NextAuth.
+Necesito implementar un sistema de notificaciones en tiempo real para los usuarios
+(alertas de nuevos mensajes).
+Dame 3 opciones arquitectónicas (WebSockets, Server-Sent Events, polling),
+con pros, contras, complejidad de implementación y tu recomendación final
+para una aplicación con hasta 500 usuarios concurrentes.</code></pre>
+
+<p><strong>Ejemplo 4 — Generar tests unitarios</strong></p>
+<pre><code>Actuá como un desarrollador experto en testing con Jest y React Testing Library.
+Para el siguiente componente React, generá tests unitarios que cubran:
+render correcto, todos los estados posibles (loading, error, éxito),
+interacciones del usuario y edge cases.
+Seguí las buenas prácticas de testing: un solo assert por test,
+nombres descriptivos en formato "debería [hacer algo] cuando [condición]".
+
+[pegá aquí tu componente]</code></pre>
+
+<p><strong>Ejemplo 5 — Documentación técnica automática</strong></p>
+<pre><code>Generá la documentación técnica completa de esta API REST en formato Markdown.
+Incluí para cada endpoint: descripción, método HTTP, URL,
+parámetros (path, query, body), esquema de respuesta exitosa,
+posibles errores con código HTTP, y un ejemplo de request/response en JSON.
+
+[pegá aquí tus endpoints o controladores]</code></pre>
+
+<h2>Prompts para Scrum Masters y Agile Coaches</h2>
+<p>El Scrum Master tiene un rol único: facilitar, destrabar y mejorar la dinámica del equipo. Claude es especialmente poderoso aquí porque puede ayudarte a preparar ceremonias, analizar impedimentos, diseñar retrospectivas creativas y redactar comunicaciones difíciles. Estos son los prompts más efectivos:</p>
+
+<p><strong>Ejemplo 1 — Facilitación de retrospectiva con equipo desmotivado</strong></p>
+<pre><code>Actuá como un Agile Coach experimentado.
+Mi equipo de 7 personas está atravesando una etapa de baja energía
+después de un sprint muy intenso con lanzamiento fallido.
+Hay tensión entre el equipo de frontend y backend.
+Diseñá una retrospectiva de 90 minutos que sea segura psicológicamente,
+ayude a procesar el fracaso sin buscar culpables y que termine con compromisos concretos.
+Incluí: dinámica de apertura, técnica retrospectiva específica (no la clásica Start/Stop/Continue),
+tiempo por actividad y cómo manejar si alguien se pone defensivo.</code></pre>
+
+<p><strong>Ejemplo 2 — Análisis de impedimentos recurrentes</strong></p>
+<pre><code>Soy Scrum Master de un equipo de desarrollo de software.
+Estos son los impedimentos que registramos en los últimos 6 sprints:
+[lista los impedimentos]
+
+Analizá los patrones, identificá las causas raíz más probables
+usando el método de los 5 porqués para los 3 más frecuentes,
+y proponé un plan de mejora concreto con responsables y plazos.
+Formato: análisis por impedimento + tabla de plan de acción.</code></pre>
+
+<p><strong>Ejemplo 3 — Refinement de historias de usuario</strong></p>
+<pre><code>Actuá como un Product Owner experimentado.
+Te voy a dar un épico de negocio y necesito que lo descompongas
+en historias de usuario listas para el sprint (Definition of Ready completo).
+Cada historia debe tener: formato "Como [usuario] quiero [funcionalidad] para [beneficio]",
+criterios de aceptación en formato Gherkin (Given/When/Then),
+estimación relativa en Story Points (Fibonacci),
+y señales de alerta si la historia es demasiado grande para un sprint.
+
+Épico:
+[describí aquí tu épico]</code></pre>
+
+<p><strong>Ejemplo 4 — Sprint Review: preparar la presentación para stakeholders</strong></p>
+<pre><code>Soy Scrum Master y necesito preparar la Sprint Review del Sprint 14.
+Los stakeholders son el CEO, CFO y la directora comercial:
+no tienen contexto técnico y les interesa el impacto de negocio, no los detalles técnicos.
+Completamos el 85% del sprint goal.
+Estas son las historias completadas: [lista aquí].
+Estas quedaron sin terminar: [lista aquí].
+Redactá un guion de presentación de 20 minutos que:
+empiece con el contexto de negocio, muestre el valor entregado,
+explique honestamente lo que no se completó sin generar alarma,
+y cierre con los próximos pasos.</code></pre>
+
+<h2>Errores comunes al usar Claude</h2>
+<p>Conocer los errores más frecuentes te ahorra tiempo y frustración. El primero y más común es el prompt vago: "ayudame con mi proyecto" o "escribí algo sobre marketing digital" son prompts que generan respuestas genéricas. La solución es siempre agregar el contexto del problema real.</p>
+<p>El segundo error es no especificar el formato. Claude por defecto escribe en texto corrido. Si necesitás una tabla, un JSON, un documento Markdown o una lista numerada, pedilo explícitamente. El tercer error es no iterar: Claude es una conversación, no una consulta única. Si la primera respuesta no es exactamente lo que necesitás, no empieces de cero. Decí "Bien, ahora ajustá el tono para que sea más formal" o "Agregá un ejemplo práctico en la sección 3". Esa iteración es donde realmente aparece el valor.</p>
+<p>El cuarto error, especialmente relevante para temas técnicos, es confiar sin verificar. Claude puede alucinar detalles: versiones de librerías, APIs que no existen, funciones con nombres ligeramente incorrectos. Siempre verifica el código generado antes de usar en producción. Claude es un colaborador muy capaz, no un oráculo infalible.</p>
+
+<h2>Técnicas avanzadas: llevando los prompts al siguiente nivel</h2>
+<p>Una vez que dominás los fundamentos, hay técnicas que elevan significativamente la calidad de los outputs. La primera es el <strong>chain-of-thought</strong>: pedirle a Claude que piense en voz alta antes de responder. Agregás "Antes de responder, pensá paso a paso y mostrá tu razonamiento" y obtenés respuestas mucho más sólidas en problemas complejos.</p>
+<p>La segunda técnica es <strong>asignar un crítico</strong>: después de recibir una respuesta, pedís "Ahora revisá tu propia respuesta con ojo crítico: ¿qué puntos son débiles, qué asumiste sin fundamento, qué falta?". Esta auto-evaluación genera una segunda versión significativamente mejorada. La tercera técnica es <strong>el rol de abogado del diablo</strong>: "Dame los 5 argumentos más fuertes en contra de esta estrategia" antes de tomar una decisión importante. Es sorprendentemente efectivo para identificar puntos ciegos.</p>
+<p>Finalmente, cuando trabajás en proyectos largos, usá <strong>la técnica del documento de contexto</strong>: pegá al inicio de cada conversación un bloque fijo con información relevante sobre tu empresa, tu rol, el proyecto y las restricciones. Así cada sesión con Claude empieza calibrada para tu realidad, sin tener que explicarlo desde cero.</p>
+
+<h2>Claude en el trabajo del día a día: integrándolo en tu flujo real</h2>
+<p>La mayor diferencia entre alguien que usa Claude ocasionalmente y alguien que lo integra de verdad en su trabajo está en los hábitos. Los usuarios más efectivos tienen plantillas de prompts guardadas para sus tareas recurrentes: el daily standup, el reporte semanal, el análisis de riesgo, la respuesta al cliente difícil. No construyen el prompt desde cero cada vez; tienen una estructura base que adaptan al contexto específico del día.</p>
+<p>Otro patrón de uso muy efectivo es el de "primer borrador veloz": en lugar de empezar a escribir un documento desde una hoja en blanco, le pedís a Claude un borrador rápido con las secciones que sabés que necesitás, y después lo editás y personalizás. Eso reduce la parálisis del arranque y el tiempo total de producción entre un 40% y un 70% según el tipo de documento.</p>
+
+<h2>Vista previa: ¿Qué viene en la Parte 2?</h2>
+<p>Esta fue la primera entrega de la guía. En la Parte 2, vamos a profundizar en casos de uso más avanzados: cómo usar Claude para análisis de datos con tablas y CSV, cómo integrarlo en flujos de trabajo con otras herramientas, prompts específicos para startups y fundadores, y cómo construir un sistema de prompts corporativos para que todo el equipo use Claude de manera consistente y efectiva. También vamos a ver cómo Claude puede ayudar a construir productos de IA, no solo a usarlos.</p>
+
+<h2>Conclusión</h2>
+<p>Claude es una herramienta extraordinariamente poderosa cuando se usa con intención. La diferencia entre una respuesta mediocre y una respuesta que te ahorra horas de trabajo está casi siempre en la calidad del prompt, no en la IA. Los ejemplos de esta guía están pensados para que los copies, adaptes a tu contexto y empieces a usar hoy. No necesitás ser experto en tecnología para dominar Claude: necesitás claridad sobre qué querés, disposición para dar contexto y voluntad de iterar. Si te resultó útil esta guía o tenés preguntas sobre cómo aplicar Claude en tu trabajo específico, escribime. Estoy construyendo herramientas basadas en IA y ayudo a equipos a integrar estos recursos de forma efectiva y estratégica.</p>
