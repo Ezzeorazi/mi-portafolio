@@ -1,4 +1,9 @@
+# *
 User-agent: *
 Allow: /
 
-Sitemap: http://ezequiel-orazi.online/sitemap.xml
+# Host
+Host: https://ezequiel-orazi.online
+
+# Sitemaps
+Sitemap: https://ezequiel-orazi.online/sitemap.xml
