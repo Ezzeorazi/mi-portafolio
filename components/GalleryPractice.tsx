@@ -1,6 +1,6 @@
 import ProjectCard from './ProjectCard';
 
-const practiceProjects = [
+export const practiceProjects = [
   {
     id: 1,
     title: 'Pronóstico del Tiempo',
@@ -91,6 +91,7 @@ const practiceProjects = [
     liveLink: 'https://monedas-mxn-usd-ars.netlify.app/',
     repoLink: 'https://github.com/Ezzeorazi/cotizador-divisas',
   },
+  
 ];
 
 export default function GalleryPractice() {

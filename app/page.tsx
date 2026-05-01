@@ -5,7 +5,10 @@ import TypedText from '@/components/TypedText';
 import Services from '@/components/Services';
 import ScrollReveal from '@/components/ScrollReveal';
 import ArticleCard from '@/components/ArticleCard';
+import ProjectCard from '@/components/ProjectCard';
 import { getAllPosts } from '@/lib/blog';
+import { projects } from '@/components/Gallery';
+import { practiceProjects } from '@/components/GalleryPractice';
 
 export const metadata: Metadata = {
   title: 'Eze Orazi | Desarrollador Fullstack — Inicio',
@@ -15,6 +18,9 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   const latestPosts = getAllPosts().slice(0, 3);
+  const featuredProjects = [...projects, ...practiceProjects].filter(
+    (p) => (p as { featured?: boolean }).featured === true
+  );
 
   return (
     <>
@@ -70,6 +76,30 @@ export default function HomePage() {
 
       {/* Services */}
       <Services />
+
+      {/* Featured Projects */}
+      {featuredProjects.length > 0 && (
+        <section className="bg-dark py-20 px-4">
+          <div className="max-w-5xl mx-auto">
+            <ScrollReveal direction="up">
+              <div className="flex items-center justify-between mb-10">
+                <h2 className="text-yellow font-bold text-2xl md:text-3xl">Proyectos actuales</h2>
+                <Link
+                  href="/proyectos"
+                  className="text-sm font-semibold text-pink hover:underline underline-offset-4 transition-colors"
+                >
+                  Ver todos →
+                </Link>
+              </div>
+              <div className="flex flex-wrap gap-6 justify-center">
+                {featuredProjects.map((p, i) => (
+                  <ProjectCard key={`${p.id}-${p.title}`} {...p} delay={i * 0.05} />
+                ))}
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
+      )}
 
       {/* Latest Posts */}
       <section className="bg-light py-20 px-4">

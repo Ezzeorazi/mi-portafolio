@@ -3,26 +3,36 @@ import ScrollReveal from './ScrollReveal';
 const experiences = [
   {
     id: 1,
-    company: 'Watchman',
-    role: 'Guardia de seguridad',
-    startDate: 'Noviembre 2024',
+    company: 'Caliber 3d Printing',
+    role: 'Técnico de impresión 3D, diseñador y desarrollador web',
+    startDate: 'Enero 2025',
     endDate: 'Actualidad',
     description:
-      'Como guardia de seguridad en Watchman, aplico conocimientos en ciberseguridad para monitorear y responder a posibles amenazas, asegurando la integridad de los sistemas. Manejo sistemas de cámaras de seguridad para vigilancia continua y empleo herramientas como Excel para registro y análisis de datos.',
-    technologies: ['Excel', 'Ciberseguridad', 'Cámaras de seguridad'],
+      'Soporte técnico en impresión 3D, diseño de modelos y desarrollo de sitios web para la empresa. Colaboración en equipo y optimización de procesos. Ademas creacción de contenido digital para redes sociales y marketing.',
+    technologies: ['Impresión 3D', 'Diseño 3D', 'Desarrollo Web'],
   },
   {
     id: 2,
     company: 'Pixel Maker',
     role: 'Desarrollador de sitios web',
     startDate: 'Septiembre 2023',
-    endDate: 'Agosto 2024',
+    endDate: 'Actualidad',
     description:
       'Gestión y ejecución de proyectos web end-to-end, desde la conceptualización hasta el despliegue. Creación de diseños web optimizados para SEO, desarrollo con HTML, CSS y JavaScript, administración de hosting y dominios.',
     technologies: ['HTML', 'CSS', 'JavaScript', 'SEO'],
   },
   {
     id: 3,
+    company: 'Watchman',
+    role: 'Guardia de seguridad',
+    startDate: 'Noviembre 2024',
+    endDate: 'Noviembre 2025',
+    description:
+      'Como guardia de seguridad en Watchman, aplico conocimientos en ciberseguridad para monitorear y responder a posibles amenazas, asegurando la integridad de los sistemas. Manejo sistemas de cámaras de seguridad para vigilancia continua y empleo herramientas como Excel para registro y análisis de datos.',
+    technologies: ['Excel', 'Ciberseguridad', 'Cámaras de seguridad'],
+  },
+  {
+    id: 4,
     company: 'Desafío Latam',
     role: 'Desarrollador Front-end',
     startDate: 'Mayo 2023',
@@ -32,7 +42,7 @@ const experiences = [
     technologies: ['Next.js', 'Tailwind CSS', 'JavaScript', 'Figma', 'Jira'],
   },
   {
-    id: 4,
+    id: 5,
     company: 'Division Profesional Centro SA',
     role: 'Especialista administrativo',
     startDate: 'Octubre 2020',
@@ -42,7 +52,7 @@ const experiences = [
     technologies: ['VTEX', 'WordPress', 'Excel', 'Word', 'Meridiano Soft'],
   },
   {
-    id: 5,
+    id: 6,
     company: 'Leiten SRL',
     role: 'Jefe de taller',
     startDate: 'Mayo 2015',

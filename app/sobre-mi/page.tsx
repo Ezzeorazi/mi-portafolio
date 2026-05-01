@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
+import Caliber3DCarousel from '@/components/Caliber3DCarousel';
 
 export const metadata: Metadata = {
   title: 'Sobre mí',
@@ -36,6 +37,48 @@ export default function SobreMiPage() {
         </p>
       </ScrollReveal>
 
+      {/* Caliber 3D + vida en Playa del Carmen */}
+      <ScrollReveal direction="up" delay={0.15}>
+        <div className="flex flex-col md:flex-row gap-8 mb-12 items-start">
+          <div className="flex-1">
+            <h2 className="text-dark font-bold text-xl md:text-2xl mb-4">
+              Un volantazo a la vida
+            </h2>
+            <p className="text-muted leading-relaxed text-base text-justify mb-4">
+              Hace un tiempo tomé la decisión de dejar Rosario y apostar por algo nuevo:
+              emigrar a Playa del Carmen, Quintana Roo. Un cambio radical que trajo no solo un
+              nuevo paisaje, sino también un nuevo proyecto de vida.
+            </p>
+            <p className="text-muted leading-relaxed text-base text-justify mb-4">
+              Fue acá donde nació{' '}
+              <a
+                href="https://caliber3d.mx"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-yellow hover:text-pink transition-colors font-semibold"
+              >
+                Caliber 3D
+              </a>
+              , un emprendimiento de impresión 3D que hoy es mi proyecto principal. Diseñamos y
+              fabricamos piezas personalizadas para distintos rubros: industria, decoración,
+              prototipos y más. Cada pieza es un problema resuelto.
+            </p>
+            <p className="text-muted leading-relaxed text-base text-justify">
+              Combinar el desarrollo web con el mundo físico de la fabricación 3D me da una visión
+              distinta: entiendo tanto el producto digital como el proceso detrás de un negocio
+              real. Caliber 3D no es solo una empresa, es la prueba de que apostar por uno mismo
+              funciona.
+            </p>
+          </div>
+
+          {/* Carrusel — derecha en desktop, abajo del texto en mobile */}
+          <div className="w-full md:w-72 lg:w-80 flex-shrink-0">
+            <Caliber3DCarousel />
+          </div>
+        </div>
+      </ScrollReveal>
+
+      {/* Cards de navegación */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {cards.map((card, i) => (
           <ScrollReveal key={card.href} direction="flip" delay={i * 0.1}>
