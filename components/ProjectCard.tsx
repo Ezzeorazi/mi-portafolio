@@ -30,7 +30,7 @@ export default function ProjectCard({
             alt={title}
             fill
             className="object-cover hover:scale-110 transition-transform duration-500"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(50vw - 3rem), 314px"
           />
         </div>
         <div className="p-5 flex flex-col gap-3 flex-1">

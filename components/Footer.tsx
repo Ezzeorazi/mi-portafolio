@@ -53,7 +53,7 @@ export default function Footer() {
             <Link href="/" className="text-yellow font-bold text-xl hover:text-pink transition-colors duration-300 self-start">
               Ezequiel Orazi
             </Link>
-            <p className="text-light/50 text-sm leading-relaxed">
+            <p className="text-light/75 text-sm leading-relaxed">
               Desarrollador web fullstack. Sitios rápidos, seguros y listos para Google.
             </p>
             <div className="flex gap-4 text-xl mt-1">
@@ -85,7 +85,7 @@ export default function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-light/55 text-sm hover:text-pink transition-colors duration-200"
+                    className="text-light/75 text-sm hover:text-pink transition-colors duration-200"
                   >
                     {link.label}
                   </a>
@@ -93,7 +93,7 @@ export default function Footer() {
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="text-light/55 text-sm hover:text-pink transition-colors duration-200"
+                    className="text-light/75 text-sm hover:text-pink transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -104,7 +104,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-yellow/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-light/35">
+        <div className="border-t border-yellow/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-light/65">
           <p>&copy; {year} Ezequiel Orazi. Todos los derechos reservados.</p>
           <p>
             Hecho con{' '}

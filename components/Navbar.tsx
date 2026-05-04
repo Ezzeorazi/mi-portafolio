@@ -65,7 +65,7 @@ export default function Navbar() {
         ))}
         <button
           onClick={toggleLanguage}
-          aria-label="Toggle language"
+          aria-label={`Cambiar idioma – ${t('toggle_lang')}`}
           className="ml-2 text-sm font-bold text-dark bg-yellow px-3 py-1 rounded hover:bg-pink hover:text-white transition-colors duration-300"
         >
           {t('toggle_lang')}
@@ -76,7 +76,7 @@ export default function Navbar() {
       <div className="flex items-center gap-3 md:hidden z-[1100]">
         <button
           onClick={toggleLanguage}
-          aria-label="Toggle language"
+          aria-label={`Cambiar idioma – ${t('toggle_lang')}`}
           className="text-xs font-bold text-dark bg-yellow px-2 py-1 rounded"
         >
           {t('toggle_lang')}
