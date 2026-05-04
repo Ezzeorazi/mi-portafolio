@@ -12,6 +12,7 @@ const navLinks = [
   { key: 'nav_about', href: '/sobre-mi' },
   { key: 'nav_skills', href: '/skills' },
   { key: 'nav_projects', href: '/proyectos' },
+  { key: 'nav_services', href: '/services' },
   { key: 'nav_cv', href: '/curriculum' },
   { key: 'nav_blog', href: '/blog' },
   { key: 'nav_contact', href: '/contacto' },
@@ -38,15 +39,29 @@ export default function Navbar() {
       {/* Desktop links */}
       <div className="hidden md:flex items-center gap-6">
         {navLinks.map(({ key, href }) => (
-          <Link
-            key={key}
-            href={href}
-            className={`text-sm font-medium transition-colors duration-300 hover:text-pink ${
-              pathname === href ? 'text-pink' : 'text-yellow'
-            }`}
-          >
-            {t(key)}
-          </Link>
+          key === 'nav_services' ? (
+            <Link
+              key={key}
+              href={href}
+              className={`text-sm font-bold px-3 py-1 rounded-md border transition-colors duration-300 ${
+                pathname === href
+                  ? 'bg-pink text-white border-pink'
+                  : 'border-yellow text-yellow hover:bg-yellow hover:text-dark'
+              }`}
+            >
+              {t(key)}
+            </Link>
+          ) : (
+            <Link
+              key={key}
+              href={href}
+              className={`text-sm font-medium transition-colors duration-300 hover:text-pink ${
+                pathname === href ? 'text-pink' : 'text-yellow'
+              }`}
+            >
+              {t(key)}
+            </Link>
+          )
         ))}
         <button
           onClick={toggleLanguage}
