@@ -10,7 +10,7 @@ const images = [
   },
   {
     src: '/caliber3d-foto-2.webp',
-    alt: 'En Xpuha, parque Xcaret',
+    alt: 'En Xel-há parque Xcaret',
     position: 'object-top',
   },
   {
