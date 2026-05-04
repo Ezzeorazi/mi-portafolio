@@ -1,26 +1,35 @@
 import Link from 'next/link';
-import { FaReact, FaWordpress, FaDatabase } from 'react-icons/fa';
+import { FaGlobe, FaDatabase, FaShoppingCart } from 'react-icons/fa';
 import ServiceCard from './ServiceCard';
 import ScrollReveal from './ScrollReveal';
 
 const services = [
   {
-    title: 'Páginas Web con React',
+    title: 'Web Institucional / Landing Page',
     description:
-      'Desarrollo de sitios web interactivos, rápidos y modernos usando React. Interfaces dinámicas y modulares, adaptadas a cualquier dispositivo, optimizadas para rendimiento y SEO.',
-    icon: <FaReact />,
+      'Tu carta de presentación digital. Diseño responsive, secciones clave (Inicio, Servicios, Contacto), botón de WhatsApp y SEO básico para que Google te encuentre.',
+    icon: <FaGlobe />,
+    price: 'desde $250 USD',
+    badge: 'Ideal para empezar',
+    href: '/services#landing',
   },
   {
-    title: 'Páginas Web con WordPress',
+    title: 'Web Dinámica + Gestión de Datos',
     description:
-      'Diseño y personalización de sitios autoadministrables con WordPress. Integro plugins, optimizo velocidad y creo soluciones versátiles para emprendedores y pequeñas empresas.',
-    icon: <FaWordpress />,
-  },
-  {
-    title: 'Bases de Datos con MERN o SQL',
-    description:
-      'Implementación de soluciones con MongoDB para proyectos MERN, y bases SQL como PostgreSQL o MySQL. Diseño eficiente, seguro y escalable.',
+      'Sitio web con panel de control para que administres tu contenido sin saber programar. Base de datos en la nube, catálogo de productos, secciones privadas y SEO avanzado.',
     icon: <FaDatabase />,
+    price: 'desde $650 USD',
+    badge: 'Para negocios en crecimiento',
+    href: '/services#dinamica',
+  },
+  {
+    title: 'E-commerce / Tienda Online',
+    description:
+      'Tu local abierto las 24hs. Carrito de compras, integración con Mercado Pago, PayPal o Stripe, control de stock y SEO transaccional para captar intención de compra.',
+    icon: <FaShoppingCart />,
+    price: 'desde $1.200 USD',
+    badge: 'Para vender sin límites',
+    href: '/services#ecommerce',
   },
 ];
 
@@ -29,7 +38,10 @@ export default function Services() {
     <section className="bg-dark py-16 px-4">
       <div className="max-w-5xl mx-auto">
         <ScrollReveal direction="left">
-          <h2 className="text-yellow font-bold text-3xl mb-10 text-center">Servicios</h2>
+          <h2 className="text-yellow font-bold text-3xl mb-2 text-center">Servicios</h2>
+          <p className="text-light/60 text-center text-sm mb-10">
+            Soluciones web reales, con tecnología moderna y precios claros.
+          </p>
         </ScrollReveal>
 
         <div className="flex flex-wrap gap-6 justify-center">
@@ -39,20 +51,20 @@ export default function Services() {
         </div>
 
         <ScrollReveal direction="up" delay={0.3} className="flex flex-wrap gap-4 justify-center mt-10">
+          <Link
+            href="/services"
+            className="bg-yellow text-dark font-bold px-6 py-3 rounded-lg hover:bg-pink hover:text-white transition-colors duration-300"
+          >
+            Ver todos los servicios
+          </Link>
           <a
             href="https://calendly.com/ezequiel-orazi90/30min"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-yellow text-dark font-bold px-6 py-3 rounded-lg hover:bg-pink hover:text-white transition-colors duration-300"
-          >
-            Agendar reunión
-          </a>
-          <Link
-            href="/proyectos"
             className="border-2 border-yellow text-yellow font-bold px-6 py-3 rounded-lg hover:border-pink hover:text-pink transition-colors duration-300"
           >
-            Ver proyectos
-          </Link>
+            Agendar reunión gratis
+          </a>
         </ScrollReveal>
       </div>
     </section>
