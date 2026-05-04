@@ -198,6 +198,17 @@ const posts: Post[] = [
     ReadingTime: '15 min de lectura',
     content: 'claude-ia-guia-prompts-profesionales.html',
   },
+  {
+    id: 18,
+    slug: 'pagina-web-para-tu-negocio-latinoamerica-2026',
+    image: 'servicios-web-portada.svg',
+    title: '¿Necesitás una página web para tu negocio? Guía completa para Latinoamérica 2026',
+    category: 'Servicios Web',
+    description: 'Cuándo crear, cuándo renovar y qué tecnología usar para tener una presencia digital que aparezca en Google y genere clientes reales. Landing page, web dinámica o tienda online.',
+    date: 'Publicado el 4 de mayo de 2026',
+    ReadingTime: '14 min de lectura',
+    content: 'pagina-web-para-tu-negocio-latinoamerica-2026.html',
+  },
 ];
 
 export default posts;

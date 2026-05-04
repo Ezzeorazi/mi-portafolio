@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#161a1e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e2530;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e2530;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#161a1e;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow-yellow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+
+  <!-- Subtle grid lines -->
+  <line x1="0" y1="315" x2="1200" y2="315" stroke="#f5d805" stroke-width="0.3" stroke-opacity="0.08"/>
+  <line x1="600" y1="0" x2="600" y2="630" stroke="#f5d805" stroke-width="0.3" stroke-opacity="0.08"/>
+
+  <!-- Top accent line -->
+  <rect x="0" y="0" width="1200" height="3" fill="#f5d805"/>
+
+  <!-- Header -->
+  <text x="600" y="68" font-family="Montserrat, Arial, sans-serif" font-size="15" font-weight="600" fill="#f5d805" text-anchor="middle" letter-spacing="4" opacity="0.9">EZEQUIEL ORAZI · DESARROLLO WEB FREELANCE</text>
+  <text x="600" y="118" font-family="Montserrat, Arial, sans-serif" font-size="42" font-weight="800" fill="#f0eeed" text-anchor="middle">Servicios de Desarrollo Web</text>
+  <text x="600" y="152" font-family="Montserrat, Arial, sans-serif" font-size="17" font-weight="400" fill="#f0eeed" text-anchor="middle" opacity="0.55">Next.js · TypeScript · Tailwind CSS · Sanity CMS</text>
+
+  <!-- Divider -->
+  <line x1="480" y1="172" x2="720" y2="172" stroke="#f5d805" stroke-width="1.5" stroke-opacity="0.4"/>
+
+  <!-- === CARD 1: Landing Page === -->
+  <g filter="url(#shadow)">
+    <rect x="60" y="195" width="330" height="340" rx="14" fill="url(#cardGrad)" stroke="#f5d805" stroke-width="1.2" stroke-opacity="0.25"/>
+  </g>
+  <!-- Badge -->
+  <rect x="84" y="215" width="140" height="22" rx="4" fill="#f5d805"/>
+  <text x="154" y="231" font-family="Montserrat, Arial, sans-serif" font-size="9.5" font-weight="800" fill="#161a1e" text-anchor="middle" letter-spacing="1">IDEAL PARA EMPEZAR</text>
+  <!-- Globe icon -->
+  <circle cx="114" cy="290" r="22" fill="none" stroke="#f5d805" stroke-width="2.5"/>
+  <ellipse cx="114" cy="290" rx="10" ry="22" fill="none" stroke="#f5d805" stroke-width="1.5"/>
+  <line x1="92" y1="283" x2="136" y2="283" stroke="#f5d805" stroke-width="1.5"/>
+  <line x1="92" y1="297" x2="136" y2="297" stroke="#f5d805" stroke-width="1.5"/>
+  <!-- Title -->
+  <text x="84" y="338" font-family="Montserrat, Arial, sans-serif" font-size="17" font-weight="700" fill="#f5d805">Web Institucional</text>
+  <text x="84" y="360" font-family="Montserrat, Arial, sans-serif" font-size="17" font-weight="700" fill="#f5d805">/ Landing Page</text>
+  <!-- Description -->
+  <text x="84" y="386" font-family="Montserrat, Arial, sans-serif" font-size="12" fill="#f0eeed" opacity="0.65">Diseño responsive, SEO básico,</text>
+  <text x="84" y="402" font-family="Montserrat, Arial, sans-serif" font-size="12" fill="#f0eeed" opacity="0.65">formulario de contacto y botón</text>
+  <text x="84" y="418" font-family="Montserrat, Arial, sans-serif" font-size="12" fill="#f0eeed" opacity="0.65">de WhatsApp integrado.</text>
+  <!-- Price -->
+  <text x="84" y="460" font-family="Montserrat, Arial, sans-serif" font-size="28" font-weight="800" fill="#fd02d1">$250 USD</text>
+  <!-- CTA -->
+  <rect x="84" y="475" width="130" height="34" rx="7" fill="#f5d805"/>
+  <text x="149" y="497" font-family="Montserrat, Arial, sans-serif" font-size="11" font-weight="700" fill="#161a1e" text-anchor="middle">Ver detalles →</text>
+
+  <!-- === CARD 2: Web Dinámica === -->
+  <g filter="url(#shadow)">
+    <rect x="435" y="195" width="330" height="340" rx="14" fill="url(#cardGrad)" stroke="#f5d805" stroke-width="1.5" stroke-opacity="0.45"/>
+  </g>
+  <!-- Glow border highlight for featured -->
+  <rect x="435" y="195" width="330" height="340" rx="14" fill="none" stroke="#f5d805" stroke-width="2" stroke-opacity="0.3"/>
+  <!-- Badge -->
+  <rect x="459" y="215" width="186" height="22" rx="4" fill="#f5d805"/>
+  <text x="552" y="231" font-family="Montserrat, Arial, sans-serif" font-size="9.5" font-weight="800" fill="#161a1e" text-anchor="middle" letter-spacing="1">PARA NEGOCIOS EN CRECIMIENTO</text>
+  <!-- Database icon -->
+  <ellipse cx="489" cy="274" rx="22" ry="8" fill="none" stroke="#f5d805" stroke-width="2.5"/>
+  <line x1="467" y1="274" x2="467" y2="296" stroke="#f5d805" stroke-width="2.5"/>
+  <line x1="511" y1="274" x2="511" y2="296" stroke="#f5d805" stroke-width="2.5"/>
+  <ellipse cx="489" cy="296" rx="22" ry="8" fill="none" stroke="#f5d805" stroke-width="2.5"/>
+  <ellipse cx="489" cy="285" rx="22" ry="8" fill="none" stroke="#f5d805" stroke-width="1.2" stroke-opacity="0.4"/>
+  <!-- Title -->
+  <text x="459" y="338" font-family="Montserrat, Arial, sans-serif" font-size="17" font-weight="700" fill="#f5d805">Web Dinámica</text>
+  <text x="459" y="360" font-family="Montserrat, Arial, sans-serif" font-size="17" font-weight="700" fill="#f5d805">+ Gestión de Datos</text>
+  <!-- Description -->
+  <text x="459" y="386" font-family="Montserrat, Arial, sans-serif" font-size="12" fill="#f0eeed" opacity="0.65">Panel de control, catálogo de</text>
+  <text x="459" y="402" font-family="Montserrat, Arial, sans-serif" font-size="12" fill="#f0eeed" opacity="0.65">productos y Sanity CMS para</text>
+  <text x="459" y="418" font-family="Montserrat, Arial, sans-serif" font-size="12" fill="#f0eeed" opacity="0.65">editar sin saber programar.</text>
+  <!-- Price -->
+  <text x="459" y="460" font-family="Montserrat, Arial, sans-serif" font-size="28" font-weight="800" fill="#fd02d1">$650 USD</text>
+  <!-- CTA -->
+  <rect x="459" y="475" width="130" height="34" rx="7" fill="#f5d805"/>
+  <text x="524" y="497" font-family="Montserrat, Arial, sans-serif" font-size="11" font-weight="700" fill="#161a1e" text-anchor="middle">Ver detalles →</text>
+
+  <!-- === CARD 3: E-commerce === -->
+  <g filter="url(#shadow)">
+    <rect x="810" y="195" width="330" height="340" rx="14" fill="url(#cardGrad)" stroke="#f5d805" stroke-width="1.2" stroke-opacity="0.25"/>
+  </g>
+  <!-- Badge -->
+  <rect x="834" y="215" width="162" height="22" rx="4" fill="#f5d805"/>
+  <text x="915" y="231" font-family="Montserrat, Arial, sans-serif" font-size="9.5" font-weight="800" fill="#161a1e" text-anchor="middle" letter-spacing="1">PARA VENDER SIN LÍMITES</text>
+  <!-- Cart icon -->
+  <path d="M834 272 L842 272 L850 296 L878 296 L884 278 L850 278" fill="none" stroke="#f5d805" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="856" cy="302" r="4" fill="#f5d805"/>
+  <circle cx="874" cy="302" r="4" fill="#f5d805"/>
+  <!-- Title -->
+  <text x="834" y="338" font-family="Montserrat, Arial, sans-serif" font-size="17" font-weight="700" fill="#f5d805">E-commerce</text>
+  <text x="834" y="360" font-family="Montserrat, Arial, sans-serif" font-size="17" font-weight="700" fill="#f5d805">/ Tienda Online</text>
+  <!-- Description -->
+  <text x="834" y="386" font-family="Montserrat, Arial, sans-serif" font-size="12" fill="#f0eeed" opacity="0.65">Carrito de compras, Mercado</text>
+  <text x="834" y="402" font-family="Montserrat, Arial, sans-serif" font-size="12" fill="#f0eeed" opacity="0.65">Pago / Stripe y control de</text>
+  <text x="834" y="418" font-family="Montserrat, Arial, sans-serif" font-size="12" fill="#f0eeed" opacity="0.65">stock automático.</text>
+  <!-- Price -->
+  <text x="834" y="460" font-family="Montserrat, Arial, sans-serif" font-size="28" font-weight="800" fill="#fd02d1">$1.200 USD</text>
+  <!-- CTA -->
+  <rect x="834" y="475" width="130" height="34" rx="7" fill="#f5d805"/>
+  <text x="899" y="497" font-family="Montserrat, Arial, sans-serif" font-size="11" font-weight="700" fill="#161a1e" text-anchor="middle">Ver detalles →</text>
+
+  <!-- Bottom URL -->
+  <text x="600" y="574" font-family="Montserrat, Arial, sans-serif" font-size="13" font-weight="500" fill="#f5d805" text-anchor="middle" opacity="0.7">ezequiel-orazi.online/services</text>
+
+  <!-- Bottom accent line -->
+  <rect x="0" y="627" width="1200" height="3" fill="#fd02d1"/>
+</svg>
