@@ -2,26 +2,29 @@
 import { useState, FormEvent } from 'react';
 import { useForm } from '@/hooks/useForm';
 import ScrollReveal from '@/components/ScrollReveal';
+import { useTranslation } from '@/hooks/useTranslation';
 
-function validate(values: Record<string, string>) {
-  const errors: Record<string, string> = {};
-  if (!values.name.trim()) errors.name = 'El nombre es requerido.';
-  if (!values.email.trim()) {
-    errors.email = 'El email es requerido.';
-  } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-    errors.email = 'El email no es válido.';
-  }
-  if (!values.message.trim()) errors.message = 'El mensaje es requerido.';
-  return errors;
+function makeValidate(t: (k: string) => string) {
+  return function validate(values: Record<string, string>) {
+    const errors: Record<string, string> = {};
+    if (!values.name.trim()) errors.name = t('contact_err_name');
+    if (!values.email.trim()) {
+      errors.email = t('contact_err_email_req');
+    } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+      errors.email = t('contact_err_email_invalid');
+    }
+    if (!values.message.trim()) errors.message = t('contact_err_message');
+    return errors;
+  };
 }
 
 export default function ContactForm() {
+  const { t } = useTranslation();
   const { values, errors, handleChange, sendEmail, formStatus, cooldown } = useForm(
     { name: '', email: '', message: '' },
-    validate
+    makeValidate(t)
   );
 
-  // Honeypot: bots llenan este campo, humanos no lo ven
   const [honeypot, setHoneypot] = useState('');
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -55,7 +58,7 @@ export default function ContactForm() {
 
           {formStatus.success && (
             <p className="text-green-400 bg-green-400/10 border border-green-400/30 px-4 py-3 rounded-lg text-sm">
-              {formStatus.success}
+              {t('contact_success')}
             </p>
           )}
           {formStatus.error && (
@@ -66,7 +69,7 @@ export default function ContactForm() {
 
           <div className="flex flex-col gap-1">
             <label htmlFor="name" className="text-dark font-medium text-sm">
-              Nombre
+              {t('contact_name')}
             </label>
             <input
               type="text"
@@ -82,7 +85,7 @@ export default function ContactForm() {
 
           <div className="flex flex-col gap-1">
             <label htmlFor="email" className="text-dark font-medium text-sm">
-              Email
+              {t('contact_email')}
             </label>
             <input
               type="email"
@@ -98,7 +101,7 @@ export default function ContactForm() {
 
           <div className="flex flex-col gap-1">
             <label htmlFor="message" className="text-dark font-medium text-sm">
-              Mensaje
+              {t('contact_message')}
             </label>
             <textarea
               id="message"
@@ -117,20 +120,20 @@ export default function ContactForm() {
             className="bg-yellow text-dark font-bold py-3 rounded-lg hover:bg-pink hover:text-white transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {formStatus.isLoading
-              ? 'Enviando...'
+              ? t('contact_sending')
               : cooldown > 0
-              ? `Podés reenviar en ${cooldown}s`
-              : 'Enviar'}
+              ? `${t('contact_cooldown')} ${cooldown}s`
+              : t('contact_send')}
           </button>
         </form>
       </ScrollReveal>
 
       <ScrollReveal direction="up" delay={0.15}>
         <div className="bg-dark rounded-xl p-6 border border-yellow/20 flex flex-col gap-5 h-fit">
-          <h2 className="text-yellow font-bold text-lg">Información de contacto</h2>
+          <h2 className="text-yellow font-bold text-lg">{t('contact_info_heading')}</h2>
           <div className="flex flex-col gap-4 text-sm">
             <div>
-              <p className="text-light/50 text-xs mb-1">Teléfono</p>
+              <p className="text-light/50 text-xs mb-1">{t('contact_phone_label')}</p>
               <a
                 href="tel:+529982017863"
                 className="text-light hover:text-yellow transition-colors"
@@ -139,7 +142,7 @@ export default function ContactForm() {
               </a>
             </div>
             <div>
-              <p className="text-light/50 text-xs mb-1">Email</p>
+              <p className="text-light/50 text-xs mb-1">{t('contact_email')}</p>
               <a
                 href="mailto:ezequiel.orazi90@gmail.com"
                 className="text-light hover:text-yellow transition-colors"
@@ -148,13 +151,13 @@ export default function ContactForm() {
               </a>
             </div>
             <div>
-              <p className="text-light/50 text-xs mb-1">Ciudad</p>
+              <p className="text-light/50 text-xs mb-1">{t('contact_city_label')}</p>
               <span className="text-light">Playa del Carmen, Quintana Roo, México</span>
             </div>
             <div>
-              <p className="text-light/50 text-xs mb-1">Disponibilidad</p>
+              <p className="text-light/50 text-xs mb-1">&nbsp;</p>
               <span className="text-green-400 font-medium">
-                Disponible para proyectos remotos
+                {t('contact_available')}
               </span>
             </div>
           </div>
@@ -165,7 +168,7 @@ export default function ContactForm() {
             rel="noopener noreferrer"
             className="mt-2 bg-yellow text-dark font-bold px-5 py-3 rounded-lg text-center hover:bg-pink hover:text-white transition-colors duration-300 text-sm"
           >
-            Agendar reunión →
+            {t('contact_book_btn')}
           </a>
         </div>
       </ScrollReveal>

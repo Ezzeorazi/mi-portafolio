@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import ContactForm from '@/components/ContactForm';
 import ScrollReveal from '@/components/ScrollReveal';
+import T from '@/components/T';
 
 export const metadata: Metadata = {
   title: 'Contacto',
@@ -13,7 +14,9 @@ export default function ContactoPage() {
   return (
     <section className="max-w-3xl mx-auto px-4 py-16">
       <ScrollReveal direction="left">
-        <h1 className="text-3xl md:text-4xl font-bold text-dark mb-10">Contacto</h1>
+        <h1 className="text-3xl md:text-4xl font-bold text-dark mb-10">
+          <T k="contact_title" />
+        </h1>
       </ScrollReveal>
 
       <ContactForm />

@@ -1,6 +1,8 @@
+'use client';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 import ScrollReveal from './ScrollReveal';
+import { useTranslation } from '@/hooks/useTranslation';
 
 interface ServiceCardProps {
   title: string;
@@ -13,6 +15,8 @@ interface ServiceCardProps {
 }
 
 export default function ServiceCard({ title, description, icon, price, badge, delay = 0, href }: ServiceCardProps) {
+  const { t } = useTranslation();
+
   const inner = (
     <div className="bg-dark/80 border border-yellow/20 rounded-xl p-6 h-full flex flex-col gap-3 hover:shadow-pink-glow hover:-translate-y-1 transition-all duration-300 group cursor-pointer">
       {badge && (
@@ -28,7 +32,7 @@ export default function ServiceCard({ title, description, icon, price, badge, de
       )}
       {href && (
         <span className="text-yellow text-sm font-semibold group-hover:text-pink transition-colors duration-300 mt-1">
-          Ver detalles →
+          {t('services_details')}
         </span>
       )}
     </div>

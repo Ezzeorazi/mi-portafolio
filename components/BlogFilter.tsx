@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import ArticleCard from './ArticleCard';
 import type { Post } from '@/data/posts';
+import { useTranslation } from '@/hooks/useTranslation';
 
 interface BlogFilterProps {
   posts: Post[];
@@ -10,19 +11,24 @@ interface BlogFilterProps {
 }
 
 export default function BlogFilter({ posts, categories }: BlogFilterProps) {
-  const [active, setActive] = useState('Todos');
+  const { t } = useTranslation();
+  const allLabel = t('blog_filter_all');
+  const [active, setActive] = useState(allLabel);
 
-  const filtered = active === 'Todos' ? posts : posts.filter((p) => p.category === active);
+  const filtered =
+    active === allLabel || active === 'Todos' || active === 'All'
+      ? posts
+      : posts.filter((p) => p.category === active);
 
   return (
     <div>
       <div className="flex flex-wrap gap-2 mb-10">
-        {['Todos', ...categories].map((cat) => (
+        {[allLabel, ...categories].map((cat) => (
           <button
             key={cat}
             onClick={() => setActive(cat)}
             className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-all duration-300 ${
-              active === cat
+              active === cat || (cat === allLabel && (active === 'Todos' || active === 'All'))
                 ? 'bg-yellow text-dark border-yellow'
                 : 'border-muted/40 text-muted hover:border-yellow hover:text-dark'
             }`}

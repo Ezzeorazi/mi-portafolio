@@ -1,35 +1,7 @@
+'use client';
 import Link from 'next/link';
 import { FaGithub, FaInstagram, FaLinkedin, FaEnvelope } from 'react-icons/fa';
-
-const navColumns = [
-  {
-    title: 'Portafolio',
-    links: [
-      { label: 'Inicio', href: '/' },
-      { label: 'Sobre mí', href: '/sobre-mi' },
-      { label: 'Skills', href: '/skills' },
-      { label: 'Proyectos', href: '/proyectos' },
-      { label: 'Currículum', href: '/curriculum' },
-    ],
-  },
-  {
-    title: 'Servicios',
-    links: [
-      { label: 'Ver todos los servicios', href: '/services' },
-      { label: 'Web Institucional', href: '/services#landing' },
-      { label: 'Web Dinámica + CMS', href: '/services#dinamica' },
-      { label: 'E-commerce', href: '/services#ecommerce' },
-      { label: 'Agendar reunión gratis', href: 'https://calendly.com/ezequiel-orazi90/30min', external: true },
-    ],
-  },
-  {
-    title: 'Más',
-    links: [
-      { label: 'Blog', href: '/blog' },
-      { label: 'Contacto', href: '/contacto' },
-    ],
-  },
-];
+import { useTranslation } from '@/hooks/useTranslation';
 
 const socials = [
   { icon: <FaGithub />, href: 'https://github.com/Ezzeorazi', label: 'GitHub' },
@@ -39,7 +11,38 @@ const socials = [
 ];
 
 export default function Footer() {
+  const { t } = useTranslation();
   const year = new Date().getFullYear();
+
+  const navColumns = [
+    {
+      titleKey: 'footer_col_portfolio',
+      links: [
+        { key: 'footer_link_home', href: '/' },
+        { key: 'footer_link_about', href: '/sobre-mi' },
+        { key: 'nav_skills', href: '/skills' },
+        { key: 'footer_link_projects', href: '/proyectos' },
+        { key: 'footer_link_cv', href: '/curriculum' },
+      ],
+    },
+    {
+      titleKey: 'footer_col_services',
+      links: [
+        { key: 'footer_link_all_services', href: '/services' },
+        { key: 'footer_link_landing', href: '/services#landing' },
+        { key: 'footer_link_dynamic', href: '/services#dinamica' },
+        { key: 'footer_link_ecommerce', href: '/services#ecommerce' },
+        { key: 'footer_link_meeting', href: 'https://calendly.com/ezequiel-orazi90/30min', external: true },
+      ],
+    },
+    {
+      titleKey: 'footer_col_more',
+      links: [
+        { key: 'footer_link_blog', href: '/blog' },
+        { key: 'footer_link_contact', href: '/contacto' },
+      ],
+    },
+  ];
 
   return (
     <footer className="bg-dark border-t border-yellow/10 mt-auto">
@@ -54,7 +57,7 @@ export default function Footer() {
               Ezequiel Orazi
             </Link>
             <p className="text-light/75 text-sm leading-relaxed">
-              Desarrollador web fullstack. Sitios rápidos, seguros y listos para Google.
+              {t('footer_brand_tagline')}
             </p>
             <div className="flex gap-4 text-xl mt-1">
               {socials.map((s) => (
@@ -74,28 +77,28 @@ export default function Footer() {
 
           {/* Nav columns */}
           {navColumns.map((col) => (
-            <div key={col.title} className="flex flex-col gap-3">
+            <div key={col.titleKey} className="flex flex-col gap-3">
               <h3 className="text-yellow font-semibold text-xs uppercase tracking-widest mb-1">
-                {col.title}
+                {t(col.titleKey)}
               </h3>
               {col.links.map((link) =>
-                link.external ? (
+                (link as { external?: boolean }).external ? (
                   <a
-                    key={link.label}
+                    key={link.key}
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-light/75 text-sm hover:text-pink transition-colors duration-200"
                   >
-                    {link.label}
+                    {t(link.key)}
                   </a>
                 ) : (
                   <Link
-                    key={link.label}
+                    key={link.key}
                     href={link.href}
                     className="text-light/75 text-sm hover:text-pink transition-colors duration-200"
                   >
-                    {link.label}
+                    {t(link.key)}
                   </Link>
                 )
               )}
@@ -105,11 +108,11 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-yellow/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-light/65">
-          <p>&copy; {year} Ezequiel Orazi. Todos los derechos reservados.</p>
+          <p>&copy; {year} Ezequiel Orazi. {t('footer_rights')}</p>
           <p>
-            Hecho con{' '}
+            {t('footer_made')}{' '}
             <span className="text-pink">♥</span>
-            {' '}en la Rivera Maya · Next.js + TypeScript
+            {' '}{t('footer_location')}
           </p>
         </div>
 
