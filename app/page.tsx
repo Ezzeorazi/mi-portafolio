@@ -29,7 +29,7 @@ export default function HomePage() {
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="hidden md:block absolute inset-0 w-full h-full object-cover"
           aria-hidden="true"
         >
           <source src="/mp_.mp4" type="video/mp4" />
@@ -44,7 +44,7 @@ export default function HomePage() {
             </span>
           </h1>
           <p className="text-light/80 max-w-2xl text-base md:text-lg leading-relaxed">
-            Aplicaciones web modernas, escalables y optimizadas para negocio. React, Next.js,
+            Aplicaciones web modernas, escalables y optimizadas para negocios. React, Next.js,
             Spring Boot y WordPress.
           </p>
           <div className="flex flex-wrap gap-4 justify-center mt-2">
