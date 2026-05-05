@@ -25,7 +25,7 @@ export default function CurriculumPage() {
         <Education />
       </div>
 
-      <ScrollReveal direction="up" delay={0.2} className="flex justify-center mt-4">
+    {/*   <ScrollReveal direction="up" delay={0.2} className="flex justify-center mt-4">
         <a
           href="/cv-ezequiel-orazi.pdf"
           download
@@ -34,6 +34,7 @@ export default function CurriculumPage() {
           Descargar CV
         </a>
       </ScrollReveal>
+       */}
     </section>
   );
 }
