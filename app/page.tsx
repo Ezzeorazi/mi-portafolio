@@ -29,7 +29,7 @@ export default function HomePage() {
           muted
           loop
           playsInline
-          className="hidden md:block absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
           aria-hidden="true"
         >
           <source src="/mp_.mp4" type="video/mp4" />
