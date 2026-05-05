@@ -211,7 +211,9 @@ export default function ServicesPage() {
                   <span className="text-light font-semibold">Base de Datos / Nube:</span> El almacenamiento para sitios dinámicos se abona aparte al proveedor y varía según tráfico y datos.
                 </p>
                 <p>
-                  <span className="text-light font-semibold">Métodos de pago:</span> Transferencia internacional, PayPal o criptomonedas (USDT / USDC).
+                  <span className="text-light font-semibold">Métodos de pago:</span> Los valores están expresados en Dólares Estadounidenses (USD). Se aceptan
+                  pagos a través de Payoneer, o mediante transferencia bancaria en Pesos Mexicanos (MXN) al tipo
+                  de cambio oficial del día de pago.
                 </p>
                 <p>
                   <span className="text-light font-semibold">Validez:</span> Los precios publicados corresponden a Mayo 2026. Consultá para proyectos a largo plazo.
