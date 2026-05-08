@@ -38,7 +38,7 @@ export default function HomeContent({ latestPosts, featuredProjects }: HomeConte
           className="absolute inset-0 w-full h-full object-cover"
           aria-hidden="true"
         >
-          <source src="/mp_.mp4" type="video/mp4" />
+          <source src="/media/mp_.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-dark/65" />
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 gap-6">

@@ -4,32 +4,32 @@ import { useState, useEffect } from 'react';
 
 const images = [
   {
-    src: '/caliber3d-foto-1.webp',
+    src: '/images/projects/caliber3d-foto-1.webp',
     alt: 'En Isla Mujeres, con la camiseta de Rosario Central',
     position: 'object-top',
   },
   {
-    src: '/caliber3d-foto-2.webp',
+    src: '/images/projects/caliber3d-foto-2.webp',
     alt: 'En Xel-há parque Xcaret',
     position: 'object-top',
   },
   {
-    src: '/caliber3d-foto-3.webp',
+    src: '/images/projects/caliber3d-foto-3.webp',
     alt: 'Tomando un coco en la playa',
     position: 'object-top',
   },
   {
-    src: '/caliber3d-foto-4.webp',
+    src: '/images/projects/caliber3d-foto-4.webp',
     alt: 'Amanecer en Portal Maya, Playa del Carmen',
     position: 'object-center',
   },
   {
-    src: '/caliber3d-foto-5.webp',
+    src: '/images/projects/caliber3d-foto-5.webp',
     alt: 'En el gimnasio',
     position: 'object-top',
   },
   {
-    src: '/caliber3d-foto-6.webp',
+    src: '/images/projects/caliber3d-foto-6.webp',
     alt: 'En la Quinta Avenida, Playa del Carmen',
     position: 'object-top',
   },

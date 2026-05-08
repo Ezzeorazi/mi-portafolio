@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     url: 'https://ezequiel-orazi.online/',
     images: [
       {
-        url: '/pagePortafolio.jpg',
+        url: '/images/projects/pagePortafolio.webp',
         width: 1200,
         height: 630,
         alt: 'Ezequiel Orazi Portfolio',
@@ -71,11 +71,11 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Eze Orazi | Desarrollo Web Profesional',
     description: 'Soluciones web modernas con React, Spring Boot y WordPress.',
-    images: ['/pagePortafolio.jpg'],
+    images: ['/images/projects/pagePortafolio.webp'],
   },
   icons: {
-    icon: '/favicon-perfil.svg',
-    apple: '/favicon-perfil.svg',
+    icon: '/icons/favicon-perfil.svg',
+    apple: '/icons/favicon-perfil.svg',
   },
 };
 
@@ -89,7 +89,7 @@ const jsonLd = {
   name: 'Ezequiel Orazi',
   alternateName: 'Eze Orazi',
   url: 'https://ezequiel-orazi.online',
-  image: 'https://ezequiel-orazi.online/pagePortafolio.jpg',
+  image: 'https://ezequiel-orazi.online/images/projects/pagePortafolio.webp',
   jobTitle: 'Desarrollador Fullstack',
   description:
     'Desarrollador fullstack especializado en React, Spring Boot y WordPress. Experiencia en proyectos web orientados a negocio.',

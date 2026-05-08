@@ -6,7 +6,7 @@ export const practiceProjects = [
     title: 'Pronóstico del Tiempo',
     description:
       'Aplicación que consume la API de OpenWeatherMap para mostrar el clima actual y pronósticos por ciudad. Consumo de APIs y renderizado dinámico.',
-    image: 'pagePronostico.jpg',
+    image: 'images/projects/pagePronostico.webp',
     technologies: ['HTML', 'CSS', 'JavaScript', 'API REST'],
     liveLink: 'https://pronostico-eze.netlify.app/',
     repoLink: 'https://github.com/Ezzeorazi/Pronostico.git',
@@ -16,7 +16,7 @@ export const practiceProjects = [
     title: 'Carrito de Compras',
     description:
       'Simulación de carrito de compras con gestión de productos, cantidades y cálculo automático del total.',
-    image: 'pageCarritoDeCompras.jpg',
+    image: 'images/projects/pageCarritoDeCompras.webp',
     technologies: ['HTML', 'CSS', 'Bootstrap', 'JavaScript'],
     liveLink: 'https://cart-by-ezequiel.netlify.app/',
     repoLink: 'https://github.com/Ezzeorazi/carritoDeCompras.git',
@@ -26,7 +26,7 @@ export const practiceProjects = [
     title: 'Selector de Color RGB',
     description:
       'Aplicación interactiva que genera colores RGB mediante sliders con visualización en tiempo real.',
-    image: 'pageInputRGB.jpg',
+    image: 'images/projects/pageInputRGB.webp',
     technologies: ['HTML', 'CSS', 'JavaScript'],
     liveLink: 'https://input-rgb-color.netlify.app/',
     repoLink: 'https://github.com/Ezzeorazi/input-rgb.git',
@@ -36,7 +36,7 @@ export const practiceProjects = [
     title: 'Adivina el Número',
     description:
       'Juego con React donde el usuario debe adivinar un número aleatorio. Estado, lógica condicional y feedback dinámico.',
-    image: 'pageAdivinar.jpg',
+    image: 'images/projects/pageAdivinar.webp',
     technologies: ['React', 'CSS Modules'],
     liveLink: 'https://adivinador-number.netlify.app/',
     repoLink: 'https://github.com/Ezzeorazi/adivinar-numero.git',
@@ -46,7 +46,7 @@ export const practiceProjects = [
     title: 'Cronómetro',
     description:
       'Cronómetro funcional con opciones de iniciar, pausar y reiniciar. Manejo de timers y control de flujo.',
-    image: 'pageCronometro.jpg',
+    image: 'images/projects/pageCronometro.webp',
     technologies: ['HTML', 'CSS', 'JavaScript'],
     liveLink: 'https://cronometro-eze.netlify.app/',
     repoLink: 'https://github.com/Ezzeorazi/cronometro.git',
@@ -56,7 +56,7 @@ export const practiceProjects = [
     title: 'Citas Aleatorias',
     description:
       'Aplicación que muestra citas aleatorias de personajes conocidos. Manipulación de arrays y renderizado dinámico.',
-    image: 'pageCitasAleatorias.jpg',
+    image: 'images/projects/pageCitasAleatorias.webp',
     technologies: ['HTML', 'CSS', 'JavaScript'],
     liveLink: 'https://citas-aleatorias-eze.netlify.app/',
     repoLink: 'https://github.com/Ezzeorazi/citas-aleatorias.git',
@@ -66,7 +66,7 @@ export const practiceProjects = [
     title: 'Lista de Tareas',
     description:
       'To-do list para agregar, eliminar y marcar tareas como completadas. Base para gestión de estado.',
-    image: 'pageListaDeTareas.jpg',
+    image: 'images/projects/pageListaDeTareas.webp',
     technologies: ['HTML', 'CSS', 'JavaScript'],
     liveLink: 'https://Lista-De-tareas-eze.netlify.app/',
     repoLink: 'https://github.com/Ezzeorazi/lista-tareas.git',
@@ -76,7 +76,7 @@ export const practiceProjects = [
     title: 'Trivia Friends',
     description:
       'Juego de preguntas basado en la serie Friends. React, Vite y Tailwind CSS con lógica de juego y diseño moderno.',
-    image: 'friends-trivia.svg',
+    image: 'images/projects/friends-trivia.svg',
     technologies: ['React', 'Vite', 'Tailwind CSS'],
     liveLink: 'https://trivia-friends.netlify.app/',
     repoLink: 'https://github.com/Ezzeorazi/trivia-friends',
@@ -86,12 +86,12 @@ export const practiceProjects = [
     title: 'Cotizador de Divisas',
     description:
       'Conversión de pesos mexicanos a pesos argentinos y dólares. Cálculos dinámicos y experiencia de usuario clara.',
-    image: 'cotizador-divisas.svg',
+    image: 'images/projects/cotizador-divisas.svg',
     technologies: ['React', 'Vite', 'Tailwind CSS'],
     liveLink: 'https://monedas-mxn-usd-ars.netlify.app/',
     repoLink: 'https://github.com/Ezzeorazi/cotizador-divisas',
   },
-  
+
 ];
 
 export default function GalleryPractice() {
