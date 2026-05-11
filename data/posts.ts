@@ -35,14 +35,14 @@ const posts: Post[] = [
   },
   {
     id: 3,
-    slug: 'como-mejorar-el rendimiento-en-Next-con-imagenes-optimizadas',
+    slug: 'como-mejorar-el-rendimiento-en-nextjs-con-imagenes-optimizadas',
     image: 'images/blog/Next-blog.webp',
     title: 'Cómo mejorar el rendimiento en Next.js con imágenes optimizadas',
     category: 'Next.js',
     description: 'Aprende a optimizar imágenes en aplicaciones Next.js usando el componente Image para mejorar el rendimiento.',
     date: 'Publicado el 21 de octubre de 2024',
     ReadingTime: '5 min de lectura',
-    content: 'blog/como-mejorar-el rendimiento-en-Next-con-imagenes-optimizadas.html',
+    content: 'blog/como-mejorar-el-rendimiento-en-nextjs-con-imagenes-optimizadas.html',
   },
   {
     id: 4,

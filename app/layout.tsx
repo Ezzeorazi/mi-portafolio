@@ -39,15 +39,15 @@ export const metadata: Metadata = {
   authors: [{ name: 'Ezequiel Orazi' }],
   robots: { index: true, follow: true },
   alternates: {
-    canonical: 'https://ezequiel-orazi.online/',
+    canonical: 'https://ezequiel-orazi.online',
     languages: {
-      'es': 'https://ezequiel-orazi.online/',
-      'es-MX': 'https://ezequiel-orazi.online/',
-      'es-AR': 'https://ezequiel-orazi.online/',
-      'es-CO': 'https://ezequiel-orazi.online/',
-      'es-CL': 'https://ezequiel-orazi.online/',
-      'en': 'https://ezequiel-orazi.online/',
-      'x-default': 'https://ezequiel-orazi.online/',
+      'es': 'https://ezequiel-orazi.online',
+      'es-MX': 'https://ezequiel-orazi.online',
+      'es-AR': 'https://ezequiel-orazi.online',
+      'es-CO': 'https://ezequiel-orazi.online',
+      'es-CL': 'https://ezequiel-orazi.online',
+      'en': 'https://ezequiel-orazi.online',
+      'x-default': 'https://ezequiel-orazi.online',
     },
   },
   openGraph: {
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     description:
       'Soluciones web modernas con React, Spring Boot y WordPress. Sitios optimizados para crecer.',
     type: 'website',
-    url: 'https://ezequiel-orazi.online/',
+    url: 'https://ezequiel-orazi.online',
     images: [
       {
         url: '/images/projects/pagePortafolio.webp',

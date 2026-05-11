@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     'México',
     'Colombia',
   ],
+  alternates: { canonical: 'https://ezequiel-orazi.online/services' },
 };
 
 export default function ServicesPage() {
