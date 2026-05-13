@@ -1,0 +1,292 @@
+<h2>Introducción: la segunda parte que prometimos</h2>
+<p>En la <a href="/blog/claude-ia-guia-prompts-profesionales" style="color:#f5d805;text-decoration:underline;">Parte 1 de esta guía</a> cubrimos cómo aprovechar Claude en roles como RRHH, administración, programación y gestión ágil. Si no la leíste, te recomiendo empezar por ahí: los 5 pilares del prompt efectivo que detallamos ahí son la base de todo lo que viene a continuación. En esta segunda entrega vamos a cubrir un territorio que me apasiona especialmente: marketing, investigación de mercado, SEO, diseño web y construcción de marca. Son áreas donde Claude puede generar un impacto enorme en muy poco tiempo, porque combinan análisis, creatividad y redacción estratégica, que son exactamente las tres cosas en las que el modelo brilla.</p>
+<p>Pero antes de entrar en los prompts, hay una noticia que vale la pena entender porque cambia las condiciones de uso para millones de personas.</p>
+
+<h2>La alianza Anthropic–SpaceX: más capacidad, menos límites</h2>
+<p>El 6 de mayo de 2026, durante la conferencia Code with Claude en San Francisco, Anthropic anunció un acuerdo histórico con SpaceX para utilizar toda la capacidad de cómputo del data center Colossus 1, ubicado en Memphis, Tennessee. Eso representa más de 300 megawatts de infraestructura y acceso a más de 220.000 GPUs NVIDIA, disponibles en cuestión de semanas. El objetivo es resolver uno de los principales cuellos de botella que enfrentaba la plataforma: los límites de uso que frustran a profesionales y equipos que dependen de Claude para trabajo intensivo.</p>
+<p>El impacto inmediato fue concreto: los límites de uso de Claude Code en el período de cinco horas se duplicaron para los planes Pro, Max, Team y Enterprise. Además, se eliminaron las restricciones adicionales que aplicaban en horarios de mayor demanda (peak hours) para los suscriptores Pro y Max. En términos prácticos, esto significa que si antes alcanzabas el límite en una sesión de trabajo intensa, ahora podés extender esas sesiones considerablemente. También se incrementaron sustancialmente los rate limits de la API para los modelos Claude Opus, lo que beneficia a desarrolladores construyendo aplicaciones que requieren volúmenes altos de procesamiento.</p>
+<p>¿Por qué es relevante para vos, si no sos programador? Porque esta expansión de infraestructura se traduce en una plataforma más estable, con menos interrupciones, y con planes más generosos. Si sos diseñador, marketero o consultora que usa Claude Pro o Max en sesiones largas de análisis o generación de contenido, los cortes por límite de uso van a ser mucho menos frecuentes. Claude se está preparando para convertirse en una herramienta de trabajo de tiempo completo, no de uso ocasional.</p>
+
+<h2>Claude para investigación de mercado y análisis de clientes</h2>
+<p>Antes de diseñar cualquier campaña, sitio web o identidad de marca, necesitás entender a quién le estás hablando. La investigación de mercado tradicional es cara, lenta y muchas veces inaccesible para emprendedores, pequeñas agencias o freelancers. Claude no reemplaza la investigación primaria (encuestas reales, entrevistas con clientes), pero puede acelerar dramáticamente la fase de análisis, la construcción de hipótesis y la síntesis de información.</p>
+
+<p><strong>Ejemplo 1 — Construcción de buyer persona desde cero</strong></p>
+<pre><code>Actuá como un especialista en investigación de mercado con experiencia en marketing B2C latinoamericano.
+Necesito construir un buyer persona detallado para un servicio de [describí tu servicio]
+dirigido a [describí tu público general: ej. "dueños de pequeñas tiendas en México"].
+Generá un perfil completo que incluya:
+- Nombre ficticio, edad, ocupación, nivel de ingresos estimado
+- Objetivos profesionales y personales principales
+- Frustraciones y dolores más comunes relacionados con mi servicio
+- Cómo toma decisiones de compra (qué considera, qué lo frena)
+- Canales digitales que usa habitualmente (redes, buscadores, apps)
+- Frases textuales que probablemente usaría al describir su problema (para usar en copy)
+- Objeciones más frecuentes antes de contratar
+Formato: ficha estructurada con secciones claras. Tono: analítico pero accesible.</code></pre>
+
+<p><strong>Ejemplo 2 — Análisis de competencia desde información pública</strong></p>
+<pre><code>Actuá como un analista de inteligencia competitiva.
+Te voy a dar los sitios web y redes sociales de 3 competidores directos míos en el mercado de [tu sector].
+Analizá cada uno e identificá:
+- Propuesta de valor principal (cómo se diferencian)
+- A qué segmento parecen apuntar (lenguaje, tono, imágenes)
+- Qué ofrecen que yo no, y qué ofrezco yo que ellos no
+- Brechas de mercado: necesidades del cliente que ninguno está cubriendo bien
+- Una recomendación de posicionamiento para mí, basada en los huecos detectados
+
+Competidor 1: [URL o descripción]
+Competidor 2: [URL o descripción]
+Competidor 3: [URL o descripción]</code></pre>
+
+<p><strong>Ejemplo 3 — Síntesis de reseñas y feedback de clientes</strong></p>
+<pre><code>Sos un analista de voz del cliente (Voice of Customer).
+Te voy a pegar reseñas reales de clientes de mi negocio (o de competidores en Google Maps, Trustpilot, etc.).
+Analizá el conjunto y generá:
+1. Los 5 temas positivos más mencionados (lo que valoran)
+2. Los 5 temas negativos más frecuentes (lo que los frustra)
+3. Frases textuales de clientes que puedo usar como testimonios en mi web
+4. Un resumen ejecutivo de una sola página con insights accionables
+5. Recomendaciones concretas para el equipo de atención al cliente y para marketing
+
+Reseñas:
+[pegá aquí el texto de las reseñas]</code></pre>
+
+<p><strong>Ejemplo 4 — Simulación de entrevista con cliente ideal</strong></p>
+<pre><code>Quiero practicar cómo hablar con clientes potenciales antes de hacer entrevistas reales.
+Actuá como [describí el perfil exacto de tu cliente ideal: ej. "dueña de una peluquería canina
+de 5 años de trayectoria en Guadalajara, 42 años, no tiene presencia digital formal y recibe
+clientes solo por recomendación"].
+Voy a hacerte preguntas de investigación de mercado. Respondé de forma realista:
+usá el lenguaje que usaría esa persona, mostrá sus dudas reales, sus frustraciones
+y sus motivaciones genuinas. No respondas como una IA, respondé como esa persona.
+Empezamos cuando yo haga la primera pregunta.</code></pre>
+
+<h2>Claude para marketing digital y contenido</h2>
+<p>El marketing de contenidos es una de las áreas donde la mayoría de los equipos y freelancers sienten más presión: hay que producir mucho, con consistencia, y con calidad suficiente para destacar en un entorno saturado. Claude puede multiplicar la capacidad de producción sin sacrificar el tono ni la estrategia, siempre que le des el contexto adecuado.</p>
+
+<p><strong>Ejemplo 1 — Calendario de contenidos mensual</strong></p>
+<pre><code>Actuá como un estratega de contenidos con experiencia en marketing para PyMEs latinoamericanas.
+Necesito un calendario de contenidos para el mes de [mes/año] para mi [tipo de negocio].
+Mi objetivo principal de marketing es [ej. "generar consultas de potenciales clientes"].
+Mis canales activos son: Instagram, LinkedIn y newsletter mensual.
+Mi cliente ideal es [describí brevemente].
+Mi diferencial de marca es [ej. "soy diseñador web que trabajo exclusivamente con restaurantes"].
+
+Generá un calendario con:
+- 16 posts de Instagram (incluyendo mix de formatos: carruseles, Reels, posts estáticos)
+- 8 publicaciones de LinkedIn (más reflexivas y profesionales)
+- 1 estructura de newsletter con secciones y temas
+Para cada pieza: fecha, formato, idea de contenido y objetivo específico (educación, entretenimiento, conversión, comunidad).</code></pre>
+
+<p><strong>Ejemplo 2 — Email de ventas que no suena a ventas</strong></p>
+<pre><code>Sos un copywriter especializado en email marketing con enfoque en conversión ética.
+Necesito un email para enviar a leads que llenaron un formulario de contacto en mi web
+hace 7 días y no respondieron a mi primer mensaje.
+El servicio que ofrezco es [describí brevemente].
+El mayor beneficio para el cliente es [beneficio principal, no característica técnica].
+La objeción más común es [ej. "creen que es muy caro para su negocio"].
+
+El email debe:
+- Tener un asunto que genere apertura sin clickbait
+- Recordar de forma sutil quién soy sin ser repetitivo
+- Ofrecer valor (un tip, un insight, algo útil) antes de pedir acción
+- Terminar con una CTA suave, no presionante
+- Sonar como una persona real, no como una empresa
+Máximo 200 palabras en el cuerpo del email.</code></pre>
+
+<p><strong>Ejemplo 3 — Guion para video corto o Reel</strong></p>
+<pre><code>Actuá como guionista de contenido para redes sociales, especializado en videos de 60-90 segundos.
+Quiero hacer un Reel/TikTok sobre [tema relacionado con tu negocio].
+Mi audiencia son [describí tu audiencia].
+El video debe seguir esta estructura probada:
+- Hook (0-3 seg): frase que para el scroll
+- Problema (3-15 seg): el dolor que resuelvo
+- Solución (15-45 seg): el insight o método, con ejemplos concretos
+- CTA (45-60 seg): qué debe hacer el espectador ahora
+Escribí el guion completo con indicaciones de cámara básicas (ej. "frente a cámara", "texto en pantalla"),
+emociones que debe transmitir en cada parte, y 3 opciones de hook alternativas para testear.</code></pre>
+
+<h2>Claude para SEO: de la estrategia a la ejecución</h2>
+<p>El SEO es uno de los campos donde Claude puede ser más transformador para profesionales independientes y agencias pequeñas. No porque reemplace herramientas como Ahrefs o Semrush (no puede rastrear la web en tiempo real), sino porque puede acelerar enormemente la parte que más tiempo consume: la estrategia de contenido, el análisis de intención de búsqueda, la redacción optimizada y la estructura de páginas. Si querés profundizar en cómo el valor de tener presencia digital se traduce en clientes reales, también podés leer el artículo <a href="/blog/pagina-web-para-tu-negocio-latinoamerica-2026" style="color:#f5d805;text-decoration:underline;">¿Necesitás una página web para tu negocio?</a> que escribí específicamente para emprendedores latinoamericanos.</p>
+
+<p><strong>Ejemplo 1 — Estrategia de palabras clave y cluster de contenido</strong></p>
+<pre><code>Actuá como un especialista SEO con experiencia en posicionamiento para mercados hispanohablantes.
+Mi negocio es [describí tu negocio y ubicación o mercado objetivo].
+Quiero posicionar mi sitio web para atraer clientes de forma orgánica.
+
+Realizá lo siguiente:
+1. Proponé 1 keyword principal (head term) para mi negocio
+2. Identificá 8-10 keywords de cola larga (long tail) relacionadas con intención de compra o consulta
+3. Organizá estas keywords en un cluster de contenido: página pilar + artículos de soporte
+4. Para cada término, indicá la intención de búsqueda probable (informacional, navegacional, transaccional)
+5. Sugerí los títulos SEO (title tags) y meta descriptions para las 3 páginas más importantes
+   siguiendo las buenas prácticas: keyword al inicio, 55-60 caracteres en title, 150-160 en description</code></pre>
+
+<p><strong>Ejemplo 2 — Optimización de página existente</strong></p>
+<pre><code>Sos un consultor SEO on-page. Voy a pegarte el contenido de una de mis páginas web.
+Analizala y decime:
+1. Si el H1 y los subtítulos (H2/H3) están optimizados para la keyword objetivo
+2. Si la densidad de la keyword es apropiada o hay sobre-optimización
+3. Fragmentos de texto que deberían reescribirse para mejorar la legibilidad y el SEO
+4. Datos estructurados (Schema Markup) que recomendarías agregar
+5. Ideas de enlazado interno hacia otras páginas de mi sitio
+6. Si hay oportunidades de aparecer en featured snippets (fragmentos destacados)
+   y cómo estructurar el contenido para eso
+
+Contenido de la página:
+[pegá aquí el texto de tu página]
+Keyword objetivo: [keyword]</code></pre>
+
+<p><strong>Ejemplo 3 — Artículo SEO completo optimizado</strong></p>
+<pre><code>Actuá como un redactor SEO especializado en [tu industria].
+Escribí un artículo completo optimizado para la keyword "[tu keyword]".
+El artículo debe:
+- Tener entre 1200 y 1500 palabras
+- Incluir H2 y H3 naturales con variaciones de la keyword
+- Responder la intención de búsqueda de alguien que busca [describí qué está buscando exactamente]
+- Incluir una sección de preguntas frecuentes (FAQ) al final con 4 preguntas y respuestas
+  (optimizada para búsquedas por voz y featured snippets)
+- Tener un CTA claro al final hacia [describí qué querés que haga el lector]
+- Sonar como un experto real, no como contenido generado genéricamente
+Tono: [profesional / cercano / técnico — elegí el que corresponde]</code></pre>
+
+<h2>Claude para diseño web: del brief al wireframe en palabras</h2>
+<p>Muchos diseñadores y desarrolladores subestiman cuánto tiempo pierden en la fase de briefing y arquitectura de información antes de tocar ninguna herramienta. Claude puede estructurar toda esa fase: ayudarte a definir la arquitectura del sitio, el copy de cada sección, la jerarquía de información y la lógica de conversión. Si te interesa saber cuánto cuesta construir una web según su tipo y complejidad, te recomiendo el artículo <a href="/blog/precio-pagina-web-mexico-2026" style="color:#f5d805;text-decoration:underline;">¿Cuánto cuesta una página web en México en 2026?</a> donde desgloso los precios reales del mercado.</p>
+
+<p><strong>Ejemplo 1 — Arquitectura de información de un sitio web</strong></p>
+<pre><code>Actuá como un arquitecto de información y UX strategist.
+El cliente es [describí el negocio: rubro, tamaño, objetivo principal del sitio].
+El público objetivo es [describí al usuario].
+El objetivo principal del sitio es [ej. "generar leads de potenciales clientes corporativos"].
+
+Diseñá la arquitectura completa del sitio:
+- Mapa del sitio con páginas principales y subpáginas
+- Para cada página: objetivo específico, secciones clave en orden de aparición,
+  y elemento de conversión principal (CTA)
+- Flujo de usuario desde el primer clic hasta la conversión
+- Páginas que no son obvias pero que generan valor SEO o de confianza
+  (ej. FAQ, Casos de éxito, Política de privacidad)
+- Recomendaciones de navegación y estructura de menú</code></pre>
+
+<p><strong>Ejemplo 2 — Copy completo para landing page</strong></p>
+<pre><code>Sos un copywriter especializado en landing pages de alta conversión.
+El producto o servicio es: [describí brevemente]
+El cliente ideal es: [describí]
+El mayor beneficio (transformación que ofrece): [describí]
+La principal objeción o miedo del cliente: [describí]
+El CTA final que queremos: [ej. "Agendar llamada gratuita"]
+
+Escribí el copy completo de la landing page con estas secciones:
+1. Hero: headline principal (máx. 10 palabras), subtítulo (máx. 20 palabras), CTA
+2. Propuesta de valor: 3 beneficios clave con ícono y descripción corta
+3. Problema-agitación-solución: 3 párrafos que conecten emocionalmente
+4. Cómo funciona: proceso en 3-4 pasos simples
+5. Prueba social: estructura de 2 testimonios ficticios pero realistas
+6. FAQ: 4 preguntas que frenan la decisión de compra
+7. CTA final: remate emocional + botón
+
+Tono: [elegí: confiable y cercano / profesional y directo / enérgico y aspiracional]</code></pre>
+
+<p><strong>Ejemplo 3 — Revisión de UX y experiencia de usuario</strong></p>
+<pre><code>Actuá como un UX reviewer con experiencia en sitios de servicios profesionales.
+Voy a describir la estructura actual de mi página web [o pegá el texto de tus páginas].
+Analizá desde la perspectiva del usuario y decime:
+1. Qué información falta que el usuario necesita para tomar una decisión
+2. Qué información hay que confunde o genera fricción innecesaria
+3. Dónde colocarías los CTAs para maximizar la conversión
+4. Qué elementos generan confianza que no estoy aprovechando
+5. En mobile: qué ajustes son urgentes para que la experiencia no frustre al usuario
+6. Una puntuación global del 1 al 10 en claridad de propuesta de valor,
+   con justificación y los 3 cambios de mayor impacto que haría primero</code></pre>
+
+<h2>Claude para diseño gráfico y construcción de marca</h2>
+<p>Claude no genera imágenes (para eso usás Midjourney, Stable Diffusion, DALL·E o, como en tu caso, NanoBanana 2). Pero Claude puede ser el cerebro estratégico detrás de cualquier proceso de branding: definir la personalidad de la marca, el sistema de tono de comunicación, los valores visuales que el diseñador debe traducir, y los brief creativos que evitan las revisiones infinitas. Un buen brief en manos de un diseñador vale más que diez reuniones.</p>
+
+<p><strong>Ejemplo 1 — Definición de identidad de marca (Brand Book base)</strong></p>
+<pre><code>Actuá como un estratega de marca con experiencia en identidad corporativa para startups y PyMEs.
+Necesito construir la identidad de marca de [nombre del negocio].
+El negocio hace [describí qué hace].
+El cliente al que apunta es [describí].
+Los 3 valores que quiero que la marca transmita son [ej. "confianza, modernidad, accesibilidad"].
+El tono que NO quiero es [ej. "corporativo frío, tecnocrático, distante"].
+
+Generá:
+1. Propuesta de posicionamiento de marca (1 oración)
+2. Misión y visión (2-3 líneas cada una, sin clichés vacíos)
+3. Personalidad de marca: describila como si fuera una persona (arquetipo, rasgos, cómo habla)
+4. Tono de voz: 5 adjetivos que describen cómo debe sonar la marca en cada comunicación
+5. Paleta de colores recomendada (con justificación psicológica de cada color)
+6. Tipografías sugeridas (estilo, no fuentes específicas) y por qué
+7. Lo que la marca NUNCA haría o diría (el "anti-brand")</code></pre>
+
+<p><strong>Ejemplo 2 — Brief creativo para diseñador gráfico</strong></p>
+<pre><code>Sos un director creativo. Necesito redactar un brief creativo
+para encargarle a un diseñador freelance el desarrollo de [logo / sistema visual completo /
+pieza puntual como cartelería, packaging, etc.].
+
+El negocio es: [describí]
+El público objetivo es: [describí]
+Referencias visuales de marcas que admiro (no del mismo sector): [mencionalas]
+Referencias de lo que NO quiero que parezca: [mencionalas]
+Usos principales de la identidad: [web, redes, tarjeta personal, local físico, etc.]
+Presupuesto aproximado y plazo: [si aplica]
+
+Redactá un brief profesional con: contexto del negocio, objetivos del proyecto,
+audiencia, personalidad de marca, restricciones, entregables esperados,
+criterios de evaluación y próximos pasos. Formato documento. Máximo 2 páginas A4.</code></pre>
+
+<p><strong>Ejemplo 3 — Naming: generar y evaluar nombres de marca</strong></p>
+<pre><code>Actuá como un especialista en naming estratégico.
+Estoy buscando nombre para [describí el negocio o producto].
+El mercado objetivo es [país/región].
+El nombre debe transmitir [valores o sensaciones clave].
+El nombre NO debe sonar [ej. "demasiado técnico / infantil / extranjero"].
+Preferencia de estilo: [ej. "palabra inventada / acrónimo / descriptivo / evocador / abstracto"].
+
+Generá 15 propuestas de nombres, organizadas en 3 categorías según el estilo.
+Para cada nombre: explicá en 1 línea la idea o asociación detrás, indicá si es disponible
+como dominio .com o .mx (estimación, no verificación real) y si tiene riesgo de confusión
+con marcas conocidas. Al final, recomendá tus 3 favoritos con justificación.</code></pre>
+
+<p><strong>Ejemplo 4 — Prompt para generar imagen con IA (para herramientas como Midjourney o NanoBanana)</strong></p>
+<pre><code>Actuá como un director de arte con experiencia en prompts para generadores de imágenes IA.
+Necesito crear la imagen de portada para [describí: artículo de blog / post de Instagram /
+presentación / identidad visual].
+El concepto que quiero comunicar es [describí en palabras, no en términos técnicos].
+El estilo visual que busco es [ej. "minimalista y moderno / ilustración flat design / fotografía editorial oscura"].
+Colores predominantes: [describí]
+Elementos que deben estar presentes: [describí]
+Elementos que NO deben aparecer: [describí]
+
+Generá 3 prompts alternativos en inglés, listos para usar en Midjourney, Stable Diffusion
+o cualquier generador de imágenes. Cada prompt debe incluir: descripción visual completa,
+estilo, iluminación, paleta, composición y parámetros de calidad (ej. --ar 16:9 --v 6).</code></pre>
+
+<h2>Técnicas avanzadas de iteración creativa</h2>
+<p>En contextos de diseño y marketing, la iteración es parte del trabajo. Muy pocas veces la primera propuesta es la definitiva. Claude permite acelerar ese proceso de manera notable con algunas técnicas específicas para trabajo creativo.</p>
+<p>La primera es el <strong>feedback dirigido por contraste</strong>: en lugar de decirle "no me gusta, hacelo diferente", describís qué extremo del espectro querés explorar. "El tono es demasiado formal para mi audiencia; reescribilo como si lo explicara un amigo experto en un bar, sin tecnicismos, con más personalidad". Ese contraste guía a Claude mucho mejor que una evaluación negativa vaga.</p>
+<p>La segunda es la <strong>generación paralela</strong>: pedís tres versiones con instrucciones distintas al mismo tiempo. "Escribí el headline de esta landing page en tres versiones: la primera emocional (apela al miedo a perder), la segunda racional (apela a los datos y la eficiencia), y la tercera aspiracional (apela al futuro que el cliente quiere). Comparalas al final". Eso te da un rango de opciones para elegir o combinar.</p>
+<p>La tercera es el <strong>análisis de audiencia antes de escribir</strong>: antes de pedir el copy o el concepto visual, le pedís a Claude que te diga qué piensa tu cliente ideal sobre ese tema. "¿Qué siente alguien de 35 años, dueña de una pequeña tienda de ropa, cuando escucha que le ofrecen 'transformar su negocio con tecnología'? ¿Qué miedos tiene? ¿Qué esperanza le genera?". Esa respuesta te da el mapa emocional con el que después construís el mensaje.</p>
+
+<h2>Cómo integrar Claude en un proyecto de diseño web real</h2>
+<p>Trabajar con Claude en proyectos de diseño y marketing no significa reemplazar al equipo creativo ni automatizar la creatividad. Significa comprimir el tiempo que se pierde en trabajo previo: el briefing, la investigación inicial, los primeros borradores, la coherencia de tono entre piezas. Así es como lo integro en mis proyectos web:</p>
+<ul>
+  <li><strong>Fase 1 — Discovery:</strong> Uso Claude para construir el buyer persona del cliente, analizar su competencia y generar preguntas de entrevista que voy a hacerle al cliente real. Tiempo que se reduce: de 4-6 horas a 1-2 horas.</li>
+  <li><strong>Fase 2 — Estrategia:</strong> Claude define la arquitectura del sitio, el flujo de conversión y el copy base de cada sección. El cliente recibe un documento estructurado en lugar de ideas vagas. Tiempo que se reduce: de 3-4 horas a menos de 1 hora.</li>
+  <li><strong>Fase 3 — Diseño:</strong> Uso Claude para generar el brief creativo (colores, tipografía, personalidad visual) y los prompts para generar imágenes o referencias visuales. El diseñador trabaja con instrucciones claras desde el principio.</li>
+  <li><strong>Fase 4 — Contenido SEO:</strong> Claude genera el copy final de las páginas optimizado para SEO, los meta titles, las meta descriptions y las ideas para el blog del cliente. Lo reviso, personalizo el tono y entrego.</li>
+  <li><strong>Fase 5 — Post-lanzamiento:</strong> Claude me ayuda a construir el calendario de contenidos para los primeros 3 meses, los emails de onboarding para nuevos usuarios y los reportes de resultados que le presento al cliente.</li>
+</ul>
+<p>El resultado es que puedo tomar más proyectos simultáneamente, entregar más rápido y con mayor coherencia estratégica entre todas las piezas.</p>
+
+<h2>Errores comunes en contextos creativos</h2>
+<p>El error más frecuente cuando se usa Claude para trabajo creativo es pedirle que "sea creativo" sin darle ninguna restricción. La creatividad ilimitada genera propuestas genéricas. Paradójicamente, cuanto más limitado y específico es el marco (audiencia exacta, tono preciso, restricciones claras), más interesante y útil es la salida. Un brief muy específico produce mejores resultados que uno abierto.</p>
+<p>El segundo error es usar Claude para validar ideas en lugar de challengearlas. "¿Es buena esta idea?" siempre recibe una respuesta afirmativa con matices. La pregunta más poderosa es "Dame los 5 argumentos más fuertes en contra de esta idea, desde la perspectiva de mi cliente más escéptico". Esa presión revela los puntos débiles reales.</p>
+<p>El tercer error es no dar referencias. "Quiero algo moderno y elegante" no significa nada sin ejemplos. Decí "quiero un tono similar al de Apple: minimalista, con frases cortas, palabras simples y confianza sin arrogancia". Las referencias concretas, incluso de marcas de otros sectores, alinean el resultado mucho más rápido.</p>
+
+<h2>¿Querés una web o app construida con toda esta inteligencia?</h2>
+<p>Todo lo que describí en este artículo es parte del proceso que aplico cuando desarrollo sitios web y aplicaciones para clientes. No solo código: estrategia de contenido, arquitectura pensada para convertir, SEO desde el día uno y una identidad de marca que funciona en cada punto de contacto. Si tenés un negocio o proyecto y querés una presencia digital que realmente trabaje para vos, <a href="/contacto" style="color:#f5d805;text-decoration:underline;">escribime desde la sección de contacto</a> y charlamos. También podés explorar <a href="/services" style="color:#f5d805;text-decoration:underline;">los servicios que ofrezco</a> para tener una idea de los alcances y precios. Si te interesa el mundo de la inteligencia artificial aplicada a negocios de forma más amplia, el artículo sobre <a href="/blog/ia-y-programacion" style="color:#f5d805;text-decoration:underline;">IA y Programación</a> te va a dar más contexto sobre hacia dónde va este campo.</p>
+
+<h2>Conclusión</h2>
+<p>Claude dejó de ser una curiosidad tecnológica para convertirse en una ventaja competitiva real para quienes trabajan en marketing, diseño y estrategia digital. La alianza con SpaceX y el aumento de los límites de uso son señales claras de que Anthropic está apostando a que esta herramienta forme parte del flujo de trabajo cotidiano de profesionales exigentes. La pregunta no es si usarlo, sino cuánto antes empezás a construir los hábitos y los prompts que te diferencian de quienes lo usan sin estrategia. Esta guía es un punto de partida. El resto lo construís con práctica, iteración y, sobre todo, con el contexto correcto en cada prompt.</p>
+<p>Si te quedó alguna duda o querés que profundice en alguno de estos casos de uso, dejame un mensaje. Y si todavía no leíste la <a href="/blog/claude-ia-guia-prompts-profesionales" style="color:#f5d805;text-decoration:underline;">Parte 1 de esta guía</a>, empezá por ahí: los fundamentos que describimos allí hacen que todo lo de esta segunda parte funcione mucho mejor.</p>

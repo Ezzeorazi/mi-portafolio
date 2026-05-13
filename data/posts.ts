@@ -220,6 +220,17 @@ const posts: Post[] = [
     ReadingTime: '12 min de lectura',
     content: 'blog/precio-pagina-web-mexico-2026.html',
   },
+  {
+    id: 20,
+    slug: 'claude-ia-guia-prompts-marketing-seo-diseno-parte-2',
+    image: 'images/blog/claude-prompts-marketing-parte2.webp',
+    title: 'Claude de Anthropic: Marketing, SEO y Diseño con IA — Parte 2',
+    category: 'Inteligencia Artificial',
+    description: 'Prompts avanzados para investigación de mercado, marketing digital, SEO, diseño web y construcción de marca. Más: la alianza Anthropic–SpaceX y qué cambia para los usuarios Pro y Max.',
+    date: 'Publicado el 13 de mayo de 2026',
+    ReadingTime: '16 min de lectura',
+    content: 'blog/claude-ia-guia-prompts-marketing-seo-diseno-parte-2.html',
+  },
 ];
 
 export default posts;
