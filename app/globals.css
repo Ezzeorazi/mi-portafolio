@@ -42,39 +42,22 @@ body {
   padding: 0.1rem 0.4rem;
   border-radius: 4px;
   font-family: 'Courier New', monospace;
-  font-size: 0.85em;
-  word-break: break-word;
+  font-size: 0.9em;
 }
 
 .blog-content pre {
   background-color: rgba(0, 0, 0, 0.4);
   border: 1px solid rgba(245, 216, 5, 0.2);
   border-radius: 8px;
-  padding: 1rem;
+  padding: 1.25rem;
   overflow-x: auto;
-  overflow-y: hidden;
   margin-bottom: 1.5rem;
-  max-width: 100%;
-  box-sizing: border-box;
-  -webkit-overflow-scrolling: touch;
 }
 
 .blog-content pre code {
   background: none;
   padding: 0;
   color: #f0eeed;
-  font-size: 0.82em;
-  line-height: 1.6;
-  white-space: pre-wrap;
-  word-break: break-word;
-  overflow-wrap: break-word;
-  display: block;
-}
-
-/* Contenedor del artículo no debe romperse por el pre */
-.blog-content {
-  overflow-x: hidden;
-  min-width: 0;
 }
 
 .blog-content ul,
