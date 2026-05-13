@@ -223,7 +223,7 @@ const posts: Post[] = [
   {
     id: 20,
     slug: 'claude-ia-guia-prompts-marketing-seo-diseno-parte-2',
-    image: 'images/blog/claude-guia-prompts.svg',
+    image: 'images/blog/claude-prompts-marketing-parte2.webp',
     title: 'Claude de Anthropic: Marketing, SEO y Diseño con IA — Parte 2',
     category: 'Inteligencia Artificial',
     description: 'Prompts avanzados para investigación de mercado, marketing digital, SEO, diseño web y construcción de marca. Más: la alianza Anthropic–SpaceX y qué cambia para los usuarios Pro y Max.',
