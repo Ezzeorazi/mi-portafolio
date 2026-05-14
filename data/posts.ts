@@ -190,7 +190,7 @@ const posts: Post[] = [
   {
     id: 17,
     slug: 'claude-ia-guia-prompts-profesionales',
-    image: 'images/blog/claude-prompts-marketing-parte2.webp',
+    image: 'images/blog/claude-guia-prompts.svg',
     title: 'Claude de Anthropic: Cómo Aprovecharlo al Máximo — Parte 1',
     category: 'Inteligencia Artificial',
     description: 'Guía práctica para sacarle el máximo partido a Claude: qué lo hace diferente, los 5 pilares de un buen prompt y ejemplos reales para RRHH, administrativos, programadores y Scrum Masters.',
