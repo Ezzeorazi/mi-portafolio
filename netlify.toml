@@ -2,6 +2,13 @@
   command = "npm run build"
   publish = ".next"
 
+# Redirigir accesos directos a archivos .html del blog a la ruta Next.js limpia
+[[redirects]]
+  from = "/blog/*.html"
+  to = "/blog/:splat"
+  status = 301
+  force = true
+
 # Redirect old broken slug (had a literal space) to the fixed URL
 [[redirects]]
   from = "/blog/como-mejorar-el rendimiento-en-Next-con-imagenes-optimizadas"
