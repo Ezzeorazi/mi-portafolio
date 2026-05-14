@@ -54,7 +54,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   let htmlContent = '';
   try {
-    const filePath = path.join(process.cwd(), 'public', post.content);
+    const filePath = path.join(process.cwd(), 'content', post.content);
     htmlContent = await fs.readFile(filePath, 'utf-8');
   } catch {
     notFound();
