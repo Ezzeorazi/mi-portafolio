@@ -32,6 +32,7 @@ export default function Footer() {
         { key: 'footer_link_landing', href: '/services#landing' },
         { key: 'footer_link_dynamic', href: '/services#dinamica' },
         { key: 'footer_link_ecommerce', href: '/services#ecommerce' },
+        { key: 'footer_link_seo', href: '/services#seo' },
         { key: 'footer_link_meeting', href: 'https://calendly.com/ezequiel-orazi90/30min', external: true },
       ],
     },
@@ -39,6 +40,7 @@ export default function Footer() {
       titleKey: 'footer_col_more',
       links: [
         { key: 'footer_link_blog', href: '/blog' },
+        { key: 'footer_link_faq', href: '/faq' },
         { key: 'footer_link_contact', href: '/contacto' },
       ],
     },

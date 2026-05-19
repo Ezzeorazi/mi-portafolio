@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import Services from '@/components/Services';
+import HomeFAQ from '@/components/HomeFAQ';
 import ScrollReveal from '@/components/ScrollReveal';
 import ArticleCard from '@/components/ArticleCard';
 import ProjectCard from '@/components/ProjectCard';
@@ -77,6 +78,9 @@ export default function HomeContent({ latestPosts, featuredProjects }: HomeConte
 
       {/* Services */}
       <Services />
+
+      {/* FAQ */}
+      <HomeFAQ />
 
       {/* Featured Projects */}
       {featuredProjects.length > 0 && (

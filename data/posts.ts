@@ -231,6 +231,17 @@ const posts: Post[] = [
     ReadingTime: '16 min de lectura',
     content: 'blog/claude-ia-guia-prompts-marketing-seo-diseno-parte-2.html',
   },
+  {
+    id: 21,
+    slug: 'caliber3d-plataforma-impresion-3d-mexico',
+    image: 'images/blog/caliber3d-blog-portada.webp',
+    title: 'Caliber 3D: de taller sin web a plataforma con comunidad maker',
+    category: 'Proyectos',
+    description: 'Cómo construí la plataforma de Caliber 3D: calculadora de costos, Espacio Makers, blog SEO y sistema de login para profesionalizar el taller de impresión 3D más activo de Playa del Carmen.',
+    date: 'Publicado el 18 de mayo de 2026',
+    ReadingTime: '8 min de lectura',
+    content: 'blog/caliber3d-plataforma-impresion-3d-mexico.html',
+  },
 ];
 
 export default posts;

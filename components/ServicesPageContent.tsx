@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { FaGlobe, FaDatabase, FaShoppingCart, FaTools, FaCheck } from 'react-icons/fa';
+import { FaGlobe, FaDatabase, FaShoppingCart, FaTools, FaCheck, FaFire } from 'react-icons/fa';
 import { SiNextdotjs, SiTypescript, SiTailwindcss, SiSanity } from 'react-icons/si';
 import ScrollReveal from '@/components/ScrollReveal';
 import { useTranslation } from '@/hooks/useTranslation';
@@ -18,7 +18,7 @@ const servicesEs = [
     icon: <FaGlobe className="text-5xl text-yellow" />,
     badgeKey: 'svc_landing_badge',
     title: 'Web Institucional / Landing Page',
-    price: '$250 USD',
+    price: '$180 USD',
     description:
       'Tu carta de presentación digital. Ideal para profesionales, estudios o comercios que necesitan mostrar quiénes son y qué ofrecen de manera clara y profesional.',
     features: [
@@ -37,7 +37,7 @@ const servicesEs = [
     id: 'dinamica',
     icon: <FaDatabase className="text-5xl text-yellow" />,
     title: 'Web Dinámica + Gestión de Datos',
-    price: '$650 USD',
+    price: '$490 USD',
     description:
       'Una herramienta potente con panel de control para administrar tu contenido sin saber programar. Ideal para negocios que necesitan catálogos, registros de usuarios o contenido actualizable.',
     features: [
@@ -57,7 +57,7 @@ const servicesEs = [
     id: 'ecommerce',
     icon: <FaShoppingCart className="text-5xl text-yellow" />,
     title: 'E-commerce / Tienda Online',
-    price: '$1.200 USD',
+    price: '$890 USD',
     description:
       'Tu local abierto las 24 horas para todo el mundo. Flujo completo de compra: el cliente elige, paga y vos solo despachás el pedido.',
     features: [
@@ -72,6 +72,26 @@ const servicesEs = [
     cta: 'Quiero mi tienda online',
     badge: 'Para vender sin límites',
   },
+  {
+    id: 'seo',
+    icon: <FaFire className="text-5xl text-yellow" />,
+    title: 'SEO con IA — Posicionamiento en Google y en IA',
+    price: '$150 USD',
+    description:
+      'Aparecé antes que tu competencia en Google, ChatGPT, Perplexity y Gemini. Uso Claude para analizar tu sitio, investigar palabras clave y optimizar cada elemento técnico y de contenido para que los motores de búsqueda te encuentren a vos primero.',
+    features: [
+      'Auditoría SEO completa: diagnóstico técnico, de velocidad y de contenido',
+      'Investigación de keywords con IA: qué buscan exactamente tus clientes',
+      'AEO (Answer Engine Optimization): aparecé en respuestas de ChatGPT, Perplexity y Gemini',
+      'Schema Markup y datos estructurados para Rich Snippets destacados en Google',
+      'Metadatos, títulos H1-H6 y descripciones optimizados con Claude AI',
+      'Reporte de posicionamiento: métricas claras y plan de mejora continua',
+    ],
+    tech: 'Claude AI + Google Search Console + Schema.org + Structured Data',
+    note: '* Plan de seguimiento mensual: $90 USD/mes. Compatible con cualquier sitio web existente.',
+    cta: 'Quiero aparecer primero',
+    badge: 'Nuevo · Con Claude AI',
+  },
 ];
 
 const servicesEn = [
@@ -79,7 +99,7 @@ const servicesEn = [
     id: 'landing',
     icon: <FaGlobe className="text-5xl text-yellow" />,
     title: 'Business Website / Landing Page',
-    price: '$250 USD',
+    price: '$180 USD',
     description:
       'Your digital business card. Ideal for professionals, studios or businesses that need to show who they are and what they offer in a clear and professional way.',
     features: [
@@ -98,7 +118,7 @@ const servicesEn = [
     id: 'dinamica',
     icon: <FaDatabase className="text-5xl text-yellow" />,
     title: 'Dynamic Web + Data Management',
-    price: '$650 USD',
+    price: '$490 USD',
     description:
       'A powerful tool with a control panel to manage your content without coding. Ideal for businesses that need catalogs, user records or updatable content.',
     features: [
@@ -118,7 +138,7 @@ const servicesEn = [
     id: 'ecommerce',
     icon: <FaShoppingCart className="text-5xl text-yellow" />,
     title: 'E-commerce / Online Store',
-    price: '$1,200 USD',
+    price: '$890 USD',
     description:
       'Your store open 24/7 for everyone. Full purchase flow: the customer chooses, pays, and you just ship the order.',
     features: [
@@ -132,6 +152,26 @@ const servicesEn = [
     tech: 'Next.js + TypeScript + Sanity CMS + Payment gateway',
     cta: 'I want my online store',
     badge: 'Sell without limits',
+  },
+  {
+    id: 'seo',
+    icon: <FaFire className="text-5xl text-yellow" />,
+    title: 'AI SEO — Rank First on Google & AI Engines',
+    price: '$150 USD',
+    description:
+      'Show up before your competitors on Google, ChatGPT, Perplexity and Gemini. I use Claude to audit your site, research keywords and optimize every technical and content element so search engines find you first.',
+    features: [
+      'Full SEO audit: technical, speed and content diagnosis',
+      'AI-powered keyword research: discover exactly what your customers search for',
+      'AEO (Answer Engine Optimization): appear in ChatGPT, Perplexity and Gemini answers',
+      'Schema Markup and structured data for highlighted Rich Snippets on Google',
+      'Metadata, H1-H6 titles and descriptions optimized with Claude AI',
+      'Ranking report: clear metrics and continuous improvement plan',
+    ],
+    tech: 'Claude AI + Google Search Console + Schema.org + Structured Data',
+    note: '* Monthly follow-up plan: $90 USD/month. Compatible with any existing website.',
+    cta: 'I want to rank first',
+    badge: 'New · Powered by Claude AI',
   },
 ];
 
@@ -242,7 +282,7 @@ export default function ServicesPageContent() {
                 </ul>
               </div>
               <div className="text-center shrink-0">
-                <p className="text-pink font-bold text-3xl">$50 USD</p>
+                <p className="text-pink font-bold text-3xl">$45 USD</p>
                 <p className="text-light/50 text-xs mt-1">{t('services_maintenance_per_month')}</p>
               </div>
             </div>
