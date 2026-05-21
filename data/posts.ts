@@ -242,6 +242,17 @@ const posts: Post[] = [
     ReadingTime: '8 min de lectura',
     content: 'blog/caliber3d-plataforma-impresion-3d-mexico.html',
   },
+  {
+    id: 22,
+    slug: 'nextjs-vs-wordpress-cual-elegir-negocio-2026',
+    image: 'images/blog/nextjs-vs-wordpress-2026.webp',
+    title: 'Next.js vs WordPress: ¿cuál elegir para tu negocio en 2026?',
+    category: 'Servicios Web',
+    description: 'Comparativa honesta entre Next.js y WordPress para dueños de negocios: performance, SEO, PWA, escalabilidad y cuándo cada tecnología tiene sentido. Incluye cómo un sitio puede convertirse en el alma de tu negocio.',
+    date: 'Publicado el 21 de mayo de 2026',
+    ReadingTime: '10 min de lectura',
+    content: 'blog/nextjs-vs-wordpress-cual-elegir-negocio-2026.html',
+  },
 ];
 
 export default posts;
