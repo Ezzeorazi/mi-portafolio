@@ -66,57 +66,72 @@
 
 <h2>Comparativa directa</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Criterio</th>
-      <th>WordPress</th>
-      <th>Next.js</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Performance</td>
-      <td>Media (con optimización)</td>
-      <td>Alta desde el inicio</td>
-    </tr>
-    <tr>
-      <td>SEO técnico</td>
-      <td>Bueno con plugins</td>
-      <td>Excelente nativo</td>
-    </tr>
-    <tr>
-      <td>Seguridad</td>
-      <td>Vulnerable sin mantenimiento</td>
-      <td>Robusta por diseño</td>
-    </tr>
-    <tr>
-      <td>Escalabilidad</td>
-      <td>Limitada</td>
-      <td>Alta</td>
-    </tr>
-    <tr>
-      <td>Costo inicial</td>
-      <td>Bajo</td>
-      <td>Medio-alto</td>
-    </tr>
-    <tr>
-      <td>Administración de contenido</td>
-      <td>Muy fácil</td>
-      <td>Requiere CMS headless</td>
-    </tr>
-    <tr>
-      <td>Funcionalidades personalizadas</td>
-      <td>Con plugins o código extra</td>
-      <td>Sin límite</td>
-    </tr>
-    <tr>
-      <td>PWA / App nativa</td>
-      <td>Muy limitado</td>
-      <td>Nativo y sencillo</td>
-    </tr>
-  </tbody>
-</table>
+<div style="display:flex;flex-direction:column;gap:0.75rem;margin:1.5rem 0;">
+
+  <!-- Header -->
+  <div style="display:flex;gap:0.5rem;">
+    <div style="flex:1;"></div>
+    <div style="flex:1;text-align:center;padding:0.4rem 0.5rem;border-radius:6px;background:rgba(33,117,155,0.2);color:#21759b;font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.04em;">WordPress</div>
+    <div style="flex:1;text-align:center;padding:0.4rem 0.5rem;border-radius:6px;background:rgba(245,216,5,0.12);color:#f5d805;font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.04em;">Next.js</div>
+  </div>
+
+  <!-- Performance -->
+  <div style="display:flex;gap:0.5rem;align-items:stretch;">
+    <div style="flex:1;display:flex;align-items:center;padding:0.6rem 0.5rem;border-radius:6px;background:rgba(255,255,255,0.04);color:#f0eeed;font-weight:600;font-size:0.85rem;">Performance</div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:0.6rem 0.5rem;border-radius:6px;background:rgba(255,255,255,0.04);color:#f0eeed;opacity:0.75;font-size:0.85rem;">Media (con optimización)</div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:0.6rem 0.5rem;border-radius:6px;background:rgba(74,222,128,0.08);color:#4ade80;font-size:0.85rem;font-weight:600;">Alta desde el inicio</div>
+  </div>
+
+  <!-- SEO -->
+  <div style="display:flex;gap:0.5rem;align-items:stretch;">
+    <div style="flex:1;display:flex;align-items:center;padding:0.6rem 0.5rem;border-radius:6px;background:rgba(255,255,255,0.04);color:#f0eeed;font-weight:600;font-size:0.85rem;">SEO técnico</div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:0.6rem 0.5rem;border-radius:6px;background:rgba(255,255,255,0.04);color:#f0eeed;opacity:0.75;font-size:0.85rem;">Bueno con plugins</div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:0.6rem 0.5rem;border-radius:6px;background:rgba(74,222,128,0.08);color:#4ade80;font-size:0.85rem;font-weight:600;">Excelente nativo</div>
+  </div>
+
+  <!-- Seguridad -->
+  <div style="display:flex;gap:0.5rem;align-items:stretch;">
+    <div style="flex:1;display:flex;align-items:center;padding:0.6rem 0.5rem;border-radius:6px;background:rgba(255,255,255,0.04);color:#f0eeed;font-weight:600;font-size:0.85rem;">Seguridad</div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:0.6rem 0.5rem;border-radius:6px;background:rgba(248,113,113,0.08);color:#f87171;font-size:0.85rem;">Vulnerable sin mantenimiento</div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:0.6rem 0.5rem;border-radius:6px;background:rgba(74,222,128,0.08);color:#4ade80;font-size:0.85rem;font-weight:600;">Robusta por diseño</div>
+  </div>
+
+  <!-- Escalabilidad -->
+  <div style="display:flex;gap:0.5rem;align-items:stretch;">
+    <div style="flex:1;display:flex;align-items:center;padding:0.6rem 0.5rem;border-radius:6px;background:rgba(255,255,255,0.04);color:#f0eeed;font-weight:600;font-size:0.85rem;">Escalabilidad</div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:0.6rem 0.5rem;border-radius:6px;background:rgba(248,113,113,0.08);color:#f87171;font-size:0.85rem;">Limitada</div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:0.6rem 0.5rem;border-radius:6px;background:rgba(74,222,128,0.08);color:#4ade80;font-size:0.85rem;font-weight:600;">Alta</div>
+  </div>
+
+  <!-- Costo inicial -->
+  <div style="display:flex;gap:0.5rem;align-items:stretch;">
+    <div style="flex:1;display:flex;align-items:center;padding:0.6rem 0.5rem;border-radius:6px;background:rgba(255,255,255,0.04);color:#f0eeed;font-weight:600;font-size:0.85rem;">Costo inicial</div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:0.6rem 0.5rem;border-radius:6px;background:rgba(74,222,128,0.08);color:#4ade80;font-size:0.85rem;font-weight:600;">Bajo</div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:0.6rem 0.5rem;border-radius:6px;background:rgba(255,255,255,0.04);color:#f0eeed;opacity:0.75;font-size:0.85rem;">Medio-alto</div>
+  </div>
+
+  <!-- Gestión de contenido -->
+  <div style="display:flex;gap:0.5rem;align-items:stretch;">
+    <div style="flex:1;display:flex;align-items:center;padding:0.6rem 0.5rem;border-radius:6px;background:rgba(255,255,255,0.04);color:#f0eeed;font-weight:600;font-size:0.85rem;">Gestión de contenido</div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:0.6rem 0.5rem;border-radius:6px;background:rgba(74,222,128,0.08);color:#4ade80;font-size:0.85rem;font-weight:600;">Muy fácil</div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:0.6rem 0.5rem;border-radius:6px;background:rgba(255,255,255,0.04);color:#f0eeed;opacity:0.75;font-size:0.85rem;">Requiere CMS headless</div>
+  </div>
+
+  <!-- Funcionalidades -->
+  <div style="display:flex;gap:0.5rem;align-items:stretch;">
+    <div style="flex:1;display:flex;align-items:center;padding:0.6rem 0.5rem;border-radius:6px;background:rgba(255,255,255,0.04);color:#f0eeed;font-weight:600;font-size:0.85rem;">Funcionalidades propias</div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:0.6rem 0.5rem;border-radius:6px;background:rgba(255,255,255,0.04);color:#f0eeed;opacity:0.75;font-size:0.85rem;">Con plugins o código extra</div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:0.6rem 0.5rem;border-radius:6px;background:rgba(74,222,128,0.08);color:#4ade80;font-size:0.85rem;font-weight:600;">Sin límite</div>
+  </div>
+
+  <!-- PWA -->
+  <div style="display:flex;gap:0.5rem;align-items:stretch;">
+    <div style="flex:1;display:flex;align-items:center;padding:0.6rem 0.5rem;border-radius:6px;background:rgba(255,255,255,0.04);color:#f0eeed;font-weight:600;font-size:0.85rem;">PWA / App nativa</div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:0.6rem 0.5rem;border-radius:6px;background:rgba(248,113,113,0.08);color:#f87171;font-size:0.85rem;">Muy limitado</div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:0.6rem 0.5rem;border-radius:6px;background:rgba(74,222,128,0.08);color:#4ade80;font-size:0.85rem;font-weight:600;">Nativo y sencillo</div>
+  </div>
+
+</div>
 
 <h2>¿Qué es una PWA y por qué cambia todo?</h2>
 
