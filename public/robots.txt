@@ -1,39 +1,5 @@
-# Default: allow all crawlers
+# *
 User-agent: *
-Allow: /
-Disallow: /media/
-
-# Google AI (Gemini training)
-User-agent: Google-Extended
-Allow: /
-
-# OpenAI / ChatGPT
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: OAI-SearchBot
-Allow: /
-
-# Anthropic / Claude
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-# Perplexity AI
-User-agent: PerplexityBot
-Allow: /
-
-# Common Crawl (base de datos usada por múltiples IAs)
-User-agent: CCBot
-Allow: /
-
-# Apple AI
-User-agent: Applebot-Extended
 Allow: /
 
 # Host

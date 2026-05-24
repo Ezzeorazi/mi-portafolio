@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { FaGlobe, FaDatabase, FaShoppingCart } from 'react-icons/fa';
+import { FaGlobe, FaDatabase, FaShoppingCart, FaCogs } from 'react-icons/fa';
 import ServiceCard from './ServiceCard';
 import ScrollReveal from './ScrollReveal';
 import { useTranslation } from '@/hooks/useTranslation';
@@ -11,7 +11,7 @@ const servicesEs = [
     description:
       'Tu carta de presentación digital. Diseño responsive, secciones clave (Inicio, Servicios, Contacto), botón de WhatsApp y SEO básico para que Google te encuentre.',
     icon: <FaGlobe />,
-    price: 'desde $250 USD',
+    price: 'desde $180 USD',
     badge: 'Ideal para empezar',
     href: '/services#landing',
   },
@@ -20,7 +20,7 @@ const servicesEs = [
     description:
       'Sitio web con panel de control para que administres tu contenido sin saber programar. Base de datos en la nube, catálogo de productos, secciones privadas y SEO avanzado.',
     icon: <FaDatabase />,
-    price: 'desde $650 USD',
+    price: 'desde $490 USD',
     badge: 'Para negocios en crecimiento',
     href: '/services#dinamica',
   },
@@ -29,9 +29,18 @@ const servicesEs = [
     description:
       'Tu local abierto las 24hs. Carrito de compras, integración con Mercado Pago, PayPal o Stripe, control de stock y SEO transaccional para captar intención de compra.',
     icon: <FaShoppingCart />,
-    price: 'desde $1.200 USD',
+    price: 'desde $890 USD',
     badge: 'Para vender sin límites',
     href: '/services#ecommerce',
+  },
+  {
+    title: 'Sistemas a Medida',
+    description:
+      'Software personalizado para tu negocio. Bar, restaurante, CRM, RRHH, gestión de producción, generador de presupuestos y más. Empezamos con una reunión para diseñar exactamente lo que necesitás.',
+    icon: <FaCogs />,
+    price: 'A consultar',
+    badge: 'Proyecto personalizado',
+    href: '/services#medida',
   },
 ];
 
@@ -41,7 +50,7 @@ const servicesEn = [
     description:
       'Your digital business card. Responsive design, key sections (Home, Services, Contact), WhatsApp button and basic SEO so Google can find you.',
     icon: <FaGlobe />,
-    price: 'from $250 USD',
+    price: 'from $180 USD',
     badge: 'Perfect to start',
     href: '/services#landing',
   },
@@ -50,7 +59,7 @@ const servicesEn = [
     description:
       'A website with a control panel so you can manage your content without coding. Cloud database, product catalog, private sections and advanced SEO.',
     icon: <FaDatabase />,
-    price: 'from $650 USD',
+    price: 'from $490 USD',
     badge: 'For growing businesses',
     href: '/services#dinamica',
   },
@@ -59,9 +68,18 @@ const servicesEn = [
     description:
       'Your store open 24/7. Shopping cart, integration with PayPal or Stripe, stock control and transactional SEO to capture purchase intent.',
     icon: <FaShoppingCart />,
-    price: 'from $1,200 USD',
+    price: 'from $890 USD',
     badge: 'Sell without limits',
     href: '/services#ecommerce',
+  },
+  {
+    title: 'Custom Software Systems',
+    description:
+      'Software tailored to your business. Bar, restaurant, CRM, HR, production management, quote generator and more. We start with a meeting to design exactly what you need.',
+    icon: <FaCogs />,
+    price: 'Quote on request',
+    badge: 'Custom project',
+    href: '/services#medida',
   },
 ];
 

@@ -101,6 +101,44 @@ const translations: Record<Language, Record<string, string>> = {
     services_final_book: 'Agendar reunión gratis',
     services_final_write: 'Escribirme',
 
+    // SISTEMAS A MEDIDA
+    svc_medida_badge: 'Proyecto personalizado',
+    svc_medida_note:
+      '* El alcance y precio final se definen en la reunión inicial de análisis sin costo.',
+    svc_medida_cta: 'Agendar reunión de análisis',
+    svc_medida_examples_title: 'Tipos de sistemas que podemos construir',
+    svc_medida_examples_subtitle:
+      'Cada sistema es único y se diseña desde cero para tu negocio. Esto es solo una muestra de lo que es posible.',
+    svc_medida_example_bar_name: 'Bar / Restaurante',
+    svc_medida_example_bar_desc:
+      'Mesas, carta digital QR, pedidos en tiempo real y cuentas separadas',
+    svc_medida_example_crm_name: 'CRM de Ventas',
+    svc_medida_example_crm_desc:
+      'Pipeline de clientes, seguimientos, historial y métricas de conversión',
+    svc_medida_example_prod_name: 'Gestión de Producción',
+    svc_medida_example_prod_desc:
+      'Órdenes de trabajo, stock de insumos, trazabilidad y control de calidad',
+    svc_medida_example_rrhh_name: 'RRHH Completo',
+    svc_medida_example_rrhh_desc:
+      'Empleados, asistencias, liquidación de sueldos y documentación digital',
+    svc_medida_example_presup_name: 'Generador de Presupuestos',
+    svc_medida_example_presup_desc:
+      'Para freelancers: creá, enviá y gestioná presupuestos con PDF y link de aceptación',
+    svc_medida_example_turnos_name: 'Turnos y Reservas',
+    svc_medida_example_turnos_desc:
+      'Agenda online para clínicas, profesionales y servicios con recordatorios automáticos',
+    svc_medida_example_inv_name: 'Inventario y Stock',
+    svc_medida_example_inv_desc:
+      'Control de stock, alertas de reposición, movimientos y gestión de proveedores',
+    svc_medida_example_delivery_name: 'Delivery / Logística',
+    svc_medida_example_delivery_desc:
+      'Pedidos, asignación de repartidores, seguimiento en tiempo real e historial de entregas',
+    svc_medida_nimbus_badge: 'Ejemplo real en producción',
+    svc_medida_nimbus_title: '¿Querés ver cómo queda un sistema real?',
+    svc_medida_nimbus_desc:
+      'Nimbus CRM es un sistema de gestión de clientes y ventas que desarrollé. Tiene panel de administración, pipeline visual, historial de interacciones y reportes. Exploralo para ver el nivel de producto que construimos juntos.',
+    svc_medida_nimbus_cta: 'Explorar Nimbus CRM',
+
     // CONTACT
     contact_title: 'Contacto',
     contact_name: 'Nombre',
@@ -142,6 +180,7 @@ const translations: Record<Language, Record<string, string>> = {
     footer_link_dynamic: 'Web Dinámica + CMS',
     footer_link_ecommerce: 'E-commerce',
     footer_link_seo: 'SEO con IA',
+    footer_link_custom_systems: 'Sistemas a Medida',
     footer_link_meeting: 'Agendar reunión gratis',
     footer_link_blog: 'Blog',
     footer_link_contact: 'Contacto',
@@ -250,6 +289,44 @@ const translations: Record<Language, Record<string, string>> = {
     services_final_book: 'Book a free meeting',
     services_final_write: 'Get in touch',
 
+    // CUSTOM SYSTEMS
+    svc_medida_badge: 'Custom project',
+    svc_medida_note:
+      '* Scope and final price are defined in the free initial analysis meeting.',
+    svc_medida_cta: 'Book an analysis meeting',
+    svc_medida_examples_title: 'Types of systems we can build',
+    svc_medida_examples_subtitle:
+      'Every system is unique and designed from scratch for your business. This is just a sample of what is possible.',
+    svc_medida_example_bar_name: 'Bar / Restaurant',
+    svc_medida_example_bar_desc:
+      'Tables, digital QR menu, real-time orders and split bills',
+    svc_medida_example_crm_name: 'Sales CRM',
+    svc_medida_example_crm_desc:
+      'Client pipeline, follow-ups, interaction history and conversion metrics',
+    svc_medida_example_prod_name: 'Production Management',
+    svc_medida_example_prod_desc:
+      'Work orders, supply stock, traceability and quality control',
+    svc_medida_example_rrhh_name: 'Full HR System',
+    svc_medida_example_rrhh_desc:
+      'Employees, attendance, payroll calculation and digital documentation',
+    svc_medida_example_presup_name: 'Quote Generator',
+    svc_medida_example_presup_desc:
+      'For freelancers: create, send and manage quotes with PDF and acceptance links',
+    svc_medida_example_turnos_name: 'Appointments & Bookings',
+    svc_medida_example_turnos_desc:
+      'Online scheduling for clinics, professionals and services with automatic reminders',
+    svc_medida_example_inv_name: 'Inventory & Stock',
+    svc_medida_example_inv_desc:
+      'Stock control, restock alerts, movements and supplier management',
+    svc_medida_example_delivery_name: 'Delivery / Logistics',
+    svc_medida_example_delivery_desc:
+      'Orders, delivery assignment, real-time tracking and delivery history',
+    svc_medida_nimbus_badge: 'Live production example',
+    svc_medida_nimbus_title: 'Want to see what a real system looks like?',
+    svc_medida_nimbus_desc:
+      'Nimbus CRM is a client and sales management system I built. It features an admin panel, visual pipeline, interaction history and reports. Explore it to see the product level we can build together.',
+    svc_medida_nimbus_cta: 'Explore Nimbus CRM',
+
     // CONTACT
     contact_title: 'Contact',
     contact_name: 'Name',
@@ -290,6 +367,7 @@ const translations: Record<Language, Record<string, string>> = {
     footer_link_dynamic: 'Dynamic Web + CMS',
     footer_link_ecommerce: 'E-commerce',
     footer_link_seo: 'AI SEO',
+    footer_link_custom_systems: 'Custom Systems',
     footer_link_meeting: 'Book a free meeting',
     footer_link_blog: 'Blog',
     footer_link_contact: 'Contact',
