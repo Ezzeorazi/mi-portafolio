@@ -253,6 +253,17 @@ const posts: Post[] = [
     ReadingTime: '10 min de lectura',
     content: 'blog/nextjs-vs-wordpress-cual-elegir-negocio-2026.html',
   },
+  {
+    id: 23,
+    slug: '5-errores-seo-negocio-como-arreglarlos',
+    image: 'images/blog/5-errores-seo-negocio.webp',
+    title: '5 errores que arruinan el SEO de tu negocio (y cómo arreglarlos hoy)',
+    category: 'SEO',
+    description: 'Los 5 errores de SEO que cometen la mayoría de los negocios en México y LATAM: velocidad, metadatos, presencia local, mobile y contenido. Diagnóstico gratuito y pasos concretos para corregirlos.',
+    date: 'Publicado el 26 de mayo de 2026',
+    ReadingTime: '12 min de lectura',
+    content: 'blog/5-errores-seo-negocio-como-arreglarlos.html',
+  },
 ];
 
 export default posts;
