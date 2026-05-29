@@ -2,6 +2,16 @@ import ProjectCard from './ProjectCard';
 
 export const projects = [
   {
+    id: 10,
+    featured: true,
+    title: 'Elune',
+    description:
+      'Tienda y marca digital para emprendimiento de jabones artesanales en Riviera Maya, México. Catálogo de productos, blog, integración con Instagram y dashboard de administración de contenidos.',
+    image: 'images/projects/portada-elune.webp',
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase'],
+    liveLink: 'https://madebyelune.com',
+  },
+  {
     id: 9,
     featured: true,
     title: 'Caliber 3D',
