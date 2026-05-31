@@ -6,8 +6,11 @@ const config = {
   changefreq: 'monthly',
   priority: 0.7,
   robotsTxtOptions: {
-    policies: [{ userAgent: '*', allow: '/' }],
+    policies: [
+      { userAgent: '*', allow: '/', disallow: '/presupuestos' },
+    ],
   },
+  exclude: ['/presupuestos'],
   transform: async (config, path) => {
     // Blog posts get higher priority
     if (path.startsWith('/blog/')) {
