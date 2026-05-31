@@ -9,6 +9,13 @@ import {
   FiRefreshCw,
   FiZap,
 } from 'react-icons/fi';
+import { useEditor, EditorContent } from '@tiptap/react';
+import StarterKit from '@tiptap/starter-kit';
+import { Table } from '@tiptap/extension-table';
+import { TableRow } from '@tiptap/extension-table-row';
+import { TableCell } from '@tiptap/extension-table-cell';
+import { TableHeader } from '@tiptap/extension-table-header';
+import Placeholder from '@tiptap/extension-placeholder';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -158,6 +165,120 @@ function Card({ title, children }: { title: string; children: React.ReactNode })
     <div className="bg-[#161a1e] rounded-xl p-5 border border-[#2a2f36]">
       <h2 className="text-[9px] font-bold text-[#f5d805] uppercase tracking-[3px] mb-4">{title}</h2>
       {children}
+    </div>
+  );
+}
+
+// ─── Rich Text Editor ────────────────────────────────────────────────────────
+
+function TBtn({
+  onClick, active = false, title, children,
+}: {
+  onClick: () => void; active?: boolean; title: string; children: React.ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      onMouseDown={e => { e.preventDefault(); onClick(); }}
+      title={title}
+      className={`px-2 py-1 rounded text-[11px] font-mono transition-colors leading-none ${
+        active
+          ? 'bg-[#f5d805] text-black font-bold'
+          : 'text-[#9aa8b4] hover:text-[#f0eeed] hover:bg-[#2a2f36]'
+      }`}
+    >
+      {children}
+    </button>
+  );
+}
+
+function RichTextEditor({
+  value, onChange, editorKey,
+}: {
+  value: string; onChange: (html: string) => void; editorKey: string;
+}) {
+  const [mounted, setMounted] = useState(false);
+
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+      Table.configure({ resizable: false }),
+      TableRow,
+      TableHeader,
+      TableCell,
+      Placeholder.configure({
+        placeholder: 'Describí el trabajo: entregables, etapas, revisiones, plazos, qué queda fuera del alcance…',
+      }),
+    ],
+    content: value || '<p></p>',
+    onUpdate: ({ editor }) => onChange(editor.getHTML()),
+    editorProps: { attributes: { class: 'tiptap-editor' } },
+    immediatelyRender: false,
+  });
+
+  useEffect(() => { setMounted(true); }, []);
+
+  // Reset editor when editorKey changes (new quote)
+  useEffect(() => {
+    if (editor && mounted) {
+      editor.commands.setContent('<p></p>', { emitUpdate: false });
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [editorKey]);
+
+  const sep = <div className="w-px h-4 bg-[#2a2f36] mx-0.5 self-center" />;
+
+  if (!mounted) {
+    return <div className="h-48 rounded-xl bg-[#0f1215] border border-[#2a2f36] animate-pulse" />;
+  }
+
+  return (
+    <div className="border border-[#2a2f36] rounded-xl overflow-hidden focus-within:border-[#f5d805] transition-colors">
+      {/* Toolbar */}
+      <div className="flex flex-wrap items-center gap-0.5 px-2 py-2 bg-[#0b0e11] border-b border-[#2a2f36]">
+        <TBtn onClick={() => editor?.chain().focus().toggleBold().run()} active={!!editor?.isActive('bold')} title="Negrita (Ctrl+B)">
+          <strong>B</strong>
+        </TBtn>
+        <TBtn onClick={() => editor?.chain().focus().toggleItalic().run()} active={!!editor?.isActive('italic')} title="Cursiva (Ctrl+I)">
+          <em>I</em>
+        </TBtn>
+        {sep}
+        <TBtn onClick={() => editor?.chain().focus().toggleHeading({ level: 1 }).run()} active={!!editor?.isActive('heading', { level: 1 })} title="Título grande">
+          H1
+        </TBtn>
+        <TBtn onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()} active={!!editor?.isActive('heading', { level: 2 })} title="Título mediano">
+          H2
+        </TBtn>
+        <TBtn onClick={() => editor?.chain().focus().toggleHeading({ level: 3 }).run()} active={!!editor?.isActive('heading', { level: 3 })} title="Título pequeño">
+          H3
+        </TBtn>
+        {sep}
+        <TBtn onClick={() => editor?.chain().focus().toggleBulletList().run()} active={!!editor?.isActive('bulletList')} title="Lista con viñetas">
+          • Lista
+        </TBtn>
+        <TBtn onClick={() => editor?.chain().focus().toggleOrderedList().run()} active={!!editor?.isActive('orderedList')} title="Lista numerada">
+          1. Lista
+        </TBtn>
+        {sep}
+        <TBtn
+          onClick={() => editor?.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run()}
+          title="Insertar tabla 3×3"
+        >
+          ⊞ Tabla
+        </TBtn>
+        <TBtn onClick={() => editor?.chain().focus().setHorizontalRule().run()} title="Separador">
+          — HR
+        </TBtn>
+        {sep}
+        <TBtn onClick={() => editor?.chain().focus().undo().run()} title="Deshacer (Ctrl+Z)">
+          ↩
+        </TBtn>
+        <TBtn onClick={() => editor?.chain().focus().redo().run()} title="Rehacer (Ctrl+Y)">
+          ↪
+        </TBtn>
+      </div>
+
+      <EditorContent editor={editor} className="bg-[#0f1215] max-h-[420px] overflow-y-auto" />
     </div>
   );
 }
@@ -461,7 +582,7 @@ function PDFTemplate({ data, subtotal, tax, total }: PDFTemplateProps) {
       </div>
 
       {/* ── WORK DESCRIPTION ── */}
-      {data.comments && (
+      {data.comments && data.comments !== '<p></p>' && (
         <div style={{ padding: '0 52px 28px' }}>
           <div style={{ borderTop: '1px solid #e5e7eb', paddingTop: '24px' }}>
             <div
@@ -477,15 +598,9 @@ function PDFTemplate({ data, subtotal, tax, total }: PDFTemplateProps) {
               Alcance del Trabajo
             </div>
             <div
-              style={{
-                fontSize: '12px',
-                color: '#4b5563',
-                lineHeight: '1.75',
-                whiteSpace: 'pre-wrap',
-              }}
-            >
-              {data.comments}
-            </div>
+              className="pdf-rich-content"
+              dangerouslySetInnerHTML={{ __html: data.comments }}
+            />
           </div>
         </div>
       )}
@@ -524,9 +639,7 @@ function PDFTemplate({ data, subtotal, tax, total }: PDFTemplateProps) {
           }}
         >
           <div style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: '10px', color: '#9ca3af', marginBottom: '10px', letterSpacing: '1px' }}>
-              Firma autorizada
-            </div>
+            
             <div
               style={{
                 fontFamily: 'var(--font-dancing), "Dancing Script", cursive',
@@ -978,12 +1091,10 @@ export default function PresupuestosPage() {
 
           {/* Work Description */}
           <Card title="Alcance del Trabajo">
-            <textarea
+            <RichTextEditor
+              editorKey={form.quoteNumber}
               value={form.comments}
-              onChange={e => set('comments', e.target.value)}
-              placeholder="Describí el trabajo: entregables, etapas, revisiones incluidas, qué queda fuera del alcance, plazos estimados, etc."
-              rows={7}
-              className="w-full bg-[#0f1215] border border-[#2a2f36] rounded-xl px-4 py-3 text-xs text-[#f0eeed] placeholder-[#4d5a67] focus:outline-none focus:border-[#f5d805] transition-colors resize-none leading-relaxed"
+              onChange={v => set('comments', v)}
             />
           </Card>
 

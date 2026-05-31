@@ -102,3 +102,51 @@ body {
   font-style: italic;
   color: #f0eeed;
 }
+
+/* ── TipTap editor (dark theme) ─────────────────────────────────── */
+.tiptap-editor {
+  outline: none;
+  padding: 12px 16px;
+  font-size: 12px;
+  line-height: 1.75;
+  color: #f0eeed;
+  min-height: 180px;
+}
+.tiptap-editor p { margin: 0.2rem 0; }
+.tiptap-editor p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: #4d5a67;
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+.tiptap-editor strong { font-weight: 700; }
+.tiptap-editor em { font-style: italic; }
+.tiptap-editor h1 { font-size: 1.35em; font-weight: 800; margin: 0.7rem 0 0.3rem; color: #f5d805; }
+.tiptap-editor h2 { font-size: 1.15em; font-weight: 700; margin: 0.6rem 0 0.2rem; color: #f0eeed; }
+.tiptap-editor h3 { font-size: 1.05em; font-weight: 700; margin: 0.5rem 0 0.2rem; color: #d1d9e0; }
+.tiptap-editor ul { padding-left: 1.4rem; list-style-type: disc; margin: 0.2rem 0; }
+.tiptap-editor ol { padding-left: 1.4rem; list-style-type: decimal; margin: 0.2rem 0; }
+.tiptap-editor li { margin: 0.1rem 0; }
+.tiptap-editor hr { border: none; border-top: 1px solid #2a2f36; margin: 0.8rem 0; }
+.tiptap-editor table { border-collapse: collapse; width: 100%; margin: 0.6rem 0; table-layout: fixed; }
+.tiptap-editor th { background: #1e2530; color: #f5d805; border: 1px solid #3a4550; padding: 6px 10px; font-size: 11px; font-weight: 700; text-align: left; }
+.tiptap-editor td { border: 1px solid #2a3040; padding: 6px 10px; font-size: 11px; }
+.tiptap-editor .selectedCell { background: rgba(245, 216, 5, 0.08); }
+
+/* ── PDF rich content (white theme) ─────────────────────────────── */
+.pdf-rich-content { font-size: 12px; color: #4b5563; line-height: 1.75; }
+.pdf-rich-content p { margin: 0.2rem 0; }
+.pdf-rich-content strong { font-weight: 700; color: #111827; }
+.pdf-rich-content em { font-style: italic; }
+.pdf-rich-content h1 { font-size: 16px; font-weight: 800; margin: 0.7rem 0 0.3rem; color: #111827; }
+.pdf-rich-content h2 { font-size: 14px; font-weight: 700; margin: 0.6rem 0 0.25rem; color: #111827; }
+.pdf-rich-content h3 { font-size: 13px; font-weight: 700; margin: 0.5rem 0 0.2rem; color: #374151; }
+.pdf-rich-content ul { padding-left: 1.2rem; list-style-type: disc; margin: 0.25rem 0; }
+.pdf-rich-content ol { padding-left: 1.2rem; list-style-type: decimal; margin: 0.25rem 0; }
+.pdf-rich-content li { margin: 0.15rem 0; }
+.pdf-rich-content hr { border: none; border-top: 1px solid #e5e7eb; margin: 0.6rem 0; }
+.pdf-rich-content table { border-collapse: collapse; width: 100%; margin: 0.5rem 0; font-size: 11px; }
+.pdf-rich-content th { background: #161a1e; color: #f5d805; border: 1px solid #d1d5db; padding: 7px 12px; font-weight: 700; text-align: left; font-size: 10px; letter-spacing: 0.5px; text-transform: uppercase; }
+.pdf-rich-content td { border: 1px solid #e5e7eb; padding: 7px 12px; color: #374151; }
+.pdf-rich-content tr:nth-child(even) td { background: #f9fafb; }
