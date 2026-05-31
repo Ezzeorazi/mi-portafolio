@@ -122,13 +122,13 @@ function InputField({
 }) {
   return (
     <div>
-      <label className="block text-[10px] text-[#414851] mb-1">{label}</label>
+      <label className="block text-[10px] text-[#9aa8b4] mb-1">{label}</label>
       <input
         type={type}
         value={value}
         onChange={e => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full bg-[#0f1215] border border-[#2a2f36] rounded-lg px-3 py-2 text-xs text-[#f0eeed] placeholder-[#414851] focus:outline-none focus:border-[#f5d805] transition-colors"
+        className="w-full bg-[#0f1215] border border-[#2a2f36] rounded-lg px-3 py-2 text-xs text-[#f0eeed] placeholder-[#4d5a67] focus:outline-none focus:border-[#f5d805] transition-colors"
       />
     </div>
   );
@@ -141,7 +141,7 @@ function SelectField({
 }) {
   return (
     <div>
-      <label className="block text-[10px] text-[#414851] mb-1">{label}</label>
+      <label className="block text-[10px] text-[#9aa8b4] mb-1">{label}</label>
       <select
         value={value}
         onChange={e => onChange(e.target.value)}
@@ -619,7 +619,7 @@ function PasswordGate({ onAuth }: { onAuth: () => void }) {
             <FiFileText className="text-white text-xl" />
           </div>
           <h1 className="text-lg font-bold text-[#f0eeed]">Panel de Presupuestos</h1>
-          <p className="text-[11px] text-[#414851] mt-1">Acceso privado · Ezequiel Orazi</p>
+          <p className="text-[11px] text-[#9aa8b4] mt-1">Acceso privado · Ezequiel Orazi</p>
         </div>
         <form onSubmit={submit} className="space-y-4">
           <input
@@ -628,7 +628,7 @@ function PasswordGate({ onAuth }: { onAuth: () => void }) {
             onChange={e => { setPwd(e.target.value); setErr(false); }}
             placeholder="Contraseña"
             autoFocus
-            className={`w-full bg-[#0f1215] border rounded-xl px-4 py-3 text-sm text-[#f0eeed] placeholder-[#414851] focus:outline-none transition-colors ${
+            className={`w-full bg-[#0f1215] border rounded-xl px-4 py-3 text-sm text-[#f0eeed] placeholder-[#4d5a67] focus:outline-none transition-colors ${
               err ? 'border-red-500' : 'border-[#2a2f36] focus:border-[#f5d805]'
             }`}
           />
@@ -755,13 +755,13 @@ export default function PresupuestosPage() {
           </div>
           <div>
             <h1 className="text-sm font-bold text-[#f0eeed] leading-tight">Presupuestos</h1>
-            <p className="text-[10px] text-[#414851] leading-tight">Panel privado · Ezequiel Orazi</p>
+            <p className="text-[10px] text-[#9aa8b4] leading-tight">Panel privado · Ezequiel Orazi</p>
           </div>
         </div>
         <div className="flex items-center gap-3">
           <button
             onClick={() => setForm(getDefaultForm())}
-            className="flex items-center gap-1.5 px-3 py-2 text-[11px] border border-[#2a2f36] rounded-lg text-[#414851] hover:border-[#f5d805] hover:text-[#f5d805] transition-colors"
+            className="flex items-center gap-1.5 px-3 py-2 text-[11px] border border-[#2a2f36] rounded-lg text-[#c0cad4] hover:border-[#f5d805] hover:text-[#f5d805] transition-colors"
           >
             <FiRefreshCw size={11} />
             Nuevo
@@ -847,7 +847,7 @@ export default function PresupuestosPage() {
           <Card title="Servicios">
             {/* Quick add chips */}
             <div className="mb-4">
-              <p className="text-[9px] text-[#414851] mb-2 flex items-center gap-1 uppercase tracking-wider">
+              <p className="text-[9px] text-[#9aa8b4] mb-2 flex items-center gap-1 uppercase tracking-wider">
                 <FiZap size={9} /> Agregar rápido
               </p>
               <div className="flex flex-wrap gap-1.5">
@@ -855,7 +855,7 @@ export default function PresupuestosPage() {
                   <button
                     key={qs.name}
                     onClick={() => addQuick(qs.name, qs.price)}
-                    className="text-[10px] px-2.5 py-1 border border-[#2a2f36] rounded-full text-[#414851] hover:border-[#f5d805] hover:text-[#f5d805] transition-colors whitespace-nowrap"
+                    className="text-[10px] px-2.5 py-1 border border-[#2a2f36] rounded-full text-[#9aa8b4] hover:border-[#f5d805] hover:text-[#f5d805] transition-colors whitespace-nowrap"
                   >
                     {qs.name}
                   </button>
@@ -865,10 +865,10 @@ export default function PresupuestosPage() {
 
             {/* Column headers */}
             <div className="grid grid-cols-12 gap-2 px-1 mb-1">
-              <div className="col-span-4 text-[9px] text-[#414851] uppercase tracking-wider">Descripción</div>
-              <div className="col-span-3 text-[9px] text-[#414851] uppercase tracking-wider">Detalle</div>
-              <div className="col-span-2 text-[9px] text-[#414851] text-center uppercase tracking-wider">Cant.</div>
-              <div className="col-span-2 text-[9px] text-[#414851] text-right uppercase tracking-wider">Precio</div>
+              <div className="col-span-4 text-[9px] text-[#9aa8b4] uppercase tracking-wider">Descripción</div>
+              <div className="col-span-3 text-[9px] text-[#9aa8b4] uppercase tracking-wider">Detalle</div>
+              <div className="col-span-2 text-[9px] text-[#9aa8b4] text-center uppercase tracking-wider">Cant.</div>
+              <div className="col-span-2 text-[9px] text-[#9aa8b4] text-right uppercase tracking-wider">Precio</div>
               <div className="col-span-1" />
             </div>
 
@@ -881,7 +881,7 @@ export default function PresupuestosPage() {
                       value={svc.description}
                       onChange={e => updateService(svc.id, 'description', e.target.value)}
                       placeholder="Nombre del servicio"
-                      className="w-full bg-[#0f1215] border border-[#2a2f36] rounded-lg px-3 py-2 text-xs text-[#f0eeed] placeholder-[#414851] focus:outline-none focus:border-[#f5d805] transition-colors"
+                      className="w-full bg-[#0f1215] border border-[#2a2f36] rounded-lg px-3 py-2 text-xs text-[#f0eeed] placeholder-[#4d5a67] focus:outline-none focus:border-[#f5d805] transition-colors"
                     />
                   </div>
                   <div className="col-span-3">
@@ -889,7 +889,7 @@ export default function PresupuestosPage() {
                       value={svc.detail}
                       onChange={e => updateService(svc.id, 'detail', e.target.value)}
                       placeholder="Opcional"
-                      className="w-full bg-[#0f1215] border border-[#2a2f36] rounded-lg px-3 py-2 text-xs text-[#f0eeed] placeholder-[#414851] focus:outline-none focus:border-[#f5d805] transition-colors"
+                      className="w-full bg-[#0f1215] border border-[#2a2f36] rounded-lg px-3 py-2 text-xs text-[#f0eeed] placeholder-[#4d5a67] focus:outline-none focus:border-[#f5d805] transition-colors"
                     />
                   </div>
                   <div className="col-span-2">
@@ -915,7 +915,7 @@ export default function PresupuestosPage() {
                     <button
                       onClick={() => removeService(svc.id)}
                       disabled={form.services.length === 1}
-                      className="text-[#414851] hover:text-red-400 transition-colors disabled:opacity-20 p-1"
+                      className="text-[#9aa8b4] hover:text-red-400 transition-colors disabled:opacity-20 p-1"
                     >
                       <FiTrash2 size={12} />
                     </button>
@@ -926,7 +926,7 @@ export default function PresupuestosPage() {
 
             <button
               onClick={addService}
-              className="flex items-center gap-1 text-[10px] text-[#414851] hover:text-[#f5d805] transition-colors mt-3"
+              className="flex items-center gap-1 text-[10px] text-[#9aa8b4] hover:text-[#f5d805] transition-colors mt-3"
             >
               <FiPlus size={11} />
               Agregar servicio
@@ -942,7 +942,7 @@ export default function PresupuestosPage() {
                   onChange={e => set('taxEnabled', e.target.checked)}
                   className="accent-[#f5d805] w-3.5 h-3.5 cursor-pointer"
                 />
-                <label htmlFor="tax" className="text-xs text-[#414851] cursor-pointer">
+                <label htmlFor="tax" className="text-xs text-[#9aa8b4] cursor-pointer">
                   Aplicar IVA
                 </label>
                 {form.taxEnabled && (
@@ -953,17 +953,17 @@ export default function PresupuestosPage() {
                       onChange={e => set('taxRate', Number(e.target.value))}
                       className="w-14 bg-[#0f1215] border border-[#2a2f36] rounded px-2 py-1 text-xs text-[#f0eeed] text-center focus:outline-none focus:border-[#f5d805]"
                     />
-                    <span className="text-xs text-[#414851]">%</span>
+                    <span className="text-xs text-[#9aa8b4]">%</span>
                   </>
                 )}
               </div>
               <div className="space-y-1.5">
-                <div className="flex justify-between text-xs text-[#414851]">
+                <div className="flex justify-between text-xs text-[#9aa8b4]">
                   <span>Subtotal</span>
                   <span className="font-medium text-[#f0eeed]">{fc(subtotal)}</span>
                 </div>
                 {form.taxEnabled && (
-                  <div className="flex justify-between text-xs text-[#414851]">
+                  <div className="flex justify-between text-xs text-[#9aa8b4]">
                     <span>IVA ({form.taxRate}%)</span>
                     <span className="font-medium text-[#f0eeed]">{fc(tax)}</span>
                   </div>
@@ -983,7 +983,7 @@ export default function PresupuestosPage() {
               onChange={e => set('comments', e.target.value)}
               placeholder="Describí el trabajo: entregables, etapas, revisiones incluidas, qué queda fuera del alcance, plazos estimados, etc."
               rows={7}
-              className="w-full bg-[#0f1215] border border-[#2a2f36] rounded-xl px-4 py-3 text-xs text-[#f0eeed] placeholder-[#414851] focus:outline-none focus:border-[#f5d805] transition-colors resize-none leading-relaxed"
+              className="w-full bg-[#0f1215] border border-[#2a2f36] rounded-xl px-4 py-3 text-xs text-[#f0eeed] placeholder-[#4d5a67] focus:outline-none focus:border-[#f5d805] transition-colors resize-none leading-relaxed"
             />
           </Card>
 
@@ -1007,7 +1007,7 @@ export default function PresupuestosPage() {
           <div className="px-4 py-3 border-b border-[#2a2f36] flex items-center gap-2 flex-shrink-0">
             <FiFileText className="text-[#f5d805] text-sm" />
             <span className="text-xs font-medium text-[#f0eeed]">Vista previa del PDF</span>
-            <span className="ml-auto text-[10px] text-[#414851]">A4 · 74%</span>
+            <span className="ml-auto text-[10px] text-[#9aa8b4]">A4 · 74%</span>
           </div>
           <div className="flex-1 overflow-y-auto bg-[#1a1d21] p-5">
             {/* zoom scales layout properly, unlike transform */}
