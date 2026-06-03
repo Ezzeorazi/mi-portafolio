@@ -26,7 +26,7 @@ const projects: Project[] = [
     slug: 'elune',
     title: 'Elune',
     description:
-      'Para una emprendedora de jabones artesanales sin presencia digital, construí su tienda online completa con catálogo, blog e integración con Instagram. Ahora actualiza productos sin ayuda técnica y recibe pedidos directamente desde redes sociales.',
+      'Marca de jabones artesanales en Riviera Maya que necesitaba vender online y captar bodas de destino. Construí su tienda con catálogo, blog y captación de eventos — hoy aparece en Google para "souvenirs para bodas Playa del Carmen" y recibe pedidos sin intermediarios.',
     image: 'images/projects/portada-elune.webp',
     technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase'],
     liveLink: 'https://madebyelune.com',
@@ -37,7 +37,7 @@ const projects: Project[] = [
     slug: 'caliber-3d',
     title: 'Caliber 3D',
     description:
-      'Para un emprendimiento de impresión 3D que necesitaba profesionalizar su imagen online, diseñé una plataforma que convierte visitas en consultas. El dueño gestiona su catálogo de servicios de forma autónoma.',
+      'Taller de impresión 3D en Playa del Carmen que necesitaba ser encontrado online antes que la competencia. Construí la plataforma posicionada para "impresión 3D Riviera Maya" con catálogo y formulario de presupuesto — el equipo cierra más consultas sin atender el teléfono.',
     image: 'images/projects/portada-caliber3d.webp',
     technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Strapi'],
     liveLink: 'https://caliber3d.mx',
@@ -48,7 +48,7 @@ const projects: Project[] = [
     slug: 'pixel-maker',
     title: 'Pixel Maker',
     description:
-      'Para un estudio de diseño gráfico que mostraba sus trabajos en carpetas compartidas, construí un portafolio profesional con galería y panel de administración. El equipo actualiza su catálogo sin depender de un dev.',
+      'Agencia digital latinoamericana que necesitaba una web que vendiera sus servicios y generara leads. Construí su plataforma con portafolio, precios publicados y blog técnico — posicionada como referente para empresas que buscan agencia de desarrollo web.',
     image: 'images/projects/portada-pixel-maker.webp',
     technologies: ['Next.js', 'Tailwind CSS', 'Supabase'],
     liveLink: 'https://pixelmaker.com.ar',
@@ -59,7 +59,7 @@ const projects: Project[] = [
     slug: 'portfolio',
     title: 'Portfolio Profesional',
     description:
-      'Sitio personal construido como prueba de capacidad técnica: SSG con Next.js 15, blog con SEO por entrada, 26 páginas estáticas y score de performance 95+ en Lighthouse.',
+      'El sitio que estás viendo. Construido con Next.js 15 como prueba viva de capacidad técnica: 26 páginas estáticas, blog con SEO por entrada, sitemap automático y score 95+ en Lighthouse.',
     image: 'images/projects/portada-portafolio.webp',
     technologies: ['Next.js', 'TypeScript', 'Tailwind CSS'],
     liveLink: 'https://ezequiel-orazi.online',
@@ -70,7 +70,7 @@ const projects: Project[] = [
     slug: 'nimbus-crm',
     title: 'Nimbus CRM',
     description:
-      'CRM SaaS desarrollado para demostrar capacidad en aplicaciones cloud complejas: gestión de clientes, pipeline de ventas y autenticación con stack MERN completo.',
+      'CRM SaaS propio para demostrar capacidad en aplicaciones cloud complejas: autenticación, pipeline de ventas y gestión de clientes con stack MERN. Prueba de que puedo construir productos, no solo sitios.',
     image: 'images/projects/nimbus-crm.webp',
     technologies: ['React', 'Tailwind', 'MongoDB', 'Express', 'Node.js'],
     privateDemo: true,
@@ -81,7 +81,7 @@ const projects: Project[] = [
     slug: 'generador-presupuestos',
     title: 'Generador de Presupuestos — Seguridad',
     description:
-      'Herramienta que reduce el tiempo de cotización de sistemas de videoseguridad de 20 min a 2 min — el vendedor arma el presupuesto en el momento, sin errores de cálculo.',
+      'Una empresa de videoseguridad tardaba 20 minutos en armar cada cotización a mano. Con esta herramienta interna, el vendedor genera el presupuesto en 2 minutos, sin errores de cálculo ni depender del técnico.',
     image: 'images/projects/presup-aura.webp',
     technologies: ['React', 'Bootstrap', 'Vite'],
     privateDemo: true,
@@ -93,28 +93,18 @@ const projects: Project[] = [
     slug: 'creador-prompts-ia',
     title: 'Creador de Prompts IA',
     description:
-      'App para crear y reutilizar prompts personalizados de IA — construida para resolver mi propio problema: perdía tiempo reescribiendo los mismos prompts en cada sesión.',
+      'Herramienta propia para organizar y reutilizar prompts de IA — construida porque perdía tiempo reescribiendo los mismos prompts en cada sesión. Útil para cualquiera que trabaje con ChatGPT o Claude de forma profesional.',
     image: 'images/projects/portada-prompt-IA.webp',
     technologies: ['React', 'Material UI', 'Vite'],
     liveLink: 'https://prompt-generate.netlify.app/',
     repoLink: 'https://github.com/Ezzeorazi/prompt-generator-v2',
   },
   {
-    id: 4,
-    slug: 'fitbites',
-    title: 'FitBites',
-    description:
-      'E-commerce de alimentos saludables donde el equipo actualiza productos y publica en el blog sin conocimiento técnico. Tienda activa con tráfico orgánico creciente desde 2024.',
-    image: 'images/projects/pageFitbites.webp',
-    technologies: ['WordPress', 'WooCommerce', 'Astra'],
-    liveLink: 'https://fitbitescr.com',
-  },
-  {
     id: 3,
     slug: 'golden-horses',
     title: 'Golden Horses',
     description:
-      'Sitio institucional para una marca premium de nutrición equina que necesitaba posicionarse online. Resultado: presencia digital profesional que respalda su posicionamiento de marca.',
+      'Marca de nutrición equina premium en Argentina que necesitaba llegar a distribuidores y criadores. Construí su sitio institucional — hoy la marca tiene presencia digital profesional en un mercado donde sus competidores directos no tienen web.',
     image: 'images/projects/pageGoldenHorses.webp',
     technologies: ['React', 'Bootstrap', 'Vite'],
     liveLink: 'https://goldenhorses.com.ar',
@@ -125,7 +115,7 @@ const projects: Project[] = [
     slug: 'maktub',
     title: 'Maktub — Marroquinería',
     description:
-      'Tienda online para una marca de marroquinería artesanal que vendía exclusivamente por Instagram. Resultado: catálogo digital propio con identidad de marca consistente.',
+      'Marroquinería en Santa Fe que vendía solo en su local y por encargo. Construí su tienda online con catálogo completo, cuotas y canal para regalos corporativos — ahora vende a todo el país sin depender del tráfico físico.',
     image: 'images/projects/maktub-desktop.svg',
     technologies: ['WordPress', 'WooCommerce', 'Elementor'],
     liveLink: 'https://maktub.misitiosimple.online/',
