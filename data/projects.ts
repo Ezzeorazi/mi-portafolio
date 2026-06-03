@@ -104,7 +104,7 @@ const projects: Project[] = [
     slug: 'golden-horses',
     title: 'Golden Horses',
     description:
-      'Marca de nutrición equina premium en Argentina que necesitaba llegar a distribuidores y criadores. Construí su sitio institucional — hoy la marca tiene presencia digital profesional en un mercado donde sus competidores directos no tienen web.',
+      'Marca de nutrición equina premium en Argentina que necesitaba transmitir confianza a un público exigente: criadores y deportistas de carrera y polo. Construí un sitio institucional que comunica el rigor del producto y posiciona la marca como alimento de alto rendimiento — claridad comercial y presencia profesional para diferenciarse en un mercado dominado por competidores tradicionales.',
     image: 'images/projects/pageGoldenHorses.webp',
     technologies: ['React', 'Bootstrap', 'Vite'],
     liveLink: 'https://goldenhorses.com.ar',
@@ -115,7 +115,7 @@ const projects: Project[] = [
     slug: 'maktub',
     title: 'Maktub — Marroquinería',
     description:
-      'Marroquinería en Santa Fe que vendía solo en su local y por encargo. Construí su tienda online con catálogo completo, cuotas y canal para regalos corporativos — ahora vende a todo el país sin depender del tráfico físico.',
+      'Marroquinería en Santa Fe que vendía solo de forma local y quería llegar a clientes de todo el país. Construí su tienda online con catálogo y carrito, pasando de regalos corporativos puerta a puerta a una marca que recibe pedidos sin depender del tráfico físico.',
     image: 'images/projects/maktub-desktop.svg',
     technologies: ['WordPress', 'WooCommerce', 'Elementor'],
     liveLink: 'https://maktub.misitiosimple.online/',
