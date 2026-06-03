@@ -90,7 +90,7 @@ export default async function ProjectPage({ params }: Props) {
           </a>
         )}
         {project.privateDemo && (
-          <span className="flex items-center gap-2 text-sm border border-yellow/20 text-yellow/50 px-5 py-2.5 rounded-lg cursor-default">
+          <span className="flex items-center gap-2 text-sm border border-dark/20 text-dark/50 px-5 py-2.5 rounded-lg cursor-default">
             <FaLock className="text-xs" /> Demo privada · disponible a pedido
           </span>
         )}
@@ -99,7 +99,7 @@ export default async function ProjectPage({ params }: Props) {
             href={project.repoLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm border border-yellow/40 text-yellow px-4 py-2.5 rounded-lg hover:border-pink hover:text-pink transition-colors duration-300"
+            className="flex items-center gap-2 text-sm border border-dark/30 text-dark px-4 py-2.5 rounded-lg hover:border-pink hover:text-pink transition-colors duration-300"
           >
             <FaGithub /> Ver repositorio
           </a>
