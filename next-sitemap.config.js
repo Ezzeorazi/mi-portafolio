@@ -12,11 +12,12 @@ const config = {
   },
   exclude: ['/presupuestos'],
   transform: async (config, path) => {
-    // Blog posts get higher priority
     if (path.startsWith('/blog/')) {
       return { loc: path, changefreq: 'monthly', priority: 0.9, lastmod: new Date().toISOString() };
     }
-    // Main pages
+    if (path.startsWith('/proyectos/')) {
+      return { loc: path, changefreq: 'monthly', priority: 0.8, lastmod: new Date().toISOString() };
+    }
     if (path === '/') {
       return { loc: path, changefreq: 'weekly', priority: 1.0, lastmod: new Date().toISOString() };
     }

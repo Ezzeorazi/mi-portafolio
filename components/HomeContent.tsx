@@ -10,12 +10,14 @@ import type { Post } from '@/data/posts';
 
 interface Project {
   id: number;
+  slug?: string;
   title: string;
   description: string;
   image: string;
   technologies: string[];
   liveLink?: string;
   repoLink?: string;
+  privateDemo?: boolean;
   featured?: boolean;
 }
 

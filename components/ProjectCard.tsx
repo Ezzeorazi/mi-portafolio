@@ -1,24 +1,29 @@
 import Image from 'next/image';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import Link from 'next/link';
+import { FaGithub, FaExternalLinkAlt, FaLock } from 'react-icons/fa';
 import ScrollReveal from './ScrollReveal';
 
 interface ProjectCardProps {
   title: string;
+  slug?: string;
   description: string;
   image: string;
   technologies: string[];
   liveLink?: string;
   repoLink?: string;
+  privateDemo?: boolean;
   delay?: number;
 }
 
 export default function ProjectCard({
   title,
+  slug,
   description,
   image,
   technologies,
   liveLink,
   repoLink,
+  privateDemo,
   delay = 0,
 }: ProjectCardProps) {
   return (
@@ -46,16 +51,30 @@ export default function ProjectCard({
               </span>
             ))}
           </div>
-          <div className="flex gap-3 mt-2">
+          <div className="flex flex-wrap gap-3 mt-2">
+            {slug && (
+              <Link
+                href={`/proyectos/${slug}`}
+                className="flex items-center gap-1.5 text-sm bg-yellow text-dark font-bold px-4 py-2 rounded-lg hover:bg-pink hover:text-white transition-colors duration-300"
+              >
+                Ver detalles
+              </Link>
+            )}
             {liveLink && (
               <a
                 href={liveLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-sm bg-yellow text-dark font-bold px-4 py-2 rounded-lg hover:bg-pink hover:text-white transition-colors duration-300"
+                aria-label={`Ver sitio de ${title}`}
+                className="flex items-center gap-1.5 text-sm border border-yellow/40 text-yellow px-3 py-2 rounded-lg hover:border-pink hover:text-pink transition-colors duration-300"
               >
-                <FaExternalLinkAlt className="text-xs" /> Ver sitio
+                <FaExternalLinkAlt className="text-xs" />
               </a>
+            )}
+            {privateDemo && (
+              <span className="flex items-center gap-1.5 text-xs border border-yellow/20 text-yellow/50 px-3 py-2 rounded-lg cursor-default">
+                <FaLock className="text-xs" /> Demo privada
+              </span>
             )}
             {repoLink && (
               <a

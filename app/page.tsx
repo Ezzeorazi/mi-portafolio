@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import HomeContent from '@/components/HomeContent';
 import { getAllPosts } from '@/lib/blog';
-import { projects } from '@/components/Gallery';
-import { practiceProjects } from '@/components/GalleryPractice';
+import { getFeaturedProjects } from '@/lib/projects';
 
 export const metadata: Metadata = {
   title: 'Eze Orazi | Desarrollador Web Freelance — Next.js, TypeScript, SEO con IA',
@@ -67,9 +66,7 @@ const homeFaqJsonLd = {
 
 export default function HomePage() {
   const latestPosts = getAllPosts().slice(0, 3);
-  const featuredProjects = [...projects, ...practiceProjects].filter(
-    (p) => (p as { featured?: boolean }).featured === true
-  );
+  const featuredProjects = getFeaturedProjects();
 
   return (
     <>

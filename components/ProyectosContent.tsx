@@ -1,6 +1,5 @@
 'use client';
 import Gallery from '@/components/Gallery';
-import GalleryPractice from '@/components/GalleryPractice';
 import ScrollReveal from '@/components/ScrollReveal';
 import { useTranslation } from '@/hooks/useTranslation';
 
@@ -15,13 +14,6 @@ export default function ProyectosContent() {
       </ScrollReveal>
 
       <Gallery />
-
-      <ScrollReveal direction="left" delay={0.1} className="mt-20 mb-4">
-        <h2 className="text-2xl md:text-3xl font-bold text-dark">{t('proyectos_practice_title')}</h2>
-        <p className="text-muted mt-2 mb-10">{t('proyectos_practice_desc')}</p>
-      </ScrollReveal>
-
-      <GalleryPractice />
     </section>
   );
 }
