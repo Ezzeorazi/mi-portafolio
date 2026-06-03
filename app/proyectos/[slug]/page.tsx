@@ -70,7 +70,7 @@ export default async function ProjectPage({ params }: Props) {
         {project.technologies.map((tech) => (
           <span
             key={tech}
-            className="text-xs bg-yellow/10 text-yellow border border-yellow/20 px-3 py-1 rounded"
+            className="text-xs bg-dark text-yellow font-medium px-3 py-1 rounded"
           >
             {tech}
           </span>
