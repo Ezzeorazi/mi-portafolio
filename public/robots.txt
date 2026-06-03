@@ -1,6 +1,7 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /presupuestos
 
 # Host
 Host: https://ezequiel-orazi.online
