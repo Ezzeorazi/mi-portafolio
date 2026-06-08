@@ -264,6 +264,17 @@ const posts: Post[] = [
     ReadingTime: '12 min de lectura',
     content: 'blog/5-errores-seo-negocio-como-arreglarlos.html',
   },
+  {
+    id: 24,
+    slug: 'claude-ia-guia-prompts-negocios-emprendedores-parte-3',
+    image: 'images/blog/claude-prompts-negocios-parte3.webp',
+    title: 'Claude de Anthropic: Prompts para Dueños de Negocio — Parte 3',
+    category: 'Inteligencia Artificial',
+    description: 'El cierre de la trilogía Claude: prompts concretos para emprendedores que quieren atraer clientes, cerrar ventas y crecer sin depender de un equipo de marketing. Bio de Instagram, presupuestos, follow-ups y más.',
+    date: 'Publicado el 8 de junio de 2026',
+    ReadingTime: '13 min de lectura',
+    content: 'blog/claude-ia-guia-prompts-negocios-emprendedores-parte-3.html',
+  },
 ];
 
 export default posts;
