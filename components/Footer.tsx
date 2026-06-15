@@ -29,6 +29,7 @@ export default function Footer() {
       titleKey: 'footer_col_services',
       links: [
         { key: 'footer_link_all_services', href: '/services' },
+        { key: 'nav_seo_tool', href: '/auditoria-seo' },
         { key: 'footer_link_landing', href: '/services#landing' },
         { key: 'footer_link_dynamic', href: '/services#dinamica' },
         { key: 'footer_link_ecommerce', href: '/services#ecommerce' },

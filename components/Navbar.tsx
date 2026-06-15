@@ -10,10 +10,9 @@ import { useContext } from 'react';
 
 const navLinks = [
   { key: 'nav_about', href: '/sobre-mi' },
-  { key: 'nav_skills', href: '/skills' },
   { key: 'nav_projects', href: '/proyectos' },
   { key: 'nav_services', href: '/services' },
-  { key: 'nav_cv', href: '/curriculum' },
+  { key: 'nav_seo_tool', href: '/auditoria-seo' },
   { key: 'nav_blog', href: '/blog' },
   { key: 'nav_contact', href: '/contacto' },
 ] as const;
@@ -47,6 +46,18 @@ export default function Navbar() {
                 pathname === href
                   ? 'bg-pink text-white border-pink'
                   : 'border-yellow text-yellow hover:bg-yellow hover:text-dark'
+              }`}
+            >
+              {t(key)}
+            </Link>
+          ) : key === 'nav_seo_tool' ? (
+            <Link
+              key={key}
+              href={href}
+              className={`text-sm font-bold px-3 py-1 rounded-md border transition-colors duration-300 ${
+                pathname === href
+                  ? 'bg-pink text-white border-pink'
+                  : 'border-pink text-pink hover:bg-pink hover:text-white'
               }`}
             >
               {t(key)}
