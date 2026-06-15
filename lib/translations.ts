@@ -76,6 +76,13 @@ const translations: Record<Language, Record<string, string>> = {
     services_page_desc:
       'Sitios web construidos con tecnología moderna — Next.js, TypeScript y Tailwind CSS —, con foco en velocidad, SEO y que tus clientes te encuentren fácilmente en Google.',
     services_includes: 'Qué incluye',
+    svc_seo_tool_cta: 'Medí tu SEO gratis ahora',
+    services_maintenance_tool_cta: 'Medí el estado de tu sitio gratis',
+    home_seo_tool_badge: 'Herramienta gratuita',
+    home_seo_tool_title: '¿Tu sitio aparece en Google?',
+    home_seo_tool_desc:
+      'Analizá el SEO de tu web en 30 segundos: velocidad, SEO técnico y los puntos exactos que frenan tu posicionamiento. Gratis y sin registro.',
+    home_seo_tool_cta: 'Analizar mi sitio gratis',
     services_maintenance_title: 'Soporte y Mantenimiento Mensual',
     services_maintenance_desc:
       'Tu plataforma digital necesita supervisión continua para mantener su rendimiento y seguridad.',
@@ -265,6 +272,13 @@ const translations: Record<Language, Record<string, string>> = {
     services_page_desc:
       'Websites built with modern technology — Next.js, TypeScript and Tailwind CSS —, focused on speed, SEO and making sure your clients find you easily on Google.',
     services_includes: "What's included",
+    svc_seo_tool_cta: 'Check your SEO for free',
+    services_maintenance_tool_cta: "Check your site's health for free",
+    home_seo_tool_badge: 'Free tool',
+    home_seo_tool_title: 'Does your site show up on Google?',
+    home_seo_tool_desc:
+      "Analyze your website's SEO in 30 seconds: speed, technical SEO and the exact issues holding back your ranking. Free, no sign-up.",
+    home_seo_tool_cta: 'Analyze my site for free',
     services_maintenance_title: 'Monthly Support & Maintenance',
     services_maintenance_desc:
       'Your digital platform needs continuous oversight to maintain performance and security.',

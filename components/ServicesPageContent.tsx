@@ -3,7 +3,7 @@ import Link from 'next/link';
 import {
   FaGlobe, FaDatabase, FaShoppingCart, FaTools, FaCheck, FaFire,
   FaCogs, FaUtensils, FaUsers, FaIndustry, FaUserTie,
-  FaFileAlt, FaCalendarAlt, FaBoxes, FaTruck, FaExternalLinkAlt,
+  FaFileAlt, FaCalendarAlt, FaBoxes, FaTruck, FaExternalLinkAlt, FaBolt,
 } from 'react-icons/fa';
 import { SiNextdotjs, SiTypescript, SiTailwindcss, SiSanity } from 'react-icons/si';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -340,6 +340,14 @@ export default function ServicesPageContent() {
                         {ctaLabel || service.cta}
                       </Link>
                     )}
+                    {service.id === 'seo' && (
+                      <Link
+                        href="/auditoria-seo"
+                        className="inline-flex items-center gap-2 border-2 border-pink text-pink font-bold px-5 py-2.5 rounded-lg hover:bg-pink hover:text-white transition-colors duration-300 self-start"
+                      >
+                        <FaBolt /> {t('svc_seo_tool_cta')}
+                      </Link>
+                    )}
                   </div>
 
                   {/* Right: feature list */}
@@ -439,6 +447,12 @@ export default function ServicesPageContent() {
                     </li>
                   ))}
                 </ul>
+                <Link
+                  href="/auditoria-seo"
+                  className="inline-flex items-center gap-2 border-2 border-pink text-pink font-bold px-5 py-2.5 rounded-lg hover:bg-pink hover:text-white transition-colors duration-300 mt-5"
+                >
+                  <FaBolt /> {t('services_maintenance_tool_cta')}
+                </Link>
               </div>
               <div className="text-center shrink-0">
                 <p className="text-pink font-bold text-3xl">$45 USD</p>

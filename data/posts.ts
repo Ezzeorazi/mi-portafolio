@@ -275,6 +275,18 @@ const posts: Post[] = [
     ReadingTime: '13 min de lectura',
     content: 'blog/claude-ia-guia-prompts-negocios-emprendedores-parte-3.html',
   },
+  {
+    id: 25,
+    slug: 'herramienta-analisis-seo-gratis-como-funciona',
+    image: 'images/blog/analisis-seo-herramienta-portada.webp',
+    title: 'Análisis SEO gratis: cómo medir tu sitio y por qué hoy importa también para las IA',
+    category: 'SEO',
+    description:
+      'Presento mi nueva herramienta gratuita de análisis SEO: qué mide, cómo leer los resultados y cómo funciona el SEO en general. Además, por qué en 2026 el SEO también significa aparecer en ChatGPT, Perplexity y Gemini (AEO).',
+    date: 'Publicado el 15 de junio de 2026',
+    ReadingTime: '11 min de lectura',
+    content: 'blog/herramienta-analisis-seo-gratis-como-funciona.html',
+  },
 ];
 
 export default posts;

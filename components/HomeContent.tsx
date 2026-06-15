@@ -81,6 +81,31 @@ export default function HomeContent({ latestPosts, featuredProjects }: HomeConte
       {/* Services */}
       <Services />
 
+      {/* Free SEO tool banner */}
+      <section className="bg-dark px-4 pb-16">
+        <ScrollReveal direction="up">
+          <div className="max-w-5xl mx-auto bg-gradient-to-br from-pink/15 via-dark to-yellow/10 border border-pink/30 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center gap-6 text-center md:text-left">
+            <div className="flex-1">
+              <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-dark bg-yellow px-3 py-1 rounded-full mb-4">
+                {t('home_seo_tool_badge')}
+              </span>
+              <h2 className="text-yellow font-bold text-2xl md:text-3xl mb-3">
+                {t('home_seo_tool_title')}
+              </h2>
+              <p className="text-light/70 text-sm md:text-base leading-relaxed max-w-xl">
+                {t('home_seo_tool_desc')}
+              </p>
+            </div>
+            <Link
+              href="/auditoria-seo"
+              className="bg-pink text-white font-bold px-7 py-3.5 rounded-lg hover:bg-yellow hover:text-dark transition-colors duration-300 shrink-0 whitespace-nowrap"
+            >
+              {t('home_seo_tool_cta')}
+            </Link>
+          </div>
+        </ScrollReveal>
+      </section>
+
       {/* FAQ */}
       <HomeFAQ />
 
