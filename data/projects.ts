@@ -21,6 +21,17 @@ export type Project = {
 
 const projects: Project[] = [
   {
+    id: 11,
+    featured: true,
+    slug: 'nacho-rodriguez',
+    title: 'Nacho Rodriguez — Músico',
+    description:
+      'Músico que dependía del boca a boca para conseguir fechas y no tenía dónde mostrar su trabajo a quien quería contratarlo. Construí su sitio-vidriera con repertorio, videos en vivo y formulario de contratación directa — hoy convierte las visitas en shows privados, bodas y tocadas en bares, sin intermediarios ni comisiones.',
+    image: 'images/projects/nacho-rodriguez-web-portada.webp',
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+    liveLink: 'https://nachorodriguezmusic.com',
+  },
+  {
     id: 10,
     featured: true,
     slug: 'elune',
