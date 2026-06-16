@@ -31,11 +31,20 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if [ -n "$(git status --porcelain)" ]; then
-            git add data/posts.ts content/blog public/images/blog
-            git commit -m "blog: post automático de Noticias Tech ($(date -u +%Y-%m-%d))"
-            git push
-            echo "✅ Post publicado. Netlify reconstruirá el sitio."
-          else
+          if [ -z "$(git status --porcelain)" ]; then
             echo "ℹ️ Sin cambios que commitear."
+            exit 0
           fi
+          git add data/posts.ts content/blog public/images/blog
+          git commit -m "blog: post automático de Noticias Tech ($(date -u +%Y-%m-%d))"
+          # Reintentar el push rebasando por si origin/main avanzó durante la corrida.
+          for intento in 1 2 3 4 5; do
+            if git push; then
+              echo "✅ Post publicado. Netlify reconstruirá el sitio."
+              exit 0
+            fi
+            echo "⚠️ Push rechazado (intento $intento). Rebaso sobre origin/main y reintento…"
+            git pull --rebase origin main
+          done
+          echo "❌ No se pudo pushear tras varios intentos."
+          exit 1
