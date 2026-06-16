@@ -351,18 +351,6 @@ const posts: Post[] = [
     publishedISO: '2026-06-15',
     content: 'blog/herramienta-analisis-seo-gratis-como-funciona.html',
   },
-  {
-    id: 26,
-    slug: 'noticias-tech-2026-06-16',
-    image: 'images/blog/noticias-tech-2026-06-16.svg',
-    title: "Resumen Tech Semanal: IA en guerra, Mundial pirata y más",
-    category: 'Noticias',
-    description: "Ezequiel Orazi te trae el resumen semanal tech: la batalla de Anthropic con el gobierno, los peligros del streaming ilegal del Mundial, el cierre de Samsung Max y la inversión de Meta en IA. ¡No te lo pierdas!",
-    date: 'Publicado el 16 de junio de 2026',
-    ReadingTime: '8 min de lectura',
-    publishedISO: '2026-06-16',
-    content: 'blog/noticias-tech-2026-06-16.html',
-  },
 ];
 
 export default posts;
