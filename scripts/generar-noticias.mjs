@@ -323,7 +323,7 @@ function parseGeminiJson(text) {
 
 // ─── 3. Portada SVG ─────────────────────────────────────────────────────────
 
-function wrapText(text, maxChars) {
+function wrapText(text, maxChars, maxLines = 5) {
   const words = text.split(/\s+/);
   const lines = [];
   let line = '';
@@ -336,14 +336,31 @@ function wrapText(text, maxChars) {
     }
   }
   if (line) lines.push(line.trim());
-  return lines.slice(0, 3);
+  return lines.slice(0, maxLines);
 }
 
 function buildSvgCover(fechaTexto, headline) {
   const W = 1200, H = 630;
-  const titulo = wrapText(headline || 'Noticias Tech de la semana', 24);
-  const tspans = titulo
-    .map((l, i) => `<tspan x="80" dy="${i === 0 ? 0 : 86}">${escapeXml(l)}</tspan>`)
+  const title = (headline || 'Noticias Tech de la semana').trim();
+
+  // Tamaño de fuente según el largo del título: que nunca se corte ni se desborde.
+  let font = 58, maxc = 24;
+  let lines = wrapText(title, maxc, 5);
+  if (lines.length > 3) { font = 46; maxc = 31; lines = wrapText(title, maxc, 5); }
+  if (lines.length > 4) { font = 38; maxc = 40; lines = wrapText(title, maxc, 5); }
+
+  const lineH = Math.round(font * 1.18);
+  const blockH = lines.length * lineH;
+  // Todo se centra verticalmente alrededor de y=300 (zona que sobrevive al
+  // recorte object-cover del hero y de las tarjetas, sin perder label ni fecha).
+  const centerY = 300;
+  const titleBase = Math.round(centerY - blockH / 2 + font * 0.82);
+  const labelY = Math.round(centerY - blockH / 2 - 26);
+  const dateY = Math.round(centerY + blockH / 2 + 46);
+  const brandY = dateY + 36;
+
+  const tspans = lines
+    .map((l, i) => `<tspan x="80" dy="${i === 0 ? 0 : lineH}">${escapeXml(l)}</tspan>`)
     .join('');
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -353,20 +370,20 @@ function buildSvgCover(fechaTexto, headline) {
       <stop offset="0%" stop-color="#161a1e"/>
       <stop offset="100%" stop-color="#0b0d10"/>
     </linearGradient>
-    <radialGradient id="glow" cx="85%" cy="15%" r="60%">
-      <stop offset="0%" stop-color="#fd02d1" stop-opacity="0.35"/>
+    <radialGradient id="glow" cx="85%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#fd02d1" stop-opacity="0.30"/>
       <stop offset="100%" stop-color="#fd02d1" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <rect width="${W}" height="${H}" fill="url(#bg)"/>
   <rect width="${W}" height="${H}" fill="url(#glow)"/>
   <rect x="0" y="0" width="14" height="${H}" fill="#fd02d1"/>
-  <circle cx="1050" cy="120" r="70" fill="#f5d805" opacity="0.9"/>
-  <circle cx="1110" cy="500" r="30" fill="#fd02d1" opacity="0.8"/>
-  <text x="80" y="120" font-family="Montserrat, Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="4" fill="#f5d805">NOTICIAS TECH · DEV</text>
-  <text x="80" y="270" font-family="Montserrat, Arial, sans-serif" font-size="72" font-weight="800" fill="#f0eeed">${tspans}</text>
-  <text x="80" y="540" font-family="Montserrat, Arial, sans-serif" font-size="30" font-weight="600" fill="#9aa3ad">Semana del ${escapeXml(fechaTexto)}</text>
-  <text x="80" y="586" font-family="Montserrat, Arial, sans-serif" font-size="26" font-weight="700" fill="#fd02d1">ezequiel-orazi.online</text>
+  <circle cx="1090" cy="315" r="60" fill="#f5d805" opacity="0.9"/>
+  <circle cx="1140" cy="250" r="22" fill="#fd02d1" opacity="0.85"/>
+  <text x="80" y="${labelY}" font-family="Montserrat, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="4" fill="#f5d805">NOTICIAS TECH · DEV</text>
+  <text x="80" y="${titleBase}" font-family="Montserrat, Arial, sans-serif" font-size="${font}" font-weight="800" fill="#f0eeed">${tspans}</text>
+  <text x="80" y="${dateY}" font-family="Montserrat, Arial, sans-serif" font-size="28" font-weight="600" fill="#9aa3ad">Semana del ${escapeXml(fechaTexto)}</text>
+  <text x="80" y="${brandY}" font-family="Montserrat, Arial, sans-serif" font-size="25" font-weight="700" fill="#fd02d1">ezequiel-orazi.online</text>
 </svg>
 `;
 }
