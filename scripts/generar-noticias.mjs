@@ -38,7 +38,15 @@ const FEEDS = [
 
 const NUM_NEWS = 5;
 const RECENT_DAYS = 10;
-const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.0-flash';
+// Lista de modelos free para probar en cadena (cada uno tiene cuota separada).
+// Se puede sobreescribir con GEMINI_MODEL (uno o varios separados por coma).
+const GEMINI_MODELS = (
+  process.env.GEMINI_MODEL ||
+  'gemini-2.0-flash,gemini-2.5-flash,gemini-2.5-flash-lite,gemini-1.5-flash'
+)
+  .split(',')
+  .map((s) => s.trim())
+  .filter(Boolean);
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const UA = 'Mozilla/5.0 (compatible; PortfolioNewsBot/1.0)';
 
@@ -85,6 +93,9 @@ function slugify(s = '') {
 }
 function fechaEs(d) {
   return `${d.getDate()} de ${MESES[d.getMonth()]} de ${d.getFullYear()}`;
+}
+function sleep(ms) {
+  return new Promise((r) => setTimeout(r, ms));
 }
 
 // ─── 1. Leer feeds RSS ──────────────────────────────────────────────────────
@@ -226,16 +237,46 @@ async function generateWithGemini(news, fechaTexto) {
   if (!GEMINI_API_KEY) {
     throw new Error('Falta GEMINI_API_KEY. Conseguí una gratis en https://aistudio.google.com/apikey');
   }
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
+  const prompt = buildPrompt(news, fechaTexto);
+
+  let lastErr;
+  // 2 rondas: en cada una probamos todos los modelos. Si todos dan 429,
+  // esperamos (la cuota por minuto del free tier se renueva) y reintentamos.
+  for (let ronda = 1; ronda <= 2; ronda++) {
+    for (const model of GEMINI_MODELS) {
+      try {
+        console.log(`  · probando ${model}…`);
+        const text = await callGeminiModel(model, prompt);
+        return parseGeminiJson(text);
+      } catch (err) {
+        lastErr = err;
+        if (err.is429) {
+          console.warn(`    ⚠ 429 (cuota) en ${model}, pruebo el siguiente…`);
+          continue;
+        }
+        throw err; // Error real (no de cuota): cortamos.
+      }
+    }
+    if (ronda === 1) {
+      console.warn('  Todos los modelos dieron 429. Espero 50s y reintento una vez…');
+      await sleep(50000);
+    }
+  }
+  throw new Error(
+    'Cuota de Gemini agotada en todos los modelos. Detalle:\n' + (lastErr?.message || 'desconocido'),
+  );
+}
+
+async function callGeminiModel(model, prompt) {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
   const body = {
-    contents: [{ parts: [{ text: buildPrompt(news, fechaTexto) }] }],
+    contents: [{ parts: [{ text: prompt }] }],
     generationConfig: {
       temperature: 0.85,
       maxOutputTokens: 8192,
       responseMimeType: 'application/json',
     },
   };
-
   const res = await fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -244,18 +285,23 @@ async function generateWithGemini(news, fechaTexto) {
   });
   if (!res.ok) {
     const txt = await res.text();
-    throw new Error(`Gemini HTTP ${res.status}: ${txt.slice(0, 300)}`);
+    const err = new Error(`Gemini HTTP ${res.status} (${model}): ${txt.slice(0, 600)}`);
+    if (res.status === 429) err.is429 = true;
+    throw err;
   }
   const data = await res.json();
-  let text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-  if (!text) throw new Error('Gemini no devolvió contenido: ' + JSON.stringify(data).slice(0, 300));
+  const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+  if (!text) throw new Error(`Gemini (${model}) no devolvió contenido: ` + JSON.stringify(data).slice(0, 400));
+  return text;
+}
 
-  text = text.trim().replace(/^```(?:json)?/i, '').replace(/```$/, '').trim();
+function parseGeminiJson(text) {
+  const cleaned = text.trim().replace(/^```(?:json)?/i, '').replace(/```$/, '').trim();
   let parsed;
   try {
-    parsed = JSON.parse(text);
+    parsed = JSON.parse(cleaned);
   } catch {
-    throw new Error('La respuesta de Gemini no es JSON válido: ' + text.slice(0, 200));
+    throw new Error('La respuesta de Gemini no es JSON válido: ' + cleaned.slice(0, 200));
   }
   if (!parsed.title || !parsed.html) throw new Error('JSON de Gemini incompleto (falta title o html)');
   return parsed;
