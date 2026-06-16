@@ -351,18 +351,6 @@ const posts: Post[] = [
     publishedISO: '2026-06-15',
     content: 'blog/herramienta-analisis-seo-gratis-como-funciona.html',
   },
-  {
-    id: 26,
-    slug: 'noticias-tech-2026-06-16',
-    image: 'images/blog/noticias-tech-2026-06-16.svg',
-    title: "El Futuro en Disputa: IA, Seguridad y Velocidad Tech de la Semana",
-    category: 'Noticias',
-    description: "Ezequiel Orazi te trae el resumen semanal de tecnología: la batalla por Claude Mythos 5, los riesgos del streaming ilegal, el adiós a Samsung Max y más.",
-    date: 'Publicado el 16 de junio de 2026',
-    ReadingTime: '8 min de lectura',
-    publishedISO: '2026-06-16',
-    content: 'blog/noticias-tech-2026-06-16.html',
-  },
 ];
 
 export default posts;
