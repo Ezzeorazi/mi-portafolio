@@ -97,6 +97,14 @@ function fechaEs(d) {
 function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
+/** Recorta a `max` caracteres cortando en el último espacio y agrega "…". */
+function recortar(s = '', max = 160) {
+  s = s.trim();
+  if (s.length <= max) return s;
+  const corte = s.slice(0, max - 1);
+  const sp = corte.lastIndexOf(' ');
+  return (sp > max * 0.6 ? corte.slice(0, sp) : corte).replace(/[\s,.;:—-]+$/, '') + '…';
+}
 
 // ─── 1. Leer feeds RSS ──────────────────────────────────────────────────────
 
@@ -200,16 +208,16 @@ function buildPrompt(news, fechaTexto) {
 
   return `Sos Ezequiel Orazi, desarrollador web full-stack argentino. Escribís el resumen semanal de noticias de tecnología para tu blog (https://ezequiel-orazi.online). Hoy es ${fechaTexto}.
 
-Tu voz: cercana pero PROFESIONAL, con tuteo argentino ("vos", "tenés", "te conviene"). Informal moderado, NO coloquial: evitá modismos y lunfardo (nada de "che", "kilombo", "posta", "mate", "uff", "al palo") y no abuses de los signos de exclamación. Escribís como un desarrollador serio que le explica las cosas a un colega de manera clara y amena, con criterio técnico real. No sos un agregador automático: das TU análisis, conectás puntos, explicás por qué cada noticia importa para devs, empresas o usuarios. Nada de relleno ni clickbait.
+Tu voz: escribís SIEMPRE en PRIMERA PERSONA del singular (yo): "me llamó la atención", "creo que", "en mi opinión", "me parece". Sos profesional pero cálido y amistoso, con tuteo argentino al lector ("vos", "tenés"). Formal sin ser acartonado: nada de lunfardo ni modismos (nada de "che", "kilombo", "posta", "mate", "uff", "al palo") y casi sin signos de exclamación. No sos un agregador automático: das TU análisis y criterio técnico real, conectás puntos y explicás por qué cada noticia importa. Nada de relleno ni clickbait.
 
 Estas son las 5 noticias de la semana:
 
 ${lista}
 
 Escribí un post de blog en español (Argentina) de entre 1000 y 1400 palabras con esta estructura:
-- 2 párrafos de introducción que enganchen y resuman el clima tech de la semana.
+- Arrancá DIRECTO al tema. PROHIBIDO saludar ("hola"), anunciar que esto es "el resumen semanal" o explicar de qué va el post. Nada de meta-frases tipo "una vez más acá estoy", "en este post", "esta semana te traigo", "vamos a ver": entrá desde la primera oración con una idea fuerte o con la noticia más importante. 1 o 2 párrafos de entrada que conecten el clima tech de la semana.
 - EXACTAMENTE ${news.length} secciones, UNA POR CADA noticia de la lista de arriba, en el mismo orden y sin saltarte ninguna. Cada sección: un <h2> con un título propio (NO copies el titular literal), seguido de 2 o 3 párrafos <p> con tu análisis técnico y contexto (qué pasó, por qué importa, qué implica). Cerrá cada sección con el enlace EXACTO de esa noticia así: <p><a href="URL" target="_blank" rel="noopener noreferrer">Leé la nota completa en FUENTE →</a></p>
-- Un párrafo de cierre con una reflexión y una invitación sutil a contactarte si necesitan ayuda con su proyecto web.
+- Un párrafo de cierre con una reflexión personal genuina y una invitación cálida a contactarme si necesitan una mano con su proyecto web. PROHIBIDO usar cierres formulaicos como "y así cerramos", "en resumen", "para terminar", "en conclusión".
 
 Reglas de formato MUY IMPORTANTES:
 - Devolvé ÚNICAMENTE un objeto JSON válido y minificado, sin markdown, sin \`\`\`.
@@ -443,7 +451,7 @@ async function main() {
     slug,
     image: imgRel,
     title: post.title,
-    description: post.description || post.title,
+    description: recortar(post.description || post.title, 160),
     fechaTexto,
     readingTime: readTime,
     iso,
