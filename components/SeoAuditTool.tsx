@@ -1,15 +1,20 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import {
   FaSearch, FaCheckCircle, FaExclamationTriangle, FaTimesCircle,
-  FaWhatsapp, FaFileSignature, FaBolt, FaSpinner, FaGoogle,
+  FaWhatsapp, FaFileSignature, FaBolt, FaSpinner, FaGoogle, FaHistory, FaTimes,
 } from 'react-icons/fa';
 import ScrollReveal from '@/components/ScrollReveal';
 import { useTranslation } from '@/hooks/useTranslation';
 
 // WhatsApp number (from contact page: +52 9982017863)
 const WHATSAPP = '529982017863';
+
+// Local history of recent audits (persists in the browser via localStorage)
+const HISTORY_KEY = 'seo_audit_history';
+const HISTORY_MAX = 3;
+interface HistoryEntry { url: string; score: number }
 
 type CheckStatus = 'pass' | 'warn' | 'fail';
 interface CheckResult { id: string; status: CheckStatus; detail?: string }
@@ -67,6 +72,8 @@ const COPY = {
     waMsg: (url: string, score: number) =>
       `Hola Ezequiel! Usé tu herramienta de auditoría SEO en ${url} y me dio ${score}/100 de salud on-page. Me gustaría mejorar el posicionamiento de mi sitio. ¿Cómo podemos avanzar?`,
     newScan: 'Analizar otra URL',
+    recentTitle: 'Búsquedas recientes',
+    clearHistory: 'Limpiar',
   },
   en: {
     badge: 'Free tool',
@@ -102,6 +109,8 @@ const COPY = {
     waMsg: (url: string, score: number) =>
       `Hi Ezequiel! I used your SEO audit tool on ${url} and got ${score}/100 on-page health. I'd like to improve my site's ranking. How can we move forward?`,
     newScan: 'Analyze another URL',
+    recentTitle: 'Recent searches',
+    clearHistory: 'Clear',
   },
 } as const;
 
@@ -227,34 +236,82 @@ export default function SeoAuditTool() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<AuditResponse | null>(null);
+  const [history, setHistory] = useState<HistoryEntry[]>([]);
 
-  const runAudit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (loading) return;
-    if (!url.trim()) {
-      setError(c.errInvalid);
-      return;
-    }
-    setLoading(true);
-    setError(null);
-    setResult(null);
+  // Load saved history once on mount (client only).
+  useEffect(() => {
     try {
-      const res = await fetch('/api/seo-audit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url }),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        setError(data?.error === 'invalid_url' ? c.errInvalid : c.errFetch);
+      const raw = localStorage.getItem(HISTORY_KEY);
+      if (raw) setHistory(JSON.parse(raw));
+    } catch {
+      /* ignore corrupted storage */
+    }
+  }, []);
+
+  const pushHistory = useCallback((entry: HistoryEntry) => {
+    setHistory((prev) => {
+      const next = [entry, ...prev.filter((h) => h.url !== entry.url)].slice(0, HISTORY_MAX);
+      try {
+        localStorage.setItem(HISTORY_KEY, JSON.stringify(next));
+      } catch {
+        /* storage may be unavailable (private mode) */
+      }
+      return next;
+    });
+  }, []);
+
+  const clearHistory = useCallback(() => {
+    setHistory([]);
+    try {
+      localStorage.removeItem(HISTORY_KEY);
+    } catch {
+      /* ignore */
+    }
+  }, []);
+
+  const performAudit = useCallback(
+    async (targetUrl: string) => {
+      const trimmed = targetUrl.trim();
+      if (!trimmed) {
+        setError(c.errInvalid);
         return;
       }
-      setResult(data as AuditResponse);
-    } catch {
-      setError(c.errGeneric);
-    } finally {
-      setLoading(false);
-    }
+      setLoading(true);
+      setError(null);
+      setResult(null);
+      try {
+        const res = await fetch('/api/seo-audit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url: trimmed }),
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          setError(data?.error === 'invalid_url' ? c.errInvalid : c.errFetch);
+          return;
+        }
+        const audit = data as AuditResponse;
+        setResult(audit);
+        pushHistory({ url: audit.finalUrl, score: audit.onpage.score });
+      } catch {
+        setError(c.errGeneric);
+      } finally {
+        setLoading(false);
+      }
+    },
+    [c, pushHistory]
+  );
+
+  const runAudit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (loading) return;
+    performAudit(url);
+  };
+
+  const runFromHistory = (entry: HistoryEntry) => {
+    if (loading) return;
+    setUrl(entry.url);
+    performAudit(entry.url);
   };
 
   const issues = result
@@ -319,6 +376,49 @@ export default function SeoAuditTool() {
               </p>
             )}
             <p className="text-light/40 text-xs mt-4">{c.disclaimer}</p>
+
+            {/* Recent searches (persisted in localStorage) */}
+            {history.length > 0 && (
+              <div className="mt-8 max-w-2xl mx-auto">
+                <div className="flex items-center justify-center gap-2 mb-3">
+                  <FaHistory className="text-light/40 text-xs" />
+                  <span className="text-light/50 text-xs uppercase tracking-widest">
+                    {c.recentTitle}
+                  </span>
+                  <button
+                    onClick={clearHistory}
+                    className="text-light/30 hover:text-pink transition-colors text-xs ml-1 inline-flex items-center gap-1"
+                  >
+                    <FaTimes className="text-[10px]" /> {c.clearHistory}
+                  </button>
+                </div>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {history.map((h) => {
+                    const dot =
+                      h.score >= 90 ? 'bg-green-400' : h.score >= 50 ? 'bg-yellow' : 'bg-pink';
+                    let host = h.url;
+                    try {
+                      host = new URL(h.url).hostname.replace(/^www\./, '');
+                    } catch {
+                      /* keep raw */
+                    }
+                    return (
+                      <button
+                        key={h.url}
+                        onClick={() => runFromHistory(h)}
+                        disabled={loading}
+                        className="group flex items-center gap-2 bg-muted/20 border border-yellow/20 rounded-full pl-2.5 pr-3 py-1.5 text-sm text-light/80 hover:border-yellow hover:text-light transition-colors disabled:opacity-50"
+                        title={h.url}
+                      >
+                        <span className={`w-2 h-2 rounded-full ${dot}`} />
+                        <span className="max-w-[12rem] truncate">{host}</span>
+                        <span className="text-light/40 text-xs font-mono">{h.score}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </ScrollReveal>
         </div>
       </section>
