@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import { getAllPosts, getPostBySlug } from '@/lib/blog';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -91,12 +92,13 @@ export default async function BlogPostPage({ params }: Props) {
       <article className="max-w-3xl mx-auto px-4 py-16">
         {/* Header */}
         <div className="mb-10">
-          <Link
-            href="/blog"
-            className="text-sm text-muted hover:text-dark transition-colors duration-300 mb-6 inline-block font-medium"
-          >
-            ← Volver al blog
-          </Link>
+          <Breadcrumbs
+            items={[
+              { label: 'Inicio', href: '/' },
+              { label: 'Blog', href: '/blog' },
+              { label: post.title },
+            ]}
+          />
 
           <div className="relative w-full h-64 rounded-xl overflow-hidden mb-6">
             <Image

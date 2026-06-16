@@ -4,6 +4,7 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import { getAllProjects, getProjectBySlug } from '@/lib/projects';
 import { FaGithub, FaExternalLinkAlt, FaLock } from 'react-icons/fa';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -39,16 +40,17 @@ export default async function ProjectPage({ params }: Props) {
 
   return (
     <article className="max-w-3xl mx-auto px-4 py-16">
-      {/* Back */}
-      <Link
-        href="/proyectos"
-        className="text-sm text-muted hover:text-dark transition-colors duration-300 mb-6 inline-block font-medium"
-      >
-        ← Volver a proyectos
-      </Link>
+      {/* Breadcrumbs */}
+      <Breadcrumbs
+        items={[
+          { label: 'Inicio', href: '/' },
+          { label: 'Proyectos', href: '/proyectos' },
+          { label: project.title },
+        ]}
+      />
 
       {/* Hero image */}
-      <div className="relative w-full h-64 md:h-80 rounded-xl overflow-hidden mb-8 mt-4">
+      <div className="relative w-full h-64 md:h-80 rounded-xl overflow-hidden mb-8">
         <Image
           src={`/${project.image}`}
           alt={project.title}
