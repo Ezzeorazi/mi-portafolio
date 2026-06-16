@@ -351,18 +351,6 @@ const posts: Post[] = [
     publishedISO: '2026-06-15',
     content: 'blog/herramienta-analisis-seo-gratis-como-funciona.html',
   },
-  {
-    id: 26,
-    slug: 'noticias-tech-2026-06-16',
-    image: 'images/blog/noticias-tech-2026-06-16.svg',
-    title: "Noticias Tech de la Semana: IA, Mundial y Cierres Sorpresa",
-    category: 'Noticias',
-    description: "Tu resumen semanal con lo más relevante del mundo tech: la batalla por Claude Mythos 5, riesgos del streaming pirata, el fin de Samsung Max VPN, la inversión de Meta en IA y el supersónico silencioso de la NASA.",
-    date: 'Publicado el 16 de junio de 2026',
-    ReadingTime: '7 min de lectura',
-    publishedISO: '2026-06-16',
-    content: 'blog/noticias-tech-2026-06-16.html',
-  },
 ];
 
 export default posts;
