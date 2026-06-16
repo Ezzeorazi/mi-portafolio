@@ -208,15 +208,16 @@ ${lista}
 
 Escribí un post de blog en español (Argentina) de entre 1000 y 1400 palabras con esta estructura:
 - 2 párrafos de introducción que enganchen y resuman el clima tech de la semana.
-- Una sección por cada noticia: un <h2> con un título propio (NO copies el titular literal), seguido de 2 o 3 párrafos <p> con tu análisis técnico y contexto (qué pasó, por qué importa, qué implica). Dentro de cada sección incluí un enlace a la fuente así: <p><a href="URL" target="_blank" rel="noopener noreferrer">Leé la nota completa en FUENTE →</a></p>
+- EXACTAMENTE ${news.length} secciones, UNA POR CADA noticia de la lista de arriba, en el mismo orden y sin saltarte ninguna. Cada sección: un <h2> con un título propio (NO copies el titular literal), seguido de 2 o 3 párrafos <p> con tu análisis técnico y contexto (qué pasó, por qué importa, qué implica). Cerrá cada sección con el enlace EXACTO de esa noticia así: <p><a href="URL" target="_blank" rel="noopener noreferrer">Leé la nota completa en FUENTE →</a></p>
 - Un párrafo de cierre con una reflexión y una invitación sutil a contactarte si necesitan ayuda con su proyecto web.
 
 Reglas de formato MUY IMPORTANTES:
 - Devolvé ÚNICAMENTE un objeto JSON válido y minificado, sin markdown, sin \`\`\`.
 - Estructura exacta: {"title": "...", "description": "...", "html": "..."}
 - "title": título atractivo del post (50-65 caracteres) que mencione que es el resumen tech de la semana.
-- "description": meta descripción SEO (140-160 caracteres).
-- "html": SOLO el cuerpo del artículo usando etiquetas <p>, <h2>, <strong>, <a>, <ul>, <li>. NADA de <html>, <head>, <body>, <h1> ni estilos inline. Usá comillas dobles escapadas correctamente dentro del JSON.`;
+- "description": meta descripción SEO de máximo 160 caracteres (NO te pases).
+- "html": SOLO el cuerpo del artículo usando etiquetas <p>, <h2>, <strong>, <a>, <ul>, <li>. NADA de <html>, <head>, <body>, <h1> ni estilos inline. Usá comillas dobles escapadas correctamente dentro del JSON.
+- USÁ ÚNICAMENTE las ${news.length} URLs que te di, una por sección. NO inventes ni agregues enlaces que no estén en la lista. NO repitas una misma noticia en dos secciones.`;
 }
 
 async function generateWithGemini(news, fechaTexto) {
