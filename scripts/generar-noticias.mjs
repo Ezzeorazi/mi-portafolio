@@ -241,8 +241,9 @@ async function generateWithGemini(news, fechaTexto) {
   const prompt = buildPrompt(news, fechaTexto);
 
   let lastErr;
-  // 2 rondas: en cada una probamos todos los modelos. Si todos dan 429,
-  // esperamos (la cuota por minuto del free tier se renueva) y reintentamos.
+  let hubo429 = false;
+  // 2 rondas: en cada una probamos todos los modelos. Ante cualquier fallo
+  // (429 de cuota, JSON cortado, etc.) saltamos al siguiente modelo.
   for (let ronda = 1; ronda <= 2; ronda++) {
     for (const model of GEMINI_MODELS) {
       try {
@@ -251,32 +252,36 @@ async function generateWithGemini(news, fechaTexto) {
         return parseGeminiJson(text);
       } catch (err) {
         lastErr = err;
-        if (err.is429) {
-          console.warn(`    ⚠ 429 (cuota) en ${model}, pruebo el siguiente…`);
-          continue;
-        }
-        throw err; // Error real (no de cuota): cortamos.
+        if (err.is429) hubo429 = true;
+        console.warn(`    ⚠ ${model} falló (${err.message.slice(0, 80)}). Pruebo el siguiente…`);
       }
     }
-    if (ronda === 1) {
-      console.warn('  Todos los modelos dieron 429. Espero 50s y reintento una vez…');
+    // Solo esperamos y reintentamos si los fallos fueron por cuota (429).
+    if (ronda === 1 && hubo429) {
+      console.warn('  Espero 50s (la cuota por minuto del free tier se renueva) y reintento…');
       await sleep(50000);
+    } else {
+      break;
     }
   }
-  throw new Error(
-    'Cuota de Gemini agotada en todos los modelos. Detalle:\n' + (lastErr?.message || 'desconocido'),
-  );
+  throw new Error('No se pudo generar con ningún modelo de Gemini. Último error:\n' + (lastErr?.message || 'desconocido'));
 }
 
 async function callGeminiModel(model, prompt) {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
+  const es25 = model.includes('2.5');
+  const generationConfig = {
+    temperature: 0.85,
+    // Los 2.5 soportan salidas más largas; les damos margen de sobra.
+    maxOutputTokens: es25 ? 16384 : 8192,
+    responseMimeType: 'application/json',
+  };
+  // Los modelos 2.5 son "thinking": sin esto gastan tokens razonando y truncan el JSON.
+  if (es25) generationConfig.thinkingConfig = { thinkingBudget: 0 };
+
   const body = {
     contents: [{ parts: [{ text: prompt }] }],
-    generationConfig: {
-      temperature: 0.85,
-      maxOutputTokens: 8192,
-      responseMimeType: 'application/json',
-    },
+    generationConfig,
   };
   const res = await fetch(url, {
     method: 'POST',
