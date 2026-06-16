@@ -4,9 +4,9 @@ import { getAllPosts } from '@/lib/blog';
 import { getFeaturedProjects } from '@/lib/projects';
 
 export const metadata: Metadata = {
-  title: 'Eze Orazi | Desarrollador Web Freelance — Next.js, TypeScript, SEO con IA',
+  title: 'Eze Orazi | Desarrollador Web Freelance — Next.js y SEO con IA',
   description:
-    'Soy Ezequiel Orazi, desarrollador web freelance. Landing pages desde $180 USD, tiendas online desde $890 USD y SEO con IA para aparecer primero en Google, ChatGPT y Perplexity.',
+    'Ezequiel Orazi, desarrollador web freelance. Landing pages desde $180 USD y SEO con IA para aparecer primero en Google, ChatGPT y Perplexity.',
 };
 
 const homeFaqJsonLd = {
