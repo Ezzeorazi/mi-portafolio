@@ -23,10 +23,11 @@ interface Project {
 
 interface HomeContentProps {
   latestPosts: Post[];
+  noticias: Post[];
   featuredProjects: Project[];
 }
 
-export default function HomeContent({ latestPosts, featuredProjects }: HomeContentProps) {
+export default function HomeContent({ latestPosts, noticias, featuredProjects }: HomeContentProps) {
   const { t } = useTranslation();
 
   return (
@@ -134,6 +135,53 @@ export default function HomeContent({ latestPosts, featuredProjects }: HomeConte
           </div>
         </section>
       )}
+
+      {/* Noticias Tech (semanario) */}
+      <section className="bg-dark py-20 px-4 border-t border-yellow/10">
+        <div className="max-w-5xl mx-auto">
+          <ScrollReveal direction="up">
+            <div className="flex items-center justify-between gap-4 mb-3">
+              <h2 className="text-yellow font-bold text-2xl md:text-3xl flex items-center gap-3">
+                <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-white bg-pink px-2.5 py-1 rounded-full">
+                  Semanal
+                </span>
+                {t('home_news_heading')}
+              </h2>
+              {noticias.length > 0 && (
+                <Link
+                  href="/blog"
+                  className="text-sm font-semibold text-pink hover:underline underline-offset-4 transition-colors whitespace-nowrap"
+                >
+                  {t('home_news_cta')}
+                </Link>
+              )}
+            </div>
+            <p className="text-light/70 text-sm md:text-base leading-relaxed max-w-2xl mb-10">
+              {t('home_news_desc')}
+            </p>
+
+            {noticias.length > 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {noticias.map((post) => (
+                  <ArticleCard key={post.id} post={post} />
+                ))}
+              </div>
+            ) : (
+              <div className="rounded-2xl border border-dashed border-pink/40 bg-gradient-to-br from-pink/10 via-dark to-yellow/5 p-8 md:p-12 text-center">
+                <div className="text-4xl mb-4" aria-hidden="true">
+                  📰
+                </div>
+                <h3 className="text-light font-bold text-xl md:text-2xl mb-3">
+                  {t('home_news_empty_title')}
+                </h3>
+                <p className="text-light/70 text-sm md:text-base leading-relaxed max-w-xl mx-auto">
+                  {t('home_news_empty_text')}
+                </p>
+              </div>
+            )}
+          </ScrollReveal>
+        </div>
+      </section>
 
       {/* Latest Posts */}
       <section className="bg-light py-20 px-4">

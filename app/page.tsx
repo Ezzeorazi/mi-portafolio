@@ -65,7 +65,10 @@ const homeFaqJsonLd = {
 };
 
 export default function HomePage() {
-  const latestPosts = getAllPosts().slice(0, 3);
+  const allPosts = getAllPosts();
+  // Las noticias tienen su propia sección: las excluimos del bloque de blog.
+  const latestPosts = allPosts.filter((p) => p.category !== 'Noticias').slice(0, 3);
+  const noticias = allPosts.filter((p) => p.category === 'Noticias').slice(0, 3);
   const featuredProjects = getFeaturedProjects();
 
   return (
@@ -74,7 +77,7 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqJsonLd) }}
       />
-      <HomeContent latestPosts={latestPosts} featuredProjects={featuredProjects} />
+      <HomeContent latestPosts={latestPosts} noticias={noticias} featuredProjects={featuredProjects} />
     </>
   );
 }

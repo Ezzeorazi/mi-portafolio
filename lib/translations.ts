@@ -24,6 +24,13 @@ const translations: Record<Language, Record<string, string>> = {
     home_featured_heading: 'Proyectos actuales',
     home_see_all: 'Ver todos →',
     home_blog_heading: 'Últimos posts del blog',
+    home_news_heading: 'Noticias Tech',
+    home_news_desc:
+      'Mi semanario de tecnología: las noticias más relevantes de la semana con mi análisis, en primera persona. Nueva edición todos los miércoles a las 8:00 (hora Argentina).',
+    home_news_empty_title: 'La primera edición sale el miércoles 17/6',
+    home_news_empty_text:
+      'Todavía no publiqué ninguna edición. La primera sale el miércoles 17 de junio a las 8:00 (ART) y después una por semana. Si ya pasó el miércoles y no ves ninguna… se cayó la base de datos 😅',
+    home_news_cta: 'Ver todas las noticias →',
 
     // ABOUT
     about_title: 'Sobre mí',
@@ -221,6 +228,13 @@ const translations: Record<Language, Record<string, string>> = {
     home_featured_heading: 'Featured Projects',
     home_see_all: 'See all →',
     home_blog_heading: 'Latest blog posts',
+    home_news_heading: 'Tech News',
+    home_news_desc:
+      'My weekly tech digest: the most relevant stories of the week with my own take, first person. New edition every Wednesday at 8:00 AM (Argentina time).',
+    home_news_empty_title: 'The first edition drops Wednesday, June 17',
+    home_news_empty_text:
+      'No editions published yet. The first one goes live on Wednesday, June 17 at 8:00 AM (ART), then one per week. If it is already past Wednesday and you still see none… the database went down 😅',
+    home_news_cta: 'See all news →',
 
     // ABOUT
     about_title: 'About Me',
