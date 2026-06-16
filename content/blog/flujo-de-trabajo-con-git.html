@@ -1,3 +1,5 @@
+<blockquote><strong>Actualizado en junio de 2026.</strong> Sumé los comandos modernos <code>git switch</code> y <code>git restore</code> (hoy preferidos sobre <code>checkout</code> para tareas cotidianas), la convención de <code>main</code> como rama por defecto, y buenas prácticas de Pull Requests y commits convencionales. Todo lo demás sigue siendo igual de útil.</blockquote>
+
 <h2>Introducción</h2>
 <p>Git es una de las herramientas más populares para el control de versiones en el desarrollo de software. Permite a los desarrolladores trabajar de manera colaborativa y gestionar el historial de cambios en sus proyectos. En este artículo, exploraremos el flujo de trabajo con Git, centrándonos en el uso de ramas y fusiones (merges) para facilitar el desarrollo colaborativo.</p>
 
@@ -48,7 +50,33 @@ git commit -m "Resuelto conflicto de fusión"
   <li><strong>Usa ramas para cada tarea:</strong> Crea una nueva rama para cada nueva funcionalidad o corrección de errores que estés trabajando.</li>
 </ul>
 
+<h2>Comandos modernos y flujo actual (2026)</h2>
+<p>Git incorporó comandos más claros que separan responsabilidades que antes recaían todas sobre <code>checkout</code>. Hoy se recomienda usarlos:</p>
+<ul>
+  <li><strong><code>git switch</code></strong> para moverte entre ramas o crear una nueva: <code>git switch -c nombre-de-la-rama</code> (equivale a <code>checkout -b</code>, pero más legible).</li>
+  <li><strong><code>git restore</code></strong> para descartar cambios o sacar archivos del área de preparación, sin el doble sentido que tenía <code>checkout</code>.</li>
+  <li><strong>Rama por defecto <code>main</code>:</strong> es la convención actual en GitHub, GitLab y la mayoría de los equipos.</li>
+  <li><strong>Pull Requests en lugar de merges directos:</strong> integrar mediante PRs habilita la revisión de código y que corra la CI antes de fusionar.</li>
+  <li><strong>Commits convencionales:</strong> prefijos como <code>feat:</code>, <code>fix:</code> o <code>docs:</code> hacen el historial legible y permiten generar changelogs automáticos.</li>
+</ul>
+
+<pre>
+  <code>
+git switch -c feature/login      # crear y cambiar a una rama nueva
+git add .
+git commit -m "feat: agregar pantalla de login"
+git switch main                  # volver a la rama principal
+git restore archivo.js           # descartar cambios de un archivo
+  </code>
+</pre>
+
 <h2>Conclusión</h2>
 <p>El uso adecuado de ramas y fusiones en Git es esencial para mantener un flujo de trabajo ordenado y eficiente. Te permite experimentar y realizar cambios en el código sin afectar la estabilidad de tu rama principal. Al seguir las mejores prácticas, puedes facilitar la colaboración y la gestión de versiones en tus proyectos de desarrollo.</p>
 
 <p>Si estás empezando a usar Git o quieres mejorar tu flujo de trabajo, recuerda practicar y familiarizarte con los comandos discutidos aquí. Con el tiempo, trabajar con ramas y fusiones se convertirá en una parte natural de tu proceso de desarrollo.</p>
+
+<h2>Seguí aprendiendo</h2>
+<ul>
+  <li><a href="/blog/como-aprender-desarrollo-web">Guía completa para aprender desarrollo web</a></li>
+  <li><a href="/blog/que-es-docker">¿Qué es Docker?</a></li>
+</ul>

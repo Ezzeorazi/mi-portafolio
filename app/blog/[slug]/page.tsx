@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: post.title,
       description: post.description,
       type: 'article',
-      publishedTime: post.date,
+      publishedTime: post.publishedISO,
+      modifiedTime: post.updatedISO ?? post.publishedISO,
       authors: ['Ezequiel Orazi'],
       images: [
         {
@@ -76,7 +77,8 @@ export default async function BlogPostPage({ params }: Props) {
       '@type': 'Person',
       name: 'Ezequiel Orazi',
     },
-    datePublished: post.date,
+    datePublished: post.publishedISO,
+    dateModified: post.updatedISO ?? post.publishedISO,
     url: `https://ezequiel-orazi.online/blog/${post.slug}`,
     inLanguage: 'es',
     keywords: post.category,
@@ -117,10 +119,16 @@ export default async function BlogPostPage({ params }: Props) {
           <h1 className="text-dark font-bold text-2xl md:text-4xl mt-2 mb-4 leading-tight">
             {post.title}
           </h1>
-          <div className="flex items-center gap-3 text-sm text-muted/70">
+          <div className="flex flex-wrap items-center gap-3 text-sm text-muted/70">
             <span>{post.date}</span>
             <span>·</span>
             <span>{post.ReadingTime}</span>
+            {post.updated && (
+              <>
+                <span>·</span>
+                <span className="text-pink font-medium">{post.updated}</span>
+              </>
+            )}
           </div>
         </div>
 

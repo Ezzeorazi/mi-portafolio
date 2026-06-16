@@ -1,3 +1,5 @@
+<blockquote><strong>Actualizado en junio de 2026.</strong> Sumé las técnicas de CSS que hoy ya tienen soporte total en navegadores y que cambiaron la forma de maquetar: <code>gap</code> también en Flexbox, las <strong>container queries</strong>, <code>subgrid</code>, <code>aspect-ratio</code> y grillas responsivas con <code>auto-fit</code> y <code>minmax()</code> sin necesidad de media queries. Los fundamentos de Grid y Flexbox que verás abajo siguen siendo la base.</blockquote>
+
 <h2>Introducción</h2>
     <p>En el diseño web moderno, construir layouts flexibles y responsivos es esencial. Dos de las herramientas más poderosas en CSS para este propósito son <strong>CSS Grid</strong> y <strong>Flexbox</strong>. Cada uno tiene sus fortalezas y casos de uso, y en este artículo exploraremos cómo funcionan, en qué se diferencian, y cuándo deberías utilizar uno sobre el otro. Al final, tendrás una mejor comprensión de cómo emplear ambos para crear interfaces web adaptables y bien estructuradas.</p>
 
@@ -91,6 +93,32 @@
         </code>
     </pre>
 
+    <h2>CSS moderno que cambia el juego (2026)</h2>
+    <p>Desde que se publicó esta guía, el CSS evolucionó mucho y varias técnicas que antes requerían trucos o JavaScript hoy son nativas y con soporte total:</p>
+    <ul>
+        <li><strong>Grillas responsivas sin media queries:</strong> con <code>repeat(auto-fit, minmax(220px, 1fr))</code> la grilla acomoda sola la cantidad de columnas según el espacio disponible.</li>
+        <li><strong>Container queries:</strong> permiten que un componente se adapte al ancho de su contenedor (no solo al de la pantalla), lo que hace que los componentes sean verdaderamente reutilizables.</li>
+        <li><strong>Subgrid:</strong> deja que un elemento hijo herede las líneas de la grilla del padre, ideal para alinear tarjetas con distinto contenido.</li>
+        <li><strong>aspect-ratio:</strong> reserva la proporción de imágenes y videos sin hacks de <em>padding</em>, evitando el "layout shift".</li>
+    </ul>
+
+    <pre>
+        <code>
+    /* Galería que se adapta sola, sin media queries */
+    .galeria {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+    }
+
+    /* Un componente que responde al ancho de SU contenedor */
+    .tarjeta-contenedor { container-type: inline-size; }
+    @container (min-width: 400px) {
+        .tarjeta { display: flex; gap: 1rem; }
+    }
+        </code>
+    </pre>
+
     <h2>Conclusión</h2>
     <p>Grid y Flexbox son herramientas poderosas y complementarias en CSS. Utiliza Flexbox para layouts lineales y de una sola dimensión y CSS Grid para estructuras de cuadrícula más complejas. A medida que te familiarices con ambos, descubrirás que muchas veces puedes combinarlos para lograr layouts más versátiles y adaptables.</p>
 
@@ -99,3 +127,10 @@
         <li>MDN Web Docs sobre Flexbox: "Flexbox es un modelo de layout diseñado para interfaces de usuario complejas y responsivas".</li>
         <li>MDN Web Docs sobre Grid: "CSS Grid Layout es el primer método de layout de CSS diseñado explícitamente para construir interfaces de usuario complejas".</li>
     </ul>
+
+    <h2>Seguí aprendiendo</h2>
+    <ul>
+        <li><a href="/blog/html-fundamento-desarrollo-web">HTML: el fundamento del desarrollo web</a></li>
+        <li><a href="/blog/como-aprender-desarrollo-web">Guía completa para aprender desarrollo web</a></li>
+    </ul>
+    <p>¿Querés un sitio rápido y bien maquetado para tu negocio? <a href="/contacto">Escribime</a> y lo vemos.</p>

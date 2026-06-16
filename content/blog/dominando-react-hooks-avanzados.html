@@ -1,3 +1,5 @@
+<blockquote><strong>Actualizado en junio de 2026.</strong> Con la llegada de React 19 y el <strong>React Compiler</strong>, la memorización manual con <code>useMemo</code> y <code>useCallback</code> es cada vez menos necesaria. Agregué al final una sección sobre cómo cambia el uso de estos hooks hoy. Entenderlos sigue siendo clave para diagnosticar rendimiento y leer código existente.</blockquote>
+
 <h2>Introducción</h2>
 <p>Los hooks de React son una de las características más poderosas y útiles que se han introducido en las versiones más recientes de la biblioteca. Permiten a los desarrolladores usar el estado y otros aspectos de React sin escribir una clase. En este artículo, exploraremos hooks avanzados como <code>useContext</code>, <code>useReducer</code>, <code>useMemo</code> y <code>useCallback</code>, y cómo pueden ayudarte a construir componentes más funcionales y eficientes.</p>
 
@@ -163,5 +165,21 @@
   </code>
 </pre>
 
+<h2>Estos hooks en la era del React Compiler (2026)</h2>
+<p>React 19 trajo un cambio importante en cómo pensamos la optimización. Esto es lo que conviene tener presente hoy:</p>
+<ul>
+  <li><strong>El React Compiler memoriza por vos:</strong> en muchos casos ya no necesitás envolver valores en <code>useMemo</code> ni funciones en <code>useCallback</code> manualmente; el compilador lo hace automáticamente. Aun así, entender qué hacen te ayuda a leer código existente y a diagnosticar problemas.</li>
+  <li><strong><code>useContext</code> evoluciona:</strong> el nuevo hook <code>use()</code> permite leer un contexto (y hasta condicionalmente), volviendo el patrón más flexible.</li>
+  <li><strong><code>useReducer</code> sigue vigente:</strong> para estado complejo o máquinas de estado, sigue siendo la mejor herramienta nativa y se combina muy bien con <code>useContext</code>.</li>
+  <li><strong>Regla práctica:</strong> primero hacé que funcione y sea legible; optimizá con memorización solo cuando midas un problema real de rendimiento.</li>
+</ul>
+
 <h2>Conclusión</h2>
 <p>Los hooks avanzados de React, como <code>useContext</code>, <code>useReducer</code>, <code>useMemo</code> y <code>useCallback</code>, son herramientas poderosas que permiten manejar el estado y el rendimiento de manera más efectiva. Con estos hooks, puedes escribir componentes funcionales más limpios, eficientes y reutilizables. ¡Empieza a experimentar con ellos y lleva tus aplicaciones React al siguiente nivel!</p>
+
+<h2>Seguí aprendiendo</h2>
+<ul>
+  <li><a href="/blog/introduccion-a-los-hooks-de-react">Introducción a los hooks de React</a></li>
+  <li><a href="/blog/como-mejorar-el-rendimiento-en-nextjs-con-imagenes-optimizadas">Mejorar el rendimiento en Next.js con imágenes optimizadas</a></li>
+</ul>
+<p>¿Tu app React necesita una optimización o una mano con la arquitectura? <a href="/contacto">Hablemos</a>.</p>

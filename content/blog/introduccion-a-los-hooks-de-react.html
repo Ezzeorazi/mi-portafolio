@@ -1,3 +1,5 @@
+<blockquote><strong>Actualizado en junio de 2026.</strong> Una aclaración importante: <code>create-react-app</code> quedó <strong>discontinuado</strong>. Hoy se arranca un proyecto con <strong>Vite</strong> o con un framework como <strong>Next.js</strong>. Más abajo sumé "React en 2026" con los hooks nuevos de React 19 (<code>use</code>, <code>useActionState</code>, <code>useOptimistic</code>) y el React Compiler. Los fundamentos de <code>useState</code> y <code>useEffect</code> siguen vigentes.</blockquote>
+
 <h2>Introducción</h2>
 <p>Los hooks de React son una de las características más poderosas y útiles que se han introducido en las versiones más recientes de la biblioteca. Permiten a los desarrolladores usar el estado y otros aspectos de React sin escribir una clase. En este artículo, exploraremos los hooks más comunes, como <code>useState</code> y <code>useEffect</code>, y cómo pueden ayudarte a construir componentes más funcionales y eficientes.</p>
 
@@ -9,8 +11,10 @@
 
 <pre>
   <code>
-    npx create-react-app mi-aplicacion
+    # create-react-app está discontinuado. Hoy se usa Vite:
+    npm create vite@latest mi-aplicacion -- --template react
     cd mi-aplicacion
+    npm install
   </code>
 </pre>
 
@@ -116,7 +120,24 @@
   </code>
 </pre>
 
+<h2>React en 2026: qué cambió</h2>
+<p>Desde que se publicó esta guía, React llegó a la versión 19 e incorporó hooks pensados para el trabajo con datos asincrónicos y formularios:</p>
+<ul>
+  <li><strong><code>use()</code>:</strong> permite "leer" una promesa o un contexto directamente dentro del render, simplificando la carga de datos.</li>
+  <li><strong><code>useActionState()</code>:</strong> maneja el estado de un formulario y su acción de envío (incluyendo estados de carga y error) con muchísimo menos código.</li>
+  <li><strong><code>useOptimistic()</code>:</strong> muestra al usuario el resultado esperado de inmediato (UI optimista) mientras la operación real termina en segundo plano.</li>
+  <li><strong>React Compiler:</strong> memoriza componentes automáticamente, reduciendo la necesidad de <code>useMemo</code> y <code>useCallback</code> manuales.</li>
+</ul>
+<p>Si querés profundizar en los hooks que necesitás cuando tus componentes crecen, seguí con <a href="/blog/dominando-react-hooks-avanzados">Dominando React Hooks avanzados</a>.</p>
+
 <h2>Conclusión</h2>
 <p>Los hooks de React son una herramienta poderosa que permite manejar el estado y los efectos secundarios de manera más sencilla y efectiva. Con hooks como <code>useState</code> y <code>useEffect</code>, puedes escribir componentes funcionales más limpios y reutilizables. Además, la posibilidad de crear hooks personalizados abre un abanico de posibilidades para estructurar tu lógica de forma más modular.</p>
 
 <p>A medida que te familiarices con los hooks, notarás que tu productividad y la calidad de tu código mejorarán significativamente. ¡Empieza a experimentar con los hooks y descubre todo lo que pueden hacer por ti!</p>
+
+<h2>Seguí aprendiendo</h2>
+<ul>
+  <li><a href="/blog/dominando-react-hooks-avanzados">Dominando React Hooks avanzados</a></li>
+  <li><a href="/blog/como-mejorar-el-rendimiento-en-nextjs-con-imagenes-optimizadas">Mejorar el rendimiento en Next.js con imágenes optimizadas</a></li>
+</ul>
+<p>¿Tenés una idea de app en React y querés llevarla a producción? <a href="/contacto">Hablemos</a>.</p>

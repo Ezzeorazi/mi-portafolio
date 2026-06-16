@@ -1,3 +1,5 @@
+<blockquote><strong>Actualizado en junio de 2026.</strong> Importante: desde Next.js 13 la prop <code>layout</code> (incluido <code>layout="responsive"</code>) y la configuración <code>images.domains</code> quedaron <strong>obsoletas</strong>. Hoy se usa <code>fill</code> junto con <code>sizes</code>, y los dominios externos se autorizan con <code>remotePatterns</code>. Más abajo agregué la sección "Cómo se hace hoy (Next.js 15)" con el código correcto y vigente.</blockquote>
+
 <h2>Introducción</h2>
 <p>Next.js es una popular biblioteca de React que permite crear aplicaciones web de alto rendimiento. Uno de los factores más críticos en la optimización del rendimiento es la carga de imágenes, ya que suelen ocupar una gran cantidad de datos y pueden ralentizar la carga de una página si no se gestionan adecuadamente. En este artículo, veremos cómo usar el componente <code>Image</code> en Next.js para optimizar imágenes y mejorar la velocidad de carga en tus aplicaciones.</p>
 
@@ -90,5 +92,51 @@
   <li>Asegúrate de especificar siempre el ancho y alto de las imágenes para evitar el "layout shift" o cambio de diseño.</li>
 </ul>
 
+<h2>Cómo se hace hoy (Next.js 15)</h2>
+<p>La API de imágenes cambió desde que se publicó esta guía. Estas son las diferencias clave que tenés que aplicar en proyectos actuales:</p>
+<ul>
+  <li><strong>La prop <code>layout</code> ya no existe.</strong> Para que una imagen ocupe su contenedor usás <code>fill</code> más <code>sizes</code> (y el contenedor con <code>position: relative</code>).</li>
+  <li><strong><code>domains</code> quedó obsoleto.</strong> Los dominios externos se autorizan con <code>remotePatterns</code>, que es más seguro y específico.</li>
+  <li><strong>AVIF además de WebP:</strong> Next.js puede servir AVIF, aún más liviano. Se configura con <code>formats</code>.</li>
+  <li><strong>placeholder="blur"</strong> para mostrar una previsualización borrosa mientras carga, mejorando la percepción de velocidad.</li>
+</ul>
+
+<pre>
+  <code>
+    // Imagen que llena su contenedor (reemplaza a layout="responsive")
+    &lt;div style={{ position: 'relative', width: '100%', height: 400 }}&gt;
+      &lt;Image
+        src="/ruta/a/tu-imagen.jpg"
+        alt="Descripción de la imagen"
+        fill
+        sizes="(max-width: 768px) 100vw, 768px"
+        style={{ objectFit: 'cover' }}
+      /&gt;
+    &lt;/div&gt;
+  </code>
+</pre>
+
+<pre>
+  <code>
+    // next.config.js — dominios externos con remotePatterns
+    module.exports = {
+      images: {
+        formats: ['image/avif', 'image/webp'],
+        remotePatterns: [
+          { protocol: 'https', hostname: 'example.com' },
+        ],
+      },
+    };
+  </code>
+</pre>
+
+<p>Optimizar imágenes no es solo cuestión de prolijidad: el peso y la velocidad de carga impactan directo en tu posicionamiento. Si querés medir cómo está hoy tu sitio, podés usar mi <a href="/auditoria-seo">herramienta gratuita de análisis SEO</a>.</p>
+
 <h2>Conclusión</h2>
 <p>El uso del componente <code>Image</code> en Next.js es una de las maneras más efectivas de optimizar imágenes y mejorar el rendimiento general de tu aplicación web. Al aprovechar las ventajas de carga diferida, formatos modernos y configuraciones específicas para imágenes responsivas, puedes mejorar significativamente la velocidad de tu aplicación y la experiencia del usuario. ¡Implementa estas prácticas en tu proyecto Next.js y disfruta de una web más rápida y optimizada!</p>
+
+<h2>Seguí aprendiendo</h2>
+<ul>
+  <li><a href="/blog/nextjs-vs-wordpress-cual-elegir-negocio-2026">Next.js vs WordPress: ¿cuál elegir para tu negocio?</a></li>
+  <li><a href="/blog/5-errores-seo-negocio-como-arreglarlos">5 errores que arruinan el SEO de tu negocio</a></li>
+</ul>

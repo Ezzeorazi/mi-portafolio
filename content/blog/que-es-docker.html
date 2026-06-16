@@ -1,3 +1,5 @@
+<blockquote><strong>Actualizado en junio de 2026.</strong> Sumé una sección práctica con el estado actual de Docker: <code>docker compose</code> (v2, ya sin guion), un <code>Dockerfile</code> de ejemplo, <em>multi-stage builds</em> para imágenes livianas y alternativas como Podman. Los conceptos de qué es y cómo funciona Docker siguen igual de vigentes.</blockquote>
+
 <h2>¿Qué es Docker?</h2>
 <p>Docker es una plataforma de contenedores que permite crear, desplegar y ejecutar aplicaciones de manera consistente en
   cualquier entorno. Los contenedores son entornos aislados que contienen todo lo necesario para ejecutar una aplicación:
@@ -41,7 +43,44 @@
   Algunas plataformas recomendadas incluyen Docker Docs (documentación oficial), freeCodeCamp, Udemy, Coursera, y Pluralsight.
   Además, en el sitio web oficial de Docker puedes encontrar guías y ejemplos prácticos.
   Otra buena fuente son los tutoriales de blogs especializados y proyectos de GitHub para practicar.</p>
+<h2>Docker en la práctica (2026)</h2>
+<p>Si vas a usar Docker hoy, estos son los puntos más relevantes y un ejemplo mínimo para arrancar:</p>
+<ul>
+  <li><strong><code>docker compose</code> (v2):</strong> ahora es un subcomando de Docker (se escribe sin guion). Permite definir varios servicios —app, base de datos, etc.— en un solo archivo <code>compose.yaml</code>.</li>
+  <li><strong>Multi-stage builds:</strong> compilás en una etapa y copiás solo el resultado final a una imagen mínima, logrando imágenes mucho más livianas y seguras.</li>
+  <li><strong>Imágenes base livianas:</strong> variantes <code>alpine</code> o <code>slim</code> reducen tamaño y superficie de ataque.</li>
+  <li><strong>Alternativas:</strong> <strong>Podman</strong> ofrece una experiencia compatible sin daemon y con foco en seguridad, aunque Docker sigue siendo el estándar de facto.</li>
+</ul>
+
+<pre><code>
+# Dockerfile multi-stage para una app Node
+FROM node:24-alpine AS build
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+FROM node:24-alpine
+WORKDIR /app
+COPY --from=build /app/dist ./dist
+COPY package*.json ./
+RUN npm ci --omit=dev
+CMD ["node", "dist/index.js"]
+</code></pre>
+
+<pre><code>
+# Levantar todo con Compose v2
+docker compose up -d
+</code></pre>
+
 <h2>Conclusión</h2>
 <p>Docker ha revolucionado la manera en que se desarrollan y despliegan aplicaciones. Su capacidad para crear entornos consistentes,
   portátiles y escalables lo convierte en una herramienta esencial en la industria tecnológica moderna. Aprender Docker es una gran inversión para desarrolladores,
   administradores de sistemas y arquitectos de software que buscan optimizar sus flujos de trabajo y estar preparados para los retos del futuro.</p>
+
+<h2>Seguí aprendiendo</h2>
+<ul>
+  <li><a href="/blog/configurando-un-servidor-Express-en-Node">Configurando un servidor Express en Node.js</a></li>
+  <li><a href="/blog/flujo-de-trabajo-con-git">Flujo de trabajo con Git</a></li>
+</ul>

@@ -5,7 +5,14 @@ export type Post = {
   title: string;
   category: string;
   description: string;
+  /** Texto visible de publicación, ej. "Publicado el 21 de octubre de 2024" */
   date: string;
+  /** Fecha de publicación en ISO 8601 (YYYY-MM-DD) para schema.org y sitemap */
+  publishedISO: string;
+  /** Texto visible de actualización, ej. "Actualizado el 15 de junio de 2026" (opcional) */
+  updated?: string;
+  /** Fecha de actualización en ISO 8601 (YYYY-MM-DD) para dateModified y lastmod (opcional) */
+  updatedISO?: string;
   ReadingTime: string;
   content: string;
 };
@@ -20,6 +27,9 @@ const posts: Post[] = [
     description: 'Una guía para comprender y usar promesas en JavaScript para manejar operaciones asíncronas.',
     date: 'Publicado el 21 de octubre de 2024',
     ReadingTime: '7 min de lectura',
+    publishedISO: '2024-10-21',
+    updated: 'Actualizado el 31 de mayo de 2026',
+    updatedISO: '2026-05-31',
     content: 'blog/entendiendo-las-promesas-en-javascript.html',
   },
   {
@@ -31,6 +41,9 @@ const posts: Post[] = [
     description: 'Una comparación práctica entre Grid y Flexbox para construir layouts responsivos en CSS.',
     date: 'Publicado el 21 de octubre de 2024',
     ReadingTime: '6 min de lectura',
+    publishedISO: '2024-10-21',
+    updated: 'Actualizado el 1 de junio de 2026',
+    updatedISO: '2026-06-01',
     content: 'blog/como-usar-grid-y-flexbox-en-css.html',
   },
   {
@@ -42,6 +55,9 @@ const posts: Post[] = [
     description: 'Aprende a optimizar imágenes en aplicaciones Next.js usando el componente Image para mejorar el rendimiento.',
     date: 'Publicado el 21 de octubre de 2024',
     ReadingTime: '5 min de lectura',
+    publishedISO: '2024-10-21',
+    updated: 'Actualizado el 2 de junio de 2026',
+    updatedISO: '2026-06-02',
     content: 'blog/como-mejorar-el-rendimiento-en-nextjs-con-imagenes-optimizadas.html',
   },
   {
@@ -53,6 +69,9 @@ const posts: Post[] = [
     description: 'Guía paso a paso para configurar un servidor básico con Express.js en Node.js.',
     date: 'Publicado el 21 de octubre de 2024',
     ReadingTime: '8 min de lectura',
+    publishedISO: '2024-10-21',
+    updated: 'Actualizado el 3 de junio de 2026',
+    updatedISO: '2026-06-03',
     content: 'blog/configurando-un-servidor-Express-en-Node.html',
   },
   {
@@ -64,6 +83,9 @@ const posts: Post[] = [
     description: 'Descubre cómo usar los hooks de React, como useState y useEffect, para manejar el estado y los efectos secundarios.',
     date: 'Publicado el 21 de octubre de 2024',
     ReadingTime: '6 min de lectura',
+    publishedISO: '2024-10-21',
+    updated: 'Actualizado el 4 de junio de 2026',
+    updatedISO: '2026-06-04',
     content: 'blog/introduccion-a-los-hooks-de-react.html',
   },
   {
@@ -75,6 +97,9 @@ const posts: Post[] = [
     description: 'Cómo trabajar con ramas y realizar fusiones en Git para gestionar el control de versiones de forma efectiva.',
     date: 'Publicado el 21 de octubre de 2024',
     ReadingTime: '5 min de lectura',
+    publishedISO: '2024-10-21',
+    updated: 'Actualizado el 5 de junio de 2026',
+    updatedISO: '2026-06-05',
     content: 'blog/flujo-de-trabajo-con-git.html',
   },
   {
@@ -86,6 +111,9 @@ const posts: Post[] = [
     description: 'Explora los fundamentos del desarrollo web, desde cómo comenzar hasta las áreas de front-end, back-end y full stack.',
     date: 'Publicado el 25 de octubre de 2024',
     ReadingTime: '12 min de lectura',
+    publishedISO: '2024-10-25',
+    updated: 'Actualizado el 6 de junio de 2026',
+    updatedISO: '2026-06-06',
     content: 'blog/como-aprender-desarrollo-web.html',
   },
   {
@@ -97,6 +125,9 @@ const posts: Post[] = [
     description: 'Descubre qué es JavaScript, cómo funciona, quién lo creó y dónde puedes aprender este poderoso lenguaje.',
     date: 'Publicado el 26 de octubre de 2024',
     ReadingTime: '10 min de lectura',
+    publishedISO: '2024-10-26',
+    updated: 'Actualizado el 7 de junio de 2026',
+    updatedISO: '2026-06-07',
     content: 'blog/introduccion-a-javascript.html',
   },
   {
@@ -108,6 +139,9 @@ const posts: Post[] = [
     description: 'Explora Material UI, la biblioteca de componentes basada en Material Design que permite a los desarrolladores construir interfaces de usuario modernas y uniformes de manera rápida y sencilla.',
     date: 'Publicado el 13 de noviembre de 2024',
     ReadingTime: '10 min de lectura',
+    publishedISO: '2024-11-13',
+    updated: 'Actualizado el 8 de junio de 2026',
+    updatedISO: '2026-06-08',
     content: 'blog/introduccion-a-material-ui.html',
   },
   {
@@ -119,6 +153,9 @@ const posts: Post[] = [
     description: 'Conoce los principios y evolución de HTML, su estructura, etiquetas clave, y su integración con CSS y JavaScript.',
     date: 'Publicado el 13 de noviembre de 2024',
     ReadingTime: '8 min de lectura',
+    publishedISO: '2024-11-13',
+    updated: 'Actualizado el 9 de junio de 2026',
+    updatedISO: '2026-06-09',
     content: 'blog/que-es-html.html',
   },
   {
@@ -130,6 +167,9 @@ const posts: Post[] = [
     description: 'Aprende qué es Docker, cómo funciona, y por qué es esencial para el desarrollo y despliegue de aplicaciones modernas.',
     date: 'Publicado el 17 de noviembre de 2024',
     ReadingTime: '10 min de lectura',
+    publishedISO: '2024-11-17',
+    updated: 'Actualizado el 10 de junio de 2026',
+    updatedISO: '2026-06-10',
     content: 'blog/que-es-docker.html',
   },
   {
@@ -141,6 +181,9 @@ const posts: Post[] = [
     description: 'Explora los React Hooks avanzados como useContext, useReducer, useMemo y useCallback para optimizar tus componentes y mejorar la gestión del estado.',
     date: 'Publicado el 18 de marzo de 2025',
     ReadingTime: '8 min de lectura',
+    publishedISO: '2025-03-18',
+    updated: 'Actualizado el 11 de junio de 2026',
+    updatedISO: '2026-06-11',
     content: 'blog/dominando-react-hooks-avanzados.html',
   },
   {
@@ -152,6 +195,9 @@ const posts: Post[] = [
     description: 'Descubrí cómo un nuevo enfoque en el diseño de apps prioriza la calma, la claridad y el bienestar emocional del usuario por encima del ruido digital.',
     date: 'Publicado el 16 de abril de 2025',
     ReadingTime: '6 min de lectura',
+    publishedISO: '2025-04-16',
+    updated: 'Actualizado el 12 de junio de 2026',
+    updatedISO: '2026-06-12',
     content: 'blog/el-nuevo-paradigma-de-las-apps.html',
   },
   {
@@ -163,6 +209,9 @@ const posts: Post[] = [
     description: 'Explora cómo la inteligencia artificial impulsa la programación moderna, casos de éxito y los beneficios que obtienen las empresas que la adoptan.',
     date: 'Publicado el 13 de julio de 2025',
     ReadingTime: '15 min de lectura',
+    publishedISO: '2025-07-13',
+    updated: 'Actualizado el 13 de junio de 2026',
+    updatedISO: '2026-06-13',
     content: 'blog/ia-y-programacion.html',
   },
   {
@@ -174,6 +223,9 @@ const posts: Post[] = [
     description: 'Casos de éxito, beneficios y desafíos del machine learning en el mundo empresarial.',
     date: 'Publicado el 15 de julio de 2025',
     ReadingTime: '18 min de lectura',
+    publishedISO: '2025-07-15',
+    updated: 'Actualizado el 14 de junio de 2026',
+    updatedISO: '2026-06-14',
     content: 'blog/machine-learning-para-empresas.html',
   },
   {
@@ -185,6 +237,9 @@ const posts: Post[] = [
     description: 'Descubre Nimbus CRM, la plataforma en la nube que estoy desarrollando para gestionar clientes de forma simple.',
     date: 'Publicado el 19 de julio de 2025',
     ReadingTime: '5 min de lectura',
+    publishedISO: '2025-07-19',
+    updated: 'Actualizado el 15 de junio de 2026',
+    updatedISO: '2026-06-15',
     content: 'blog/nimbus-crm-saas-mi-nuevo-proyecto.html',
   },
   {
@@ -196,6 +251,7 @@ const posts: Post[] = [
     description: 'Guía práctica para sacarle el máximo partido a Claude: qué lo hace diferente, los 5 pilares de un buen prompt y ejemplos reales para RRHH, administrativos, programadores y Scrum Masters.',
     date: 'Publicado el 27 de abril de 2026',
     ReadingTime: '15 min de lectura',
+    publishedISO: '2026-04-27',
     content: 'blog/claude-ia-guia-prompts-profesionales.html',
   },
   {
@@ -207,6 +263,7 @@ const posts: Post[] = [
     description: 'Cuándo crear, cuándo renovar y qué tecnología usar para tener una presencia digital que aparezca en Google y genere clientes reales. Landing page, web dinámica o tienda online.',
     date: 'Publicado el 4 de mayo de 2026',
     ReadingTime: '14 min de lectura',
+    publishedISO: '2026-05-04',
     content: 'blog/pagina-web-para-tu-negocio-latinoamerica-2026.html',
   },
   {
@@ -218,6 +275,7 @@ const posts: Post[] = [
     description: 'Precios reales de páginas web en México en 2026: landing page, web dinámica y e-commerce. Más: el caso Caliber 3D, una semana de web y primer cliente por Google.',
     date: 'Publicado el 8 de mayo de 2026',
     ReadingTime: '12 min de lectura',
+    publishedISO: '2026-05-08',
     content: 'blog/precio-pagina-web-mexico-2026.html',
   },
   {
@@ -229,6 +287,7 @@ const posts: Post[] = [
     description: 'Prompts avanzados para investigación de mercado, marketing digital, SEO, diseño web y construcción de marca. Más: la alianza Anthropic–SpaceX y qué cambia para los usuarios Pro y Max.',
     date: 'Publicado el 13 de mayo de 2026',
     ReadingTime: '16 min de lectura',
+    publishedISO: '2026-05-13',
     content: 'blog/claude-ia-guia-prompts-marketing-seo-diseno-parte-2.html',
   },
   {
@@ -240,6 +299,7 @@ const posts: Post[] = [
     description: 'Cómo construí la plataforma de Caliber 3D: calculadora de costos, Espacio Makers, blog SEO y sistema de login para profesionalizar el taller de impresión 3D más activo de Playa del Carmen.',
     date: 'Publicado el 18 de mayo de 2026',
     ReadingTime: '8 min de lectura',
+    publishedISO: '2026-05-18',
     content: 'blog/caliber3d-plataforma-impresion-3d-mexico.html',
   },
   {
@@ -251,6 +311,7 @@ const posts: Post[] = [
     description: 'Comparativa honesta entre Next.js y WordPress para dueños de negocios: performance, SEO, PWA, escalabilidad y cuándo cada tecnología tiene sentido. Incluye cómo un sitio puede convertirse en el alma de tu negocio.',
     date: 'Publicado el 21 de mayo de 2026',
     ReadingTime: '10 min de lectura',
+    publishedISO: '2026-05-21',
     content: 'blog/nextjs-vs-wordpress-cual-elegir-negocio-2026.html',
   },
   {
@@ -262,6 +323,7 @@ const posts: Post[] = [
     description: 'Los 5 errores de SEO que cometen la mayoría de los negocios en México y LATAM: velocidad, metadatos, presencia local, mobile y contenido. Diagnóstico gratuito y pasos concretos para corregirlos.',
     date: 'Publicado el 26 de mayo de 2026',
     ReadingTime: '12 min de lectura',
+    publishedISO: '2026-05-26',
     content: 'blog/5-errores-seo-negocio-como-arreglarlos.html',
   },
   {
@@ -273,6 +335,7 @@ const posts: Post[] = [
     description: 'El cierre de la trilogía Claude: prompts concretos para emprendedores que quieren atraer clientes, cerrar ventas y crecer sin depender de un equipo de marketing. Bio de Instagram, presupuestos, follow-ups y más.',
     date: 'Publicado el 8 de junio de 2026',
     ReadingTime: '13 min de lectura',
+    publishedISO: '2026-06-08',
     content: 'blog/claude-ia-guia-prompts-negocios-emprendedores-parte-3.html',
   },
   {
@@ -285,6 +348,7 @@ const posts: Post[] = [
       'Presento mi nueva herramienta gratuita de análisis SEO: qué mide, cómo leer los resultados y cómo funciona el SEO en general. Además, por qué en 2026 el SEO también significa aparecer en ChatGPT, Perplexity y Gemini (AEO).',
     date: 'Publicado el 15 de junio de 2026',
     ReadingTime: '11 min de lectura',
+    publishedISO: '2026-06-15',
     content: 'blog/herramienta-analisis-seo-gratis-como-funciona.html',
   },
 ];

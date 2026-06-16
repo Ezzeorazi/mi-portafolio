@@ -1,3 +1,5 @@
+<blockquote><strong>Actualizado en junio de 2026.</strong> Agregué una sección sobre <strong>Express 5</strong> (ya estable) y Node.js moderno: manejo automático de errores en handlers <code>async</code>, <code>express.json()</code> integrado sin <code>body-parser</code>, <code>fetch</code> nativo en Node y módulos ES. La base que verás abajo sigue siendo válida.</blockquote>
+
 <h2>Introducción</h2>
 <p>Express.js es un framework minimalista de Node.js que permite crear servidores y manejar rutas de forma sencilla y eficiente. Con Express, puedes configurar un servidor en pocos pasos y comenzar a manejar solicitudes HTTP de manera organizada. En esta guía, aprenderás cómo crear y configurar un servidor básico en Node.js usando Express.</p>
 
@@ -125,5 +127,39 @@
   </code>
 </pre>
 
+<h2>Express 5 y Node moderno (2026)</h2>
+<p>Desde que se publicó esta guía, Express 5 pasó a ser la versión estable y Node.js sumó mejoras importantes. Esto es lo que conviene aplicar hoy:</p>
+<ul>
+  <li><strong>Errores en handlers async automáticos:</strong> en Express 5, si una función <code>async</code> lanza un error o una promesa se rechaza, se reenvía solo al middleware de errores. Ya no hace falta envolver todo en <code>try/catch</code> + <code>next(err)</code>.</li>
+  <li><strong><code>express.json()</code> integrado:</strong> Express ya trae el parser de JSON y de formularios, así que no necesitás instalar <code>body-parser</code> por separado.</li>
+  <li><strong><code>fetch</code> nativo:</strong> Node moderno incluye <code>fetch</code> global, sin <code>node-fetch</code> ni <code>axios</code> para casos simples.</li>
+  <li><strong>Módulos ES:</strong> podés usar <code>import express from 'express'</code> en lugar de <code>require</code> agregando <code>"type": "module"</code> en tu <code>package.json</code>.</li>
+</ul>
+
+<pre>
+  <code>
+    // Express 5 + ESM: el error async se captura solo
+    import express from 'express';
+    const app = express();
+    app.use(express.json()); // body-parser ya no es necesario
+
+    app.get('/usuario/:id', async (req, res) => {
+      const data = await obtenerUsuario(req.params.id); // si falla, va al handler de errores
+      res.json(data);
+    });
+
+    app.use((err, req, res, next) => {
+      res.status(500).json({ error: err.message });
+    });
+  </code>
+</pre>
+
 <h2>Conclusión</h2>
 <p>En este artículo, hemos cubierto los conceptos básicos para configurar un servidor con Express en Node.js, desde la instalación hasta la creación de rutas y el uso de middleware. Express hace que sea sencillo y rápido configurar un servidor y manejar rutas, lo que lo convierte en una excelente opción para desarrolladores que buscan eficiencia y flexibilidad en sus proyectos Node.js. ¡Ahora estás listo para comenzar a construir aplicaciones más complejas con Express!</p>
+
+<h2>Seguí aprendiendo</h2>
+<ul>
+  <li><a href="/blog/que-es-docker">¿Qué es Docker? (para desplegar tu servidor)</a></li>
+  <li><a href="/blog/entendiendo-las-promesas-en-javascript">Entendiendo las promesas en JavaScript</a></li>
+</ul>
+<p>¿Necesitás un backend o una API para tu proyecto? <a href="/contacto">Contame qué estás construyendo</a>.</p>

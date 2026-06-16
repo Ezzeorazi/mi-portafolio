@@ -1,3 +1,5 @@
+<blockquote><strong>Actualizado en junio de 2026.</strong> Revisé este artículo para reflejar cómo se trabaja hoy con asincronía en JavaScript: <code>async/await</code> como estilo por defecto, los métodos modernos <code>Promise.allSettled()</code> y <code>Promise.any()</code>, la cancelación con <code>AbortController</code> y el <code>await</code> de nivel superior en módulos ES. Los fundamentos de las promesas que verás abajo siguen igual de vigentes.</blockquote>
+
 <h2>Introducción</h2>
 <p>JavaScript, conocido por su naturaleza asincrónica, ha evolucionado considerablemente a lo largo de los años. Uno de los conceptos más importantes en esta evolución es el manejo de operaciones asincrónicas a través de promesas. En este artículo, exploraremos en profundidad qué son las promesas en JavaScript, cómo funcionan, y cómo puedes utilizarlas para manejar operaciones asincrónicas de manera más eficiente. A medida que avancemos, también discutiremos algunas mejores prácticas y patrones de uso.</p>
 
@@ -150,7 +152,43 @@
   <li>En palabras de Jake Archibald, "Las promesas son el futuro de JavaScript."</li>
 </ul>
 
+<h2>Novedades que conviene conocer en 2026</h2>
+<p>Desde que se publicó esta guía, el ecosistema sumó varias herramientas que hoy son parte del día a día. Vale la pena conocerlas:</p>
+<ul>
+  <li><strong>Promise.allSettled()</strong>: a diferencia de <code>Promise.all()</code>, no se corta ante el primer error. Espera a que todas las promesas terminen y te devuelve el estado de cada una. Ideal cuando querés el resultado de todas, fallen o no.</li>
+  <li><strong>Promise.any()</strong>: resuelve con la primera promesa que se cumple e ignora las que fallan. Útil para pedir el mismo dato a varias fuentes y quedarte con la más rápida.</li>
+  <li><strong>AbortController</strong>: permite cancelar una operación asincrónica (por ejemplo, un <code>fetch</code> que ya no necesitás), algo clave para evitar fugas y peticiones colgadas en interfaces reactivas.</li>
+  <li><strong>Top-level await</strong>: en módulos ES ya podés usar <code>await</code> fuera de una función <code>async</code>, en el nivel superior del archivo.</li>
+</ul>
+
+<pre>
+  <code>
+    // Esperar varias APIs sin que un error corte todo
+    const resultados = await Promise.allSettled([
+      fetch("/api/usuarios"),
+      fetch("/api/productos"),
+    ]);
+
+    resultados.forEach((r) => {
+      if (r.status === "fulfilled") {
+        console.log("OK:", r.value);
+      } else {
+        console.warn("Falló:", r.reason);
+      }
+    });
+  </code>
+</pre>
+
+<p>En la práctica, en 2026 la mayoría del código asincrónico se escribe con <code>async/await</code> por su legibilidad, pero por debajo siguen siendo promesas: entenderlas a fondo te da control real sobre el flujo de tu aplicación.</p>
+
 <h2>Conclusión</h2>
 <p>Las promesas son una herramienta fundamental en JavaScript para manejar operaciones asincrónicas de forma efectiva. Con su capacidad de encadenarse, manejar errores y simplificar el código, se han convertido en una parte esencial de la programación moderna en JavaScript. A medida que sigas desarrollando tus habilidades, te encontrarás con situaciones en las que las promesas serán imprescindibles.</p>
 
 <p>Al final del día, el uso de promesas no solo mejora la calidad de tu código, sino que también hace que el proceso de desarrollo sea más eficiente y menos propenso a errores. Recuerda siempre seguir las mejores prácticas y explorar nuevas formas de aprovechar el potencial de las promesas en tus aplicaciones.</p>
+
+<h2>Seguí aprendiendo</h2>
+<ul>
+  <li><a href="/blog/introduccion-a-javascript">Introducción a JavaScript: todo lo que necesitás saber</a></li>
+  <li><a href="/blog/introduccion-a-los-hooks-de-react">Introducción a los hooks de React</a></li>
+</ul>
+<p>¿Estás desarrollando un proyecto y necesitás una mano con JavaScript o tu arquitectura asincrónica? <a href="/contacto">Hablemos</a>.</p>
