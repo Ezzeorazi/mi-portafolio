@@ -1,0 +1,41 @@
+name: Post semanal de Noticias Tech
+
+# Corre todos los miércoles a las 11:00 UTC (08:00 Argentina).
+# También se puede disparar a mano desde la pestaña "Actions" → "Run workflow".
+on:
+  schedule:
+    - cron: '0 11 * * 3'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Generar el post
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/generar-noticias.mjs
+
+      - name: Commit y push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add data/posts.ts content/blog public/images/blog
+            git commit -m "blog: post automático de Noticias Tech ($(date -u +%Y-%m-%d))"
+            git push
+            echo "✅ Post publicado. Netlify reconstruirá el sitio."
+          else
+            echo "ℹ️ Sin cambios que commitear."
+          fi

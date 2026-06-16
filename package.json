@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap",
+    "noticias": "node scripts/generar-noticias.mjs"
   },
   "dependencies": {
     "@netlify/plugin-nextjs": "^5.15.9",
