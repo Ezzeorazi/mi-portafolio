@@ -351,6 +351,18 @@ const posts: Post[] = [
     publishedISO: '2026-06-15',
     content: 'blog/herramienta-analisis-seo-gratis-como-funciona.html',
   },
+  {
+    id: 26,
+    slug: 'noticias-tech-2026-06-17',
+    image: 'images/blog/noticias-tech-2026-06-17.svg',
+    title: "Artemis III, robots y WhatsApp: el resumen tech semanal",
+    category: 'Noticias',
+    description: "Tu dosis semanal de tecnología con Ezequiel Orazi. Esta semana: NASA, WhatsApp, robots humanoides, ciberseguridad y geopolítica con satélites.",
+    date: 'Publicado el 17 de junio de 2026',
+    ReadingTime: '6 min de lectura',
+    publishedISO: '2026-06-17',
+    content: 'blog/noticias-tech-2026-06-17.html',
+  },
 ];
 
 export default posts;
