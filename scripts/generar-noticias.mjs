@@ -359,8 +359,9 @@ function buildSvgCover(fechaTexto, headline) {
   const dateY = Math.round(centerY + blockH / 2 + 46);
   const brandY = dateY + 36;
 
+  const cx = W / 2; // texto centrado: sobrevive el recorte object-cover en cualquier pantalla
   const tspans = lines
-    .map((l, i) => `<tspan x="80" dy="${i === 0 ? 0 : lineH}">${escapeXml(l)}</tspan>`)
+    .map((l, i) => `<tspan x="${cx}" dy="${i === 0 ? 0 : lineH}">${escapeXml(l)}</tspan>`)
     .join('');
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -370,20 +371,17 @@ function buildSvgCover(fechaTexto, headline) {
       <stop offset="0%" stop-color="#161a1e"/>
       <stop offset="100%" stop-color="#0b0d10"/>
     </linearGradient>
-    <radialGradient id="glow" cx="85%" cy="50%" r="70%">
-      <stop offset="0%" stop-color="#fd02d1" stop-opacity="0.30"/>
+    <radialGradient id="glow" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#fd02d1" stop-opacity="0.28"/>
       <stop offset="100%" stop-color="#fd02d1" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <rect width="${W}" height="${H}" fill="url(#bg)"/>
   <rect width="${W}" height="${H}" fill="url(#glow)"/>
-  <rect x="0" y="0" width="14" height="${H}" fill="#fd02d1"/>
-  <circle cx="1090" cy="315" r="60" fill="#f5d805" opacity="0.9"/>
-  <circle cx="1140" cy="250" r="22" fill="#fd02d1" opacity="0.85"/>
-  <text x="80" y="${labelY}" font-family="Montserrat, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="4" fill="#f5d805">NOTICIAS TECH · DEV</text>
-  <text x="80" y="${titleBase}" font-family="Montserrat, Arial, sans-serif" font-size="${font}" font-weight="800" fill="#f0eeed">${tspans}</text>
-  <text x="80" y="${dateY}" font-family="Montserrat, Arial, sans-serif" font-size="28" font-weight="600" fill="#9aa3ad">Semana del ${escapeXml(fechaTexto)}</text>
-  <text x="80" y="${brandY}" font-family="Montserrat, Arial, sans-serif" font-size="25" font-weight="700" fill="#fd02d1">ezequiel-orazi.online</text>
+  <text x="${cx}" y="${labelY}" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="4" fill="#f5d805">NOTICIAS TECH · DEV</text>
+  <text x="${cx}" y="${titleBase}" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="${font}" font-weight="800" fill="#f0eeed">${tspans}</text>
+  <text x="${cx}" y="${dateY}" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="28" font-weight="600" fill="#9aa3ad">Semana del ${escapeXml(fechaTexto)}</text>
+  <text x="${cx}" y="${brandY}" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="25" font-weight="700" fill="#fd02d1">ezequiel-orazi.online</text>
 </svg>
 `;
 }

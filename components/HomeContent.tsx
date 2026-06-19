@@ -140,8 +140,8 @@ export default function HomeContent({ latestPosts, noticias, featuredProjects }:
       <section className="bg-dark py-20 px-4 border-t border-yellow/10">
         <div className="max-w-5xl mx-auto">
           <ScrollReveal direction="up">
-            <div className="flex items-center justify-between gap-4 mb-3">
-              <h2 className="text-yellow font-bold text-2xl md:text-3xl flex items-center gap-3">
+            <div className="flex flex-col items-start gap-2 mb-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+              <h2 className="text-yellow font-bold text-2xl md:text-3xl flex flex-wrap items-center gap-x-3 gap-y-2">
                 <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-white bg-pink px-2.5 py-1 rounded-full">
                   Semanal
                 </span>
@@ -150,7 +150,7 @@ export default function HomeContent({ latestPosts, noticias, featuredProjects }:
               {noticias.length > 0 && (
                 <Link
                   href="/blog"
-                  className="text-sm font-semibold text-pink hover:underline underline-offset-4 transition-colors whitespace-nowrap"
+                  className="text-sm font-semibold text-pink hover:underline underline-offset-4 transition-colors whitespace-nowrap shrink-0"
                 >
                   {t('home_news_cta')}
                 </Link>
