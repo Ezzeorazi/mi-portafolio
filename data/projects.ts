@@ -21,6 +21,45 @@ export type Project = {
 
 const projects: Project[] = [
   {
+    id: 12,
+    featured: true,
+    slug: 'riviera-maya-pass',
+    title: 'RivieraMayaPass',
+    description:
+      'Portal local de day passes y tours en Playa del Carmen con un diferencial único: un bot publica cada día el estado del sargazo por playa usando IA, datos climáticos reales y Machine Learning — predice los próximos 3 días con ~80% de acierto, completamente automatizado.',
+    image: 'images/projects/portada-rivieramayapass.webp',
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Python', 'Google Gemini', 'scikit-learn'],
+    liveLink: 'https://rivieramayapass.com',
+    caseStudy: {
+      problem:
+        'Los turistas en Riviera Maya llegan sin saber si la playa va a tener sargazo ese día. Buscan en Google, encuentran información desactualizada o genérica y toman la decisión a ciegas. Al mismo tiempo, los negocios de day passes y tours no tenían un canal digital local serio donde aparecer. La oportunidad era doble: crear el recurso de información que faltaba y monetizarlo vendiendo accesos y experiencias.',
+      decisions: [
+        {
+          title: '¿Gemini con grounding o scraping manual?',
+          description:
+            'En vez de construir scrapers frágiles para cada fuente de sargazo, usé Google Gemini con búsqueda web activa: el modelo busca las fuentes del día (Red de Monitoreo de QR, noticias locales), las lee y produce el reporte. Resultado: cero mantenimiento de fuentes, sin servidor propio, actualización automática diaria vía GitHub Actions con costo operativo ≈ $0.',
+        },
+        {
+          title: '¿Reglas manuales o Machine Learning para la predicción?',
+          description:
+            'La primera versión usaba heurísticas de viento. Funcionaba en el 53% de los casos — igual que adivinar. La Fase 2 entrenó un Random Forest con 3 fuentes cruzadas: semáforo verificado playa por playa, historial climático (Open-Meteo) e índice AFAI satelital. Resultado: ~80% de acierto a 3 días, con restricción de no saltar de rojo a verde de un día al otro (respeta la inercia real del sargazo).',
+        },
+        {
+          title: '¿Next.js o solución más simple?',
+          description:
+            'El activo SEO principal es /sargazo, que necesita actualizarse a diario y posicionarse en Google para "sargazo playa del carmen hoy". Next.js permite que esa página sirva contenido fresco sin rebuild completo y el sitemap dinámico la marca con alta prioridad y fecha de hoy — algo que WordPress no podía hacer con ese nivel de control.',
+        },
+      ],
+      results: [
+        'Bot diario completamente automatizado: costo operativo ≈ $0 (GitHub Actions + APIs gratuitas + Gemini free tier)',
+        'Modelo ML con ~80% de acierto a 3 días (vs ~53% de una regla simple basada en viento)',
+        'Plataforma bilingüe (es/en) con rutas localizadas, JSON-LD y hreflang desde el día 1',
+        'Panel de administración privado para verificar estado de playas sin tocar código',
+        'Integración con Viator Partner API para monetizar tours de afiliado como canal adicional de ingreso',
+      ],
+    },
+  },
+  {
     id: 11,
     featured: true,
     slug: 'nacho-rodriguez',

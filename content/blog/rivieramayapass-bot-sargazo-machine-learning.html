@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8" /></head>
+<body>
+
+<p>
+  En Playa del Carmen hay un problema que nadie había resuelto bien: los turistas quieren saber
+  si la playa tiene sargazo <em>hoy</em>. No ayer. No en general. Hoy.
+  Buscan en Google, encuentran notas de hace tres meses, un video de TikTok sin fecha y
+  opiniones contradictorias en TripAdvisor. Llegan a la playa y se encuentran con dos metros
+  de alga marrón apilada. El día de playa que imaginaron no existe.
+</p>
+
+<p>
+  Eso es el problema que construí
+  <a href="https://rivieramayapass.com" target="_blank" rel="noopener noreferrer">RivieraMayaPass</a>
+  para resolver. Y de paso, lo convertí en un negocio: el mismo sitio que informa sobre el
+  sargazo vende day passes y tours de la Riviera Maya.
+</p>
+
+<p>
+  En este post cuento cómo funciona el bot, cómo implementé Machine Learning para predecir los
+  próximos días, y —lo más importante para vos si tenés un negocio— cómo este mismo enfoque
+  se puede aplicar a industrias muy distintas.
+</p>
+
+<h2>Qué es RivieraMayaPass</h2>
+
+<p>
+  <a href="https://rivieramayapass.com" target="_blank" rel="noopener noreferrer">RivieraMayaPass</a>
+  es el especialista local del day pass en la Riviera Maya. Conecta viajeros con beach clubs,
+  albercas y playas limpias en Playa del Carmen para disfrutar un día completo sin pagar la noche de hotel.
+</p>
+
+<p>
+  El diferencial frente a las grandes plataformas (Booking, Airbnb Experiences) es un dato que
+  ellas no tienen y que solo puede dar alguien local:
+  <strong>el estado del sargazo playa por playa, actualizado cada día</strong>.
+  Ese dato es el gancho que atrae el tráfico orgánico — y cuando una playa tiene sargazo,
+  el sitio deriva al visitante hacia tours o cenotes donde el mar no importa.
+</p>
+
+<h2>El bot de sargazo: arquitectura completa</h2>
+
+<p>
+  El corazón del sitio es un sistema automático que no requiere ninguna intervención manual.
+  Se activa todos los días a las 10:00 AM hora de Quintana Roo y produce el reporte completo:
+</p>
+
+<pre><code>GitHub Actions (reloj diario)
+        │
+        ▼
+Script en Python
+  ├─ Open-Meteo      → viento + temperatura (hoy y pronóstico 3 días)
+  ├─ NOAA NHC        → tormentas/huracanes activos en el Caribe
+  └─ Google Gemini   → busca el sargazo en internet y cruza todo
+        │
+        ├─► Vercel (Next.js)  → el visitante ve el reporte
+        └─► Supabase          → historial diario acumulado
+</code></pre>
+
+<p>
+  La pieza clave es <strong>Google Gemini con grounding</strong>: en vez de construir y mantener
+  scrapers frágiles para cada fuente de sargazo, el modelo busca las fuentes del día en tiempo real
+  (Red de Monitoreo del Sargazo de Quintana Roo, noticias locales, reportes de playas),
+  las lee, las combina con el viento medido y produce un reporte estructurado con:
+</p>
+
+<ul>
+  <li>Estado por zona de Playa del Carmen (Norte, Mamitas, Centro, Playacar, Xcalacoco)</li>
+  <li>Estado en Holbox, Isla Mujeres, Puerto Morelos, Cancún y Tulum</li>
+  <li>Viento actual: dirección, velocidad y ráfagas</li>
+  <li>Pronóstico a 3 días con señal de si el viento empuja sargazo a la costa</li>
+  <li>Alertas de tormenta/huracán activas en el Caribe</li>
+  <li>Resumen y recomendación práctica en español e inglés</li>
+  <li>Nivel de confianza del reporte y fuentes consultadas</li>
+</ul>
+
+<p>
+  <strong>Costo operativo: prácticamente cero.</strong> GitHub Actions tiene un tier gratuito generoso,
+  Open-Meteo y NOAA son APIs abiertas, y Gemini tiene un tier gratuito que alcanza para una llamada
+  diaria sin problema. El sitio corre en Vercel y la base de datos en Supabase — ambos con tier
+  gratuito para este volumen.
+</p>
+
+<h2>El salto de reglas manuales a Machine Learning</h2>
+
+<p>
+  La Fase 1 usaba heurísticas simples: "si el viento viene del sureste a más de 15 km/h, probable
+  sargazo mañana". Estas reglas acertaban en el <strong>53% de los casos</strong> — exactamente
+  lo mismo que adivinar al azar.
+</p>
+
+<p>
+  La Fase 2 cambió el enfoque. En lugar de programar reglas, le enseñamos al sistema a reconocer
+  patrones a partir de datos históricos. Así funciona el Machine Learning: en vez de decirle
+  qué pensar, le damos ejemplos y aprende solo.
+</p>
+
+<h3>Las 3 fuentes del modelo</h3>
+
+<p>
+  El modelo combina tres tipos de datos que se cruzan por fecha y zona:
+</p>
+
+<ul>
+  <li>
+    <strong>Semáforo verificado</strong> (la "respuesta correcta"): el estado real de cada playa,
+    cargado a mano desde el mapa oficial de la Red de Monitoreo de Quintana Roo.
+    Es el dato de oro: lo que realmente pasó.
+  </li>
+  <li>
+    <strong>Clima histórico</strong> (las "preguntas"): viento, ráfagas, temperatura y época del año
+    de años atrás, descargados sin costo desde Open-Meteo.
+  </li>
+  <li>
+    <strong>Índice AFAI satelital</strong> (señal de apoyo): mide cuánto sargazo flota mar adentro
+    frente a cada zona. Sirve para anticipar el arribo días antes de que llegue a la costa.
+  </li>
+</ul>
+
+<h3>El algoritmo: Random Forest</h3>
+
+<p>
+  El algoritmo elegido es un <strong>Random Forest</strong> (scikit-learn, Python): un conjunto de
+  muchos árboles de decisión que votan juntos. Cada árbol analiza los datos desde un ángulo
+  diferente; la respuesta final es la que apoya la mayoría.
+</p>
+
+<p>
+  La pista más fuerte que encontró el modelo: <strong>el estado de ayer</strong>. El sargazo es
+  inercial — lo que hay hoy es el mejor predictor de mañana. Por eso el modelo no salta de
+  "rojo" a "limpio" de un día al otro, lo cual también es lo más honesto con el visitante.
+</p>
+
+<p>
+  Resultado: <strong>~80% de acierto a 3 días</strong>, entrenando y prediciendo en GitHub Actions,
+  con el reporte publicado automáticamente en la sección "Próximos días" de
+  <a href="https://rivieramayapass.com" target="_blank" rel="noopener noreferrer">rivieramayapass.com</a>.
+</p>
+
+<h2>Por qué esto importa para cualquier negocio</h2>
+
+<p>
+  El sargazo es un problema específico de Riviera Maya, pero el patrón es universal.
+  Hay negocios en todas las industrias que tienen datos acumulados que no están usando
+  para tomar mejores decisiones o generar valor para sus clientes.
+</p>
+
+<p>Algunos ejemplos concretos:</p>
+
+<ul>
+  <li>
+    <strong>Agropecuario:</strong> datos históricos de clima, precio de granos y cosechas →
+    modelo que predice el mejor momento para comprar insumos o vender producción.
+  </li>
+  <li>
+    <strong>Retail o e-commerce:</strong> historial de ventas, días feriados, clima →
+    modelo que predice qué productos van a tener alta demanda la semana próxima.
+  </li>
+  <li>
+    <strong>Turismo:</strong> datos de ocupación, eventos locales, temporada →
+    modelo que predice los picos de demanda y ajusta precios dinámicamente.
+  </li>
+  <li>
+    <strong>Servicios profesionales:</strong> historial de clientes, estacionalidad →
+    modelo que predice cuándo va a bajar la demanda y recomienda adelantar acciones de venta.
+  </li>
+</ul>
+
+<p>
+  En todos estos casos, el primer paso es el mismo que en RivieraMayaPass:
+  <strong>construir el historial</strong>. El bot diario que acumula datos hoy es la materia
+  prima del modelo predictivo de mañana. No se necesita tener millones de registros para empezar
+  — con meses de datos consistentes ya se puede entrenar un modelo útil.
+</p>
+
+<h2>El negocio detrás del dato</h2>
+
+<p>
+  El estado del sargazo no es el producto — es el imán. Atrae tráfico orgánico de personas que
+  buscan información local antes de decidir qué hacer en su día de vacaciones. Una vez que el
+  visitante está en el sitio, tiene dos opciones según lo que encuentre:
+</p>
+
+<ul>
+  <li><strong>Playa limpia:</strong> ve los day passes disponibles y reserva por WhatsApp.</li>
+  <li><strong>Sargazo:</strong> el sitio le sugiere tours a cenotes, ruinas o Isla Mujeres donde el mar no importa — con links de afiliado a <a href="https://www.viator.com" target="_blank" rel="noopener noreferrer">Viator</a>.</li>
+</ul>
+
+<p>
+  Esta estructura convierte un problema (información mala sobre sargazo) en un embudo de conversión
+  que funciona bien en las dos situaciones posibles.
+</p>
+
+<h2>Stack completo</h2>
+
+<ul>
+  <li><strong>Frontend:</strong> Next.js 15 (App Router), TypeScript, Tailwind CSS v4</li>
+  <li><strong>Base de datos:</strong> Supabase (PostgreSQL)</li>
+  <li><strong>Deploy:</strong> Vercel</li>
+  <li><strong>Bot diario:</strong> Python + GitHub Actions (cron)</li>
+  <li><strong>IA:</strong> Google Gemini con Google Search grounding</li>
+  <li><strong>Clima:</strong> Open-Meteo API</li>
+  <li><strong>Tormentas:</strong> NOAA National Hurricane Center</li>
+  <li><strong>ML:</strong> scikit-learn (Random Forest), pandas</li>
+  <li><strong>Afiliados:</strong> Viator Partner API</li>
+  <li><strong>Emails:</strong> Resend</li>
+  <li><strong>Analítica:</strong> Google Analytics 4 + Vercel Analytics</li>
+</ul>
+
+<h2>Lo que queda por construir</h2>
+
+<p>
+  La Fase 3 del modelo agrega datos satelitales AFAI de Copernicus — manchas de sargazo flotando
+  en el Atlántico que se pueden detectar <em>días antes</em> de llegar a la costa.
+  Combinado con la visión computacional del mapa-semáforo oficial, eso permitiría pasar de
+  "~80% de acierto a 3 días" a predicciones confiables con 5-7 días de anticipación.
+</p>
+
+<p>
+  En el frente comercial, el objetivo es sumar beach clubs y hoteles con acuerdo directo —
+  que carguen sus day passes desde el panel de administración y aparezcan en la grilla del home.
+</p>
+
+<p>
+  Si tenés un negocio en Riviera Maya y querés aparecer en
+  <a href="https://rivieramayapass.com" target="_blank" rel="noopener noreferrer">rivieramayapass.com</a>,
+  hay un formulario de alta para prestadores en el mismo sitio.
+</p>
+
+<p>
+  Y si lo que te interesa es replicar algo similar — un bot de datos, un modelo predictivo o
+  una plataforma que combine información y conversión — <a href="/contacto">hablemos</a>.
+</p>
+
+</body>
+</html>

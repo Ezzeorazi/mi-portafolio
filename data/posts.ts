@@ -363,6 +363,18 @@ const posts: Post[] = [
     publishedISO: '2026-06-17',
     content: 'blog/noticias-tech-2026-06-17.html',
   },
+  {
+    id: 27,
+    slug: 'rivieramayapass-bot-sargazo-machine-learning',
+    image: 'images/blog/rivieramayapass-bot-sargazo-ml.webp',
+    title: 'RivieraMayaPass: bot de sargazo con IA y Machine Learning que predice los próximos días',
+    category: 'Proyectos',
+    description: 'Cómo construí un portal de day passes y tours en Playa del Carmen con un bot diario que usa Google Gemini, datos climáticos reales y un modelo Random Forest para predecir el estado del sargazo con ~80% de acierto — y por qué este enfoque se puede aplicar a cualquier negocio.',
+    date: 'Publicado el 23 de junio de 2026',
+    ReadingTime: '12 min de lectura',
+    publishedISO: '2026-06-23',
+    content: 'blog/rivieramayapass-bot-sargazo-machine-learning.html',
+  },
 ];
 
 export default posts;
