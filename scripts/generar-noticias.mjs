@@ -42,7 +42,7 @@ const RECENT_DAYS = 10;
 // Se puede sobreescribir con GEMINI_MODEL (uno o varios separados por coma).
 const GEMINI_MODELS = (
   process.env.GEMINI_MODEL ||
-  'gemini-2.0-flash,gemini-2.5-flash,gemini-2.5-flash-lite,gemini-1.5-flash'
+  'gemini-2.0-flash,gemini-2.5-flash,gemini-2.5-flash-lite,gemini-2.0-flash-lite'
 )
   .split(',')
   .map((s) => s.trim())
@@ -250,9 +250,13 @@ async function generateWithGemini(news, fechaTexto) {
 
   let lastErr;
   let hubo429 = false;
-  // 2 rondas: en cada una probamos todos los modelos. Ante cualquier fallo
-  // (429 de cuota, JSON cortado, etc.) saltamos al siguiente modelo.
-  for (let ronda = 1; ronda <= 2; ronda++) {
+  let hubo503 = false;
+  // Hasta 3 rondas: en cada una probamos todos los modelos.
+  // Ante cualquier fallo (429 de cuota, 503 transitorio, JSON cortado, etc.)
+  // saltamos al siguiente modelo.
+  for (let ronda = 1; ronda <= 3; ronda++) {
+    hubo429 = false;
+    hubo503 = false;
     for (const model of GEMINI_MODELS) {
       try {
         console.log(`  · probando ${model}…`);
@@ -261,13 +265,14 @@ async function generateWithGemini(news, fechaTexto) {
       } catch (err) {
         lastErr = err;
         if (err.is429) hubo429 = true;
+        if (err.is503) hubo503 = true;
         console.warn(`    ⚠ ${model} falló (${err.message.slice(0, 80)}). Pruebo el siguiente…`);
       }
     }
-    // Solo esperamos y reintentamos si los fallos fueron por cuota (429).
-    if (ronda === 1 && hubo429) {
-      console.warn('  Espero 50s (la cuota por minuto del free tier se renueva) y reintento…');
-      await sleep(50000);
+    if (ronda < 3 && (hubo429 || hubo503)) {
+      const espera = hubo429 ? 65 : 20;
+      console.warn(`  Espero ${espera}s y reintento (ronda ${ronda + 1}/3)…`);
+      await sleep(espera * 1000);
     } else {
       break;
     }
@@ -301,6 +306,7 @@ async function callGeminiModel(model, prompt) {
     const txt = await res.text();
     const err = new Error(`Gemini HTTP ${res.status} (${model}): ${txt.slice(0, 600)}`);
     if (res.status === 429) err.is429 = true;
+    if (res.status === 503) err.is503 = true;
     throw err;
   }
   const data = await res.json();
