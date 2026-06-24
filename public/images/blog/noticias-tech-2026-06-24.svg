@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" role="img">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#161a1e"/>
+      <stop offset="100%" stop-color="#0b0d10"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#fd02d1" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#fd02d1" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <text x="600" y="193" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="4" fill="#f5d805">NOTICIAS TECH · DEV</text>
+  <text x="600" y="257" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="46" font-weight="800" fill="#f0eeed"><tspan x="600" dy="0">Navegando entre ríos, IA y</tspan><tspan x="600" dy="54">casas inteligentes: el resumen</tspan><tspan x="600" dy="54">tech de la semana</tspan></text>
+  <text x="600" y="427" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="28" font-weight="600" fill="#9aa3ad">Semana del 24 de junio de 2026</text>
+  <text x="600" y="463" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="25" font-weight="700" fill="#fd02d1">ezequiel-orazi.online</text>
+</svg>

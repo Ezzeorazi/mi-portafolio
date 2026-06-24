@@ -375,6 +375,18 @@ const posts: Post[] = [
     publishedISO: '2026-06-23',
     content: 'blog/rivieramayapass-bot-sargazo-machine-learning.html',
   },
+  {
+    id: 28,
+    slug: 'noticias-tech-2026-06-24',
+    image: 'images/blog/noticias-tech-2026-06-24.svg',
+    title: "Navegando entre ríos, IA y casas inteligentes: el resumen tech de la semana",
+    category: 'Noticias',
+    description: "Tu resumen semanal de noticias tech con análisis de Ezequiel Orazi: WaterwayMap, Philips Hue, energía solar, privacidad de Claude y cómo mejorar tus prompts.",
+    date: 'Publicado el 24 de junio de 2026',
+    ReadingTime: '6 min de lectura',
+    publishedISO: '2026-06-24',
+    content: 'blog/noticias-tech-2026-06-24.html',
+  },
 ];
 
 export default posts;
