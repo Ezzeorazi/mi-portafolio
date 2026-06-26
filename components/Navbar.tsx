@@ -9,10 +9,9 @@ import { LanguageContext } from '@/context/LanguageContext';
 import { useContext } from 'react';
 
 const navLinks = [
-  { key: 'nav_about', href: '/sobre-mi' },
-  { key: 'nav_projects', href: '/proyectos' },
   { key: 'nav_services', href: '/services' },
   { key: 'nav_seo_tool', href: '/auditoria-seo' },
+  { key: 'nav_projects', href: '/proyectos' },
   { key: 'nav_blog', href: '/blog' },
   { key: 'nav_contact', href: '/contacto' },
 ] as const;
