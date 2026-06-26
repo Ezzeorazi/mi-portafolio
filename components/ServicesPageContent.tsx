@@ -4,6 +4,7 @@ import {
   FaGlobe, FaDatabase, FaShoppingCart, FaTools, FaCheck, FaFire,
   FaCogs, FaUtensils, FaUsers, FaIndustry, FaUserTie,
   FaFileAlt, FaCalendarAlt, FaBoxes, FaTruck, FaExternalLinkAlt, FaBolt,
+  FaBrain,
 } from 'react-icons/fa';
 import { SiNextdotjs, SiTypescript, SiTailwindcss, SiSanity } from 'react-icons/si';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -95,6 +96,26 @@ const servicesEs = [
     note: '* Plan de seguimiento mensual: $90 USD/mes. Compatible con cualquier sitio web existente.',
     cta: 'Quiero aparecer primero',
     badge: 'Nuevo · Con Claude AI',
+  },
+  {
+    id: 'ml',
+    icon: <FaBrain className="text-5xl text-yellow" />,
+    title: 'Machine Learning para tu Negocio',
+    price: 'A consultar',
+    description:
+      'Convertí los datos de tu negocio en predicciones que generan valor real: anticipar demanda, detectar patrones, automatizar decisiones. Desde bots que publican y predicen a diario hasta modelos a medida entrenados con tus propios datos.',
+    features: [
+      'Reunión inicial gratuita: detectamos qué se puede predecir o automatizar en tu negocio',
+      'Modelos predictivos a medida (clasificación, regresión y forecasting) entrenados con tus datos',
+      'Integración con IA generativa (Google Gemini, Claude) para análisis y generación de contenido',
+      'Bots automáticos que generan reportes o publicaciones a diario, sin intervención manual',
+      'Pipeline de datos: recolección, limpieza y actualización automática desde APIs reales',
+      'Dashboard o API para consultar las predicciones desde tu web o tu sistema',
+    ],
+    tech: 'Python + scikit-learn (Random Forest) + Google Gemini + APIs de datos',
+    note: '* Cada proyecto se cotiza según el volumen de datos y la complejidad. Caso real en producción: RivieraMayaPass.',
+    cta: 'Quiero explorar IA para mi negocio',
+    badge: 'Nuevo · IA y datos',
   },
   {
     id: 'medida',
@@ -198,6 +219,26 @@ const servicesEn = [
     note: '* Monthly follow-up plan: $90 USD/month. Compatible with any existing website.',
     cta: 'I want to rank first',
     badge: 'New · Powered by Claude AI',
+  },
+  {
+    id: 'ml',
+    icon: <FaBrain className="text-5xl text-yellow" />,
+    title: 'Machine Learning for Your Business',
+    price: 'Quote on request',
+    description:
+      'Turn your business data into predictions that create real value: anticipate demand, detect patterns, automate decisions. From bots that post and predict daily to custom models trained on your own data.',
+    features: [
+      'Free initial meeting: we identify what can be predicted or automated in your business',
+      'Custom predictive models (classification, regression and forecasting) trained on your data',
+      'Generative AI integration (Google Gemini, Claude) for analysis and content generation',
+      'Automatic bots that generate daily reports or posts, with no manual work',
+      'Data pipeline: collection, cleaning and automatic updates from real APIs',
+      'Dashboard or API to query predictions from your website or system',
+    ],
+    tech: 'Python + scikit-learn (Random Forest) + Google Gemini + Data APIs',
+    note: '* Each project is quoted based on data volume and complexity. Real case in production: RivieraMayaPass.',
+    cta: 'I want to explore AI for my business',
+    badge: 'New · AI & Data',
   },
   {
     id: 'medida',
@@ -346,6 +387,14 @@ export default function ServicesPageContent() {
                         className="inline-flex items-center gap-2 border-2 border-pink text-pink font-bold px-5 py-2.5 rounded-lg hover:bg-pink hover:text-white transition-colors duration-300 self-start"
                       >
                         <FaBolt /> {t('svc_seo_tool_cta')}
+                      </Link>
+                    )}
+                    {service.id === 'ml' && (
+                      <Link
+                        href="/blog/rivieramayapass-bot-sargazo-machine-learning"
+                        className="inline-flex items-center gap-2 border-2 border-pink text-pink font-bold px-5 py-2.5 rounded-lg hover:bg-pink hover:text-white transition-colors duration-300 self-start"
+                      >
+                        <FaExternalLinkAlt /> {language === 'es' ? 'Ver caso real: RivieraMayaPass' : 'See real case: RivieraMayaPass'}
                       </Link>
                     )}
                   </div>

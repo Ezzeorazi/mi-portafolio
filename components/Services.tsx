@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { FaGlobe, FaDatabase, FaShoppingCart, FaCogs } from 'react-icons/fa';
+import { FaGlobe, FaDatabase, FaShoppingCart, FaCogs, FaBrain } from 'react-icons/fa';
 import ServiceCard from './ServiceCard';
 import ScrollReveal from './ScrollReveal';
 import { useTranslation } from '@/hooks/useTranslation';
@@ -42,6 +42,15 @@ const servicesEs = [
     badge: 'Proyecto personalizado',
     href: '/services#medida',
   },
+  {
+    title: 'Machine Learning para tu Negocio',
+    description:
+      'Convertí los datos de tu negocio en predicciones: anticipá demanda, detectá patrones y automatizá decisiones con modelos a medida y bots con IA. Caso real en producción: RivieraMayaPass.',
+    icon: <FaBrain />,
+    price: 'A consultar',
+    badge: 'Nuevo · IA y datos',
+    href: '/services#ml',
+  },
 ];
 
 const servicesEn = [
@@ -80,6 +89,15 @@ const servicesEn = [
     price: 'Quote on request',
     badge: 'Custom project',
     href: '/services#medida',
+  },
+  {
+    title: 'Machine Learning for Your Business',
+    description:
+      'Turn your business data into predictions: anticipate demand, detect patterns and automate decisions with custom models and AI bots. Real case in production: RivieraMayaPass.',
+    icon: <FaBrain />,
+    price: 'Quote on request',
+    badge: 'New · AI & Data',
+    href: '/services#ml',
   },
 ];
 

@@ -4,7 +4,7 @@ import ServicesPageContent from '@/components/ServicesPageContent';
 export const metadata: Metadata = {
   title: 'Servicios | Ezequiel Orazi — Desarrollo Web Freelance',
   description:
-    'Servicios de desarrollo web y SEO con IA: landing pages, sitios dinámicos, tiendas online y posicionamiento en Google con Claude AI. Precios claros en USD.',
+    'Servicios de desarrollo web, SEO con IA y Machine Learning: landing pages, sitios dinámicos, tiendas online, posicionamiento en Google y modelos predictivos a medida. Precios claros en USD.',
   keywords: [
     'desarrollo web',
     'freelance',
@@ -15,6 +15,9 @@ export const metadata: Metadata = {
     'AEO',
     'posicionamiento web',
     'Claude AI',
+    'machine learning',
+    'modelos predictivos',
+    'IA para empresas',
     'Argentina',
     'México',
     'Colombia',
@@ -86,6 +89,14 @@ const professionalServiceJsonLd = {
         description:
           'Auditoría SEO, AEO para ChatGPT y Perplexity, Schema Markup, investigación de keywords con Claude AI.',
         price: '150',
+        priceCurrency: 'USD',
+        availability: 'https://schema.org/InStock',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Machine Learning para tu Negocio',
+        description:
+          'Modelos predictivos a medida, bots con IA generativa (Google Gemini), pipelines de datos y dashboards. Caso real en producción: RivieraMayaPass.',
         priceCurrency: 'USD',
         availability: 'https://schema.org/InStock',
       },
