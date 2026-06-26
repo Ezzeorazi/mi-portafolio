@@ -28,6 +28,7 @@ const BLOG_LASTMOD = {
   '5-errores-seo-negocio-como-arreglarlos': '2026-05-26',
   'claude-ia-guia-prompts-negocios-emprendedores-parte-3': '2026-06-08',
   'herramienta-analisis-seo-gratis-como-funciona': '2026-06-15',
+  'alertas-terremotos-android-google-venezuela': '2026-06-26',
 };
 
 /** @type {import('next-sitemap').IConfig} */

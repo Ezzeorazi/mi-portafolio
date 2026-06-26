@@ -387,6 +387,19 @@ const posts: Post[] = [
     publishedISO: '2026-06-24',
     content: 'blog/noticias-tech-2026-06-24.html',
   },
+  {
+    id: 29,
+    slug: 'alertas-terremotos-android-google-venezuela',
+    image: 'images/blog/alertas-terremotos-android-venezuela.webp',
+    title: 'Cómo Google avisó del terremoto en Venezuela segundos antes: así funcionan las alertas de Android',
+    category: 'Tecnología',
+    description:
+      'El sismo en Venezuela puso el foco en el Sistema de Alertas de Terremotos de Android: qué es, cómo convierte millones de celulares en sismógrafos, por qué no "predice" sino que detecta y avisa, y cómo activarlo en tu teléfono.',
+    date: 'Publicado el 26 de junio de 2026',
+    publishedISO: '2026-06-26',
+    ReadingTime: '12 min de lectura',
+    content: 'blog/alertas-terremotos-android-google-venezuela.html',
+  },
 ];
 
 export default posts;
