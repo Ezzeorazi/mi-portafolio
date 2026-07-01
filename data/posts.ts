@@ -400,6 +400,18 @@ const posts: Post[] = [
     ReadingTime: '12 min de lectura',
     content: 'blog/alertas-terremotos-android-google-venezuela.html',
   },
+  {
+    id: 30,
+    slug: 'noticias-tech-2026-07-01',
+    image: 'images/blog/noticias-tech-2026-07-01.svg',
+    title: "Eclipse, el fin del disco físico y más: Tu resumen tech semanal",
+    category: 'Noticias',
+    description: "Ezequiel Orazi te trae el resumen semanal de noticias tech: eclipse, adiós a los discos de PlayStation, Project Hail Mary, Windows 11 y suscripciones sin…",
+    date: 'Publicado el 1 de julio de 2026',
+    ReadingTime: '5 min de lectura',
+    publishedISO: '2026-07-01',
+    content: 'blog/noticias-tech-2026-07-01.html',
+  },
 ];
 
 export default posts;
