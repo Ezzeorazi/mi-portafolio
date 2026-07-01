@@ -40,9 +40,11 @@ const NUM_NEWS = 5;
 const RECENT_DAYS = 10;
 // Lista de modelos free para probar en cadena (cada uno tiene cuota separada).
 // Se puede sobreescribir con GEMINI_MODEL (uno o varios separados por coma).
+// Orden por confiabilidad del free tier: 2.5-flash es el que responde.
+// Afuera quedan gemini-2.0-flash-lite (free tier limit:0) y gemini-1.5-flash (404, deprecado).
 const GEMINI_MODELS = (
   process.env.GEMINI_MODEL ||
-  'gemini-2.0-flash,gemini-2.5-flash,gemini-2.5-flash-lite,gemini-2.0-flash-lite'
+  'gemini-2.5-flash,gemini-2.5-flash-lite,gemini-2.0-flash'
 )
   .split(',')
   .map((s) => s.trim())
@@ -249,14 +251,13 @@ async function generateWithGemini(news, fechaTexto) {
   const prompt = buildPrompt(news, fechaTexto);
 
   let lastErr;
-  let hubo429 = false;
-  let hubo503 = false;
-  // Hasta 3 rondas: en cada una probamos todos los modelos.
-  // Ante cualquier fallo (429 de cuota, 503 transitorio, JSON cortado, etc.)
-  // saltamos al siguiente modelo.
-  for (let ronda = 1; ronda <= 3; ronda++) {
-    hubo429 = false;
-    hubo503 = false;
+  // Backoff exponencial entre rondas (en segundos). Con esto damos tiempo a que
+  // pase una saturación (503) o se renueve la cuota por minuto (429). El total
+  // (~6,5 min) lo banca GitHub Actions sin problema.
+  const ESPERAS = [30, 60, 120, 180];
+  const RONDAS = ESPERAS.length + 1;
+  for (let ronda = 1; ronda <= RONDAS; ronda++) {
+    let transitorio = false;
     for (const model of GEMINI_MODELS) {
       try {
         console.log(`  · probando ${model}…`);
@@ -264,14 +265,14 @@ async function generateWithGemini(news, fechaTexto) {
         return parseGeminiJson(text);
       } catch (err) {
         lastErr = err;
-        if (err.is429) hubo429 = true;
-        if (err.is503) hubo503 = true;
+        // 429 (cuota), 503 (saturado) y JSON cortado son transitorios: reintentables.
+        if (err.is429 || err.is503 || /JSON/.test(err.message)) transitorio = true;
         console.warn(`    ⚠ ${model} falló (${err.message.slice(0, 80)}). Pruebo el siguiente…`);
       }
     }
-    if (ronda < 3 && (hubo429 || hubo503)) {
-      const espera = hubo429 ? 65 : 20;
-      console.warn(`  Espero ${espera}s y reintento (ronda ${ronda + 1}/3)…`);
+    if (ronda <= ESPERAS.length && transitorio) {
+      const espera = ESPERAS[ronda - 1];
+      console.warn(`  Espero ${espera}s y reintento (ronda ${ronda + 1}/${RONDAS})…`);
       await sleep(espera * 1000);
     } else {
       break;
@@ -316,7 +317,11 @@ async function callGeminiModel(model, prompt) {
 }
 
 function parseGeminiJson(text) {
-  const cleaned = text.trim().replace(/^```(?:json)?/i, '').replace(/```$/, '').trim();
+  let cleaned = text.trim().replace(/^```(?:json)?/i, '').replace(/```$/, '').trim();
+  // Nos quedamos con el objeto {…} por si viene con texto o saltos alrededor.
+  const ini = cleaned.indexOf('{');
+  const fin = cleaned.lastIndexOf('}');
+  if (ini !== -1 && fin > ini) cleaned = cleaned.slice(ini, fin + 1);
   let parsed;
   try {
     parsed = JSON.parse(cleaned);
