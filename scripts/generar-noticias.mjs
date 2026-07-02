@@ -217,17 +217,20 @@ Estas son las 5 noticias de la semana:
 ${lista}
 
 Escribí un post de blog en español (Argentina) de entre 1000 y 1400 palabras con esta estructura:
-- Arrancá DIRECTO al tema. PROHIBIDO saludar ("hola"), anunciar que esto es "el resumen semanal" o explicar de qué va el post. Nada de meta-frases tipo "una vez más acá estoy", "en este post", "esta semana te traigo", "vamos a ver": entrá desde la primera oración con una idea fuerte o con la noticia más importante. 1 o 2 párrafos de entrada que conecten el clima tech de la semana.
+- EMPEZÁ con un TL;DR: un <blockquote> con 2-3 oraciones que resuman los HECHOS concretos más importantes de la semana (los datos puntuales de las noticias de abajo). Tiene que poder leerse solo: que alguien entienda qué pasó sin leer el resto. PROHIBIDO meta-frases tipo "esta semana te traigo" o "en este resumen": andá directo a los hechos.
+- Después del blockquote, arrancá DIRECTO al tema. PROHIBIDO saludar ("hola") o explicar de qué va el post. Nada de meta-frases tipo "una vez más acá estoy", "en este post", "vamos a ver": entrá con una idea fuerte o con la noticia más importante. 1 o 2 párrafos de entrada que conecten el clima tech de la semana.
 - EXACTAMENTE ${news.length} secciones, UNA POR CADA noticia de la lista de arriba, en el mismo orden y sin saltarte ninguna. Cada sección: un <h2> con un título propio (NO copies el titular literal), seguido de 2 o 3 párrafos <p> con tu análisis técnico y contexto (qué pasó, por qué importa, qué implica). Cerrá cada sección con el enlace EXACTO de esa noticia así: <p><a href="URL" target="_blank" rel="noopener noreferrer">Leé la nota completa en FUENTE →</a></p>
 - Un párrafo de cierre con una reflexión personal genuina y una invitación cálida a contactarme si necesitan una mano con su proyecto web. PROHIBIDO usar cierres formulaicos como "y así cerramos", "en resumen", "para terminar", "en conclusión".
 
 Reglas de formato MUY IMPORTANTES:
 - Devolvé ÚNICAMENTE un objeto JSON válido y minificado, sin markdown, sin \`\`\`.
-- Estructura exacta: {"title": "...", "description": "...", "html": "..."}
+- Estructura exacta: {"title": "...", "description": "...", "html": "...", "faq": [{"q": "...", "a": "..."}]}
 - "title": título atractivo del post (50-65 caracteres) que mencione que es el resumen tech de la semana.
 - "description": meta descripción SEO de máximo 160 caracteres (NO te pases).
-- "html": SOLO el cuerpo del artículo usando etiquetas <p>, <h2>, <strong>, <a>, <ul>, <li>. NADA de <html>, <head>, <body>, <h1> ni estilos inline. Usá comillas dobles escapadas correctamente dentro del JSON.
-- USÁ ÚNICAMENTE las ${news.length} URLs que te di, una por sección. NO inventes ni agregues enlaces que no estén en la lista. NO repitas una misma noticia en dos secciones.`;
+- "html": SOLO el cuerpo del artículo (incluido el <blockquote> del TL;DR arriba de todo) usando etiquetas <blockquote>, <p>, <h2>, <strong>, <a>, <ul>, <li>. NADA de <html>, <head>, <body>, <h1> ni estilos inline. Usá comillas dobles escapadas correctamente dentro del JSON.
+- "faq": EXACTAMENTE 3 objetos {"q": "...", "a": "..."} con preguntas que un lector se haría sobre las noticias de esta semana. "q" es la pregunta (natural, como se busca en Google); "a" es la respuesta de 2-3 oraciones. Basate SOLO en las noticias de arriba.
+- USÁ ÚNICAMENTE las ${news.length} URLs que te di, una por sección. NO inventes ni agregues enlaces que no estén en la lista. NO repitas una misma noticia en dos secciones.
+- NO inventes cifras, fechas, nombres propios ni declaraciones que no estén en los titulares y resúmenes que te di. Si un dato no aparece, no lo afirmes. Tampoco inventes anécdotas personales mías ni resultados de mis proyectos.`;
 }
 
 async function generateWithGemini(news, fechaTexto) {
@@ -242,7 +245,11 @@ async function generateWithGemini(news, fechaTexto) {
     return {
       title: `Noticias Tech de la semana — ${fechaTexto}`,
       description: `Resumen de las 5 noticias de tecnología más relevantes de la semana del ${fechaTexto}, con análisis.`,
-      html: `<p>Esto es contenido de prueba (MOCK_GEMINI).</p>\n\n${secciones}\n\n<p>Cierre de prueba.</p>`,
+      html: `<blockquote>En resumen (MOCK): las noticias más relevantes de la semana del ${fechaTexto}.</blockquote>\n\n<p>Esto es contenido de prueba (MOCK_GEMINI).</p>\n\n${secciones}\n\n<p>Cierre de prueba.</p>`,
+      faq: [
+        { q: '¿De qué trata este resumen?', a: 'Es contenido de prueba generado con MOCK_GEMINI.' },
+        { q: '¿Cuántas noticias incluye?', a: `Incluye ${news.length} noticias de la semana.` },
+      ],
     };
   }
   if (!GEMINI_API_KEY) {
@@ -329,6 +336,14 @@ function parseGeminiJson(text) {
     throw new Error('La respuesta de Gemini no es JSON válido: ' + cleaned.slice(0, 200));
   }
   if (!parsed.title || !parsed.html) throw new Error('JSON de Gemini incompleto (falta title o html)');
+  // faq es opcional: normalizamos a un array de {q,a} con strings no vacíos (máx 5).
+  // Si Gemini no lo devolvió o vino mal, seguimos sin FAQ en vez de fallar.
+  parsed.faq = Array.isArray(parsed.faq)
+    ? parsed.faq
+        .filter((f) => f && typeof f.q === 'string' && typeof f.a === 'string' && f.q.trim() && f.a.trim())
+        .map((f) => ({ q: f.q.trim(), a: f.a.trim() }))
+        .slice(0, 5)
+    : [];
   return parsed;
 }
 
@@ -415,6 +430,17 @@ async function insertarEnPosts(entry) {
   const ids = [...src.matchAll(/id:\s*(\d+)/g)].map((m) => Number(m[1]));
   const nextId = (ids.length ? Math.max(...ids) : 0) + 1;
 
+  // Bloque faq[] (opcional): alimenta el FAQPage JSON-LD que genera el template.
+  const faqTs =
+    entry.faq && entry.faq.length
+      ? `    faq: [\n${entry.faq
+          .map(
+            (f) =>
+              `      {\n        q: ${JSON.stringify(f.q)},\n        a: ${JSON.stringify(f.a)},\n      },`,
+          )
+          .join('\n')}\n    ],\n`
+      : '';
+
   const block = `  {
     id: ${nextId},
     slug: '${entry.slug}',
@@ -426,7 +452,7 @@ async function insertarEnPosts(entry) {
     ReadingTime: '${entry.readingTime}',
     publishedISO: '${entry.iso}',
     content: '${entry.content}',
-  },
+${faqTs}  },
 `;
 
   // Insertar antes del cierre del array  "\n];"
@@ -482,6 +508,7 @@ async function main() {
     readingTime: readTime,
     iso,
     content: contentRel,
+    faq: post.faq,
   });
 
   console.log('\n✅ Listo. Hacé commit & push y Netlify reconstruye solo.\n');
