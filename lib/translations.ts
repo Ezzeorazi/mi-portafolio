@@ -12,6 +12,7 @@ const translations: Record<Language, Record<string, string>> = {
     nav_blog: 'Blog',
     nav_contact: 'Contacto',
     nav_seo_tool: 'Análisis SEO',
+    nav_security_tool: 'Seguridad Web',
     toggle_lang: 'EN',
 
     // HOME
@@ -216,6 +217,7 @@ const translations: Record<Language, Record<string, string>> = {
     nav_blog: 'Blog',
     nav_contact: 'Contact',
     nav_seo_tool: 'SEO Checker',
+    nav_security_tool: 'Web Security',
     toggle_lang: 'ES',
 
     // HOME

@@ -30,6 +30,7 @@ export default function Footer() {
       links: [
         { key: 'footer_link_all_services', href: '/services' },
         { key: 'nav_seo_tool', href: '/auditoria-seo' },
+        { key: 'nav_security_tool', href: '/analisis-seguridad' },
         { key: 'footer_link_landing', href: '/services#landing' },
         { key: 'footer_link_dynamic', href: '/services#dinamica' },
         { key: 'footer_link_ecommerce', href: '/services#ecommerce' },
