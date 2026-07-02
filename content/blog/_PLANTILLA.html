@@ -1,0 +1,103 @@
+<!--
+  PLANTILLA CANÓNICA DE POST — blog de ezequiel-orazi.online
+  ============================================================
+  Copiá este archivo a content/blog/<slug>.html y reemplazá el contenido.
+
+  REGLAS DE FORMATO:
+  - NO incluyas <h1>: el título lo renderiza el template desde post.title en posts.ts.
+    El contenido arranca en el TL;DR.
+  - La jerarquía de headings acá empieza en <h2>. Usá <h3> para subsecciones.
+  - Este HTML se inyecta dentro de <div class="blog-content">. Solo contenido, sin
+    <html>/<head>/<body>.
+  - El JSON-LD (BlogPosting + FAQPage) se genera SOLO desde posts.ts. No lo pegues acá.
+  - Las preguntas de la sección FAQ de abajo DEBEN coincidir con el campo faq[] de
+    posts.ts (mismo texto), para que schema y contenido visible no se contradigan.
+
+  ENTRADA CORRESPONDIENTE EN data/posts.ts (agregar al final del array):
+
+    {
+      id: <siguiente número>,
+      slug: 'keyword-principal-sin-articulos',       // corto, con keyword
+      image: 'images/blog/<slug>.webp',              // 1200x630 recomendado
+      title: 'Título como pregunta natural (≤60)',   // = meta title
+      category: 'Next.js',                           // pilar del cluster
+      description: 'Meta description 150-160 chars con keyword y promesa clara.',
+      date: 'Publicado el <día> de <mes> de <año>',
+      ReadingTime: '<n> min de lectura',
+      publishedISO: 'AAAA-MM-DD',
+      // updated / updatedISO: agregar solo al reeditar el post más adelante
+      content: 'blog/<slug>.html',
+      faq: [
+        { q: '¿Pregunta 1 tipo People Also Ask?', a: 'Respuesta de 2-3 oraciones.' },
+        { q: '¿Pregunta 2?', a: 'Respuesta.' },
+        { q: '¿Pregunta 3?', a: 'Respuesta.' },
+      ],
+    },
+
+  GUARDRAILS (no negociables):
+  - PROHIBIDO inventar cifras, benchmarks o resultados. Usá solo datos reales/confirmados.
+    Si falta un número, dejá el marcador literal [CONFIRMAR: <qué dato>] y avisá — no lo rellenes.
+  - Links internos SOLO a slugs que existen en posts.ts o a páginas reales del sitio
+    (/sobre-mi, /proyectos, /contacto, /presupuestos, /faq, /auditoria-seo).
+  - Sin keyword stuffing. La keyword vive en H1, TL;DR, un H2, meta y slug; nada más forzado.
+-->
+
+<!-- 1) TL;DR / Respuesta directa — primeras ~100 palabras, citable, con la keyword.
+     Responde la pregunta del título de forma completa. Los motores de IA leen de arriba. -->
+<blockquote>
+  <strong>Respuesta corta:</strong> [Responder la pregunta del título en 2-4 oraciones,
+  de forma completa y autónoma, incluyendo la keyword principal de forma natural.]
+</blockquote>
+
+<!-- 2) TABLA DE CONTENIDOS — incluir SOLO si el post supera ~1.000 palabras.
+     Los anchors deben coincidir con los id de cada <h2>. Si el post es corto, borrá este bloque. -->
+<nav aria-label="Tabla de contenidos">
+  <p><strong>En este artículo:</strong></p>
+  <ul>
+    <li><a href="#seccion-1">Primer H2 como frase de búsqueda</a></li>
+    <li><a href="#seccion-2">Segundo H2</a></li>
+    <li><a href="#caso-real">Cómo lo resolví en un proyecto real</a></li>
+    <li><a href="#faq">Preguntas frecuentes</a></li>
+  </ul>
+</nav>
+
+<!-- 3) CUERPO — H2s formulados como la gente busca (preguntas o frases).
+     Cada sección debe poder extraerse sola como snippet. Párrafos de 2-4 líneas. -->
+<h2 id="seccion-1">Primer H2 como la gente lo busca</h2>
+<p>[Desarrollo. Concreto: números reales, nombres de herramientas, código si aporta.]</p>
+
+<!-- Fragmento de código cuando sume valor: -->
+<pre><code>// ejemplo mínimo y real
+</code></pre>
+
+<h2 id="seccion-2">Segundo H2, otra intención de búsqueda</h2>
+<p>[Desarrollo.]</p>
+<h3>Subsección si hace falta</h3>
+<p>[...]</p>
+
+<!-- 5) CASO REAL DE EZEQUIEL (obligatorio, mínimo uno).
+     Formato: problema → qué hice → resultado (con número si existe) → qué haría distinto.
+     Proyectos disponibles: Konexo, Caliber 3D, Pixel Maker, RivieraMayaPass, Nimbus CRM.
+     Recordá: si no tenés el número real, [CONFIRMAR: ...]. -->
+<h2 id="caso-real">Cómo lo resolví en un proyecto real</h2>
+<p><strong>El problema:</strong> [...]</p>
+<p><strong>Qué hice:</strong> [...]</p>
+<p><strong>El resultado:</strong> [con número real o [CONFIRMAR: ...]].</p>
+<p><strong>Qué haría distinto:</strong> [matiz honesto, señal E-E-A-T].</p>
+
+<!-- 6) FAQ VISIBLE — 3-5 preguntas. DEBE coincidir con el campo faq[] de posts.ts. -->
+<h2 id="faq">Preguntas frecuentes</h2>
+<h3>¿Pregunta 1 tipo People Also Ask?</h3>
+<p>[Respuesta de 2-3 oraciones. Igual al texto en faq[] de posts.ts.]</p>
+<h3>¿Pregunta 2?</h3>
+<p>[Respuesta.]</p>
+<h3>¿Pregunta 3?</h3>
+<p>[Respuesta.]</p>
+
+<!-- 7) CIERRE + CTA sutil hacia contacto. 2-3 oraciones, sin tono vendedor. -->
+<h2>Para cerrar</h2>
+<p>[Conclusión práctica en 2-3 oraciones.]</p>
+<p>
+  Si necesitás implementar esto en tu proyecto,
+  <a href="/contacto">escribime</a> y lo vemos.
+</p>

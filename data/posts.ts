@@ -15,6 +15,13 @@ export type Post = {
   updatedISO?: string;
   ReadingTime: string;
   content: string;
+  /**
+   * Preguntas frecuentes del post (opcional). Si se define, el template
+   * genera automáticamente el JSON-LD de FAQPage para rich results de
+   * "People Also Ask". Las mismas preguntas deben aparecer también como
+   * sección visible dentro del HTML del post.
+   */
+  faq?: { q: string; a: string }[];
 };
 
 const posts: Post[] = [
@@ -411,6 +418,41 @@ const posts: Post[] = [
     ReadingTime: '5 min de lectura',
     publishedISO: '2026-07-01',
     content: 'blog/noticias-tech-2026-07-01.html',
+  },
+  {
+    id: 31,
+    slug: 'claude-fable-5-automatizar-ia',
+    image: 'images/blog/claude-fable-5-automatizar-ia.webp',
+    title: 'Claude Fable 5: qué cambia para automatizar con IA',
+    category: 'Inteligencia Artificial',
+    description:
+      'Claude Fable 5 volvió con 1M de contexto y clasificadores que pueden rechazar pedidos. Te explico refusals, fallback y billing si automatizás bots con IA.',
+    date: 'Publicado el 2 de julio de 2026',
+    ReadingTime: '8 min de lectura',
+    publishedISO: '2026-07-02',
+    content: 'blog/claude-fable-5-automatizar-ia.html',
+    faq: [
+      {
+        q: '¿Qué diferencia hay entre Claude Fable 5 y Claude Mythos 5?',
+        a: 'Comparten capacidades, contexto de 1M de tokens y precio. La diferencia es que Fable 5 incluye clasificadores de seguridad que pueden rechazar pedidos y Mythos 5 no. Además, Mythos 5 solo está disponible en acceso limitado a través de Project Glasswing.',
+      },
+      {
+        q: '¿Un rechazo de Claude Fable 5 cuenta como error?',
+        a: 'No. Cuando Fable 5 rechaza un pedido, la Messages API devuelve stop_reason "refusal" como una respuesta exitosa HTTP 200, no como error. Tu integración tiene que detectar ese caso y no tratarlo como un fallo de red.',
+      },
+      {
+        q: '¿Me cobran si el modelo rechaza mi pedido?',
+        a: 'No, si el pedido se rechaza antes de generar cualquier output no se factura. Y si reintentás en otro modelo, el fallback credit reembolsa el costo de prompt-cache del cambio para que no lo pagues dos veces.',
+      },
+      {
+        q: '¿Puedo desactivar el modo de razonamiento en Fable 5?',
+        a: 'No. El adaptive thinking siempre está activo y thinking disabled no está soportado. Controlás la profundidad y el costo con el parámetro effort. Además, el razonamiento crudo nunca se devuelve: solo un resumen u omitido.',
+      },
+      {
+        q: '¿Sirve Claude Fable 5 para automatizar bots y servicios?',
+        a: 'Sí, es el modelo más capaz de Anthropic para trabajo agéntico de largo alcance, con contexto de 1M de tokens. Pero si automatizás, tu integración debe manejar refusals y tener un fallback a otro modelo para que un rechazo no rompa el flujo.',
+      },
+    ],
   },
 ];
 

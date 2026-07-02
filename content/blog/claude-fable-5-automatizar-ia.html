@@ -1,0 +1,179 @@
+<blockquote>
+  <strong>Respuesta corta:</strong> Claude Fable 5 volvió. Es el modelo más capaz de
+  Anthropic para razonamiento exigente y trabajo agéntico de largo alcance, con
+  <strong>1 millón de tokens de contexto</strong> y precio de $10 por millón de tokens de
+  entrada y $50 de salida. Si automatizás servicios o bots con IA, el cambio que de verdad
+  te toca no es el hype: <strong>Fable 5 ahora incluye clasificadores de seguridad que
+  pueden rechazar pedidos</strong>, y ese rechazo llega como una respuesta exitosa (HTTP 200),
+  no como error. Prepará tu integración para manejar tres cosas: refusals, fallback a otro
+  modelo y las nuevas reglas de billing.
+</blockquote>
+
+<nav aria-label="Tabla de contenidos">
+  <p><strong>En este artículo:</strong></p>
+  <ul>
+    <li><a href="#que-es-fable-5">Qué es Claude Fable 5 (y Mythos 5) y por qué volvió</a></li>
+    <li><a href="#specs">Specs que importan si automatizás</a></li>
+    <li><a href="#refusals">El cambio grande para bots: los refusals</a></li>
+    <li><a href="#fallback">Cómo no romper tu automatización: fallback y billing</a></li>
+    <li><a href="#caso-real">Cómo lo estoy encarando en mis automatizaciones</a></li>
+    <li><a href="#faq">Preguntas frecuentes</a></li>
+  </ul>
+</nav>
+
+<h2 id="que-es-fable-5">Qué es Claude Fable 5 (y Mythos 5) y por qué volvió</h2>
+<p>
+  Claude Fable 5 es, según Anthropic, su modelo más capaz de disponibilidad amplia:
+  pensado para el razonamiento más exigente y para tareas agénticas de largo alcance —esas
+  donde el modelo tiene que sostener un plan a lo largo de muchos pasos sin perder el hilo.
+</p>
+<p>
+  Su acceso estuvo cortado y hace poco fue restaurado. Anthropic publicó un
+  <a href="https://www.anthropic.com/news/redeploying-fable-5-mythos-5" target="_blank" rel="noopener">comunicado
+  oficial sobre el redespliegue de Fable 5 y Mythos 5</a>; los motivos exactos del corte y de la
+  vuelta están en ese texto. <!-- [CONFIRMAR: motivo del corte según el comunicado oficial, si querés sumarlo] -->
+  Lo concreto para vos como desarrollador es que hoy volvió a estar disponible de forma general.
+</p>
+<p>
+  Junto con Fable 5 aparece <strong>Claude Mythos 5</strong>, que comparte exactamente las
+  mismas capacidades pero <strong>sin los clasificadores de seguridad</strong>. Mythos 5 no
+  es de acceso general: se ofrece en disponibilidad limitada a clientes aprobados dentro de
+  <a href="https://anthropic.com/glasswing" target="_blank" rel="noopener">Project Glasswing</a>.
+  Si no tenés acceso a Mythos 5, usás Fable 5, que ofrece las mismas capacidades.
+</p>
+
+<h2 id="specs">Specs que importan si automatizás</h2>
+<p>Fable 5 y Mythos 5 comparten specs y precio. Lo que a mí me interesa cuando armo un bot o un servicio automático:</p>
+<ul>
+  <li><strong>Contexto de 1M de tokens</strong> por defecto y hasta 128k tokens de salida por request. Podés meterle documentos enteros, historiales largos o bases de conocimiento sin fragmentar tanto.</li>
+  <li><strong>Precio:</strong> $10 por millón de tokens de entrada y $50 por millón de salida. En automatizaciones que corren solas, esto multiplicado por volumen importa: conviene medirlo antes de soltarlo en producción.</li>
+  <li><strong>Adaptive thinking siempre activo:</strong> es el único modo de razonamiento. No podés desactivarlo (<code>thinking: disabled</code> no está soportado); la profundidad se controla con el parámetro <code>effort</code>, que también regula el costo.</li>
+  <li><strong>El razonamiento crudo nunca se devuelve:</strong> obtenés un resumen del razonamiento o directamente nada, según <code>thinking.display</code>. En conversaciones multi-turno hay que reenviar los bloques de thinking sin tocarlos.</li>
+</ul>
+<p>
+  Para trabajo agéntico también trae soporte de <code>effort</code>, task budgets (en beta),
+  memory tool, ejecución de código y llamadas a herramientas programáticas. Es, en resumen,
+  un modelo diseñado para agentes, no solo para chat.
+</p>
+
+<h2 id="refusals">El cambio grande para bots: los refusals</h2>
+<p>
+  Acá está el punto que más me importa y por el que escribo este post. Fable 5 incluye
+  clasificadores de seguridad que pueden <strong>rechazar</strong> ciertos pedidos. Y el
+  detalle técnico es el que te puede romper una automatización si no lo tenés en cuenta:
+</p>
+<p>
+  Cuando Fable 5 rechaza un pedido, la Messages API devuelve
+  <code>stop_reason: "refusal"</code> como una <strong>respuesta exitosa HTTP 200</strong>,
+  no como un error. Además te informa qué clasificador lo rechazó. Mythos 5 no tiene estos
+  clasificadores, así que esto aplica solo a Fable 5.
+</p>
+<p>
+  ¿Por qué es un problema si automatizás? Porque el reflejo típico al integrar una API es:
+  "si el status es 200, salió bien, sigo". Con Fable 5 ese supuesto se rompe. Un 200 puede
+  ser un rechazo, y si tu bot lo trata como éxito, publica una respuesta vacía, guarda basura
+  o rompe el flujo silenciosamente. Hay que leer el <code>stop_reason</code>, no solo el código HTTP.
+</p>
+
+<h2 id="fallback">Cómo no romper tu automatización: fallback y billing</h2>
+<p>
+  La buena noticia es que un pedido que Fable 5 rechaza normalmente lo puede atender otro
+  modelo de Claude. Hay tres formas de reintentar:
+</p>
+<ul>
+  <li><strong>Server-side:</strong> le pasás el parámetro <code>fallbacks</code> y la API reintenta por vos (en beta en la Claude API y en la plataforma de AWS).</li>
+  <li><strong>Client-side:</strong> usás el middleware del SDK (TypeScript, Python, Go, Java y C#) para reintentar desde el cliente en cualquier plataforma.</li>
+  <li><strong>Manual:</strong> te armás el reintento vos mismo, en cualquier lenguaje.</li>
+</ul>
+<p>
+  Y lo de billing es más justo de lo que esperaba: <strong>no te cobran un pedido que se
+  rechaza antes de generar output</strong>. Cuando reintentás en otro modelo, el
+  <em>fallback credit</em> te reembolsa el costo de prompt-cache del cambio, así no pagás dos
+  veces por lo mismo. Si querés el ejemplo completo de punta a punta, Anthropic publicó un
+  <a href="https://platform.claude.com/cookbook/fable-5-fallback-billing-guide" target="_blank" rel="noopener">cookbook
+  de refusals, fallback y billing</a>.
+</p>
+
+<h2 id="caso-real">Cómo lo estoy encarando en mis automatizaciones</h2>
+<p>
+  Uso IA en casi todas las plataformas donde trabajo para automatizar servicios y bots, así
+  que esto no es teoría para mí. Dos ejemplos reales míos que hoy corren sobre Google Gemini:
+</p>
+<ul>
+  <li>Un <a href="/blog/rivievamayapass-bot-sargazo-machine-learning">bot diario que predice el estado del sargazo</a> en la Riviera Maya, combinando Gemini, datos climáticos y un modelo Random Forest con ~80% de acierto.</li>
+  <li>Mi <a href="/blog/noticias-tech-2026-07-01">resumen tech semanal</a>, que se genera y publica solo con un pipeline automatizado (GitHub Actions + RSS + IA).</li>
+</ul>
+<p>
+  <strong>El problema que veo con Fable 5:</strong> si mañana migrara el generador de noticias
+  a Fable 5, un <code>stop_reason: "refusal"</code> que mi código tratara como éxito publicaría
+  un post vacío o a medias, sin que nadie se entere hasta que sale al aire.
+</p>
+<p>
+  <strong>Qué hago:</strong> el patrón que aplico es chequear el <code>stop_reason</code> antes
+  de usar la respuesta, y tener un fallback a otro modelo listo. En pseudo-código de una
+  automatización en Node:
+</p>
+<pre><code>const res = await client.messages.create({
+  model: 'claude-fable-5',
+  messages,
+});
+
+// Un 200 no garantiza contenido usable: puede ser un rechazo.
+if (res.stop_reason === 'refusal') {
+  // No lo trato como error de red. Reintento en otro modelo.
+  return generarCon('claude-sonnet-5', messages);
+}
+
+publicar(res);
+</code></pre>
+<p>
+  <strong>Qué haría distinto:</strong> antes armaba estos flujos asumiendo que un 200 era
+  contenido bueno y validaba solo "que no esté vacío". Con Fable 5 el chequeo tiene que ser
+  explícito sobre el motivo de corte. Un detalle más que no ignoraría: Fable 5 y Mythos 5
+  tienen retención de datos de 30 días y no admiten zero data retention, así que para
+  automatizaciones con datos sensibles hay que tenerlo en la cuenta.
+</p>
+
+<h2 id="faq">Preguntas frecuentes</h2>
+<h3>¿Qué diferencia hay entre Claude Fable 5 y Claude Mythos 5?</h3>
+<p>
+  Comparten capacidades, contexto de 1M de tokens y precio. La diferencia es que Fable 5
+  incluye clasificadores de seguridad que pueden rechazar pedidos y Mythos 5 no. Además,
+  Mythos 5 solo está disponible en acceso limitado a través de Project Glasswing.
+</p>
+<h3>¿Un rechazo de Claude Fable 5 cuenta como error?</h3>
+<p>
+  No. Cuando Fable 5 rechaza un pedido, la Messages API devuelve <code>stop_reason: "refusal"</code>
+  como una respuesta exitosa HTTP 200, no como error. Tu integración tiene que detectar ese caso
+  y no tratarlo como un fallo de red.
+</p>
+<h3>¿Me cobran si el modelo rechaza mi pedido?</h3>
+<p>
+  No, si el pedido se rechaza antes de generar cualquier output no se factura. Y si reintentás
+  en otro modelo, el fallback credit reembolsa el costo de prompt-cache del cambio para que no
+  lo pagues dos veces.
+</p>
+<h3>¿Puedo desactivar el modo de razonamiento en Fable 5?</h3>
+<p>
+  No. El adaptive thinking siempre está activo y <code>thinking: disabled</code> no está soportado.
+  Controlás la profundidad y el costo con el parámetro <code>effort</code>. Además, el razonamiento
+  crudo nunca se devuelve: solo un resumen u omitido.
+</p>
+<h3>¿Sirve Claude Fable 5 para automatizar bots y servicios?</h3>
+<p>
+  Sí, es el modelo más capaz de Anthropic para trabajo agéntico de largo alcance, con contexto
+  de 1M de tokens. Pero si automatizás, tu integración debe manejar refusals y tener un fallback
+  a otro modelo para que un rechazo no rompa el flujo.
+</p>
+
+<h2>Para cerrar</h2>
+<p>
+  Que Fable 5 haya vuelto es una gran noticia si trabajás con agentes: tenés el modelo más
+  capaz de Anthropic con 1M de contexto. Pero la letra chica —refusals que llegan como 200,
+  fallback y billing— es justo lo que separa una automatización que aguanta producción de una
+  que se rompe callada un domingo a la madrugada.
+</p>
+<p>
+  Si estás montando bots o servicios con IA y querés que no se caigan ante un rechazo,
+  <a href="/contacto">escribime</a> y lo vemos juntos.
+</p>

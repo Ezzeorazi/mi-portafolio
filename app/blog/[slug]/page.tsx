@@ -84,12 +84,35 @@ export default async function BlogPostPage({ params }: Props) {
     keywords: post.category,
   };
 
+  const faqJsonLd =
+    post.faq && post.faq.length > 0
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: post.faq.map((item) => ({
+            '@type': 'Question',
+            name: item.q,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: item.a,
+            },
+          })),
+        }
+      : null;
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
+
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
 
       <article className="max-w-3xl mx-auto px-4 py-16">
         {/* Header */}
@@ -130,6 +153,17 @@ export default async function BlogPostPage({ params }: Props) {
               </>
             )}
           </div>
+
+          <p className="mt-3 text-sm text-muted/80">
+            Por{' '}
+            <Link
+              href="/sobre-mi"
+              className="text-pink font-medium hover:underline"
+            >
+              Ezequiel Orazi
+            </Link>
+            , desarrollador full-stack
+          </p>
         </div>
 
         {/* Content */}

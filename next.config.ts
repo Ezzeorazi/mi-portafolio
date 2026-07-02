@@ -1,10 +1,15 @@
 import type { NextConfig } from 'next';
 
+// En desarrollo, Next.js usa eval() para el Fast Refresh (HMR). Sin 'unsafe-eval'
+// el bundle de dev tira EvalError y se rompe la hidratación (los posts animados con
+// Framer Motion quedan invisibles). En producción NO se incluye: la CSP queda estricta.
+const isDev = process.env.NODE_ENV === 'development';
+
 // Content Security Policy: permite recursos propios + Google Analytics/Tag Manager,
 // Google Fonts y EmailJS (los únicos terceros que usa el sitio).
 const contentSecurityPolicy = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''} https://www.googletagmanager.com https://www.google-analytics.com`,
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com",
   "img-src 'self' data: blob: https:",
