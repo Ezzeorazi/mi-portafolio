@@ -4,7 +4,7 @@ import {
   FaGlobe, FaDatabase, FaShoppingCart, FaTools, FaCheck, FaFire,
   FaCogs, FaUtensils, FaUsers, FaIndustry, FaUserTie,
   FaFileAlt, FaCalendarAlt, FaBoxes, FaTruck, FaExternalLinkAlt, FaBolt,
-  FaBrain,
+  FaBrain, FaShieldAlt,
 } from 'react-icons/fa';
 import { SiNextdotjs, SiTypescript, SiTailwindcss, SiSanity } from 'react-icons/si';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -496,12 +496,20 @@ export default function ServicesPageContent() {
                     </li>
                   ))}
                 </ul>
-                <Link
-                  href="/auditoria-seo"
-                  className="inline-flex items-center gap-2 border-2 border-pink text-pink font-bold px-5 py-2.5 rounded-lg hover:bg-pink hover:text-white transition-colors duration-300 mt-5"
-                >
-                  <FaBolt /> {t('services_maintenance_tool_cta')}
-                </Link>
+                <div className="flex flex-wrap gap-3 mt-5">
+                  <Link
+                    href="/auditoria-seo"
+                    className="inline-flex items-center gap-2 border-2 border-pink text-pink font-bold px-5 py-2.5 rounded-lg hover:bg-pink hover:text-white transition-colors duration-300"
+                  >
+                    <FaBolt /> {t('services_maintenance_tool_cta')}
+                  </Link>
+                  <Link
+                    href="/analisis-seguridad"
+                    className="inline-flex items-center gap-2 border-2 border-yellow text-yellow font-bold px-5 py-2.5 rounded-lg hover:bg-yellow hover:text-dark transition-colors duration-300"
+                  >
+                    <FaShieldAlt /> {t('services_maintenance_security_cta')}
+                  </Link>
+                </div>
               </div>
               <div className="text-center shrink-0">
                 <p className="text-pink font-bold text-3xl">$45 USD</p>

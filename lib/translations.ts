@@ -86,11 +86,17 @@ const translations: Record<Language, Record<string, string>> = {
     services_includes: 'Qué incluye',
     svc_seo_tool_cta: 'Medí tu SEO gratis ahora',
     services_maintenance_tool_cta: 'Medí el estado de tu sitio gratis',
+    services_maintenance_security_cta: 'Analizá la seguridad de tu sitio',
     home_seo_tool_badge: 'Herramienta gratuita',
     home_seo_tool_title: '¿Tu sitio aparece en Google?',
     home_seo_tool_desc:
       'Analizá el SEO de tu web en 30 segundos: velocidad, SEO técnico y los puntos exactos que frenan tu posicionamiento. Gratis y sin registro.',
     home_seo_tool_cta: 'Analizar mi sitio gratis',
+    home_security_tool_badge: 'Herramienta gratuita',
+    home_security_tool_title: '¿Tu sitio está protegido?',
+    home_security_tool_desc:
+      'Analizá la seguridad de tu web en 30 segundos: cabeceras HTTP, certificado SSL y las brechas que exponen a vos y a tus visitantes. Gratis y sin registro.',
+    home_security_tool_cta: 'Analizar seguridad gratis',
     services_maintenance_title: 'Soporte y Mantenimiento Mensual',
     services_maintenance_desc:
       'Tu plataforma digital necesita supervisión continua para mantener su rendimiento y seguridad.',
@@ -290,6 +296,12 @@ const translations: Record<Language, Record<string, string>> = {
     services_includes: "What's included",
     svc_seo_tool_cta: 'Check your SEO for free',
     services_maintenance_tool_cta: "Check your site's health for free",
+    services_maintenance_security_cta: "Scan your site's security",
+    home_security_tool_badge: 'Free tool',
+    home_security_tool_title: 'Is your site protected?',
+    home_security_tool_desc:
+      'Check your website security in 30 seconds: HTTP headers, SSL certificate and the gaps exposing you and your visitors. Free, no sign-up.',
+    home_security_tool_cta: 'Scan security for free',
     home_seo_tool_badge: 'Free tool',
     home_seo_tool_title: 'Does your site show up on Google?',
     home_seo_tool_desc:
