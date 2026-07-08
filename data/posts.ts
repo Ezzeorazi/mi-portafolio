@@ -489,6 +489,32 @@ const posts: Post[] = [
       },
     ],
   },
+  {
+    id: 33,
+    slug: 'noticias-tech-2026-07-08',
+    image: 'images/blog/noticias-tech-2026-07-08.svg',
+    title: "Resumen Semanal Tech: Meta se Expande y la Privacidad en Riesgo",
+    category: 'Noticias',
+    description: "El 8 de julio de 2026, Meta anuncia su servicio de nube y un modelo de IA que integra usuarios de Instagram. Además, el Parlamento Europeo vuelve a debatir el…",
+    date: 'Publicado el 8 de julio de 2026',
+    ReadingTime: '7 min de lectura',
+    publishedISO: '2026-07-08',
+    content: 'blog/noticias-tech-2026-07-08.html',
+    faq: [
+      {
+        q: "¿Qué planea hacer Meta en el futuro cercano?",
+        a: "Meta está expandiendo su estrategia para incluir un servicio de nube, buscando competir con Amazon y Microsoft al ofrecer potencia de cómputo y modelos de IA. Además, lanzó Muse Image, un modelo de IA que puede incluir otros usuarios de Instagram en fotos generadas.",
+      },
+      {
+        q: "¿Qué implicaciones tiene el resurgimiento del Chat Control en Europa?",
+        a: "El Chat Control, que fue derrotado en marzo, vuelve a votación en el Parlamento Europeo bajo un procedimiento de urgencia. Esto genera preocupación por la privacidad digital, ya que podría permitir la vigilancia masiva de comunicaciones privadas y socavar la encriptación.",
+      },
+      {
+        q: "¿Qué sucede si manipulo las gafas Ray-Ban Meta?",
+        a: "Meta ha anunciado que si un usuario intenta manipular sus Ray-Ban Meta para desactivar las medidas de seguridad de grabación, la compañía dejará las gafas inservibles permanentemente. Esto busca proteger la privacidad y mantener la integridad del producto.",
+      },
+    ],
+  },
 ];
 
 export default posts;
