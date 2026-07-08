@@ -21,6 +21,9 @@ dist-ssr
 .next/
 out/
 
+# Exportes privados de analytics/Search Console (datos de negocio, no van al repo)
+*Performance-on-Search*.xlsx
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

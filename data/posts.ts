@@ -454,6 +454,41 @@ const posts: Post[] = [
       },
     ],
   },
+  {
+    id: 32,
+    slug: 'caliber-3d-visible-google-chatgpt',
+    image: 'images/blog/caliber3d-blog-portada.webp',
+    title: 'Cómo hice que Caliber 3D aparezca en Google y ChatGPT',
+    category: 'Proyectos',
+    description:
+      'A 3 meses de arrancar mi negocio de impresión 3D en Playa del Carmen, mis clientes me encuentran en Google y ChatGPT. Qué construí y qué mido, sin inflar números.',
+    date: 'Publicado el 8 de julio de 2026',
+    ReadingTime: '9 min de lectura',
+    publishedISO: '2026-07-08',
+    content: 'blog/caliber-3d-visible-google-chatgpt.html',
+    faq: [
+      {
+        q: '¿Cómo hago para que un negocio local aparezca en Google?',
+        a: 'Combiná tres cosas: un Perfil de Empresa de Google (gratis, te mete en Maps), una web con SEO local que responda las búsquedas de tu zona, y contenido útil. Toma meses, pero las posiciones se construyen: en tres meses ya rankeo primero para varias búsquedas locales.',
+      },
+      {
+        q: '¿Se puede aparecer en ChatGPT sin pagar?',
+        a: 'Sí. No se compra: se gana con contenido claro que responda preguntas concretas y con una presencia online coherente. En mi caso, clientes reales me dicen que ChatGPT les recomendó Caliber 3D cuando buscaban dónde imprimir en 3D en Playa del Carmen.',
+      },
+      {
+        q: '¿De dónde vienen la mayoría de las ventas de Caliber 3D hoy?',
+        a: 'Hoy, sobre todo de referidos y de gente que me descubre online (Google y ChatGPT). El SEO orgánico todavía está en construcción: tengo buenas posiciones pero poco volumen de clics porque el sitio es nuevo.',
+      },
+      {
+        q: '¿Cuánto tarda el SEO en traer ventas?',
+        a: 'Meses, no días. A los tres meses ya rankeo #1 por mi marca y en primera página para términos locales, pero el volumen de tráfico recién empieza a subir. El SEO es una inversión a mediano plazo, no un interruptor.',
+      },
+      {
+        q: '¿Qué herramientas tiene la plataforma de Caliber 3D?',
+        a: 'Un cotizador que guarda los pedidos en base de datos, un panel de administración privado, un Espacio Makers con calculadoras abiertas al público, un reporte semanal por mail y un aviso por Telegram cuando alguien usa las herramientas.',
+      },
+    ],
+  },
 ];
 
 export default posts;
