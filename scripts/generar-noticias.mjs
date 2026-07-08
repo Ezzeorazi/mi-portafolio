@@ -38,6 +38,27 @@ const FEEDS = [
 
 const NUM_NEWS = 5;
 const RECENT_DAYS = 10;
+
+// Sub-secciones de un feed "de confianza" que en realidad publican contenido
+// no-tech (sociedad, curiosidades, salud). Se descartan por patrón de URL.
+// Ej: Xataka Magnet coló una nota sobre fertilidad en el resumen del 8 de julio.
+const OFF_TOPIC_URL_PATTERNS = [
+  /xataka\.com\/magnet\//i,
+];
+
+// Palabras clave que, si aparecen en el título, delatan contenido no-tech
+// aunque venga de una URL no cubierta arriba. Lista corta a propósito: mejor
+// dejar pasar algo dudoso que descartar tecnología real por falso positivo.
+const OFF_TOPIC_KEYWORDS = [
+  'espermatozoide', 'fertilidad', 'horóscopo', 'horoscopo', 'zodiaco',
+];
+
+function isOffTopic(item) {
+  if (OFF_TOPIC_URL_PATTERNS.some((re) => re.test(item.link))) return true;
+  const title = item.title.toLowerCase();
+  return OFF_TOPIC_KEYWORDS.some((kw) => title.includes(kw));
+}
+
 // Lista de modelos free para probar en cadena (cada uno tiene cuota separada).
 // Se puede sobreescribir con GEMINI_MODEL (uno o varios separados por coma).
 // Orden por confiabilidad del free tier: 2.5-flash es el que responde.
@@ -163,11 +184,13 @@ async function fetchFeed(feed) {
 }
 
 function selectNews(all) {
+  const onTopic = all.filter((it) => !isOffTopic(it));
+
   // Recientes primero
   const now = Date.now();
   const cutoff = now - RECENT_DAYS * 24 * 60 * 60 * 1000;
-  let pool = all.filter((it) => it.date.getTime() >= cutoff && it.link);
-  if (pool.length < NUM_NEWS) pool = all.filter((it) => it.link); // relajar si hay pocas
+  let pool = onTopic.filter((it) => it.date.getTime() >= cutoff && it.link);
+  if (pool.length < NUM_NEWS) pool = onTopic.filter((it) => it.link); // relajar si hay pocas
 
   // Dedupe por título normalizado
   const seen = new Set();
@@ -477,6 +500,12 @@ async function main() {
   const results = await Promise.all(FEEDS.map(fetchFeed));
   const all = results.flat();
   if (all.length === 0) throw new Error('Ningún feed devolvió noticias. ¿Sin conexión?');
+
+  const offTopic = all.filter((it) => isOffTopic(it));
+  if (offTopic.length) {
+    console.log(`  ⚠ Descartadas ${offTopic.length} nota(s) fuera de tema:`);
+    offTopic.forEach((n) => console.log(`    · [${n.source}] ${n.title}`));
+  }
 
   const news = selectNews(all);
   console.log(`\n2) ${news.length} noticias elegidas:`);
