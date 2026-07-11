@@ -75,6 +75,19 @@ def test_clean_domains_excluded_from_networks():
     assert build_networks(scored, ctx) == []
 
 
+def test_mixed_naive_and_aware_dates_do_not_crash():
+    # Regresión: un perfil reconstruido desde Postgres trae fecha naive; uno fresco la
+    # trae aware. build_context/analyze no deben romper al restarlas (same_window).
+    from datetime import datetime
+
+    naive = datetime(2025, 1, 1, 12, 0, 0)  # sin tzinfo (como viene de la DB)
+    a = make_profile(domain="a.xyz", ip="1.1.1.1", **{**_SUSPECT, "registered_at": naive})
+    b = make_profile(domain="b.xyz", ip="1.1.1.1", **_SUSPECT)  # aware (days_ago)
+    scored, ctx = analyze([a, b])
+    nets = build_networks(scored, ctx)  # no debe lanzar
+    assert len(nets) == 1  # comparten IP igual
+
+
 def test_three_domain_network_merges_transitively():
     # a-b por IP, b-c por template → una sola red de 3 (componente conexo).
     sh_b = _dom_shingles(HTMLParser(load_fixture("twin_a.html")))

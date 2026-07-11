@@ -11,7 +11,7 @@ from dataclasses import dataclass, field
 from itertools import combinations
 
 from ..config import weights
-from ..models import DomainProfile
+from ..models import DomainProfile, _as_utc
 
 
 @dataclass
@@ -71,11 +71,13 @@ def build_context(profiles: list[DomainProfile]) -> ScoringContext:
             ctx.template_twins[a.domain].add(b.domain)
             ctx.template_twins[b.domain].add(a.domain)
 
-    # Registrados dentro de una ventana chica entre sí.
+    # Registrados dentro de una ventana chica entre sí. Se normaliza a UTC por si alguna
+    # fecha llega naive (ej. reconstruida desde Postgres) y otra aware (recién parseada).
     ctx.same_window = {p.domain: set() for p in profiles}
     dated = [p for p in profiles if p.registered_at]
     for a, b in combinations(dated, 2):
-        delta_days = abs((a.registered_at - b.registered_at).total_seconds()) / 86400.0
+        ra, rb = _as_utc(a.registered_at), _as_utc(b.registered_at)
+        delta_days = abs((ra - rb).total_seconds()) / 86400.0
         if delta_days <= weights.SAME_WINDOW_DAYS:
             ctx.same_window[a.domain].add(b.domain)
             ctx.same_window[b.domain].add(a.domain)

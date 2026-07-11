@@ -12,6 +12,13 @@ from datetime import datetime, timezone
 from typing import Any
 
 
+def _as_utc(dt: datetime | None) -> datetime | None:
+    """Re-ancla a UTC una fecha naive (las de Postgres vienen sin zona)."""
+    if dt is not None and dt.tzinfo is None:
+        return dt.replace(tzinfo=timezone.utc)
+    return dt
+
+
 @dataclass
 class SerpResult:
     """Un resultado individual del buscador, ya normalizado y deduplicado por dominio."""
@@ -119,7 +126,9 @@ class DomainProfile:
         """
         raw = row.get("raw") or {}
         p = cls(domain=row["domain"])
-        p.registered_at = row.get("registeredAt")
+        # Postgres guarda DateTime sin zona (TIMESTAMP), así que psycopg devuelve fechas
+        # naive. Se re-anclan a UTC para no mezclar naive/aware con los perfiles frescos.
+        p.registered_at = _as_utc(row.get("registeredAt"))
         p.registrar = row.get("registrar")
         p.whois_private = row.get("whoisPrivate")
         p.ip = row.get("ip")
@@ -131,8 +140,9 @@ class DomainProfile:
         p.has_about = row.get("hasAbout")
         p.has_contact = row.get("hasContact")
         p.dom_signature = row.get("domSignature")
-        if row.get("fetchedAt"):
-            p.fetched_at = row["fetchedAt"]
+        fetched = _as_utc(row.get("fetchedAt"))
+        if fetched:
+            p.fetched_at = fetched
         p.tld = raw.get("tld")
         p.word_count = raw.get("word_count")
         p.ad_slots = raw.get("ad_slots")
