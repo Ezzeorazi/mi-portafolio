@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Informe — {{ keyword }}</title>
+</head>
+<body style="margin:0; padding:0; background:#0e1114; font-family:'Montserrat',Arial,Helvetica,sans-serif; color:#f0eeed;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#0e1114;">
+    <tr>
+      <td align="center" style="padding:24px 12px;">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px; width:100%; background:#161a1e; border:1px solid rgba(245,216,5,0.15); border-radius:14px; overflow:hidden;">
+
+          <!-- Header -->
+          <tr>
+            <td style="padding:28px 28px 18px 28px; border-bottom:1px solid rgba(245,216,5,0.12);">
+              <div style="font-size:12px; letter-spacing:2px; text-transform:uppercase; color:#f5d805; font-weight:700;">Detector de granjas de contenido</div>
+              <div style="font-size:13px; color:rgba(240,238,237,0.55); margin-top:6px;">
+                Resultados obtenidos de {{ provider }} — región {{ region_label }} · {{ analyzed_at }}
+              </div>
+            </td>
+          </tr>
+
+          <!-- Titular -->
+          <tr>
+            <td style="padding:26px 28px 8px 28px;">
+              <div style="font-size:13px; color:rgba(240,238,237,0.6); margin-bottom:6px;">Keyword analizada</div>
+              <div style="font-size:20px; font-weight:700; color:#f0eeed; margin-bottom:18px;">&ldquo;{{ keyword }}&rdquo;</div>
+              <div style="font-size:34px; line-height:1.1; font-weight:800; color:#fd02d1;">{{ pct }}%</div>
+              <div style="font-size:16px; color:#f0eeed; margin-top:6px;">
+                de los {{ total }} resultados analizados presenta señales fuertes de baja calidad.
+              </div>
+            </td>
+          </tr>
+
+          <!-- Desglose -->
+          <tr>
+            <td style="padding:18px 28px 8px 28px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td align="center" style="padding:12px; background:rgba(74,222,128,0.08); border-radius:10px;">
+                    <div style="font-size:22px; font-weight:800; color:#4ade80;">{{ clean }}</div>
+                    <div style="font-size:11px; text-transform:uppercase; letter-spacing:1px; color:rgba(240,238,237,0.6);">Limpios</div>
+                  </td>
+                  <td style="width:10px;"></td>
+                  <td align="center" style="padding:12px; background:rgba(245,216,5,0.08); border-radius:10px;">
+                    <div style="font-size:22px; font-weight:800; color:#f5d805;">{{ doubtful }}</div>
+                    <div style="font-size:11px; text-transform:uppercase; letter-spacing:1px; color:rgba(240,238,237,0.6);">Dudosos</div>
+                  </td>
+                  <td style="width:10px;"></td>
+                  <td align="center" style="padding:12px; background:rgba(253,2,209,0.08); border-radius:10px;">
+                    <div style="font-size:22px; font-weight:800; color:#fd02d1;">{{ high }}</div>
+                    <div style="font-size:11px; text-transform:uppercase; letter-spacing:1px; color:rgba(240,238,237,0.6);">Alta sospecha</div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- networks-section -->
+          {% if networks %}
+          <tr>
+            <td style="padding:26px 28px 8px 28px;">
+              <div style="font-size:15px; font-weight:700; color:#f5d805; margin-bottom:4px;">Redes detectadas</div>
+              <div style="font-size:12px; color:rgba(240,238,237,0.55); margin-bottom:14px;">
+                Dominios distintos que aparentan estar coordinados según señales públicas.
+              </div>
+              {% for net in networks %}
+              <div style="background:rgba(253,2,209,0.06); border:1px solid rgba(253,2,209,0.25); border-radius:10px; padding:14px 16px; margin-bottom:12px;">
+                <div style="font-size:13px; color:rgba(240,238,237,0.6);">Red #{{ loop.index }} · posiciones {{ net.positions }}</div>
+                <div style="font-size:14px; font-weight:700; color:#f0eeed; margin:6px 0;">{{ net.domains | join(' · ') }}</div>
+                {% for reason in net.linked_by %}
+                <div style="font-size:12px; color:rgba(240,238,237,0.75);">↳ {{ reason }}</div>
+                {% endfor %}
+              </div>
+              {% endfor %}
+            </td>
+          </tr>
+          {% endif %}
+
+          <!-- Tabla de resultados -->
+          <tr>
+            <td style="padding:26px 28px 8px 28px;">
+              <div style="font-size:15px; font-weight:700; color:#f5d805; margin-bottom:14px;">Resultados analizados</div>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+                <tr style="border-bottom:1px solid rgba(240,238,237,0.12);">
+                  <td style="padding:6px 4px; font-size:11px; text-transform:uppercase; letter-spacing:1px; color:rgba(240,238,237,0.5);">#</td>
+                  <td style="padding:6px 4px; font-size:11px; text-transform:uppercase; letter-spacing:1px; color:rgba(240,238,237,0.5);">Dominio</td>
+                  <td align="center" style="padding:6px 4px; font-size:11px; text-transform:uppercase; letter-spacing:1px; color:rgba(240,238,237,0.5);">Score</td>
+                </tr>
+                {% for r in results %}
+                <tr style="border-bottom:1px solid rgba(240,238,237,0.07);">
+                  <td style="padding:10px 4px; font-size:13px; color:rgba(240,238,237,0.5); vertical-align:top;">{{ r.position }}</td>
+                  <td style="padding:10px 4px; vertical-align:top;">
+                    <div style="font-size:14px; color:#f0eeed; word-break:break-all;">{{ r.domain }}</div>
+                    {% if r.signals %}
+                    <div style="font-size:11px; color:rgba(240,238,237,0.55); margin-top:3px;">{{ r.signals | join(' · ') }}</div>
+                    {% endif %}
+                  </td>
+                  <td align="center" style="padding:10px 4px; vertical-align:top;">
+                    <span style="display:inline-block; min-width:34px; padding:3px 8px; border-radius:20px; font-size:13px; font-weight:700; color:#161a1e; background:{{ r.badge }};">{{ r.score }}</span>
+                  </td>
+                </tr>
+                {% endfor %}
+              </table>
+            </td>
+          </tr>
+
+          <!-- Metodología -->
+          <tr>
+            <td style="padding:24px 28px 8px 28px;">
+              <div style="font-size:13px; font-weight:700; color:rgba(240,238,237,0.8); margin-bottom:6px;">Cómo leer esto</div>
+              <div style="font-size:12px; line-height:1.6; color:rgba(240,238,237,0.6);">
+                El score es <strong>probabilístico</strong> y se basa en señales públicas (edad del dominio,
+                hosting, autoría, volumen de publicación, estructura del sitio). <strong>No es un veredicto</strong>:
+                un score alto indica que el sitio presenta varias señales asociadas a contenido de baja calidad o
+                coordinación, no que sea culpable de nada. Los datos provienen de {{ provider }} (región
+                {{ region_label }}), no del ranking de Google.
+              </div>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="padding:22px 28px 28px 28px; border-top:1px solid rgba(245,216,5,0.12);">
+              <div style="font-size:12px; color:rgba(240,238,237,0.5);">
+                Enviado por <a href="{{ site_url }}" style="color:#f5d805; text-decoration:none;">{{ site_name }}</a>.
+              </div>
+              <div style="font-size:11px; color:rgba(240,238,237,0.4); margin-top:6px;">
+                ¿No querés recibir más informes?
+                <a href="mailto:{{ unsubscribe_email }}?subject=Baja%20detector" style="color:rgba(240,238,237,0.6);">Darse de baja</a>.
+              </div>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

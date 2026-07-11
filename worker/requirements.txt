@@ -1,0 +1,14 @@
+# Worker del detector de granjas de contenido — Python 3.12
+# Todas las dependencias son gratuitas y sin API key de pago.
+
+ddgs>=6.0            # SERP vía DuckDuckGo (sin key)
+httpx>=0.27          # cliente HTTP async para el enriquecimiento
+selectolax>=0.3.21   # parser HTML rápido (C)
+tldextract>=5.1      # dominio registrable (dedup)
+python-dateutil>=2.9 # parseo de fechas RDAP / sitemap
+networkx>=3.3        # clustering de redes (paso 4)
+jinja2>=3.1          # template del email (paso 5)
+resend>=2.0          # envío del informe (paso 5)
+psycopg[binary]>=3.2 # acceso a Postgres/Neon (cola de jobs)
+python-whois>=0.9    # fallback de fecha de registro para ccTLDs sin RDAP (.mx, etc.)
+python-dotenv>=1.0   # carga .env en local (en GitHub Actions las vars vienen de secrets)

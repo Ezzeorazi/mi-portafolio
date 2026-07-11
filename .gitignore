@@ -21,6 +21,13 @@ dist-ssr
 .next/
 out/
 
+# Python (worker/)
+.venv/
+worker/.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
 # Exportes privados de analytics/Search Console (datos de negocio, no van al repo)
 *Performance-on-Search*.xlsx
 

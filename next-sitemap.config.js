@@ -40,10 +40,11 @@ const config = {
   priority: 0.7,
   robotsTxtOptions: {
     policies: [
-      { userAgent: '*', allow: '/', disallow: '/presupuestos' },
+      { userAgent: '*', allow: '/', disallow: ['/presupuestos', '/detector-de-bots'] },
     ],
   },
-  exclude: ['/presupuestos'],
+  // /detector-de-bots: herramienta oculta (noindex). Al hacerla pública, quitarla de acá.
+  exclude: ['/presupuestos', '/detector-de-bots'],
   transform: async (config, path) => {
     if (path.startsWith('/blog/')) {
       const slug = path.replace('/blog/', '');

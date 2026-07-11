@@ -1,0 +1,68 @@
+// Esquema de datos del sitio.
+// Por ahora contiene SOLO los modelos del módulo "Detector de granjas de contenido"
+// (herramienta interna en /detector-de-bots). Prefijados con `Serp` para no colisionar
+// con futuros modelos del sitio.
+//
+// La DB es Neon (Postgres serverless, free tier). Prisma gobierna el esquema y las
+// migraciones; el worker Python lee/escribe la misma base con psycopg.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  // Conexión pooled (PgBouncer) para las funciones serverless de Next en Netlify.
+  url       = env("DATABASE_URL")
+  // Conexión directa que usa Prisma Migrate (Neon expone un host sin pooling).
+  directUrl = env("DIRECT_URL")
+}
+
+/// Cola de análisis. La API inserta una fila PENDING; el worker (GitHub Actions, cron)
+/// toma un job por corrida, lo procesa y guarda el informe en `result`.
+model SerpAnalysisJob {
+  id           String        @id @default(cuid())
+  keyword      String
+  email        String
+  region       String        @default("mx-es")
+  status       SerpJobStatus @default(PENDING)
+  attempts     Int           @default(0)
+  errorMessage String?
+  ipHash       String? // SHA-256 de la IP del solicitante (rate-limit; no se guarda la IP)
+  createdAt    DateTime      @default(now())
+  completedAt  DateTime?
+  result       Json? // informe completo serializado
+
+  @@index([status, createdAt])
+  @@index([email, createdAt])
+  @@index([ipHash, createdAt])
+}
+
+/// Caché de perfiles de dominio con TTL de 30 días. La edad de un dominio no cambia;
+/// no se vuelve a consultar dentro del TTL. Abarata y acelera a medida que crece el uso.
+model SerpDomainProfile {
+  domain       String    @id
+  registeredAt DateTime?
+  registrar    String?
+  whoisPrivate Boolean?
+  ip           String?
+  asn          String?
+  org          String?
+  sitemapUrls  Int?
+  postsPerDay  Float?
+  hasAuthor    Boolean?
+  hasAbout     Boolean?
+  hasContact   Boolean?
+  domSignature String? // firma estructural para detectar templates gemelos
+  fetchedAt    DateTime  @default(now())
+  raw          Json?
+
+  @@index([fetchedAt])
+}
+
+enum SerpJobStatus {
+  PENDING
+  RUNNING
+  DONE
+  FAILED
+}

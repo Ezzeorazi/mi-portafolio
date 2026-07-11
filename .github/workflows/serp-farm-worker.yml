@@ -1,0 +1,39 @@
+name: Detector de bots — worker (cola)
+
+# Reemplaza a un servidor always-on: cada 5 min toma UN job PENDING de la cola
+# (tabla Postgres) y lo procesa. Sin costo, sin infraestructura.
+# GitHub respeta un mínimo de 5 min y puede demorar las corridas bajo carga.
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+# Evita que dos corridas se solapen (igual el claim usa FOR UPDATE SKIP LOCKED).
+concurrency:
+  group: serp-farm-worker
+  cancel-in-progress: false
+
+jobs:
+  procesar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: worker/requirements.txt
+
+      - name: Instalar dependencias
+        run: pip install -r worker/requirements.txt
+
+      - name: Procesar un job PENDING
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RESEND_FROM: ${{ secrets.RESEND_FROM }}
+        run: python -m worker.main --from-db
