@@ -16,6 +16,11 @@ SERP_RETRY_DELAYS = (5, 15, 45)
 # Pausa de cortesía entre requests al buscador para no gatillar el rate-limit.
 SERP_POLITENESS_PAUSE = 2.5
 
+# Jobs por corrida del worker: se dispara por evento (repository_dispatch), pero drena
+# un poco de backlog por si entraron varios juntos, con pausa entre jobs.
+MAX_JOBS_PER_RUN = 5
+JOB_PAUSE_SECONDS = 3
+
 # ── Enriquecimiento de dominios ──────────────────────────────────────────────
 ENRICH_CONCURRENCY = 10
 HTTP_TIMEOUT = 10.0  # segundos por request

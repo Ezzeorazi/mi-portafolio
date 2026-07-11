@@ -1,12 +1,14 @@
 name: Detector de bots — worker (cola)
 
-# Reemplaza a un servidor always-on: cada 5 min toma UN job PENDING de la cola
-# (tabla Postgres) y lo procesa. Sin costo, sin infraestructura.
-# GitHub respeta un mínimo de 5 min y puede demorar las corridas bajo carga.
+# Reemplaza a un servidor always-on. Se dispara EN TIEMPO REAL cuando entra una consulta
+# (la API manda un repository_dispatch), así no hay polling cada pocos minutos.
+# El cron es solo un RESPALDO por si un disparo falla (GitHub caído, token vencido).
 on:
-  schedule:
-    - cron: '*/5 * * * *'
+  repository_dispatch:
+    types: [serp-farm-job]
   workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *' # respaldo: cada 6 horas
 
 # Evita que dos corridas se solapen (igual el claim usa FOR UPDATE SKIP LOCKED).
 concurrency:

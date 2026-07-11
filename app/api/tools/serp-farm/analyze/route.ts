@@ -3,6 +3,8 @@ import { createHash } from 'crypto';
 import { prisma } from '@/lib/db';
 import {
   DEFAULT_REGION,
+  GITHUB_DISPATCH_EVENT,
+  GITHUB_REPO,
   KEYWORD_MAX_LENGTH,
   KEYWORD_MIN_LENGTH,
   MAX_ANALYSES_PER_DAY,
@@ -62,6 +64,29 @@ function hashIp(ip: string): string {
   return createHash('sha256').update(ip).digest('hex');
 }
 
+// ─── Disparo del worker (best-effort) ─────────────────────────────────────────
+
+// Gatilla el workflow de GitHub Actions para que procese el job al instante. Si falla
+// (o no hay token configurado), no pasa nada: el cron de respaldo lo levanta igual.
+async function triggerWorker(): Promise<void> {
+  const token = process.env.GITHUB_DISPATCH_TOKEN;
+  if (!token) return;
+  try {
+    await fetch(`https://api.github.com/repos/${GITHUB_REPO}/dispatches`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28',
+        'User-Agent': 'serp-farm-detector',
+      },
+      body: JSON.stringify({ event_type: GITHUB_DISPATCH_EVENT }),
+    });
+  } catch (err) {
+    console.error('repository_dispatch falló (usará el cron de respaldo):', err);
+  }
+}
+
 // ─── Handler ──────────────────────────────────────────────────────────────────
 
 export async function POST(req: Request) {
@@ -100,6 +125,9 @@ export async function POST(req: Request) {
     console.error('serp-farm analyze error:', err);
     return NextResponse.json({ error: 'server_error' }, { status: 500 });
   }
+
+  // Despierta al worker para procesarlo ya (no bloquea la respuesta si falla).
+  await triggerWorker();
 
   return NextResponse.json(
     { ok: true, message: 'queued' },

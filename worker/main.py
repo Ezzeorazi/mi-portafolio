@@ -183,40 +183,54 @@ def _print_summary(scored: list[ScoredDomain]) -> None:
     print()
 
 
-# ─── DB mode (cron / GitHub Actions) ──────────────────────────────────────────
+# ─── DB mode (cron / repository_dispatch) ─────────────────────────────────────
 
 def run_from_db() -> int:
-    """Toma UN job PENDING, lo procesa y lo marca DONE/PENDING/FAILED.
+    """Drena hasta MAX_JOBS_PER_RUN jobs PENDING de la cola.
+
+    Se dispara en tiempo real vía repository_dispatch (cuando entra una consulta) y,
+    como respaldo, con un cron muy espaciado. Procesa varios por corrida —con pausas—
+    por si entraron juntos, sin acumular requests contra DuckDuckGo.
 
     Imports diferidos: el modo checkpoint no necesita psycopg ni DATABASE_URL.
     """
+    import time
+
     from . import db
     from .pipeline import process_job
     from .providers.base import SerpRateLimited
 
+    processed = 0
     with db.connect() as conn:
-        job = db.claim_pending_job(conn)
-        if not job:
-            print("Sin jobs PENDING.")
-            return 0
+        for _ in range(settings.MAX_JOBS_PER_RUN):
+            job = db.claim_pending_job(conn)
+            if not job:
+                break
 
-        print(f"▶ Procesando job {job['id']}: «{job['keyword']}» "
-              f"({job['region']}) → {job['email']}  [intento {job['attempts']}]")
-        try:
-            result = process_job(conn, job)
-        except SerpRateLimited as exc:
-            status = db.requeue_or_fail(conn, job["id"], job["attempts"],
-                                        f"SERP rate-limited: {exc}")
-            print(f"⚠ Rate-limit del buscador → job queda {status}.")
-            return 0
-        except Exception as exc:  # noqa: BLE001 — cualquier fallo decide PENDING/FAILED
-            status = db.requeue_or_fail(conn, job["id"], job["attempts"], repr(exc))
-            print(f"⚠ Error procesando → job queda {status}: {exc}", file=sys.stderr)
-            return 0 if status == "PENDING" else 1
+            print(f"▶ Procesando job {job['id']}: «{job['keyword']}» "
+                  f"({job['region']}) → {job['email']}  [intento {job['attempts']}]")
+            try:
+                result = process_job(conn, job)
+            except SerpRateLimited as exc:
+                status = db.requeue_or_fail(conn, job["id"], job["attempts"],
+                                            f"SERP rate-limited: {exc}")
+                print(f"⚠ Rate-limit del buscador → job queda {status}. Freno la corrida.")
+                break  # si el SERP nos limita, no insistir con más jobs en esta corrida
+            except Exception as exc:  # noqa: BLE001 — cualquier fallo decide PENDING/FAILED
+                status = db.requeue_or_fail(conn, job["id"], job["attempts"], repr(exc))
+                print(f"⚠ Error procesando → job queda {status}: {exc}", file=sys.stderr)
+                continue
 
-        db.mark_done(conn, job["id"], result)
-        print(f"✓ Job {job['id']} DONE. Informe enviado a {job['email']}.")
-        return 0
+            db.mark_done(conn, job["id"], result)
+            print(f"✓ Job {job['id']} DONE. Informe enviado a {job['email']}.")
+            processed += 1
+            time.sleep(settings.JOB_PAUSE_SECONDS)  # cortesía entre jobs
+
+    if processed == 0:
+        print("Sin jobs PENDING.")
+    else:
+        print(f"Listo: {processed} job(s) procesado(s).")
+    return 0
 
 
 # ─── CLI ──────────────────────────────────────────────────────────────────────

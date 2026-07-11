@@ -38,3 +38,11 @@ export const MAX_ANALYSES_PER_DAY = 3;
 /** Límites de validación del keyword. */
 export const KEYWORD_MIN_LENGTH = 2;
 export const KEYWORD_MAX_LENGTH = 120;
+
+/**
+ * Repo de GitHub donde vive el worker. La API dispara su workflow (repository_dispatch)
+ * al encolar un job, para que se procese al instante en vez de esperar al cron.
+ */
+export const GITHUB_REPO = 'Ezzeorazi/mi-portafolio';
+/** Tipo de evento que escucha el workflow serp-farm-worker.yml. */
+export const GITHUB_DISPATCH_EVENT = 'serp-farm-job';
