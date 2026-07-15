@@ -515,6 +515,32 @@ const posts: Post[] = [
       },
     ],
   },
+  {
+    id: 34,
+    slug: 'noticias-tech-2026-07-15',
+    image: 'images/blog/noticias-tech-2026-07-15.svg',
+    title: "Resumen Semanal Tech: Android 17, Mapas Estelares y Más",
+    category: 'Noticias',
+    description: "Tu dosis semanal de tecnología con Ezequiel Orazi. Esta semana: Android 17 llega a más de 80 modelos, explorá el cielo con Cosmodial y SatelliteMap.space, y…",
+    date: 'Publicado el 15 de julio de 2026',
+    ReadingTime: '7 min de lectura',
+    publishedISO: '2026-07-15',
+    content: 'blog/noticias-tech-2026-07-15.html',
+    faq: [
+      {
+        q: "¿Qué novedades trae Android 17 y a qué modelos llega?",
+        a: "Android 17, la nueva versión del sistema operativo de Google, continúa expandiéndose a un buen ritmo. Ya está disponible para más de 80 modelos populares de marcas como Samsung, Pixel y Oppo, con nuevas actualizaciones llegando esta semana.",
+      },
+      {
+        q: "¿Cómo puedo explorar el cielo y los satélites desde mi navegador?",
+        a: "Podés usar Cosmodial Sky Atlas y SatelliteMap.space, dos proyectos gratuitos. Cosmodial es un planetario interactivo con una gran base de datos de objetos celestes, mientras que SatelliteMap.space te permite visualizar los satélites que orbitan la Tierra.",
+      },
+      {
+        q: "¿Qué es Neko Health y quién está detrás de esta startup?",
+        a: "Neko Health es una startup de escaneo corporal fundada por Daniel Ek, el fundador de Spotify. Ofrece clínicas privadas para escaneos corporales completos y planea expandirse a Estados Unidos, comenzando por Nueva York, tras una ronda de financiación de 700 millones de dólares.",
+      },
+    ],
+  },
 ];
 
 export default posts;
