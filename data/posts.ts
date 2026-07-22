@@ -541,6 +541,32 @@ const posts: Post[] = [
       },
     ],
   },
+  {
+    id: 35,
+    slug: 'noticias-tech-2026-07-22',
+    image: 'images/blog/noticias-tech-2026-07-22.svg',
+    title: "Resumen Tech Semanal: WhatsApp, IA y Samsung",
+    category: 'Noticias',
+    description: "Análisis semanal de las noticias tecnológicas clave: el punto verde de WhatsApp, el impacto de la IA en la energía y las novedades de Samsung.",
+    date: 'Publicado el 22 de julio de 2026',
+    ReadingTime: '5 min de lectura',
+    publishedISO: '2026-07-22',
+    content: 'blog/noticias-tech-2026-07-22.html',
+    faq: [
+      {
+        q: "¿Qué es el punto verde en los contactos de WhatsApp?",
+        a: "Es un indicador visual que aparece junto al nombre de un contacto para mostrarte que esa persona se encuentra conectada y activa en la aplicación en ese momento. La función busca ofrecer una notificación rápida sobre la disponibilidad de tus contactos.",
+      },
+      {
+        q: "¿Cómo afecta la IA al consumo de energía?",
+        a: "El entrenamiento y funcionamiento de modelos de Inteligencia Artificial, especialmente los que requieren grandes centros de datos, demandan una cantidad considerable de electricidad. Esto ha generado preocupación por el aumento de las facturas de luz y el impacto ambiental.",
+      },
+      {
+        q: "¿Por qué algunas películas fracasan en taquilla pero triunfan en streaming?",
+        a: "El éxito de una película puede depender de muchos factores, incluyendo la estrategia de distribución, el marketing y el boca a boca. Una película puede no resonar en cines pero encontrar su audiencia en plataformas de streaming, donde los espectadores pueden acceder a ella en momentos y contextos más convenientes.",
+      },
+    ],
+  },
 ];
 
 export default posts;
