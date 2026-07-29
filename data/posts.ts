@@ -567,6 +567,32 @@ const posts: Post[] = [
       },
     ],
   },
+  {
+    id: 36,
+    slug: 'noticias-tech-2026-07-29',
+    image: 'images/blog/noticias-tech-2026-07-29.svg',
+    title: "Mi Resumen Semanal Tech: IA, Plegables y Jubilación Flexible",
+    category: 'Noticias',
+    description: "El presupuesto de Google en IA genera alerta en Wall Street. Samsung lanza el Galaxy Z Fold 8, un paso clave en plegables. Holafly ofrece roaming accesible y…",
+    date: 'Publicado el 29 de julio de 2026',
+    ReadingTime: '6 min de lectura',
+    publishedISO: '2026-07-29',
+    content: 'blog/noticias-tech-2026-07-29.html',
+    faq: [
+      {
+        q: "¿Por qué Google está invirtiendo tanto en IA y qué impacto tiene?",
+        a: "Google elevó su presupuesto a US$ 205.000 millones, principalmente por la IA, lo que genera preocupación en Wall Street por la rentabilidad y una posible corrección del mercado. Esto indica una fuerte apuesta en el sector, pero también el nerviosismo por la sostenibilidad de estas grandes inversiones.",
+      },
+      {
+        q: "¿Qué novedades trae el Samsung Galaxy Z Fold 8 y por qué es importante?",
+        a: "El Samsung Galaxy Z Fold 8 ha sido lanzado, y la empresa lo posiciona como el \"nuevo normal\" o diseño por defecto para los teléfonos plegables. Su importancia radica en que podría marcar una consolidación de los plegables anchos en el mercado, con rumores de que Apple también estaría explorando un diseño similar.",
+      },
+      {
+        q: "¿Cómo puedo evitar altos costos de roaming de datos cuando viajo?",
+        a: "Holafly ofrece una solución de eSIM para tener roaming de datos por el mundo de forma sencilla y económica. Esto permite a los viajeros evitar las tarifas altas de sus operadores tradicionales, como lo experimentaron en el Reino Unido, facilitando la conectividad internacional.",
+      },
+    ],
+  },
 ];
 
 export default posts;
