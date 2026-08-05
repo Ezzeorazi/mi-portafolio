@@ -593,6 +593,32 @@ const posts: Post[] = [
       },
     ],
   },
+  {
+    id: 37,
+    slug: 'noticias-tech-2026-08-05',
+    image: 'images/blog/noticias-tech-2026-08-05.svg',
+    title: "Resumen semanal tech: bots de IA, seguridad y el futuro de los humanoides",
+    category: 'Noticias',
+    description: "Esta semana, Cloudflare lanzó un sistema de pagos para bots de IA, Microsoft alertó sobre hackers rusos usando Wi-Fi público y Disney se alió con TikTok.",
+    date: 'Publicado el 5 de agosto de 2026',
+    ReadingTime: '6 min de lectura',
+    publishedISO: '2026-08-05',
+    content: 'blog/noticias-tech-2026-08-05.html',
+    faq: [
+      {
+        q: "¿Qué riesgos tiene dejar el cargador del celular enchufado a la pared?",
+        a: "Dejar el cargador enchufado presenta riesgos como subidas de tensión por tormentas o descargas cercanas, que pueden dañar tus dispositivos o la instalación eléctrica. También contribuye a un consumo energético 'fantasma'.",
+      },
+      {
+        q: "¿Cómo usarán los hackers rusos el Wi-Fi público de hoteles para robar contraseñas?",
+        a: "Según Microsoft, hackers rusos están utilizando el Wi-Fi público de hoteles en una campaña llamada 'CaptiveCrunch' para espiar a los usuarios y robar sus contraseñas y credenciales de acceso.",
+      },
+      {
+        q: "¿Qué implicaciones tiene el nuevo sistema de pagos de Cloudflare para bots de IA?",
+        a: "El nuevo sistema de pagos de Cloudflare para bots de IA podría intensificar la competencia por productos de alta demanda, haciendo más difícil para los usuarios humanos adquirir artículos limitados, y plantea desafíos éticos y técnicos para el comercio electrónico.",
+      },
+    ],
+  },
 ];
 
 export default posts;
