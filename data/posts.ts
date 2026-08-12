@@ -619,6 +619,18 @@ const posts: Post[] = [
       },
     ],
   },
+  {
+    id: 38,
+    slug: 'noticias-tech-2026-08-12',
+    image: 'images/blog/noticias-tech-2026-08-12.svg',
+    title: "El Resumen Tech Semanal: Burbujas de IA, Costos y Robots Móviles",
+    category: 'Noticias',
+    description: "Exploro las noticias tecnológicas clave de la semana: desde el Honor Robot Phone y la \"burbuja\" de la IA según Nvidia, hasta la caída del 43% en los costos de…",
+    date: 'Publicado el 12 de agosto de 2026',
+    ReadingTime: '6 min de lectura',
+    publishedISO: '2026-08-12',
+    content: 'blog/noticias-tech-2026-08-12.html',
+  },
 ];
 
 export default posts;
