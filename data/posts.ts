@@ -631,6 +631,32 @@ const posts: Post[] = [
     publishedISO: '2026-08-12',
     content: 'blog/noticias-tech-2026-08-12.html',
   },
+  {
+    id: 39,
+    slug: 'noticias-tech-2026-08-19',
+    image: 'images/blog/noticias-tech-2026-08-19.svg',
+    title: "Novedades tech: seguridad, hardware y el adiós a un genio - Resumen Semanal",
+    category: 'Noticias',
+    description: "Tu resumen semanal de tecnología con Ezequiel Orazi. Novedades de Surfshark, filtraciones del iPhone 18 Pro, la evolución de Framework, alarmas por fraudes…",
+    date: 'Publicado el 19 de agosto de 2026',
+    ReadingTime: '6 min de lectura',
+    publishedISO: '2026-08-19',
+    content: 'blog/noticias-tech-2026-08-19.html',
+    faq: [
+      {
+        q: "¿Qué novedades trae la suscripción de Surfshark?",
+        a: "Surfshark, además de su servicio VPN, ahora incluye un bloqueador de contenidos y un antivirus. Esta oferta integral está disponible por menos de 3 euros, buscando ofrecer una solución de ciberseguridad más completa y económica.",
+      },
+      {
+        q: "¿Qué se sabe del diseño del nuevo iPhone 18 Pro?",
+        a: "Las filtraciones, basadas en imágenes de sus fundas y reportadas por Mark Gurman, sugieren que el iPhone 18 Pro no presentará cambios significativos en su diseño exterior. Esto indica una posible continuidad estética respecto a modelos anteriores.",
+      },
+      {
+        q: "¿Qué mejoras recibió el Framework Laptop de 12 pulgadas?",
+        a: "El Framework Laptop de 12 pulgadas fue actualizado con los últimos procesadores Intel Core Series 3. También incorporó la opción de una configuración pre-construida con Linux y redujo su precio inicial a 699 dólares.",
+      },
+    ],
+  },
 ];
 
 export default posts;
