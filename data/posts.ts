@@ -657,6 +657,32 @@ const posts: Post[] = [
       },
     ],
   },
+  {
+    id: 40,
+    slug: 'noticias-tech-2026-08-26',
+    image: 'images/blog/noticias-tech-2026-08-26.svg',
+    title: "El resumen tech de la semana: IA, Samsung y VPNs más accesibles",
+    category: 'Noticias',
+    description: "Exploro las noticias tecnológicas clave de la semana: las preocupaciones de Bill Gates sobre la IA, la bajada de precio de Surfshark One, la llegada de One UI…",
+    date: 'Publicado el 26 de agosto de 2026',
+    ReadingTime: '6 min de lectura',
+    publishedISO: '2026-08-26',
+    content: 'blog/noticias-tech-2026-08-26.html',
+    faq: [
+      {
+        q: "¿Qué novedades hay con Surfshark One esta semana?",
+        a: "Surfshark One ha bajado de precio y ahora ofrece funciones adicionales, como antivirus y monitoreo de fugas de datos, por el mismo costo que su suscripción más básica. Esto mejora la protección online disponible para los usuarios.",
+      },
+      {
+        q: "¿Cuál es la opinión actual de Bill Gates sobre la Inteligencia Artificial?",
+        a: "Bill Gates ha expresado una profunda preocupación sobre el futuro de la IA. Después de ser un optimista de la IA, ahora se muestra pesimista y ha compartido un extenso ensayo sobre los posibles impactos negativos de esta tecnología.",
+      },
+      {
+        q: "¿Cuándo llegará la actualización One UI 9 a los teléfonos Samsung Galaxy?",
+        a: "Samsung ha anunciado que la actualización One UI 9, basada en Android 17, está a punto de llegar a un modelo Galaxy específico, específicamente a los Galaxy S26. Esto ocurre tras la finalización del programa beta.",
+      },
+    ],
+  },
 ];
 
 export default posts;
