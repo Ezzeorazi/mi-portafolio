@@ -683,6 +683,18 @@ const posts: Post[] = [
       },
     ],
   },
+  {
+    id: 41,
+    slug: 'noticias-tech-2026-09-02',
+    image: 'images/blog/noticias-tech-2026-09-02.svg',
+    title: "Resumen Tech Semanal: Exolunas, Robotaxis y Trucos de WhatsApp",
+    category: 'Noticias',
+    description: "Tu dosis semanal de tecnología con Ezequiel Orazi: WhatsApp, la búsqueda de exolunas, el robotaxi de Tesla, Samsung Connect y Strado para explorar tu ciudad.",
+    date: 'Publicado el 2 de septiembre de 2026',
+    ReadingTime: '6 min de lectura',
+    publishedISO: '2026-09-02',
+    content: 'blog/noticias-tech-2026-09-02.html',
+  },
 ];
 
 export default posts;
