@@ -695,6 +695,32 @@ const posts: Post[] = [
     publishedISO: '2026-09-02',
     content: 'blog/noticias-tech-2026-09-02.html',
   },
+  {
+    id: 42,
+    slug: 'noticias-tech-2026-09-09',
+    image: 'images/blog/noticias-tech-2026-09-09.svg',
+    title: "El Resumen Tech Semanal: De Fotones Imposibles a iPhones Plegables",
+    category: 'Noticias',
+    description: "Tu dosis semanal de noticias tech con análisis desde Argentina. Exploramos física cuántica, filtraciones de Apple, novedades de Nintendo y la BNE Digital.",
+    date: 'Publicado el 9 de septiembre de 2026',
+    ReadingTime: '7 min de lectura',
+    publishedISO: '2026-09-09',
+    content: 'blog/noticias-tech-2026-09-09.html',
+    faq: [
+      {
+        q: "¿Qué implicaciones tiene el fotón de 300 TeV para la física?",
+        a: "El fotón de 300 TeV desafía las teorías actuales de la física, como la relatividad de Einstein, ya que su energía es inesperadamente alta. Esto sugiere que las leyes físicas podrían necesitar ajustes o extensiones para explicar fenómenos extremos, abriendo nuevas líneas de investigación en astrofísica y física de partículas.",
+      },
+      {
+        q: "¿Qué novedades se esperan de Apple con el iPhone 18 Pro Max y el modelo plegable?",
+        a: "Las filtraciones indican que el iPhone 18 Pro Max incluirá un chip A20 Pro de 2nm y un nuevo color Dark Cherry. La novedad más relevante es el posible lanzamiento del primer iPhone plegable, denominado \"iPhone Ultra\", lo que representaría un cambio significativo en el diseño y la funcionalidad de los dispositivos de Apple.",
+      },
+      {
+        q: "¿Qué anunció Nintendo para la Switch 2 y el universo Zelda?",
+        a: "Nintendo anunció un remake de \"The Legend of Zelda: Ocarina of Time\" para la Switch 2, con fecha de lanzamiento prevista para el 5 de noviembre. Esto forma parte de un enfoque en la franquicia Zelda, mostrando cómo Nintendo planea reutilizar sus clásicos en la nueva generación de consolas.",
+      },
+    ],
+  },
 ];
 
 export default posts;
