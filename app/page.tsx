@@ -1,7 +1,11 @@
 import type { Metadata } from 'next';
 import HomeContent from '@/components/HomeContent';
 import { getAllPosts } from '@/lib/blog';
-import { getFeaturedProjects } from '@/lib/projects';
+import { getAllProjects, getFeaturedProjects } from '@/lib/projects';
+
+// Cifras mostradas en la home. Se calculan desde los datos reales del sitio para
+// que nunca queden desactualizadas ni infladas.
+const WEB_CAREER_START = new Date('2023-09-01'); // Pixel Maker, primer puesto de desarrollo web
 
 export const metadata: Metadata = {
   title: 'Eze Orazi | Desarrollador Web Freelance — Next.js y SEO con IA',
@@ -70,6 +74,11 @@ export default function HomePage() {
   const latestPosts = allPosts.filter((p) => p.category !== 'Noticias').slice(0, 3);
   const noticias = allPosts.filter((p) => p.category === 'Noticias').slice(0, 3);
   const featuredProjects = getFeaturedProjects();
+  const stats = {
+    projects: getAllProjects().length,
+    years: Math.max(1, Math.floor((Date.now() - WEB_CAREER_START.getTime()) / (365.25 * 24 * 3600 * 1000))),
+    posts: allPosts.filter((p) => p.category !== 'Noticias').length,
+  };
 
   return (
     <>
@@ -77,7 +86,12 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeFaqJsonLd) }}
       />
-      <HomeContent latestPosts={latestPosts} noticias={noticias} featuredProjects={featuredProjects} />
+      <HomeContent
+        latestPosts={latestPosts}
+        noticias={noticias}
+        featuredProjects={featuredProjects}
+        stats={stats}
+      />
     </>
   );
 }

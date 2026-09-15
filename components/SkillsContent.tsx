@@ -2,97 +2,185 @@
 import ScrollReveal from '@/components/ScrollReveal';
 import { useTranslation } from '@/hooks/useTranslation';
 
-const skillsEs = [
-  'HTML5',
-  'CSS3 moderno (Flexbox, Grid, CSS Modules)',
-  'JavaScript (ES6+)',
-  'TypeScript',
-  'React JS',
-  'Next.js',
-  'Tailwind CSS',
-  'Node.js',
-  'Java con Spring Boot',
-  'Desarrollo de APIs REST',
-  'SQL y modelado de bases de datos',
-  'PostgreSQL / MySQL',
-  'MongoDB',
-  'Supabase',
-  'GitHub / GitLab',
-  'SEO técnico y optimización web',
-  'WordPress y WooCommerce',
-  'Elementor / VTEX',
-  'Buenas prácticas UX/UI',
-  'Metodologías ágiles (Scrum, Kanban)',
-  'Material UI',
-  'Bootstrap',
-  'Vite',
+type Skill = { name: string; core?: boolean };
+type SkillGroup = { key: string; skills: Skill[] };
+
+// Las tecnologías "core" son las que aparecen en los proyectos en producción
+// listados en /proyectos (Next.js, TypeScript, Tailwind, Supabase, Python/ML).
+const skillGroupsEs: SkillGroup[] = [
+  {
+    key: 'skills_cat_frontend',
+    skills: [
+      { name: 'Next.js (App Router)', core: true },
+      { name: 'React', core: true },
+      { name: 'TypeScript', core: true },
+      { name: 'Tailwind CSS', core: true },
+      { name: 'JavaScript (ES6+)' },
+      { name: 'HTML5 y CSS3 (Flexbox, Grid)' },
+      { name: 'Framer Motion' },
+      { name: 'Material UI / Bootstrap' },
+    ],
+  },
+  {
+    key: 'skills_cat_backend',
+    skills: [
+      { name: 'Node.js y APIs REST', core: true },
+      { name: 'PostgreSQL (Supabase, Neon)', core: true },
+      { name: 'Prisma ORM' },
+      { name: 'MongoDB' },
+      { name: 'Java con Spring Boot' },
+      { name: 'SQL y modelado de datos' },
+      { name: 'Autenticación y roles' },
+    ],
+  },
+  {
+    key: 'skills_cat_ai',
+    skills: [
+      { name: 'Python', core: true },
+      { name: 'scikit-learn (Random Forest, clasificación)' },
+      { name: 'APIs de IA generativa (Gemini, Claude)' },
+      { name: 'Bots y pipelines automatizados con GitHub Actions' },
+      { name: 'Pandas / NumPy' },
+    ],
+  },
+  {
+    key: 'skills_cat_cms',
+    skills: [
+      { name: 'Strapi / Sanity CMS' },
+      { name: 'WordPress y WooCommerce' },
+      { name: 'Elementor' },
+      { name: 'VTEX' },
+      { name: 'Pasarelas de pago (Mercado Pago, Stripe, PayPal)' },
+    ],
+  },
+  {
+    key: 'skills_cat_tools',
+    skills: [
+      { name: 'Git, GitHub y GitLab', core: true },
+      { name: 'SEO técnico, datos estructurados y AEO', core: true },
+      { name: 'Netlify / Vercel y CI/CD' },
+      { name: 'Seguridad web (CSP, cabeceras HTTP)' },
+      { name: 'Figma y buenas prácticas UX/UI' },
+      { name: 'Metodologías ágiles (Scrum, Kanban, Jira)' },
+    ],
+  },
 ];
 
-const skillsEn = [
-  'HTML5',
-  'Modern CSS3 (Flexbox, Grid, CSS Modules)',
-  'JavaScript (ES6+)',
-  'TypeScript',
-  'React JS',
-  'Next.js',
-  'Tailwind CSS',
-  'Node.js',
-  'Java with Spring Boot',
-  'REST API Development',
-  'SQL and Database Modeling',
-  'PostgreSQL / MySQL',
-  'MongoDB',
-  'Supabase',
-  'GitHub / GitLab',
-  'Technical SEO and Web Optimization',
-  'WordPress and WooCommerce',
-  'Elementor / VTEX',
-  'UX/UI Best Practices',
-  'Agile Methodologies (Scrum, Kanban)',
-  'Material UI',
-  'Bootstrap',
-  'Vite',
+const skillGroupsEn: SkillGroup[] = [
+  {
+    key: 'skills_cat_frontend',
+    skills: [
+      { name: 'Next.js (App Router)', core: true },
+      { name: 'React', core: true },
+      { name: 'TypeScript', core: true },
+      { name: 'Tailwind CSS', core: true },
+      { name: 'JavaScript (ES6+)' },
+      { name: 'HTML5 & CSS3 (Flexbox, Grid)' },
+      { name: 'Framer Motion' },
+      { name: 'Material UI / Bootstrap' },
+    ],
+  },
+  {
+    key: 'skills_cat_backend',
+    skills: [
+      { name: 'Node.js & REST APIs', core: true },
+      { name: 'PostgreSQL (Supabase, Neon)', core: true },
+      { name: 'Prisma ORM' },
+      { name: 'MongoDB' },
+      { name: 'Java with Spring Boot' },
+      { name: 'SQL & data modeling' },
+      { name: 'Authentication & roles' },
+    ],
+  },
+  {
+    key: 'skills_cat_ai',
+    skills: [
+      { name: 'Python', core: true },
+      { name: 'scikit-learn (Random Forest, classification)' },
+      { name: 'Generative AI APIs (Gemini, Claude)' },
+      { name: 'Automated bots & pipelines with GitHub Actions' },
+      { name: 'Pandas / NumPy' },
+    ],
+  },
+  {
+    key: 'skills_cat_cms',
+    skills: [
+      { name: 'Strapi / Sanity CMS' },
+      { name: 'WordPress & WooCommerce' },
+      { name: 'Elementor' },
+      { name: 'VTEX' },
+      { name: 'Payment gateways (Mercado Pago, Stripe, PayPal)' },
+    ],
+  },
+  {
+    key: 'skills_cat_tools',
+    skills: [
+      { name: 'Git, GitHub & GitLab', core: true },
+      { name: 'Technical SEO, structured data & AEO', core: true },
+      { name: 'Netlify / Vercel & CI/CD' },
+      { name: 'Web security (CSP, HTTP headers)' },
+      { name: 'Figma & UX/UI best practices' },
+      { name: 'Agile methodologies (Scrum, Kanban, Jira)' },
+    ],
+  },
 ];
 
 const certificationsEs = [
-  { text: 'Certificación en Desarrollo Fullstack (Stack MERN)', detail: 'Devschool Academy (2023)' },
-  { text: 'Programa Neoris Labs', detail: 'Java, Spring Boot y React (2024)' },
-  { text: 'Más de 3 años de experiencia en WordPress y VTEX', detail: 'Entornos productivos' },
-  { text: 'Curso Master en Elementor y WordPress', detail: 'Udemy (2024)' },
   { text: 'Enterprise Systems (ERP y SAP)', detail: 'Universidad de Minnesota — Coursera (2025)' },
+  { text: 'Machine Learning con Python', detail: 'Udemy (2025, en curso)' },
+  { text: 'Programa Neoris Labs', detail: 'Java, Spring Boot y React (2024)' },
+  { text: 'Curso Master en Elementor y WordPress', detail: 'Udemy (2024)' },
+  { text: 'Certificación en Desarrollo Fullstack (Stack MERN)', detail: 'Devschool Academy (2023)' },
+  { text: 'Licenciatura en Comunicación Social', detail: 'Universidad de Rosario (2011–2014)' },
 ];
 
 const certificationsEn = [
-  { text: 'Fullstack Development Certification (MERN Stack)', detail: 'Devschool Academy (2023)' },
-  { text: 'Neoris Labs Program', detail: 'Java, Spring Boot and React (2024)' },
-  { text: '3+ Years of Experience in WordPress and VTEX', detail: 'Production environments' },
-  { text: 'Master Course in Elementor and WordPress', detail: 'Udemy (2024)' },
   { text: 'Enterprise Systems (ERP & SAP)', detail: 'University of Minnesota — Coursera (2025)' },
+  { text: 'Machine Learning with Python', detail: 'Udemy (2025, in progress)' },
+  { text: 'Neoris Labs Program', detail: 'Java, Spring Boot and React (2024)' },
+  { text: 'Master Course in Elementor and WordPress', detail: 'Udemy (2024)' },
+  { text: 'Fullstack Development Certification (MERN Stack)', detail: 'Devschool Academy (2023)' },
+  { text: "Bachelor's Degree in Social Communication", detail: 'Universidad de Rosario (2011–2014)' },
 ];
 
 export default function SkillsContent() {
   const { t, language } = useTranslation();
-  const skills = language === 'es' ? skillsEs : skillsEn;
+  const groups = language === 'es' ? skillGroupsEs : skillGroupsEn;
   const certifications = language === 'es' ? certificationsEs : certificationsEn;
 
   return (
     <section className="max-w-4xl mx-auto px-4 py-16">
       <ScrollReveal direction="left">
-        <h1 className="text-3xl md:text-4xl font-bold text-dark mb-10">{t('skills_title')}</h1>
+        <h1 className="text-3xl md:text-4xl font-bold text-dark mb-4">{t('skills_title')}</h1>
+        <p className="text-muted mb-10 max-w-2xl">{t('skills_intro')}</p>
       </ScrollReveal>
 
-      <ScrollReveal direction="up" delay={0.1}>
-        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-14">
-          {skills.map((skill, i) => (
-            <li
-              key={i}
-              className="bg-dark text-light text-sm px-4 py-3 rounded-xl border border-yellow/20 hover:shadow-pink-glow hover:border-pink/40 transition-all duration-300"
-            >
-              {skill}
-            </li>
-          ))}
-        </ul>
-      </ScrollReveal>
+      <div className="flex flex-col gap-10 mb-14">
+        {groups.map((group, gi) => (
+          <ScrollReveal key={group.key} direction="up" delay={gi * 0.05}>
+            <h2 className="text-dark font-bold text-lg mb-4">{t(group.key)}</h2>
+            <ul className="flex flex-wrap gap-3">
+              {group.skills.map((skill) => (
+                <li
+                  key={skill.name}
+                  className={`text-sm px-4 py-2.5 rounded-xl border transition-all duration-300 hover:shadow-pink-glow ${
+                    skill.core
+                      ? 'bg-dark text-yellow border-yellow/50 font-semibold'
+                      : 'bg-dark text-light border-yellow/20'
+                  }`}
+                >
+                  {skill.name}
+                  {skill.core && (
+                    <span className="ml-2 text-[10px] uppercase tracking-widest text-dark bg-yellow px-1.5 py-0.5 rounded">
+                      {t('skills_main_badge')}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </ScrollReveal>
+        ))}
+      </div>
 
       <ScrollReveal direction="left" delay={0.2}>
         <h2 className="text-2xl font-bold text-dark mb-6">{t('skills_certifications')}</h2>

@@ -6,6 +6,7 @@ import ScrollReveal from '@/components/ScrollReveal';
 import ArticleCard from '@/components/ArticleCard';
 import ProjectCard from '@/components/ProjectCard';
 import { useTranslation } from '@/hooks/useTranslation';
+import { FaBriefcase, FaFileDownload, FaUserTie } from 'react-icons/fa';
 import type { Post } from '@/data/posts';
 
 interface Project {
@@ -19,16 +20,33 @@ interface Project {
   repoLink?: string;
   privateDemo?: boolean;
   featured?: boolean;
+  caseStudy?: unknown;
+}
+
+interface HomeStats {
+  projects: number;
+  years: number;
+  posts: number;
 }
 
 interface HomeContentProps {
   latestPosts: Post[];
   noticias: Post[];
   featuredProjects: Project[];
+  stats: HomeStats;
 }
 
-export default function HomeContent({ latestPosts, noticias, featuredProjects }: HomeContentProps) {
+const CV_PDF = '/pdf/Ezequiel_Orazi-CV.pdf';
+const CALENDLY = 'https://calendly.com/ezequiel-orazi90/30min';
+
+export default function HomeContent({ latestPosts, noticias, featuredProjects, stats }: HomeContentProps) {
   const { t } = useTranslation();
+
+  const statItems = [
+    { value: String(stats.projects), label: t('home_stats_projects') },
+    { value: `${stats.years}+`, label: t('home_stats_years') },
+    { value: String(stats.posts), label: t('home_stats_posts') },
+  ];
 
   return (
     <>
@@ -46,6 +64,13 @@ export default function HomeContent({ latestPosts, noticias, featuredProjects }:
         </video>
         <div className="absolute inset-0 bg-dark/65" />
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 gap-6">
+          <span className="inline-flex items-center gap-2 text-xs md:text-sm font-semibold text-light/90 bg-dark/60 border border-green-400/40 px-4 py-1.5 rounded-full">
+            <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-400" />
+            </span>
+            {t('home_hero_available')}
+          </span>
           <h1 className="text-light font-bold text-4xl md:text-6xl max-w-3xl leading-tight">
             {t('home_hero_greeting')}{' '}
             <span className="text-yellow">Ezequiel Orazi</span>
@@ -69,6 +94,14 @@ export default function HomeContent({ latestPosts, noticias, featuredProjects }:
             >
               {t('home_cta_contact')}
             </Link>
+            <a
+              href={CV_PDF}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 border-2 border-light/40 text-light/90 font-bold px-6 py-3 rounded-lg hover:border-yellow hover:text-yellow transition-colors duration-300"
+            >
+              <FaFileDownload aria-hidden="true" /> {t('home_cta_cv')}
+            </a>
           </div>
         </div>
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-light/50 animate-bounce">
@@ -78,6 +111,116 @@ export default function HomeContent({ latestPosts, noticias, featuredProjects }:
           </svg>
         </div>
       </section>
+
+      {/* Dual audience: recruiters vs. clients */}
+      <section className="bg-dark px-4 pt-16 pb-6">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+          <ScrollReveal direction="up">
+            <div className="h-full bg-gradient-to-br from-yellow/10 via-dark to-dark border border-yellow/30 rounded-2xl p-8 flex flex-col gap-4">
+              <span className="inline-flex items-center gap-2 text-yellow text-2xl" aria-hidden="true">
+                <FaUserTie />
+              </span>
+              <h2 className="text-light font-bold text-xl md:text-2xl">
+                {t('home_audience_recruiter_title')}
+              </h2>
+              <p className="text-light/70 text-sm md:text-base leading-relaxed flex-1">
+                {t('home_audience_recruiter_desc')}
+              </p>
+              <div className="flex flex-wrap gap-3 mt-2">
+                <Link
+                  href="/curriculum"
+                  className="bg-yellow text-dark font-bold px-5 py-2.5 rounded-lg hover:bg-pink hover:text-white transition-colors duration-300 text-sm"
+                >
+                  {t('home_audience_recruiter_cta')}
+                </Link>
+                <a
+                  href={CV_PDF}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 border border-yellow/50 text-yellow font-bold px-5 py-2.5 rounded-lg hover:border-pink hover:text-pink transition-colors duration-300 text-sm"
+                >
+                  <FaFileDownload aria-hidden="true" /> {t('home_audience_recruiter_cta2')}
+                </a>
+              </div>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal direction="up" delay={0.1}>
+            <div className="h-full bg-gradient-to-br from-pink/15 via-dark to-dark border border-pink/30 rounded-2xl p-8 flex flex-col gap-4">
+              <span className="inline-flex items-center gap-2 text-pink text-2xl" aria-hidden="true">
+                <FaBriefcase />
+              </span>
+              <h2 className="text-light font-bold text-xl md:text-2xl">
+                {t('home_audience_client_title')}
+              </h2>
+              <p className="text-light/70 text-sm md:text-base leading-relaxed flex-1">
+                {t('home_audience_client_desc')}
+              </p>
+              <div className="flex flex-wrap gap-3 mt-2">
+                <Link
+                  href="/services"
+                  className="bg-pink text-white font-bold px-5 py-2.5 rounded-lg hover:bg-yellow hover:text-dark transition-colors duration-300 text-sm"
+                >
+                  {t('home_audience_client_cta')}
+                </Link>
+                <a
+                  href={CALENDLY}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border border-pink/50 text-pink font-bold px-5 py-2.5 rounded-lg hover:border-yellow hover:text-yellow transition-colors duration-300 text-sm"
+                >
+                  {t('home_audience_client_cta2')}
+                </a>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Stats (computed from real site data) */}
+      <section className="bg-dark px-4 pt-10 pb-4">
+        <ScrollReveal direction="fade">
+          <dl className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {statItems.map((item) => (
+              <div
+                key={item.label}
+                className="border border-yellow/10 rounded-xl px-6 py-5 text-center bg-dark/60"
+              >
+                <dt className="sr-only">{item.label}</dt>
+                <dd className="text-yellow font-bold text-3xl md:text-4xl">{item.value}</dd>
+                <dd className="text-light/60 text-xs md:text-sm mt-1 uppercase tracking-wide">
+                  {item.label}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </ScrollReveal>
+      </section>
+
+      {/* Featured Projects (proof first) */}
+      {featuredProjects.length > 0 && (
+        <section className="bg-dark py-20 px-4">
+          <div className="max-w-5xl mx-auto">
+            <ScrollReveal direction="up">
+              <div className="flex items-center justify-between mb-10">
+                <h2 className="text-yellow font-bold text-2xl md:text-3xl">
+                  {t('home_featured_heading')}
+                </h2>
+                <Link
+                  href="/proyectos"
+                  className="text-sm font-semibold text-pink hover:underline underline-offset-4 transition-colors"
+                >
+                  {t('home_see_all')}
+                </Link>
+              </div>
+              <div className="flex flex-wrap gap-6 justify-center">
+                {featuredProjects.map((p, i) => (
+                  <ProjectCard key={`${p.id}-${p.title}`} {...p} delay={i * 0.05} />
+                ))}
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
+      )}
 
       {/* Services */}
       <Services />
@@ -134,32 +277,6 @@ export default function HomeContent({ latestPosts, noticias, featuredProjects }:
 
       {/* FAQ */}
       <HomeFAQ />
-
-      {/* Featured Projects */}
-      {featuredProjects.length > 0 && (
-        <section className="bg-dark py-20 px-4">
-          <div className="max-w-5xl mx-auto">
-            <ScrollReveal direction="up">
-              <div className="flex items-center justify-between mb-10">
-                <h2 className="text-yellow font-bold text-2xl md:text-3xl">
-                  {t('home_featured_heading')}
-                </h2>
-                <Link
-                  href="/proyectos"
-                  className="text-sm font-semibold text-pink hover:underline underline-offset-4 transition-colors"
-                >
-                  {t('home_see_all')}
-                </Link>
-              </div>
-              <div className="flex flex-wrap gap-6 justify-center">
-                {featuredProjects.map((p, i) => (
-                  <ProjectCard key={`${p.id}-${p.title}`} {...p} delay={i * 0.05} />
-                ))}
-              </div>
-            </ScrollReveal>
-          </div>
-        </section>
-      )}
 
       {/* Noticias Tech (semanario) */}
       <section className="bg-dark py-20 px-4 border-t border-yellow/10">

@@ -52,9 +52,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Eze Orazi | Desarrollo Web Profesional',
+    title: 'Eze Orazi | Desarrollador Web Fullstack',
     description:
-      'Soluciones web modernas con React, Spring Boot y WordPress. Sitios optimizados para crecer.',
+      'Sitios, tiendas y sistemas web con Next.js, TypeScript y Tailwind CSS para negocios de América Latina. SEO con IA y Machine Learning en producción.',
     type: 'website',
     url: 'https://ezequiel-orazi.online',
     images: [
@@ -70,8 +70,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Eze Orazi | Desarrollo Web Profesional',
-    description: 'Soluciones web modernas con React, Spring Boot y WordPress.',
+    title: 'Eze Orazi | Desarrollador Web Fullstack',
+    description:
+      'Sitios, tiendas y sistemas web con Next.js, TypeScript y Tailwind CSS. SEO con IA y Machine Learning en producción.',
     images: ['/images/projects/pagePortafolio.webp'],
   },
   icons: {
@@ -97,7 +98,7 @@ const jsonLd = {
   email: 'mailto:ezequiel.orazi90@gmail.com',
   sameAs: [
     'https://www.linkedin.com/in/ezequiel-orazi32/',
-    'https://github.com/EzzeOrazi',
+    'https://github.com/Ezzeorazi',
     'https://www.instagram.com/ezze.o/',
   ],
   address: {
@@ -106,7 +107,7 @@ const jsonLd = {
     addressRegion: 'Quintana Roo',
     addressCountry: 'MX',
   },
-  knowsAbout: ['Next.js', 'TypeScript', 'Tailwind CSS', 'React', 'SEO', 'AEO', 'E-commerce', 'Sanity CMS', 'JavaScript', 'HTML', 'CSS'],
+  knowsAbout: ['Next.js', 'TypeScript', 'Tailwind CSS', 'React', 'Node.js', 'PostgreSQL', 'Supabase', 'Python', 'Machine Learning', 'SEO', 'AEO', 'E-commerce', 'Strapi', 'Sanity CMS', 'JavaScript', 'HTML', 'CSS'],
   alumniOf: { '@type': 'EducationalOrganization', name: 'Neoris Labs' },
 };
 

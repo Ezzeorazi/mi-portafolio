@@ -2,7 +2,12 @@
 import { useState, FormEvent } from 'react';
 import { useForm } from '@/hooks/useForm';
 import ScrollReveal from '@/components/ScrollReveal';
+import { CV_PDF, LINKEDIN_URL } from '@/components/CurriculumHeader';
+import { FaFileDownload, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
 import { useTranslation } from '@/hooks/useTranslation';
+
+const PHONE_E164 = '529982017863';
+const WHATSAPP_URL = `https://wa.me/${PHONE_E164}`;
 
 function makeValidate(t: (k: string) => string) {
   return function validate(values: Record<string, string>) {
@@ -154,22 +159,51 @@ export default function ContactForm() {
               <p className="text-light/50 text-xs mb-1">{t('contact_city_label')}</p>
               <span className="text-light">Playa del Carmen, Quintana Roo, México</span>
             </div>
-            <div>
-              <p className="text-light/50 text-xs mb-1">&nbsp;</p>
-              <span className="text-green-400 font-medium">
+            <div className="flex flex-col gap-1">
+              <span className="inline-flex items-center gap-2 text-green-400 font-medium">
+                <span className="inline-flex rounded-full h-2 w-2 bg-green-400" aria-hidden="true" />
                 {t('contact_available')}
               </span>
+              <span className="text-light/60 text-xs">{t('contact_response')}</span>
             </div>
           </div>
 
-          <a
-            href="https://calendly.com/ezequiel-orazi90/30min"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2 bg-yellow text-dark font-bold px-5 py-3 rounded-lg text-center hover:bg-pink hover:text-white transition-colors duration-300 text-sm"
-          >
-            {t('contact_book_btn')}
-          </a>
+          <div className="flex flex-col gap-3 mt-2">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-green-500 text-white font-bold px-5 py-3 rounded-lg hover:bg-green-400 transition-colors duration-300 text-sm"
+            >
+              <FaWhatsapp className="text-lg" aria-hidden="true" /> {t('contact_whatsapp_btn')}
+            </a>
+            <a
+              href="https://calendly.com/ezequiel-orazi90/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-yellow text-dark font-bold px-5 py-3 rounded-lg text-center hover:bg-pink hover:text-white transition-colors duration-300 text-sm"
+            >
+              {t('contact_book_btn')}
+            </a>
+            <div className="grid grid-cols-2 gap-3">
+              <a
+                href={CV_PDF}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 border border-yellow/40 text-yellow font-bold px-3 py-2.5 rounded-lg hover:border-pink hover:text-pink transition-colors duration-300 text-xs"
+              >
+                <FaFileDownload aria-hidden="true" /> {t('contact_cv_btn')}
+              </a>
+              <a
+                href={LINKEDIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 border border-yellow/40 text-yellow font-bold px-3 py-2.5 rounded-lg hover:border-pink hover:text-pink transition-colors duration-300 text-xs"
+              >
+                <FaLinkedin aria-hidden="true" /> LinkedIn
+              </a>
+            </div>
+          </div>
         </div>
       </ScrollReveal>
     </div>

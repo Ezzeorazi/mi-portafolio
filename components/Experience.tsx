@@ -10,8 +10,8 @@ const experiencesEs = [
     startDate: 'Enero 2025',
     endDateKey: 'exp_present',
     description:
-      'Soporte técnico en impresión 3D, diseño de modelos y desarrollo de sitios web para la empresa. Colaboración en equipo y optimización de procesos. Además creación de contenido digital para redes sociales y marketing.',
-    technologies: ['Impresión 3D', 'Diseño 3D', 'Desarrollo Web'],
+      'Emprendimiento propio de impresión 3D en Playa del Carmen. Desarrollé la plataforma caliber3d.mx (Next.js, TypeScript, Supabase y Strapi) con catálogo y formulario de presupuesto, posicionada en Google para "impresión 3D Riviera Maya". Además: diseño de modelos, soporte técnico de impresión y contenido para redes sociales.',
+    technologies: ['Next.js', 'TypeScript', 'Supabase', 'Strapi', 'SEO', 'Impresión 3D'],
   },
   {
     id: 2,
@@ -20,8 +20,8 @@ const experiencesEs = [
     startDate: 'Septiembre 2023',
     endDateKey: 'exp_present',
     description:
-      'Gestión y ejecución de proyectos web end-to-end, desde la conceptualización hasta el despliegue. Creación de diseños web optimizados para SEO, desarrollo con HTML, CSS y JavaScript, administración de hosting y dominios.',
-    technologies: ['HTML', 'CSS', 'JavaScript', 'SEO'],
+      'Gestión y ejecución de proyectos web end-to-end para clientes de la agencia, desde la conceptualización hasta el despliegue. Sitios institucionales y tiendas con Next.js, React y WordPress, diseño optimizado para SEO y administración de hosting y dominios. Desarrollé también el sitio de la agencia (pixelmaker.com.ar) con Next.js y Supabase.',
+    technologies: ['Next.js', 'React', 'JavaScript', 'WordPress', 'SEO'],
   },
   {
     id: 3,
@@ -30,8 +30,8 @@ const experiencesEs = [
     startDate: 'Noviembre 2024',
     endDate: 'Noviembre 2025',
     description:
-      'Como guardia de seguridad en Watchman, aplico conocimientos en ciberseguridad para monitorear y responder a posibles amenazas, asegurando la integridad de los sistemas. Manejo sistemas de cámaras de seguridad para vigilancia continua y empleo herramientas como Excel para registro y análisis de datos.',
-    technologies: ['Excel', 'Ciberseguridad', 'Cámaras de seguridad'],
+      'Trabajo complementario mientras consolidaba Caliber 3D y mis proyectos web freelance. Monitoreo de sistemas de videovigilancia, registro de incidencias y reportes en Excel.',
+    technologies: ['Videovigilancia', 'Excel'],
   },
   {
     id: 4,
@@ -73,8 +73,8 @@ const experiencesEn = [
     startDate: 'January 2025',
     endDateKey: 'exp_present',
     description:
-      'Technical support in 3D printing, model design and website development for the company. Team collaboration and process optimization. Also creating digital content for social media and marketing.',
-    technologies: ['3D Printing', '3D Design', 'Web Development'],
+      'My own 3D printing venture in Playa del Carmen. I built the caliber3d.mx platform (Next.js, TypeScript, Supabase and Strapi) with a catalog and quote form, ranking on Google for "3D printing Riviera Maya". Also: model design, printing technical support and social media content.',
+    technologies: ['Next.js', 'TypeScript', 'Supabase', 'Strapi', 'SEO', '3D Printing'],
   },
   {
     id: 2,
@@ -83,8 +83,8 @@ const experiencesEn = [
     startDate: 'September 2023',
     endDateKey: 'exp_present',
     description:
-      'End-to-end web project management and execution, from concept to deployment. Creation of SEO-optimized web designs, development with HTML, CSS and JavaScript, hosting and domain administration.',
-    technologies: ['HTML', 'CSS', 'JavaScript', 'SEO'],
+      'End-to-end web project management and execution for agency clients, from concept to deployment. Business websites and stores with Next.js, React and WordPress, SEO-optimized design, hosting and domain administration. I also built the agency site (pixelmaker.com.ar) with Next.js and Supabase.',
+    technologies: ['Next.js', 'React', 'JavaScript', 'WordPress', 'SEO'],
   },
   {
     id: 3,
@@ -93,8 +93,8 @@ const experiencesEn = [
     startDate: 'November 2024',
     endDate: 'November 2025',
     description:
-      'As a security guard at Watchman, I applied cybersecurity knowledge to monitor and respond to potential threats, ensuring system integrity. Managing security camera systems for continuous surveillance and using tools like Excel for data recording and analysis.',
-    technologies: ['Excel', 'Cybersecurity', 'Security Cameras'],
+      'Side job while consolidating Caliber 3D and my freelance web projects. Video surveillance monitoring, incident logging and reporting in Excel.',
+    technologies: ['Video Surveillance', 'Excel'],
   },
   {
     id: 4,
