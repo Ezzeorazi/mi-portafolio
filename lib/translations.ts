@@ -17,12 +17,27 @@ const translations: Record<Language, Record<string, string>> = {
 
     // HOME
     home_hero_greeting: 'Hola, soy',
-    home_hero_role: 'Desarrollador Fullstack',
+    home_hero_role: 'Desarrollador Web Fullstack',
     home_hero_desc:
-      'Aplicaciones web modernas, escalables y optimizadas para negocios. React, Next.js, Spring Boot y WordPress.',
+      'Construyo sitios, tiendas y sistemas web para negocios de América Latina con Next.js, TypeScript y Tailwind CSS. Rápidos, bien posicionados en Google y con IA aplicada en producción.',
+    home_hero_available: 'Disponible para empleo remoto y proyectos freelance',
     home_cta_projects: 'Ver proyectos',
     home_cta_contact: 'Contactarme',
-    home_featured_heading: 'Proyectos actuales',
+    home_cta_cv: 'Descargar CV',
+    home_audience_recruiter_title: '¿Buscás sumar un desarrollador a tu equipo?',
+    home_audience_recruiter_desc:
+      'Fullstack con foco en Next.js, TypeScript y Node.js. Trabajo 100% remoto desde México (GMT-5) con clientes de toda Latinoamérica. Revisá mi experiencia, mi stack y mi código.',
+    home_audience_recruiter_cta: 'Ver currículum',
+    home_audience_recruiter_cta2: 'CV en PDF',
+    home_audience_client_title: '¿Tenés un proyecto o un negocio?',
+    home_audience_client_desc:
+      'Landing pages, tiendas online, sistemas a medida y SEO con IA. Precios publicados, plazos claros y una reunión inicial gratuita para definir el alcance.',
+    home_audience_client_cta: 'Ver servicios y precios',
+    home_audience_client_cta2: 'Agendar reunión gratis',
+    home_stats_projects: 'proyectos en producción',
+    home_stats_years: 'años desarrollando web',
+    home_stats_posts: 'artículos técnicos publicados',
+    home_featured_heading: 'Proyectos destacados',
     home_see_all: 'Ver todos →',
     home_blog_heading: 'Últimos posts del blog',
     home_news_heading: 'Noticias Tech',
@@ -30,19 +45,20 @@ const translations: Record<Language, Record<string, string>> = {
       'Mi semanario de tecnología: las noticias más relevantes de la semana con mi análisis, en primera persona. Nueva edición todos los miércoles a las 8:00 (hora Argentina).',
     home_news_empty_title: 'La primera edición sale el miércoles 17/6',
     home_news_empty_text:
-      'Todavía no publiqué ninguna edición. La primera sale el miércoles 17 de junio a las 8:00 (ART) y después una por semana. Si ya pasó el miércoles y no ves ninguna… se cayó la base de datos 😅',
+      'Todavía no hay ediciones publicadas. La primera sale el miércoles 17 de junio a las 8:00 (ART) y después una por semana.',
     home_news_cta: 'Ver todas las noticias →',
 
     // ABOUT
     about_title: 'Sobre mí',
     about_bio:
-      'Soy desarrollador fullstack con experiencia en la creación de aplicaciones web robustas y orientadas a negocio. Trabajo con tecnologías como React, Node.js, Spring Boot y WordPress, desarrollando soluciones reales para empresas y emprendedores. Cuento con más de ocho años de experiencia previa en entornos técnicos, lo que me permite abordar los proyectos con una visión profesional, organizada y enfocada en resultados. Trabajo con metodologías ágiles, priorizando calidad, rendimiento y experiencia de usuario. Además del desarrollo, integro diseño, contenido y SEO para entregar productos digitales completos y listos para escalar.',
+      'Soy desarrollador web fullstack. Construyo sitios, tiendas y sistemas para empresas y emprendedores de América Latina con Next.js, TypeScript, Tailwind CSS, Node.js y bases de datos como Supabase y PostgreSQL, y en los últimos proyectos incorporé Python y Machine Learning en producción. Antes de programar lideré durante cinco años un taller de reparación de maquinaria pesada y administré plataformas de e-commerce (VTEX y WordPress) durante tres: sé trabajar con clientes, plazos y equipos, y entiendo cómo funciona un negocio real. Además del desarrollo, integro diseño, contenido y SEO para entregar productos digitales completos y listos para escalar.',
+    about_availability: 'Disponible para empleo remoto y proyectos freelance',
     about_life_title: 'Un volantazo a la vida',
     about_life_p1:
       'Hace un tiempo tomé la decisión de dejar Rosario y apostar por algo nuevo: emigrar a Playa del Carmen, Quintana Roo. Un cambio radical que trajo no solo un nuevo paisaje, sino también un nuevo proyecto de vida.',
     about_life_p2a: 'Fue acá donde nació',
     about_life_p2b:
-      ', un emprendimiento de impresión 3D que hoy es mi proyecto principal. Diseñamos y fabricamos piezas personalizadas para distintos rubros: industria, decoración, prototipos y más. Cada pieza es un problema resuelto.',
+      ', un emprendimiento de impresión 3D que llevo adelante en paralelo al desarrollo web. Diseñamos y fabricamos piezas personalizadas para distintos rubros: industria, decoración, prototipos y más. Cada pieza es un problema resuelto.',
     about_life_p3:
       'Combinar el desarrollo web con el mundo físico de la fabricación 3D me da una visión distinta: entiendo tanto el producto digital como el proceso detrás de un negocio real. Caliber 3D no es solo una empresa, es la prueba de que apostar por uno mismo funciona.',
     about_card_skills_desc: 'Tecnologías que domino',
@@ -52,10 +68,25 @@ const translations: Record<Language, Record<string, string>> = {
 
     // SKILLS
     skills_title: 'Habilidades Técnicas',
-    skills_certifications: 'Logros y Certificaciones',
+    skills_intro:
+      'Stack agrupado por área. Las tecnologías marcadas como principales son las que uso a diario en proyectos en producción.',
+    skills_main_badge: 'Principal',
+    skills_cat_frontend: 'Frontend',
+    skills_cat_backend: 'Backend y bases de datos',
+    skills_cat_ai: 'IA, datos y automatización',
+    skills_cat_cms: 'CMS y e-commerce',
+    skills_cat_tools: 'Herramientas y métodos de trabajo',
+    skills_certifications: 'Formación y Certificaciones',
 
     // CURRICULUM
     curriculum_title: 'Currículum',
+    cv_headline: 'Desarrollador Web Fullstack · Next.js, TypeScript y Node.js',
+    cv_summary:
+      'Desarrollo sitios y aplicaciones web para negocios de América Latina: desde landing pages hasta sistemas con base de datos y modelos de Machine Learning en producción. Antes de programar lideré un taller de maquinaria pesada durante cinco años y administré plataformas e-commerce durante tres, así que sé trabajar con clientes, plazos y equipos.',
+    cv_location: 'Playa del Carmen, México · 100% remoto',
+    cv_availability: 'Disponible para empleo remoto y proyectos freelance',
+    cv_download: 'Descargar CV (PDF)',
+    cv_contact: 'Contactarme',
 
     // EXPERIENCE
     exp_heading: 'Experiencia Laboral',
@@ -174,8 +205,11 @@ const translations: Record<Language, Record<string, string>> = {
     contact_info_heading: 'Información de contacto',
     contact_phone_label: 'Teléfono',
     contact_city_label: 'Ciudad',
-    contact_available: 'Disponible para proyectos remotos',
+    contact_available: 'Disponible para empleo remoto y proyectos freelance',
+    contact_response: 'Respondo en menos de 24 horas',
+    contact_whatsapp_btn: 'Escribirme por WhatsApp',
     contact_book_btn: 'Agendar reunión →',
+    contact_cv_btn: 'Descargar CV (PDF)',
     contact_err_name: 'El nombre es requerido.',
     contact_err_email_req: 'El email es requerido.',
     contact_err_email_invalid: 'El email no es válido.',
@@ -228,11 +262,26 @@ const translations: Record<Language, Record<string, string>> = {
 
     // HOME
     home_hero_greeting: "Hi, I'm",
-    home_hero_role: 'Fullstack Developer',
+    home_hero_role: 'Fullstack Web Developer',
     home_hero_desc:
-      'Modern, scalable and business-oriented web applications. React, Next.js, Spring Boot and WordPress.',
+      'I build websites, online stores and web systems for Latin American businesses with Next.js, TypeScript and Tailwind CSS. Fast, well ranked on Google, with AI applied in production.',
+    home_hero_available: 'Open to remote roles and freelance projects',
     home_cta_projects: 'View projects',
     home_cta_contact: 'Contact me',
+    home_cta_cv: 'Download resume',
+    home_audience_recruiter_title: 'Hiring a developer for your team?',
+    home_audience_recruiter_desc:
+      'Fullstack developer focused on Next.js, TypeScript and Node.js. I work 100% remotely from Mexico (GMT-5) with clients across Latin America. Check my experience, my stack and my code.',
+    home_audience_recruiter_cta: 'View resume',
+    home_audience_recruiter_cta2: 'Resume (PDF)',
+    home_audience_client_title: 'Got a project or a business?',
+    home_audience_client_desc:
+      'Landing pages, online stores, custom systems and AI SEO. Published prices, clear timelines and a free initial meeting to define the scope.',
+    home_audience_client_cta: 'See services and pricing',
+    home_audience_client_cta2: 'Book a free meeting',
+    home_stats_projects: 'projects in production',
+    home_stats_years: 'years building for the web',
+    home_stats_posts: 'technical articles published',
     home_featured_heading: 'Featured Projects',
     home_see_all: 'See all →',
     home_blog_heading: 'Latest blog posts',
@@ -241,19 +290,20 @@ const translations: Record<Language, Record<string, string>> = {
       'My weekly tech digest: the most relevant stories of the week with my own take, first person. New edition every Wednesday at 8:00 AM (Argentina time).',
     home_news_empty_title: 'The first edition drops Wednesday, June 17',
     home_news_empty_text:
-      'No editions published yet. The first one goes live on Wednesday, June 17 at 8:00 AM (ART), then one per week. If it is already past Wednesday and you still see none… the database went down 😅',
+      'No editions published yet. The first one goes live on Wednesday, June 17 at 8:00 AM (ART), then one per week.',
     home_news_cta: 'See all news →',
 
     // ABOUT
     about_title: 'About Me',
     about_bio:
-      "I'm a fullstack developer with experience building robust, business-driven web applications. I work with technologies such as React, Node.js, Spring Boot and WordPress, delivering real solutions for companies and entrepreneurs. With over eight years of technical background, I approach projects with a structured, results-oriented mindset. I work using agile methodologies and prioritize performance, quality and user experience. I also integrate design, content and SEO to deliver complete, scalable digital products.",
+      "I'm a fullstack web developer. I build websites, online stores and systems for companies and entrepreneurs across Latin America with Next.js, TypeScript, Tailwind CSS, Node.js and databases such as Supabase and PostgreSQL, and in my latest projects I've shipped Python and Machine Learning to production. Before programming I led a heavy machinery repair workshop for five years and managed e-commerce platforms (VTEX and WordPress) for three: I know how to work with clients, deadlines and teams, and I understand how a real business runs. Beyond development, I integrate design, content and SEO to deliver complete, scalable digital products.",
+    about_availability: 'Open to remote roles and freelance projects',
     about_life_title: 'A Life-Changing Turn',
     about_life_p1:
       'Some time ago I decided to leave Rosario and bet on something new: moving to Playa del Carmen, Quintana Roo. A radical change that brought not just a new landscape, but a whole new life project.',
     about_life_p2a: 'This is where',
     about_life_p2b:
-      ' was born — a 3D printing venture that is now my main project. We design and manufacture custom parts for various industries: manufacturing, decor, prototypes and more. Every piece is a solved problem.',
+      ' was born — a 3D printing venture I run alongside my web development work. We design and manufacture custom parts for various industries: manufacturing, decor, prototypes and more. Every piece is a solved problem.',
     about_life_p3:
       "Combining web development with the physical world of 3D manufacturing gives me a unique perspective: I understand both the digital product and the process behind a real business. Caliber 3D is not just a company — it's proof that betting on yourself works.",
     about_card_skills_desc: 'Technologies I work with',
@@ -263,10 +313,25 @@ const translations: Record<Language, Record<string, string>> = {
 
     // SKILLS
     skills_title: 'Technical Skills',
-    skills_certifications: 'Achievements & Certifications',
+    skills_intro:
+      'Stack grouped by area. Technologies marked as core are the ones I use daily on production projects.',
+    skills_main_badge: 'Core',
+    skills_cat_frontend: 'Frontend',
+    skills_cat_backend: 'Backend & Databases',
+    skills_cat_ai: 'AI, Data & Automation',
+    skills_cat_cms: 'CMS & E-commerce',
+    skills_cat_tools: 'Tools & Ways of Working',
+    skills_certifications: 'Training & Certifications',
 
     // CURRICULUM
     curriculum_title: 'Resume',
+    cv_headline: 'Fullstack Web Developer · Next.js, TypeScript & Node.js',
+    cv_summary:
+      'I build websites and web applications for Latin American businesses: from landing pages to database-backed systems and Machine Learning models in production. Before programming I led a heavy machinery workshop for five years and managed e-commerce platforms for three, so I know how to work with clients, deadlines and teams.',
+    cv_location: 'Playa del Carmen, Mexico · 100% remote',
+    cv_availability: 'Open to remote roles and freelance projects',
+    cv_download: 'Download resume (PDF)',
+    cv_contact: 'Contact me',
 
     // EXPERIENCE
     exp_heading: 'Work Experience',
@@ -384,8 +449,11 @@ const translations: Record<Language, Record<string, string>> = {
     contact_info_heading: 'Contact information',
     contact_phone_label: 'Phone',
     contact_city_label: 'City',
-    contact_available: 'Available for remote projects',
+    contact_available: 'Open to remote roles and freelance projects',
+    contact_response: 'I reply within 24 hours',
+    contact_whatsapp_btn: 'Message me on WhatsApp',
     contact_book_btn: 'Book a meeting →',
+    contact_cv_btn: 'Download resume (PDF)',
     contact_err_name: 'Name is required.',
     contact_err_email_req: 'Email is required.',
     contact_err_email_invalid: 'Email is not valid.',

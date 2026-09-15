@@ -6,7 +6,7 @@ import T from '@/components/T';
 export const metadata: Metadata = {
   title: 'Contacto',
   description:
-    'Contactá a Ezequiel Orazi para proyectos de desarrollo web, freelance o consultoría. Respondemos en menos de 24 horas.',
+    'Contactá a Ezequiel Orazi por WhatsApp, email o formulario para propuestas laborales, proyectos de desarrollo web o consultoría. Respondo en menos de 24 horas.',
   alternates: { canonical: 'https://ezequiel-orazi.online/contacto' },
 };
 

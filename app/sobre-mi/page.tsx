@@ -4,7 +4,7 @@ import SobreMiContent from '@/components/SobreMiContent';
 export const metadata: Metadata = {
   title: 'Sobre mí',
   description:
-    'Conocé a Ezequiel Orazi, desarrollador fullstack con experiencia en React, Node.js, Spring Boot y WordPress. Más de 8 años en entornos técnicos.',
+    'Conocé a Ezequiel Orazi, desarrollador web fullstack (Next.js, TypeScript, Node.js) radicado en Playa del Carmen, México. Disponible para empleo remoto y proyectos freelance.',
   alternates: { canonical: 'https://ezequiel-orazi.online/sobre-mi' },
 };
 

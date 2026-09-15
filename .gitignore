@@ -20,6 +20,10 @@ dist-ssr
 # Next.js build output
 .next/
 out/
+*.tsbuildinfo
+
+# Configuración local de herramientas del editor / agentes
+.claude/settings.local.json
 
 # Python (worker/)
 .venv/

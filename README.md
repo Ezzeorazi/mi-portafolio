@@ -1,92 +1,78 @@
 # Portafolio de Ezequiel Orazi
 
-Bienvenido al código de mi sitio personal. Este proyecto nació con el objetivo de mostrar mis habilidades en desarrollo web y servir como carta de presentación para nuevas oportunidades laborales.
+Sitio personal y comercial de Ezequiel Orazi, desarrollador web fullstack radicado en Playa del Carmen (México). Funciona como carta de presentación para reclutadores y como vidriera de servicios para clientes de América Latina.
 
-## Demo
+**Sitio en producción:** [https://ezequiel-orazi.online](https://ezequiel-orazi.online)
 
-El sitio está desplegado en: [https://ezequiel-orazi.online](https://ezequiel-orazi.online)
+## Qué incluye
 
-## Características principales
+- **Home** con propuesta de valor, proyectos destacados, servicios con precios publicados y FAQ.
+- **Currículum, Skills y Sobre mí** con experiencia, formación, stack agrupado por área y CV en PDF.
+- **Proyectos** con casos de estudio (problema, decisiones técnicas, resultados).
+- **Blog** con artículos técnicos en HTML y un semanario de noticias tech generado automáticamente cada miércoles con GitHub Actions y Gemini.
+- **Herramientas gratuitas** para captar clientes: auditoría SEO (`/auditoria-seo`) y análisis de seguridad web (`/analisis-seguridad`), servidas desde route handlers de Next.js.
+- **Detector de granjas de contenido** (`/detector-de-bots`): herramienta con cola de trabajos en Postgres y un worker en Python que corre en GitHub Actions.
+- **Sitio bilingüe** (español / inglés) con cambio de idioma en cliente.
+- **SEO técnico**: metadata por página, JSON-LD (Person, FAQPage), sitemap automático, canonicals y cabeceras de seguridad (CSP, HSTS, etc.).
 
-- **React + Vite** para una carga rápida y una experiencia de desarrollo moderna.
-- **Ruteo dinámico** con React Router DOM y "lazy loading" de páginas para optimizar el rendimiento.
-- **Blog estático** gestionado con archivos Markdown convertidos a HTML.
-- **Formulario de contacto** conectado a EmailJS para recibir mensajes directamente en mi correo.
-- **Diseño responsive** y animaciones con `styled-components` y `animate.css`.
+## Stack
 
-## Tecnologías utilizadas
+| Capa | Tecnologías |
+| --- | --- |
+| Framework | Next.js 15 (App Router), React 18, TypeScript |
+| Estilos | Tailwind CSS, Framer Motion |
+| Datos | Prisma ORM + PostgreSQL (Neon) para el detector de bots |
+| Contenido | Posts en HTML estático (`content/blog`) + metadatos en `data/posts.ts` |
+| Formulario | EmailJS (cliente) con honeypot y cooldown |
+| Automatización | GitHub Actions (noticias semanales, worker Python, tests) |
+| Hosting | Netlify con `@netlify/plugin-nextjs` |
 
-- React 18
-- Vite
-- React Router DOM
-- Styled Components
-- EmailJS
-- Animate.css
-- React Icons
-
-## Instalación
-
-```bash
-# Clona el repositorio
-git clone https://github.com/Ezzeorazi/mi-portafolio.git
-cd mi-portafolio
-
-# Instala las dependencias
-npm install
-```
-
-### Scripts disponibles
-
-- `npm run dev` – Inicia el servidor de desarrollo.
-- `npm run build` – Genera los archivos listos para producción en la carpeta `dist`.
-- `npm run preview` – Sirve el build generado para hacer pruebas locales.
-- `npm test` – Ejecuta las pruebas con Vitest (requiere instalar `vitest`).
-
-## Variables de entorno
-
-Para que el formulario de contacto funcione necesitas tus credenciales de EmailJS. Crea un archivo `.env` a partir de `.env.example` y coloca allí los valores correspondientes:
-
-```
-VITE_EMAILJS_SERVICE_ID=tu_service_id
-VITE_EMAILJS_TEMPLATE_ID=tu_template_id
-VITE_EMAILJS_PUBLIC_KEY=tu_public_key
-```
-
-## Estructura del proyecto
+## Estructura
 
 ```
 mi-portafolio/
-├── public/
-│   └── pdf/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── layouts/
-│   ├── hooks/
-│   ├── pages/
-│   ├── routers/
-│   ├── styles/
-│   └── main.jsx
-├── package.json
-└── vite.config.js
+├── app/              # Rutas (App Router): páginas, layouts y route handlers en app/api
+├── components/       # Componentes de UI
+├── content/blog/     # Artículos del blog en HTML
+├── data/             # Fuentes de datos estáticas (posts, proyectos)
+├── lib/              # Lógica compartida (blog, proyectos, traducciones, db)
+├── prisma/           # Esquema y migraciones (detector de bots)
+├── public/           # Imágenes, CV en PDF, robots.txt, sitemap
+├── scripts/          # Generador de noticias y utilidades
+└── worker/           # Worker en Python del detector de bots
 ```
-## Cómo crear un nuevo post
 
-Sigue estos pasos para publicar una entrada en el blog:
+## Desarrollo local
 
-1. Escribe tu artículo en formato HTML (puedes convertirlo desde Markdown si lo prefieres) y colócalo en la carpeta `public`.
-2. Añade una imagen relacionada en `public/` y toma nota de su nombre.
-3. Registra la entrada en `src/data/data.js` incluyendo `id`, `slug`, `image`, `title`, `category`, `description`, `date`, `ReadingTime` y el nombre del archivo HTML en `content`.
-4. Actualiza `public/sitemap.xml` agregando un nuevo elemento `<url>` con la ruta y la fecha de publicación.
+```bash
+git clone https://github.com/Ezzeorazi/mi-portafolio.git
+cd mi-portafolio
+npm install
+cp .env.example .env   # completar las variables necesarias
+npm run dev
+```
 
-Con estos cambios el post aparecerá en la lista del blog y podrá ser indexado por buscadores.
+Scripts principales:
 
-## Contribuciones
+| Script | Descripción |
+| --- | --- |
+| `npm run dev` | Servidor de desarrollo |
+| `npm run build` | Genera el cliente de Prisma y el build de producción; luego corre `next-sitemap` |
+| `npm run lint` | ESLint con la configuración de Next.js |
+| `npm run noticias` | Genera manualmente el post semanal de noticias (requiere `GEMINI_API_KEY`) |
+| `npm run db:migrate` | Migraciones de Prisma en desarrollo |
 
-Las propuestas de mejora son bienvenidas. Puedes abrir un issue o enviar un pull request si deseas colaborar.
+Las variables de entorno están documentadas en `.env.example`. El formulario de contacto necesita las claves públicas de EmailJS; el detector de bots necesita `DATABASE_URL` y `DIRECT_URL`.
+
+## Cómo publicar un post
+
+1. Crear el artículo en HTML en `content/blog/<slug>.html` (hay una plantilla en `content/blog/_PLANTILLA.html`).
+2. Guardar la portada en `public/images/blog/`.
+3. Registrar la entrada en `data/posts.ts` (slug, título, categoría, fecha, tiempo de lectura, descripción e imagen).
+4. El sitemap se regenera solo en el build.
+
+El semanario de noticias se publica solo; el detalle está en `scripts/README-noticias.md`.
 
 ## Contacto
 
-Si quieres saber más sobre mi experiencia o tienes alguna propuesta laboral, puedes escribirme a [ezequiel.orazi90@gmail.com](mailto:ezequiel.orazi90@gmail.com) o contactar conmigo a través del formulario del sitio.
-
-¡Gracias por visitar mi proyecto!
+Propuestas laborales o proyectos: [ezequiel.orazi90@gmail.com](mailto:ezequiel.orazi90@gmail.com), [LinkedIn](https://www.linkedin.com/in/ezequiel-orazi32/) o el [formulario del sitio](https://ezequiel-orazi.online/contacto).

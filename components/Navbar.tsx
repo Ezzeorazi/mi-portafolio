@@ -13,6 +13,7 @@ const navLinks = [
   { key: 'nav_seo_tool', href: '/auditoria-seo' },
   { key: 'nav_security_tool', href: '/analisis-seguridad' },
   { key: 'nav_projects', href: '/proyectos' },
+  { key: 'nav_cv', href: '/curriculum' },
   { key: 'nav_blog', href: '/blog' },
   { key: 'nav_contact', href: '/contacto' },
 ] as const;
@@ -36,7 +37,7 @@ export default function Navbar() {
       </Link>
 
       {/* Desktop links */}
-      <div className="hidden md:flex items-center gap-6">
+      <div className="hidden lg:flex items-center gap-5">
         {navLinks.map(({ key, href }) => (
           key === 'nav_services' ? (
             <Link
@@ -84,7 +85,7 @@ export default function Navbar() {
       </div>
 
       {/* Mobile controls */}
-      <div className="flex items-center gap-3 md:hidden z-[1100]">
+      <div className="flex items-center gap-3 lg:hidden z-[1100]">
         <button
           onClick={toggleLanguage}
           aria-label={`Cambiar idioma – ${t('toggle_lang')}`}

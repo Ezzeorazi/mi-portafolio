@@ -2,6 +2,8 @@
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import Caliber3DCarousel from '@/components/Caliber3DCarousel';
+import { CV_PDF, LINKEDIN_URL } from '@/components/CurriculumHeader';
+import { FaFileDownload, FaLinkedin } from 'react-icons/fa';
 import { useTranslation } from '@/hooks/useTranslation';
 
 export default function SobreMiContent() {
@@ -21,9 +23,31 @@ export default function SobreMiContent() {
       </ScrollReveal>
 
       <ScrollReveal direction="up" delay={0.1}>
-        <p className="text-muted leading-relaxed text-base md:text-lg text-justify mb-12">
+        <p className="text-muted leading-relaxed text-base md:text-lg text-justify mb-6">
           {t('about_bio')}
         </p>
+        <div className="flex flex-wrap items-center gap-4 mb-12">
+          <span className="inline-flex items-center gap-2 text-green-600 font-medium text-sm">
+            <span className="inline-flex rounded-full h-2 w-2 bg-green-500" aria-hidden="true" />
+            {t('about_availability')}
+          </span>
+          <a
+            href={CV_PDF}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-dark text-yellow font-bold px-4 py-2 rounded-lg hover:bg-pink hover:text-white transition-colors duration-300 text-sm"
+          >
+            <FaFileDownload aria-hidden="true" /> {t('cv_download')}
+          </a>
+          <a
+            href={LINKEDIN_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 border border-dark/30 text-dark font-bold px-4 py-2 rounded-lg hover:border-pink hover:text-pink transition-colors duration-300 text-sm"
+          >
+            <FaLinkedin aria-hidden="true" /> LinkedIn
+          </a>
+        </div>
       </ScrollReveal>
 
       {/* Caliber 3D + vida en Playa del Carmen */}
