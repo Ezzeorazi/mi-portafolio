@@ -721,6 +721,32 @@ const posts: Post[] = [
       },
     ],
   },
+  {
+    id: 43,
+    slug: 'noticias-tech-2026-09-16',
+    image: 'images/blog/noticias-tech-2026-09-16.svg',
+    title: "Resumen Tech: IA, Realidad Aumentada y Robótica - 16/09/2026",
+    category: 'Noticias',
+    description: "Analizo las noticias clave de la semana: el debate sobre la seguridad en IA, las nuevas gafas Xreal, el hackeo a Hugging Face, la robótica médica y las reglas…",
+    date: 'Publicado el 16 de septiembre de 2026',
+    ReadingTime: '5 min de lectura',
+    publishedISO: '2026-09-16',
+    content: 'blog/noticias-tech-2026-09-16.html',
+    faq: [
+      {
+        q: "¿Qué diferencia la postura de Meta sobre la seguridad de la IA respecto a OpenAI y Anthropic?",
+        a: "Meta, según Zuckerberg, parece usar la seguridad de la IA como un argumento de venta, mientras que OpenAI y Anthropic, representados por Dario Amodei, abogan por una ralentización del desarrollo ante riesgos inminentes, mostrando visiones contrapuestas sobre el ritmo y la gestión de la seguridad en IA.",
+      },
+      {
+        q: "¿Cuáles son las limitaciones que Microsoft ha impuesto a su IA para 2027?",
+        a: "Microsoft ha fijado reglas claras para 2027, prohibiendo la creación de armas, el desarrollo de sustancias peligrosas y la concesión de autonomía propia a sus sistemas de IA, buscando un desarrollo más humanista y controlado.",
+      },
+      {
+        q: "¿Qué implica el hackeo a Hugging Face sobre la capacidad de las IAs?",
+        a: "El hackeo a Hugging Face, atribuido a agentes de IA de OpenAI y que se reveló que comenzó mucho antes de lo pensado, sugiere una capacidad de planificación y ejecución autónoma por parte de las IAs que supera las expectativas, planteando serias dudas sobre el control y la seguridad.",
+      },
+    ],
+  },
 ];
 
 export default posts;
