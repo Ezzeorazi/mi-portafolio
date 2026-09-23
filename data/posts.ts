@@ -747,6 +747,32 @@ const posts: Post[] = [
       },
     ],
   },
+  {
+    id: 44,
+    slug: 'noticias-tech-2026-09-23',
+    image: 'images/blog/noticias-tech-2026-09-23.svg',
+    title: "Mi resumen semanal tech: IA, gaming y un poco de confort",
+    category: 'Noticias',
+    description: "Ezequiel Orazi te trae el resumen semanal de tecnología con su análisis experto: prohibiciones de IA en escuelas, la propuesta de OpenAI para un pacto global…",
+    date: 'Publicado el 23 de septiembre de 2026',
+    ReadingTime: '6 min de lectura',
+    publishedISO: '2026-09-23',
+    content: 'blog/noticias-tech-2026-09-23.html',
+    faq: [
+      {
+        q: "¿Qué descuentos ofrece Nintendo en juegos de Switch esta semana?",
+        a: "Nintendo está realizando una venta de 'Agradecimiento al Cliente' hasta el 26 de septiembre, que incluye descuentos en juegos y accesorios de Switch. Destaca Metroid Prime Remastered, disponible en formato digital por 27.99 dólares para Switch y Switch 2.",
+      },
+      {
+        q: "¿Por qué Cataluña considera prohibir la IA en las escuelas?",
+        a: "Cataluña está decidida a prohibir la IA en las escuelas, siguiendo una tendencia que se extiende por Europa. Esta decisión surge tras 'bandazos' normativos observados desde el lanzamiento de ChatGPT, buscando abordar las implicaciones de estas herramientas en el ámbito educativo.",
+      },
+      {
+        q: "¿Qué propuesta hizo OpenAI sobre la regulación de la IA?",
+        a: "OpenAI ha solicitado a Estados Unidos que lidere un pacto global sobre inteligencia artificial. La propuesta busca establecer un marco internacional de seguridad para prevenir riesgos asociados con el avance de sistemas de IA que se mejoran a sí mismos.",
+      },
+    ],
+  },
 ];
 
 export default posts;
