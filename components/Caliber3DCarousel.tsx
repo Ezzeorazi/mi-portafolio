@@ -77,10 +77,14 @@ export default function Caliber3DCarousel() {
             key={i}
             onClick={() => setCurrent(i)}
             aria-label={`Foto ${i + 1}`}
-            className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-              i === current ? 'bg-yellow' : 'bg-yellow/30'
-            }`}
-          />
+            className="flex items-center justify-center w-8 h-8 -mx-1"
+          >
+            <span
+              className={`block w-2 h-2 rounded-full transition-colors duration-300 ${
+                i === current ? 'bg-yellow' : 'bg-yellow/30'
+              }`}
+            />
+          </button>
         ))}
       </div>
 

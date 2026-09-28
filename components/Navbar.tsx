@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -25,6 +25,26 @@ export default function Navbar() {
   const { toggleLanguage } = useContext(LanguageContext);
 
   const closeMenu = () => setIsOpen(false);
+
+  // Bloquea el scroll del fondo y permite cerrar con Escape mientras el menú está abierto
+  useEffect(() => {
+    if (!isOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsOpen(false);
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [isOpen]);
+
+  // Cierra el menú al navegar a otra ruta
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
 
   return (
     <nav className="sticky top-0 z-50 bg-dark px-4 py-3 flex items-center justify-between shadow-md">
@@ -89,7 +109,7 @@ export default function Navbar() {
         <button
           onClick={toggleLanguage}
           aria-label={`Cambiar idioma – ${t('toggle_lang')}`}
-          className="text-xs font-bold text-dark bg-yellow px-2 py-1 rounded"
+          className="text-xs font-bold text-dark bg-yellow px-3 rounded h-11 min-w-11"
         >
           {t('toggle_lang')}
         </button>
@@ -104,7 +124,8 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-dark/95 z-[1000] flex flex-col items-center justify-center gap-6"
+            id="mobile-menu"
+            className="fixed inset-0 bg-dark z-[1000] flex flex-col items-center justify-center gap-6 overflow-y-auto py-20"
           >
             {navLinks.map(({ key, href }, i) => (
               <motion.div

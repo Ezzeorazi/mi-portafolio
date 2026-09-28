@@ -64,7 +64,7 @@ export default function Footer() {
             <p className="text-light/75 text-sm leading-relaxed">
               {t('footer_brand_tagline')}
             </p>
-            <div className="flex gap-4 text-xl mt-1">
+            <div className="flex gap-1 text-xl mt-1 -ml-2.5">
               {socials.map((s) => (
                 <a
                   key={s.label}
@@ -72,7 +72,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="text-yellow hover:text-pink transition-colors duration-300"
+                  className="inline-flex items-center justify-center w-11 h-11 text-yellow hover:text-pink transition-colors duration-300"
                 >
                   {s.icon}
                 </a>
@@ -93,7 +93,7 @@ export default function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-light/75 text-sm hover:text-pink transition-colors duration-200"
+                    className="text-light/75 text-sm hover:text-pink transition-colors duration-200 py-1.5 sm:py-0"
                   >
                     {t(link.key)}
                   </a>
@@ -101,7 +101,7 @@ export default function Footer() {
                   <Link
                     key={link.key}
                     href={link.href}
-                    className="text-light/75 text-sm hover:text-pink transition-colors duration-200"
+                    className="text-light/75 text-sm hover:text-pink transition-colors duration-200 py-1.5 sm:py-0"
                   >
                     {t(link.key)}
                   </Link>

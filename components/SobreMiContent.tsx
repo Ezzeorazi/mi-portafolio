@@ -27,8 +27,8 @@ export default function SobreMiContent() {
           {t('about_bio')}
         </p>
         <div className="flex flex-wrap items-center gap-4 mb-12">
-          <span className="inline-flex items-center gap-2 text-green-600 font-medium text-sm">
-            <span className="inline-flex rounded-full h-2 w-2 bg-green-500" aria-hidden="true" />
+          <span className="flex items-start gap-2 text-green-600 font-medium text-sm">
+            <span className="mt-1.5 shrink-0 rounded-full h-2 w-2 bg-green-500" aria-hidden="true" />
             {t('about_availability')}
           </span>
           <a

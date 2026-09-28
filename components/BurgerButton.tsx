@@ -9,8 +9,10 @@ export default function BurgerButton({ isOpen, onClick }: BurgerButtonProps) {
   return (
     <button
       onClick={onClick}
-      aria-label="Toggle menu"
-      className="flex flex-col justify-center items-center w-8 h-8 gap-[5px] z-[1100] md:hidden"
+      aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
+      aria-expanded={isOpen}
+      aria-controls="mobile-menu"
+      className="flex flex-col justify-center items-center w-11 h-11 gap-[5px] z-[1100]"
     >
       <span
         className={`block w-7 h-[3px] bg-yellow transition-all duration-300 ${

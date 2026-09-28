@@ -1,12 +1,12 @@
 'use client';
 import Link from 'next/link';
-import { FaFileDownload, FaGithub, FaLinkedin, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaFileDownload, FaGithub, FaIdCard, FaLinkedin, FaMapMarkerAlt } from 'react-icons/fa';
 import ScrollReveal from './ScrollReveal';
 import { useTranslation } from '@/hooks/useTranslation';
 
-export const CV_PDF = '/pdf/Ezequiel_Orazi-CV.pdf';
-export const LINKEDIN_URL = 'https://www.linkedin.com/in/ezequiel-orazi32/';
-export const GITHUB_URL = 'https://github.com/Ezzeorazi';
+import { CV_PDF, GITHUB_URL, LINKEDIN_URL } from '@/lib/links';
+
+export { CV_PDF, GITHUB_URL, LINKEDIN_URL };
 
 export default function CurriculumHeader() {
   const { t } = useTranslation();
@@ -23,9 +23,14 @@ export default function CurriculumHeader() {
 
         <p className="text-light/80 text-sm md:text-base leading-relaxed">{t('cv_summary')}</p>
 
-        <p className="inline-flex items-center gap-2 text-green-400 font-medium text-sm">
-          <span className="inline-flex rounded-full h-2 w-2 bg-green-400" aria-hidden="true" />
+        <p className="flex items-start gap-2 text-green-400 font-medium text-sm">
+          <span className="mt-1.5 shrink-0 rounded-full h-2 w-2 bg-green-400" aria-hidden="true" />
           {t('cv_availability')}
+        </p>
+
+        <p className="flex items-start gap-2 text-light/70 text-sm border border-yellow/20 rounded-lg px-4 py-3">
+          <FaIdCard className="mt-0.5 shrink-0 text-yellow" aria-hidden="true" />
+          {t('cv_work_permit')}
         </p>
 
         <div className="flex flex-wrap gap-3">

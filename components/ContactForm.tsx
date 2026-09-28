@@ -160,8 +160,8 @@ export default function ContactForm() {
               <span className="text-light">Playa del Carmen, Quintana Roo, México</span>
             </div>
             <div className="flex flex-col gap-1">
-              <span className="inline-flex items-center gap-2 text-green-400 font-medium">
-                <span className="inline-flex rounded-full h-2 w-2 bg-green-400" aria-hidden="true" />
+              <span className="flex items-start gap-2 text-green-400 font-medium">
+                <span className="mt-1.5 shrink-0 rounded-full h-2 w-2 bg-green-400" aria-hidden="true" />
                 {t('contact_available')}
               </span>
               <span className="text-light/60 text-xs">{t('contact_response')}</span>

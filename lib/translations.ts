@@ -85,6 +85,7 @@ const translations: Record<Language, Record<string, string>> = {
       'Desarrollo sitios y aplicaciones web para negocios de América Latina: desde landing pages hasta sistemas con base de datos y modelos de Machine Learning en producción. Antes de programar lideré un taller de maquinaria pesada durante cinco años y administré plataformas e-commerce durante tres, así que sé trabajar con clientes, plazos y equipos.',
     cv_location: 'Playa del Carmen, México · 100% remoto',
     cv_availability: 'Disponible para empleo remoto y proyectos freelance',
+    cv_work_permit: 'Residente Temporal en México con permiso para trabajar · vigente hasta junio de 2027',
     cv_download: 'Descargar CV (PDF)',
     cv_contact: 'Contactarme',
 
@@ -330,6 +331,7 @@ const translations: Record<Language, Record<string, string>> = {
       'I build websites and web applications for Latin American businesses: from landing pages to database-backed systems and Machine Learning models in production. Before programming I led a heavy machinery workshop for five years and managed e-commerce platforms for three, so I know how to work with clients, deadlines and teams.',
     cv_location: 'Playa del Carmen, Mexico · 100% remote',
     cv_availability: 'Open to remote roles and freelance projects',
+    cv_work_permit: 'Temporary Resident in Mexico with a valid work permit · through June 2027',
     cv_download: 'Download resume (PDF)',
     cv_contact: 'Contact me',
 
