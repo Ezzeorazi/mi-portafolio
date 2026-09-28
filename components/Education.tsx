@@ -2,7 +2,25 @@
 import ScrollReveal from './ScrollReveal';
 import { useTranslation } from '@/hooks/useTranslation';
 
-const educationEs = [
+interface EducationItem {
+  id: number;
+  institution: string;
+  degree: string;
+  /** Ausente en las carreras en curso de las que no publicamos fecha de inicio. */
+  startDate?: string;
+  endDate?: string;
+  endDateKey?: string;
+  description: string;
+}
+
+const educationEs: EducationItem[] = [
+  {
+    id: 0,
+    institution: 'Universidad Siglo 21',
+    degree: 'Licenciatura en Administración de Empresas',
+    description:
+      'Carrera en curso. Administración, finanzas y gestión de operaciones, que aplico tanto en la dirección de Caliber 3D como en el trato comercial con los clientes de mis proyectos web.',
+  },
   {
     id: 1,
     institution: 'Udemy',
@@ -50,7 +68,14 @@ const educationEs = [
   },
 ];
 
-const educationEn = [
+const educationEn: EducationItem[] = [
+  {
+    id: 0,
+    institution: 'Universidad Siglo 21',
+    degree: "Bachelor's Degree in Business Administration",
+    description:
+      'Degree in progress. Administration, finance and operations management, which I apply both to running Caliber 3D and to the commercial side of my web projects.',
+  },
   {
     id: 1,
     institution: 'Udemy',
@@ -114,7 +139,8 @@ export default function Education() {
               <h3 className="text-yellow font-bold text-lg">{edu.institution}</h3>
               <p className="text-light font-medium text-sm mt-1">{edu.degree}</p>
               <p className="text-light/60 text-sm mt-1">
-                {edu.startDate} — {(edu as { endDate?: string }).endDate ?? t('edu_in_progress')}
+                {edu.startDate ? `${edu.startDate} — ` : ''}
+                {edu.endDate ?? t('edu_in_progress')}
               </p>
               <p className="text-light/80 text-sm mt-3 leading-relaxed">{edu.description}</p>
             </div>

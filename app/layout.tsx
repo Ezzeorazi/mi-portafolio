@@ -108,7 +108,12 @@ const jsonLd = {
     addressCountry: 'MX',
   },
   knowsAbout: ['Next.js', 'TypeScript', 'Tailwind CSS', 'React', 'Node.js', 'PostgreSQL', 'Supabase', 'Python', 'Machine Learning', 'SEO', 'AEO', 'E-commerce', 'Strapi', 'Sanity CMS', 'JavaScript', 'HTML', 'CSS'],
-  alumniOf: { '@type': 'EducationalOrganization', name: 'Neoris Labs' },
+  alumniOf: [
+    { '@type': 'CollegeOrUniversity', name: 'Universidad Siglo 21' },
+    { '@type': 'CollegeOrUniversity', name: 'Universidad de Rosario' },
+    { '@type': 'EducationalOrganization', name: 'Neoris Labs' },
+    { '@type': 'EducationalOrganization', name: 'Devschool Academy' },
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

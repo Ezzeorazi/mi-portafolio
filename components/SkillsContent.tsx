@@ -131,6 +131,7 @@ const certificationsEs = [
   { text: 'Programa Neoris Labs', detail: 'Java, Spring Boot y React (2024)' },
   { text: 'Curso Master en Elementor y WordPress', detail: 'Udemy (2024)' },
   { text: 'Certificación en Desarrollo Fullstack (Stack MERN)', detail: 'Devschool Academy (2023)' },
+  { text: 'Licenciatura en Administración de Empresas', detail: 'Universidad Siglo 21 (en curso)' },
   { text: 'Licenciatura en Comunicación Social', detail: 'Universidad de Rosario (2011–2014)' },
 ];
 
@@ -140,6 +141,7 @@ const certificationsEn = [
   { text: 'Neoris Labs Program', detail: 'Java, Spring Boot and React (2024)' },
   { text: 'Master Course in Elementor and WordPress', detail: 'Udemy (2024)' },
   { text: 'Fullstack Development Certification (MERN Stack)', detail: 'Devschool Academy (2023)' },
+  { text: "Bachelor's Degree in Business Administration", detail: 'Universidad Siglo 21 (in progress)' },
   { text: "Bachelor's Degree in Social Communication", detail: 'Universidad de Rosario (2011–2014)' },
 ];
 
