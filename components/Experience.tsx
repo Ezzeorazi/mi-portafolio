@@ -25,13 +25,13 @@ const experiencesEs = [
   },
   {
     id: 3,
-    company: 'Watchman',
-    role: 'Guardia de seguridad',
+    company: 'Bolsa de Comercio de Rosario',
+    role: 'Auxiliar administrativo y control de accesos',
     startDate: 'Noviembre 2024',
     endDate: 'Noviembre 2025',
     description:
-      'Trabajo complementario mientras consolidaba Caliber 3D y mis proyectos web freelance. Monitoreo de sistemas de videovigilancia, registro de incidencias y reportes en Excel.',
-    technologies: ['Videovigilancia', 'Excel'],
+      'Trabajo complementario mientras consolidaba Caliber 3D y mis proyectos web freelance. Confección de credenciales de acceso, captura y actualización de bases de datos de control de accesos, validación de pólizas y padrón de proveedores, y resguardo de documentación confidencial.',
+    technologies: ['Control de accesos', 'Gestión documental', 'Excel'],
   },
   {
     id: 4,
@@ -45,23 +45,23 @@ const experiencesEs = [
   },
   {
     id: 5,
-    company: 'Division Profesional Centro SA',
-    role: 'Especialista administrativo',
+    company: 'Pinturerías del Centro',
+    role: 'Encargado administrativo y atención al cliente',
     startDate: 'Octubre 2020',
     endDate: 'Septiembre 2023',
     description:
-      'Desarrollo y mantenimiento de relaciones con clientes, asesoramiento personalizado, administración de plataformas VTEX y WordPress. Trabajo colaborativo con equipos diversos.',
-    technologies: ['VTEX', 'WordPress', 'Excel', 'Word', 'Meridiano Soft'],
+      'Comercio de pinturas, materiales de construcción y acabados. Control de stock y conciliación de existencias, presupuestos y cotizaciones, facturación y control de pagos a proveedores, y coordinación del personal del local. Llevé además la tienda online sobre VTEX y el sitio en WordPress, aplicando SEO para aumentar el tráfico.',
+    technologies: ['VTEX', 'WordPress', 'SEO', 'Excel', 'Meridiano Soft'],
   },
   {
     id: 6,
-    company: 'Leiten SRL',
-    role: 'Jefe de taller',
+    company: 'Leiten Argentina',
+    role: 'Administración de materiales y coordinación en obra',
     startDate: 'Mayo 2015',
     endDate: 'Septiembre 2020',
     description:
-      'Liderazgo de equipos para proyectos de reparación de maquinaria pesada. Implementación de tecnologías para mejorar eficiencia, planificación y monitoreo de proyectos con herramientas digitales.',
-    technologies: ['Tango Gestión', 'Excel', 'Word', 'PLC'],
+      'Administración y control de inventario de materiales, repuestos y equipos para maquinaria de construcción: requisiciones, entradas y salidas. Elaboración de presupuestos, conciliación con proveedores y facturación. Asignación y traslado de operarios y maquinaria a obra, y capacitación en uso seguro de equipos.',
+    technologies: ['Tango Gestión', 'Excel', 'Control de inventario', 'PLC'],
   },
 ];
 
@@ -88,13 +88,13 @@ const experiencesEn = [
   },
   {
     id: 3,
-    company: 'Watchman',
-    role: 'Security Guard',
+    company: 'Bolsa de Comercio de Rosario',
+    role: 'Administrative Assistant and Access Control',
     startDate: 'November 2024',
     endDate: 'November 2025',
     description:
-      'Side job while consolidating Caliber 3D and my freelance web projects. Video surveillance monitoring, incident logging and reporting in Excel.',
-    technologies: ['Video Surveillance', 'Excel'],
+      'Side job while consolidating Caliber 3D and my freelance web projects. Access credential issuing, data entry and upkeep of access-control databases, insurance policy and supplier registry validation, and safekeeping of confidential documentation.',
+    technologies: ['Access Control', 'Document Management', 'Excel'],
   },
   {
     id: 4,
@@ -108,23 +108,23 @@ const experiencesEn = [
   },
   {
     id: 5,
-    company: 'Division Profesional Centro SA',
-    role: 'Administrative Specialist',
+    company: 'Pinturerías del Centro',
+    role: 'Administrative Supervisor and Customer Service',
     startDate: 'October 2020',
     endDate: 'September 2023',
     description:
-      'Client relationship development and maintenance, personalized consulting, VTEX and WordPress platform administration. Collaborative work with diverse teams.',
-    technologies: ['VTEX', 'WordPress', 'Excel', 'Word', 'Meridiano Soft'],
+      'Paint, construction materials and finishes retailer. Stock control and inventory reconciliation, quotes and budgets, invoicing and supplier payment control, and store staff coordination. I also ran the online store on VTEX and the WordPress site, applying SEO to grow traffic.',
+    technologies: ['VTEX', 'WordPress', 'SEO', 'Excel', 'Meridiano Soft'],
   },
   {
     id: 6,
-    company: 'Leiten SRL',
-    role: 'Workshop Manager',
+    company: 'Leiten Argentina',
+    role: 'Materials Administration and Site Coordination',
     startDate: 'May 2015',
     endDate: 'September 2020',
     description:
-      'Team leadership for heavy machinery repair projects. Implementation of technologies to improve efficiency, project planning and monitoring with digital tools.',
-    technologies: ['Tango Gestión', 'Excel', 'Word', 'PLC'],
+      'Administration and inventory control of materials, spare parts and equipment for construction machinery: requisitions, stock in and out. Budgeting, supplier reconciliation and invoicing. Assignment and transport of workers and machinery to sites, and training on safe equipment use.',
+    technologies: ['Tango Gestión', 'Excel', 'Control de inventario', 'PLC'],
   },
 ];
 

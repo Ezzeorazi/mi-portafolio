@@ -128,21 +128,21 @@ const skillGroupsEn: SkillGroup[] = [
 const certificationsEs = [
   { text: 'Enterprise Systems (ERP y SAP)', detail: 'Universidad de Minnesota — Coursera (2025)' },
   { text: 'Machine Learning con Python', detail: 'Udemy (2025, en curso)' },
-  { text: 'Programa Neoris Labs', detail: 'Java, Spring Boot y React (2024)' },
+  { text: 'Programa Neoris Labs', detail: 'Java, Spring Boot y React (ago–oct 2024)' },
   { text: 'Curso Master en Elementor y WordPress', detail: 'Udemy (2024)' },
-  { text: 'Certificación en Desarrollo Fullstack (Stack MERN)', detail: 'Devschool Academy (2023)' },
-  { text: 'Licenciatura en Administración de Empresas', detail: 'Universidad Siglo 21 (en curso)' },
-  { text: 'Licenciatura en Comunicación Social', detail: 'Universidad de Rosario (2011–2014)' },
+  { text: 'Certificación en Desarrollo Fullstack (Stack MERN)', detail: 'Devschool Academy (2021–2023)' },
+  { text: 'Licenciatura en Administración de Empresas', detail: 'Universidad Siglo 21 (en curso, 3 años cursados)' },
+  { text: 'Licenciatura en Comunicación Social', detail: 'Universidad Nacional de Rosario (2011–2015)' },
 ];
 
 const certificationsEn = [
   { text: 'Enterprise Systems (ERP & SAP)', detail: 'University of Minnesota — Coursera (2025)' },
   { text: 'Machine Learning with Python', detail: 'Udemy (2025, in progress)' },
-  { text: 'Neoris Labs Program', detail: 'Java, Spring Boot and React (2024)' },
+  { text: 'Neoris Labs Program', detail: 'Java, Spring Boot and React (Aug–Oct 2024)' },
   { text: 'Master Course in Elementor and WordPress', detail: 'Udemy (2024)' },
-  { text: 'Fullstack Development Certification (MERN Stack)', detail: 'Devschool Academy (2023)' },
-  { text: "Bachelor's Degree in Business Administration", detail: 'Universidad Siglo 21 (in progress)' },
-  { text: "Bachelor's Degree in Social Communication", detail: 'Universidad de Rosario (2011–2014)' },
+  { text: 'Fullstack Development Certification (MERN Stack)', detail: 'Devschool Academy (2021–2023)' },
+  { text: "Bachelor's Degree in Business Administration", detail: 'Universidad Siglo 21 (in progress, 3 years completed)' },
+  { text: "Bachelor's Degree in Social Communication", detail: 'Universidad Nacional de Rosario (2011–2015)' },
 ];
 
 export default function SkillsContent() {
