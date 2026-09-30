@@ -773,6 +773,32 @@ const posts: Post[] = [
       },
     ],
   },
+  {
+    id: 45,
+    slug: 'noticias-tech-2026-09-30',
+    image: 'images/blog/noticias-tech-2026-09-30.svg',
+    title: "Coches Híbridos Chinos y el F/A-XX: El Resumen Tech de la Semana",
+    category: 'Noticias',
+    description: "Análisis semanal de noticias tech: Boeing gana el contrato del F/A-XX, el impacto de los híbridos chinos en el mercado automotriz, la duración de Avengers…",
+    date: 'Publicado el 30 de septiembre de 2026',
+    ReadingTime: '7 min de lectura',
+    publishedISO: '2026-09-30',
+    content: 'blog/noticias-tech-2026-09-30.html',
+    faq: [
+      {
+        q: "¿Qué empresa desarrollará el nuevo caza de sexta generación para la Armada de EE.UU.?",
+        a: "Boeing fue la empresa adjudicada por la Armada de los Estados Unidos para desarrollar el F/A-XX, su caza embarcado de sexta generación. Este avión reemplazará al F/A-18E/F Super Hornet y complementará al F-35C a partir de 2030.",
+      },
+      {
+        q: "¿Cómo han impactado los coches híbridos chinos en el mercado automotriz en 2026?",
+        a: "La entrada masiva de coches híbridos chinos ha reconfigurado profundamente el mercado automotriz en 2026, especialmente en España. Se ha observado un aumento significativo en las ventas de coches eléctricos e híbridos enchufables, permitiendo a las marcas chinas consolidar su presencia.",
+      },
+      {
+        q: "¿Microsoft planea vender o escindir su negocio de Xbox?",
+        a: "No, la jefa de gaming de Microsoft, Asha Sharma, ha negado los informes que sugerían que la compañía estaba considerando vender o escindir su negocio de Xbox. Afirmó que hubo apoyo a sus planes para reformar la unidad.",
+      },
+    ],
+  },
 ];
 
 export default posts;
