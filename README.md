@@ -84,6 +84,27 @@ Todos son `POST`, corren con runtime `nodejs` y `dynamic = 'force-dynamic'`.
 | `/api/security-scan` | `/analisis-seguridad` | Revisa cabeceras de seguridad, TLS y exposiciones comunes |
 | `/api/tools/serp-farm/analyze` | `/detector-de-bots` | Valida y encola el análisis en Postgres, y dispara el worker de GitHub Actions (`repository_dispatch`). Rate limit: 3 análisis por email e IP cada 24 h |
 
+### Cómo se procesa un análisis del detector de bots
+
+1. `/detector-de-bots` manda el keyword a `/api/tools/serp-farm/analyze`, que lo valida
+   y lo encola en Postgres.
+2. La API dispara el worker con un `repository_dispatch` a GitHub Actions. **Necesita
+   `GITHUB_DISPATCH_TOKEN` en Netlify**: sin ese token el análisis se encola igual, pero
+   nadie despierta al worker.
+3. Como red de seguridad, el workflow también corre por cron cada 10 minutos. GitHub
+   demora bastante los cron (en este repo se midieron retrasos de 2 a 6 horas), así que
+   el cron evita que un informe se pierda, no que tarde.
+4. El worker levanta el job, corre el pipeline y manda el informe por email con Resend.
+
+Para saber si un token sirve antes de cargarlo en Netlify:
+
+```bash
+node scripts/probar-dispatch.mjs <token>
+```
+
+Hace la misma llamada que el sitio y dice qué contestó GitHub (401 = token inválido,
+403 = sin permisos, 404 = el fine-grained token no tiene acceso a este repo, 204 = ok).
+
 ### Archivos servidos desde `public/`
 
 | Ruta | Qué es |
