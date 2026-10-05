@@ -26,9 +26,17 @@ WEIGHTS: dict[str, float] = {
     "thin_content": 10,
     "ad_density": 10,
     # Coordinación (las más importantes)
-    "shared_ip": 30,
+    # shared_tracker es la más fuerte del set: el mismo ID de AdSense o Analytics en dos
+    # dominios distintos no es una coincidencia, es la misma cuenta cobrando.
+    "shared_tracker": 35,
+    # shared_ip valía 30 cuando una PBN vivía en un shared hosting. Hoy, detrás de un
+    # CDN, la IP es del proveedor: se mantiene como indicio, ya no como prueba (y se
+    # anula del todo cuando el hosting es un CDN conocido, ver signals/coordination).
+    "shared_ip": 18,
     "shared_asn_and_registrar": 18,
     "template_twin": 25,
+    "shared_favicon": 12,
+    "shared_nameservers": 10,
     "registered_same_window": 15,
     # Negativas (legitimidad) — restan
     "established_domain": -20,
@@ -54,6 +62,9 @@ AD_DENSITY_SLOTS = 6            # > 6 slots de ads/afiliados
 
 # Coordinación
 SAME_WINDOW_DAYS = 30           # registrados con < 30 días de diferencia
+# Favicons tan comunes que compartirlos no prueba nada (defaults de CMS y frameworks).
+# Son hashes del contenido; se completan a medida que aparezcan falsos positivos.
+GENERIC_FAVICON_HASHES: set[str] = set()
 TEMPLATE_JACCARD = 0.85         # similitud de shingles para considerar gemelos
 TEMPLATE_MIN_SHINGLES = 30      # mínimo de shingles para comparar (evita páginas vacías)
 

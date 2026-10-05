@@ -43,9 +43,12 @@ _SIGNAL_LABELS = {
     "high_volume_publishing": "alto volumen de publicación",
     "thin_content": "contenido delgado",
     "ad_density": "alta densidad de ads",
+    "shared_tracker": "misma cuenta de publicidad/medición",
     "shared_ip": "IP compartida",
     "shared_asn_and_registrar": "mismo ASN + registrador",
     "template_twin": "template gemelo",
+    "shared_favicon": "mismo favicon",
+    "shared_nameservers": "mismos nameservers",
     "registered_same_window": "registro en la misma ventana",
     "established_domain": "dominio establecido",
     "identified_author": "autor identificable",
@@ -75,6 +78,12 @@ def build_context(
     doubtful = sum(1 for s in scored if s.classification == weights.CLASS_DOUBTFUL)
     clean = sum(1 for s in scored if s.classification == weights.CLASS_CLEAN)
     pct = round(100 * len(high) / total) if total else 0
+    # Sitios que no se dejaron leer (403 de un WAF anti-bot, timeouts). Sus señales de
+    # contenido quedan en blanco, así que el informe lo dice en vez de disimularlo:
+    # un porcentaje sobre datos parciales no se lee igual que uno completo.
+    unreachable = [
+        s.domain for s in scored if s.profile is not None and not s.profile.http_ok
+    ]
 
     results = [
         {
@@ -114,6 +123,8 @@ def build_context(
         "high": len(high),
         "doubtful": doubtful,
         "clean": clean,
+        "unreachable": unreachable,
+        "unreachable_count": len(unreachable),
         "networks": nets,
         "results": results,
         "site_name": settings.SITE_NAME,

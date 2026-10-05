@@ -33,6 +33,8 @@ def score_profile(p: DomainProfile, ctx: ScoringContext) -> ScoredDomain:
     signals = [fn(p, ctx) for fn in ALL_SIGNALS]
     triggered = [s for s in signals if s.triggered]
     raw = sum(s.weight for s in triggered)
+    # El clamp es solo para mostrar: un 0 puede ser "sin señales" o "-40 de legitimidad",
+    # y para ordenar y comparar hace falta distinguirlos. `raw_score` conserva el margen.
     score = max(0, min(100, round(raw)))
     return ScoredDomain(
         domain=p.domain,
@@ -53,7 +55,9 @@ def analyze(profiles: list[DomainProfile]) -> tuple[list[ScoredDomain], ScoringC
     """
     ctx = build_context(profiles)
     scored = [score_profile(p, ctx) for p in profiles]
-    scored.sort(key=lambda s: s.score, reverse=True)
+    # Se ordena por el score sin clampear: entre dos dominios en 0, primero el que
+    # apenas lo logró y después el que acumuló legitimidad de sobra.
+    scored.sort(key=lambda s: s.raw_score, reverse=True)
     return scored, ctx
 
 

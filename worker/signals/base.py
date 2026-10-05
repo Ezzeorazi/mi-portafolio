@@ -10,7 +10,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from itertools import combinations
 
-from ..config import weights
+from ..config import settings, weights
 from ..models import DomainProfile, _as_utc
 
 
@@ -36,6 +36,25 @@ class ScoringContext:
     by_asn_registrar: dict[tuple[str, str], list[str]] = field(default_factory=dict)
     template_twins: dict[str, set[str]] = field(default_factory=dict)
     same_window: dict[str, set[str]] = field(default_factory=dict)
+    # Huella de propietario: id de monetización/medición → dominios que lo usan.
+    by_tracker: dict[str, list[str]] = field(default_factory=dict)
+    by_favicon: dict[str, list[str]] = field(default_factory=dict)
+    # Clave: set de nameservers propios (ya filtrados los de proveedores masivos).
+    by_nameservers: dict[tuple[str, ...], list[str]] = field(default_factory=dict)
+
+
+def own_nameservers(profile: DomainProfile) -> tuple[str, ...]:
+    """Nameservers del dominio, descartando los de proveedores masivos.
+
+    Compartir ns1.cloudflare.com no dice absolutamente nada; compartir los dos
+    nameservers de un VPS cualquiera sí.
+    """
+    own = [
+        ns
+        for ns in profile.nameservers
+        if not any(hint in ns for hint in settings.GENERIC_NS_HINTS)
+    ]
+    return tuple(sorted(own))
 
 
 def _jaccard(a: set[str], b: set[str]) -> float:
@@ -70,6 +89,16 @@ def build_context(profiles: list[DomainProfile]) -> ScoringContext:
         if sim >= weights.TEMPLATE_JACCARD:
             ctx.template_twins[a.domain].add(b.domain)
             ctx.template_twins[b.domain].add(a.domain)
+
+    # Huella de propietario común: mismo id de AdSense/Analytics/Pixel, o mismo favicon.
+    for p in profiles:
+        for tracker in p.tracker_ids:
+            ctx.by_tracker.setdefault(tracker, []).append(p.domain)
+        if p.favicon_hash and p.favicon_hash not in weights.GENERIC_FAVICON_HASHES:
+            ctx.by_favicon.setdefault(p.favicon_hash, []).append(p.domain)
+        own_ns = own_nameservers(p)
+        if own_ns:
+            ctx.by_nameservers.setdefault(own_ns, []).append(p.domain)
 
     # Registrados dentro de una ventana chica entre sí. Se normaliza a UTC por si alguna
     # fecha llega naive (ej. reconstruida desde Postgres) y otra aware (recién parseada).

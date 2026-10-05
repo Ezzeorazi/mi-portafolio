@@ -93,11 +93,17 @@ def _to_result_dict(
         "clean": sum(1 for s in scored if s.classification == weights.CLASS_CLEAN),
         "doubtful": sum(1 for s in scored if s.classification == weights.CLASS_DOUBTFUL),
         "high": high,
+        # Cuántos de esos dominios se pudieron leer de verdad (el resto devolvió 403 o
+        # no respondió): sin este dato el porcentaje parece más sólido de lo que es.
+        "unreachable": sum(
+            1 for s in scored if s.profile is not None and not s.profile.http_ok
+        ),
         "results": [
             {
                 "domain": s.domain,
                 "positions": s.positions,
                 "score": s.score,
+                "rawScore": round(s.raw_score),
                 "classification": s.classification,
                 "signals": [
                     {"name": sig.name, "weight": sig.weight, "evidence": sig.evidence}

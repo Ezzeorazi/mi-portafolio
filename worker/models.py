@@ -54,6 +54,15 @@ class DomainProfile:
     ip: str | None = None
     asn: str | None = None
     org: str | None = None
+    is_cdn: bool = False  # la IP es de un CDN/proxy → compartirla no significa nada
+    nameservers: list[str] = field(default_factory=list)  # del RDAP, normalizados
+
+    # ── Huella de propietario común ──────────────────────────────────────────
+    # IDs de monetización/medición embebidos en el HTML (ca-pub-…, G-…, UA-…, GTM-…).
+    # Dos dominios con el mismo ID son la misma cuenta: la evidencia más fuerte que
+    # se puede sacar sin pagar nada.
+    tracker_ids: list[str] = field(default_factory=list)
+    favicon_hash: str | None = None
 
     # ── Publicación (sitemap) ────────────────────────────────────────────────
     sitemap_urls: int | None = None
@@ -114,6 +123,10 @@ class DomainProfile:
                 "dom_shingles": self.dom_shingles,
                 "http_ok": self.http_ok,
                 "errors": self.errors,
+                "is_cdn": self.is_cdn,
+                "nameservers": self.nameservers,
+                "tracker_ids": self.tracker_ids,
+                "favicon_hash": self.favicon_hash,
             },
         }
 
@@ -148,6 +161,12 @@ class DomainProfile:
         p.ad_slots = raw.get("ad_slots")
         p.dom_shingles = raw.get("dom_shingles") or []
         p.http_ok = raw.get("http_ok", False)
+        # Campos agregados después de los primeros perfiles cacheados: los que ya están
+        # en la caché no los tienen, y quedan en su default hasta que expire el TTL.
+        p.is_cdn = raw.get("is_cdn", False)
+        p.nameservers = raw.get("nameservers") or []
+        p.tracker_ids = raw.get("tracker_ids") or []
+        p.favicon_hash = raw.get("favicon_hash")
         return p
 
     def as_console_dict(self) -> dict[str, Any]:

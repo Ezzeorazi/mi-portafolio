@@ -12,10 +12,83 @@ from .base import ScoringContext, Signal, make
 
 
 def shared_ip(p: DomainProfile, ctx: ScoringContext) -> Signal:
-    others = [d for d in ctx.by_ip.get(p.ip or "", []) if d != p.domain]
+    # Detrás de un CDN la IP es del proveedor: compartirla no dice nada del dueño del
+    # sitio, ni en un sentido ni en el otro. Antes esto sumaba 30 puntos por estar los
+    # dos en el borde de Cloudflare, que es la mitad de la web.
+    if p.is_cdn:
+        return make("shared_ip", False)
+    others = [
+        d
+        for d in ctx.by_ip.get(p.ip or "", [])
+        if d != p.domain and not _is_cdn(ctx, d)
+    ]
     triggered = bool(others)
     ev = f"IP {p.ip} compartida con {', '.join(others)}" if triggered else ""
     return make("shared_ip", triggered, ev)
+
+
+def _is_cdn(ctx: ScoringContext, domain: str) -> bool:
+    for other in ctx.profiles:
+        if other.domain == domain:
+            return other.is_cdn
+    return False
+
+
+def shared_tracker(p: DomainProfile, ctx: ScoringContext) -> Signal:
+    """Mismo id de AdSense / Analytics / Tag Manager / Pixel / Amazon que otro dominio.
+
+    La señal más fuerte del set: no es que dos sitios se parezcan, es que los cobra o
+    los mide la misma cuenta. Sobrevive a cambiar hosting, registrador y plantilla.
+    """
+    hits: list[str] = []
+    for tracker in p.tracker_ids:
+        others = [d for d in ctx.by_tracker.get(tracker, []) if d != p.domain]
+        if others:
+            hits.append(f"{_tracker_label(tracker)} con {', '.join(sorted(others))}")
+    triggered = bool(hits)
+    return make("shared_tracker", triggered, "; ".join(hits) if triggered else "")
+
+
+_TRACKER_LABELS = {
+    "adsense": "mismo id de AdSense",
+    "ga4": "mismo id de Analytics",
+    "ua": "mismo id de Analytics",
+    "gtm": "mismo contenedor de Tag Manager",
+    "fbpixel": "mismo pixel de Meta",
+    "amazon": "mismo id de afiliado de Amazon",
+}
+
+
+def _tracker_label(tracker: str) -> str:
+    kind, _, value = tracker.partition(":")
+    return f"{_TRACKER_LABELS.get(kind, kind)} ({value})"
+
+
+def shared_favicon(p: DomainProfile, ctx: ScoringContext) -> Signal:
+    """Favicon byte a byte idéntico al de otro dominio del set."""
+    others = [
+        d for d in ctx.by_favicon.get(p.favicon_hash or "", []) if d != p.domain
+    ]
+    triggered = bool(others)
+    ev = f"favicon idéntico al de {', '.join(sorted(others))}" if triggered else ""
+    return make("shared_favicon", triggered, ev)
+
+
+def shared_nameservers(p: DomainProfile, ctx: ScoringContext) -> Signal:
+    """Mismos nameservers propios (los de proveedores masivos ya se filtraron)."""
+    from .base import own_nameservers
+
+    own = own_nameservers(p)
+    if not own:
+        return make("shared_nameservers", False)
+    others = [d for d in ctx.by_nameservers.get(own, []) if d != p.domain]
+    triggered = bool(others)
+    ev = (
+        f"mismos nameservers ({', '.join(own)}) que {', '.join(sorted(others))}"
+        if triggered
+        else ""
+    )
+    return make("shared_nameservers", triggered, ev)
 
 
 def shared_asn_and_registrar(p: DomainProfile, ctx: ScoringContext) -> Signal:

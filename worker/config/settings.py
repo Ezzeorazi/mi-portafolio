@@ -36,6 +36,35 @@ IPINFO_URL = "https://ipinfo.io/{ip}/json"
 
 # Límites para no descargar sitios enormes.
 MAX_HTML_BYTES = 2_000_000  # ~2MB
+MAX_FAVICON_BYTES = 200_000  # el favicon se hashea entero; 200KB sobra
+
+# ── Huella de propietario común ───────────────────────────────────────────────
+# Rutas candidatas del favicon cuando el HTML no declara <link rel="icon">.
+FAVICON_DEFAULT_PATHS = ("/favicon.ico", "/favicon.png")
+
+# Nameservers de proveedores masivos: compartirlos no dice nada (medio internet usa
+# Cloudflare). Solo los NS fuera de esta lista sirven como indicio de dueño común.
+GENERIC_NS_HINTS = (
+    "cloudflare", "godaddy", "domaincontrol", "namecheap", "registrar-servers",
+    "awsdns", "azure-dns", "googledomains", "google.com", "digitalocean",
+    "hostinger", "hostgator", "bluehost", "siteground", "wixdns", "wordpress.com",
+    "squarespacedns", "shopify", "dnsimple", "name.com", "nsone", "ultradns",
+    "dynadot", "porkbun", "vercel-dns", "netlify", "ovh.net", "ionos",
+)
+
+# ── CDN / proxies ─────────────────────────────────────────────────────────────
+# Detrás de un CDN la IP es del proveedor, no del sitio: dos dominios sin relación
+# pueden compartirla y dos dominios de la misma granja pueden no compartirla. Cuando
+# el ASN/organización matchea acá, la señal de IP compartida se anula por inservible.
+# Solo CDN/proxy de verdad. Las nubes de propósito general (AWS, GCP, Azure) quedan
+# AFUERA a propósito: ahí la IP sí suele ser del sitio, y es donde vive el hosting
+# barato de una granja. Meterlas apagaba la señal justo donde todavía sirve.
+CDN_ORG_HINTS = (
+    "cloudflare", "fastly", "akamai", "cloudfront", "incapsula", "imperva",
+    "sucuri", "stackpath", "bunny", "cdn77", "keycdn", "edgecast",
+    "verizon digital", "limelight", "azureedge", "azure front door",
+    "vercel", "netlify", "gcore", "ddos-guard", "qrator", "myracloud",
+)
 MAX_SITEMAP_BYTES = 5_000_000
 MAX_SITEMAP_CHILDREN = 10  # si hay sitemap index, cuántos hijos seguir
 SITEMAP_RECENT_WINDOW_DAYS = 30  # ventana para estimar posts/día

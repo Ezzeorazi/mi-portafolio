@@ -54,6 +54,13 @@
                   </td>
                 </tr>
               </table>
+              {% if unreachable_count %}
+              <div style="margin-top:12px; font-size:12px; line-height:1.5; color:rgba(240,238,237,0.55);">
+                {{ unreachable_count }} de {{ total }} sitios no se dejaron leer (bloqueo
+                anti-bot o sin respuesta): de esos solo se pudieron evaluar las señales
+                de dominio y hosting, no las de contenido.
+              </div>
+              {% endif %}
             </td>
           </tr>
 

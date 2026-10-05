@@ -29,9 +29,12 @@ ALL_SIGNALS: list[SignalFn] = [
     content.thin_content,
     content.ad_density,
     # Coordinación
+    coordination.shared_tracker,
     coordination.shared_ip,
     coordination.shared_asn_and_registrar,
     coordination.template_twin,
+    coordination.shared_favicon,
+    coordination.shared_nameservers,
     coordination.registered_same_window,
     # Negativas
     negative.established_domain,

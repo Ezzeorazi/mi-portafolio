@@ -2,8 +2,11 @@
 
 Construye un grafo sobre los dominios SOSPECHOSOS (no LIMPIO) y detecta redes como
 componentes conexos. Dos dominios se conectan si:
-  - comparten IP exacta, o
+  - comparten un id de monetización/medición (AdSense, Analytics, GTM, Pixel, Amazon), o
+  - comparten IP exacta y ninguno está detrás de un CDN, o
   - son template_twin (estructura HTML casi idéntica), o
+  - tienen el mismo favicon exacto, o
+  - comparten nameservers propios (no los de proveedores masivos), o
   - mismo ASN + mismo registrador + registrados con < 30 días de diferencia.
 
 Cada componente con 2+ nodos es una red detectada. Se restringe a sospechosos a propósito:
@@ -53,8 +56,11 @@ def build_networks(
     graph = nx.Graph()
     graph.add_nodes_from(suspect_domains)
 
+    _add_tracker_edges(graph, ctx, suspect_domains)
     _add_shared_ip_edges(graph, ctx, suspect_domains)
     _add_template_edges(graph, ctx, suspect_domains)
+    _add_favicon_edges(graph, ctx, suspect_domains)
+    _add_nameserver_edges(graph, ctx, suspect_domains)
     _add_asn_registrar_window_edges(graph, ctx, suspect_domains)
 
     networks: list[DetectedNetwork] = []
@@ -94,11 +100,38 @@ def _connect(graph: nx.Graph, a: str, b: str, reason: str, ip: str | None = None
         graph.add_edge(a, b, reasons={reason}, ips={ip} if ip else set())
 
 
-def _add_shared_ip_edges(graph, ctx: ScoringContext, suspects: set[str]) -> None:
-    for ip, domains in ctx.by_ip.items():
+def _add_tracker_edges(graph, ctx: ScoringContext, suspects: set[str]) -> None:
+    # El vínculo más fuerte: la misma cuenta cobrando o midiendo los dos sitios.
+    from .signals.coordination import _tracker_label
+
+    for tracker, domains in ctx.by_tracker.items():
         group = [d for d in domains if d in suspects]
         for a, b in combinations(group, 2):
+            _connect(graph, a, b, _tracker_label(tracker))
+
+
+def _add_shared_ip_edges(graph, ctx: ScoringContext, suspects: set[str]) -> None:
+    cdn_domains = {p.domain for p in ctx.profiles if p.is_cdn}
+    for ip, domains in ctx.by_ip.items():
+        # Dos sitios en el borde del mismo CDN no son una red, son dos clientes de
+        # Cloudflare. Conectarlos por eso llenaba el informe de redes inventadas.
+        group = [d for d in domains if d in suspects and d not in cdn_domains]
+        for a, b in combinations(group, 2):
             _connect(graph, a, b, f"misma IP {ip}", ip=ip)
+
+
+def _add_favicon_edges(graph, ctx: ScoringContext, suspects: set[str]) -> None:
+    for _, domains in ctx.by_favicon.items():
+        group = [d for d in domains if d in suspects]
+        for a, b in combinations(group, 2):
+            _connect(graph, a, b, "favicon idéntico")
+
+
+def _add_nameserver_edges(graph, ctx: ScoringContext, suspects: set[str]) -> None:
+    for ns, domains in ctx.by_nameservers.items():
+        group = [d for d in domains if d in suspects]
+        for a, b in combinations(group, 2):
+            _connect(graph, a, b, f"mismos nameservers ({', '.join(ns)})")
 
 
 def _add_template_edges(graph, ctx: ScoringContext, suspects: set[str]) -> None:
