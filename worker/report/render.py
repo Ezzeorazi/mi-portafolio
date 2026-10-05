@@ -57,6 +57,58 @@ _SIGNAL_LABELS = {
 }
 
 
+def _build_cta(keyword: str, pct: int, weak: int, total: int, networks: int) -> dict:
+    """Cierre del informe, redactado según lo que el análisis encontró.
+
+    Un informe que termina en "darse de baja" deja al lector sin paso siguiente. Lo
+    que sigue no es el mismo mensaje para todos: una SERP floja es una oportunidad de
+    posicionarse y una SERP sólida es un problema distinto, y conviene decirlo así.
+    """
+    from urllib.parse import quote
+
+    if networks:
+        grupos = (
+            "un grupo de sitios coordinados"
+            if networks == 1
+            else f"{networks} grupos de sitios coordinados"
+        )
+        titulo = (
+            "Hay una red operando en este keyword"
+            if networks == 1
+            else "Hay varias redes operando en este keyword"
+        )
+        texto = (
+            f"Detectamos {grupos} entre los resultados de «{keyword}». Compiten con "
+            "contenido en escala, no con calidad: es un hueco para un sitio bien hecho."
+        )
+    elif pct >= 30 or weak > total / 2:
+        titulo = "Esta primera página es más floja de lo que parece"
+        texto = (
+            f"{weak} de {total} resultados de «{keyword}» muestran señales de baja "
+            "calidad (sin autor, contenido delgado, publicación en escala). Rankear "
+            "acá es más barato de lo que sugiere el volumen."
+        )
+    else:
+        titulo = "¿Querés competir en este keyword?"
+        texto = (
+            f"Los resultados de «{keyword}» son sitios sólidos: acá no alcanza con "
+            "publicar, hace falta una estrategia de contenido y SEO técnico."
+        )
+
+    asunto = f"Vi el informe de «{keyword}» y quiero rankear ahí"
+    return {
+        "title": titulo,
+        "text": texto,
+        "whatsapp_url": (
+            f"https://wa.me/{settings.WHATSAPP_NUMBER}?text={quote(asunto)}"
+        ),
+        "contact_url": (
+            f"{settings.SITE_URL}{settings.CONTACT_PATH}"
+            f"?servicio={quote(f'SEO / contenido ({keyword})')}"
+        ),
+    }
+
+
 @dataclass
 class RenderedReport:
     subject: str
@@ -125,6 +177,9 @@ def build_context(
         "clean": clean,
         "unreachable": unreachable,
         "unreachable_count": len(unreachable),
+        "cta": _build_cta(
+            keyword, pct, len(high) + doubtful, total, len(networks)
+        ),
         "networks": nets,
         "results": results,
         "site_name": settings.SITE_NAME,

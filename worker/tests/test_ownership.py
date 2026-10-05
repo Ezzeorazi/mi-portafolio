@@ -334,3 +334,52 @@ def test_profiles_cached_before_these_fields_existed_still_load():
     assert p.favicon_hash is None
     assert p.nameservers == []
     assert p.is_cdn is False
+
+
+# ─── Cierre del informe ───────────────────────────────────────────────────────
+
+def test_cta_names_the_network_when_there_is_one():
+    from worker.report.render import _build_cta
+
+    cta = _build_cta("prestamos rapidos", pct=40, weak=3, total=10, networks=1)
+    assert "red" in cta["title"].lower()
+    assert "un grupo de sitios coordinados" in cta["text"]
+    assert "prestamos rapidos" in cta["text"]
+
+
+def test_cta_pluralizes_several_networks():
+    from worker.report.render import _build_cta
+
+    cta = _build_cta("k", pct=40, weak=3, total=10, networks=3)
+    assert "3 grupos de sitios coordinados" in cta["text"]
+    assert "redes" in cta["title"].lower()
+
+
+def test_cta_changes_message_for_a_strong_serp():
+    from worker.report.render import _build_cta
+
+    floja = _build_cta("k", pct=40, weak=6, total=10, networks=0)
+    solida = _build_cta("k", pct=0, weak=1, total=10, networks=0)
+    assert floja["title"] != solida["title"]
+    assert "floja" in floja["title"]
+    assert "sólidos" in solida["text"]
+
+
+def test_cta_links_are_usable():
+    from worker.report.render import _build_cta
+
+    cta = _build_cta("seguros de auto", pct=0, weak=0, total=5, networks=0)
+    assert cta["whatsapp_url"].startswith("https://wa.me/")
+    assert "seguros" in cta["whatsapp_url"]  # el keyword viaja en el mensaje
+    assert cta["contact_url"].startswith("https://")
+    assert "/contacto?servicio=" in cta["contact_url"]
+
+
+def test_report_html_includes_the_cta_buttons():
+    from worker.report.render import render_report
+
+    a = _farm("a.com", positions=[1], http_ok=True)
+    scored, _ = analyze([a])
+    html = render_report("prestamos", "mx-es", scored, []).html
+    assert "wa.me" in html
+    assert "Pedir presupuesto" in html

@@ -92,6 +92,11 @@ RESEND_FROM = (
     _os.environ.get("RESEND_FROM") or "Detector de Bots <onboarding@resend.dev>"
 )
 
+# Contacto para el cierre del informe. El mismo número y la misma ruta que usan las
+# otras dos herramientas del sitio, para que el camino sea uno solo.
+WHATSAPP_NUMBER = "529982017863"
+CONTACT_PATH = "/contacto"
+
 SITE_NAME = "Ezequiel Orazi"
 SITE_URL = "https://ezequiel-orazi.online"
 UNSUBSCRIBE_EMAIL = "ezequiel.orazi90@gmail.com"
