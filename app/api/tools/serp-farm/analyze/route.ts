@@ -70,9 +70,13 @@ function hashIp(ip: string): string {
 // (o no hay token configurado), no pasa nada: el cron de respaldo lo levanta igual.
 async function triggerWorker(): Promise<void> {
   const token = process.env.GITHUB_DISPATCH_TOKEN;
-  if (!token) return;
+  if (!token) {
+    // Sin token el análisis igual se encola, pero queda esperando al cron (hasta 6 h).
+    console.warn('[serp-farm] falta GITHUB_DISPATCH_TOKEN: el job espera al cron de respaldo');
+    return;
+  }
   try {
-    await fetch(`https://api.github.com/repos/${GITHUB_REPO}/dispatches`, {
+    const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/dispatches`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -82,8 +86,16 @@ async function triggerWorker(): Promise<void> {
       },
       body: JSON.stringify({ event_type: GITHUB_DISPATCH_EVENT }),
     });
+    // GitHub responde 204 si acepta el dispatch. Un 401/403/404 sale por acá: sin esto
+    // el fallo es invisible y parece que el worker nunca se entera del trabajo.
+    if (!res.ok) {
+      const detail = await res.text().catch(() => '');
+      console.error(
+        `[serp-farm] repository_dispatch rechazado (${res.status}): ${detail.slice(0, 300)}`
+      );
+    }
   } catch (err) {
-    console.error('repository_dispatch falló (usará el cron de respaldo):', err);
+    console.error('[serp-farm] repository_dispatch falló (usará el cron de respaldo):', err);
   }
 }
 
