@@ -189,8 +189,8 @@ def run_from_db() -> int:
     """Drena hasta MAX_JOBS_PER_RUN jobs PENDING de la cola.
 
     Se dispara en tiempo real vía repository_dispatch (cuando entra una consulta) y,
-    como respaldo, con un cron muy espaciado. Procesa varios por corrida —con pausas—
-    por si entraron juntos, sin acumular requests contra DuckDuckGo.
+    como red de seguridad, con el cron del workflow. Procesa varios por corrida —con
+    pausas— por si entraron juntos, sin acumular requests contra DuckDuckGo.
 
     Imports diferidos: el modo checkpoint no necesita psycopg ni DATABASE_URL.
     """
@@ -202,6 +202,10 @@ def run_from_db() -> int:
 
     processed = 0
     with db.connect() as conn:
+        rescatados = db.requeue_stale_running(conn)
+        if rescatados:
+            print(f"↻ {rescatados} job(s) colgados en RUNNING vueltos a la cola.")
+
         for _ in range(settings.MAX_JOBS_PER_RUN):
             job = db.claim_pending_job(conn)
             if not job:

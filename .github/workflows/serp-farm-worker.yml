@@ -1,14 +1,21 @@
 name: Detector de bots — worker (cola)
 
-# Reemplaza a un servidor always-on. Se dispara EN TIEMPO REAL cuando entra una consulta
-# (la API manda un repository_dispatch), así no hay polling cada pocos minutos.
-# El cron es solo un RESPALDO por si un disparo falla (GitHub caído, token vencido).
+# Reemplaza a un servidor always-on.
+#
+# Dos disparadores, a propósito:
+#  - repository_dispatch: instantáneo, lo manda la API al encolar una consulta. Depende
+#    de que GITHUB_DISPATCH_TOKEN esté cargado en Netlify; si falta o es inválido, no
+#    llega nada y no hay forma de notarlo desde acá.
+#  - schedule: la red de seguridad que hace que la herramienta funcione igual sin ese
+#    token. Estaba cada 6 horas, que es lo que tardaba en salir un informe cuando el
+#    disparo fallaba. Este repo es público, así que Actions no se cobra: cada 10 minutos
+#    no cuesta nada y vuelve aceptable el peor caso.
 on:
   repository_dispatch:
     types: [serp-farm-job]
   workflow_dispatch:
   schedule:
-    - cron: '0 */6 * * *' # respaldo: cada 6 horas
+    - cron: '*/10 * * * *'
 
 # Evita que dos corridas se solapen (igual el claim usa FOR UPDATE SKIP LOCKED).
 concurrency:

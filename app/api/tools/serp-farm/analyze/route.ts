@@ -67,12 +67,13 @@ function hashIp(ip: string): string {
 // ─── Disparo del worker (best-effort) ─────────────────────────────────────────
 
 // Gatilla el workflow de GitHub Actions para que procese el job al instante. Si falla
-// (o no hay token configurado), no pasa nada: el cron de respaldo lo levanta igual.
+// (o no hay token configurado), el cron del worker lo levanta en los próximos ~10 min:
+// el disparo acelera la respuesta, no es de lo que depende que la herramienta funcione.
 async function triggerWorker(): Promise<void> {
   const token = process.env.GITHUB_DISPATCH_TOKEN;
   if (!token) {
     // Sin token el análisis igual se encola, pero queda esperando al cron (hasta 6 h).
-    console.warn('[serp-farm] falta GITHUB_DISPATCH_TOKEN: el job espera al cron de respaldo');
+    console.warn('[serp-farm] falta GITHUB_DISPATCH_TOKEN: el job espera al cron (~10 min)');
     return;
   }
   try {
@@ -95,7 +96,7 @@ async function triggerWorker(): Promise<void> {
       );
     }
   } catch (err) {
-    console.error('[serp-farm] repository_dispatch falló (usará el cron de respaldo):', err);
+    console.error('[serp-farm] repository_dispatch falló (lo levanta el cron, ~10 min):', err);
   }
 }
 

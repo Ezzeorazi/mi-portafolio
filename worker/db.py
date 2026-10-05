@@ -70,6 +70,36 @@ def claim_pending_job(conn: Any) -> dict[str, Any] | None:
         }
 
 
+# Un job tarda minutos; el workflow se corta a los 10. Por encima de ese techo, un
+# RUNNING ya no es un job en curso sino el resto de una corrida que murió.
+STALE_RUNNING_MINUTES = 15
+
+
+def requeue_stale_running(conn: Any, older_than_minutes: int = STALE_RUNNING_MINUTES) -> int:
+    """Devuelve a la cola los jobs que quedaron colgados en RUNNING.
+
+    Si una corrida muere con un job reclamado (timeout del workflow, runner caído), ese
+    job se queda en RUNNING para siempre: ninguna corrida futura lo mira y el informe
+    no sale nunca, aunque la web ya le prometió al usuario que llegaba. Los que ya
+    agotaron los intentos pasan a FAILED en vez de volver a la cola.
+    """
+    with conn.cursor() as cur:
+        cur.execute(
+            """
+            UPDATE "SerpAnalysisJob"
+               SET status = (CASE WHEN attempts >= %s THEN 'FAILED' ELSE 'PENDING' END)::"SerpJobStatus",
+                   "errorMessage" = 'corrida interrumpida: el job quedó en RUNNING'
+             WHERE status = 'RUNNING'
+               AND "createdAt" < now() - make_interval(mins => %s)
+         RETURNING id;
+            """,
+            (MAX_ATTEMPTS, older_than_minutes),
+        )
+        rows = cur.fetchall()
+        conn.commit()
+        return len(rows)
+
+
 def mark_done(conn: Any, job_id: str, result: dict) -> None:
     import json
 
