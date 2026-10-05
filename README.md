@@ -27,6 +27,78 @@ Sitio personal y comercial de Ezequiel Orazi, desarrollador web fullstack radica
 | Automatización | GitHub Actions (noticias semanales, worker Python, tests) |
 | Hosting | Netlify con `@netlify/plugin-nextjs` |
 
+## Mapa de rutas
+
+Todas las rutas del sitio, incluidas las que no aparecen en la navegación.
+
+### Páginas en el menú
+
+| Ruta | Qué es |
+| --- | --- |
+| `/` | Home: propuesta de valor, proyectos destacados, servicios y FAQ |
+| `/services` | Servicios con precios publicados |
+| `/auditoria-seo` | Herramienta gratuita de auditoría SEO on-page + PageSpeed |
+| `/analisis-seguridad` | Herramienta gratuita de análisis de seguridad web (cabeceras, TLS, etc.) |
+| `/proyectos` | Listado de proyectos |
+| `/curriculum` | Experiencia, formación y descarga del CV |
+| `/blog` | Listado de artículos con filtro por categoría |
+| `/contacto` | Formulario (EmailJS) y vías de contacto |
+
+### Páginas públicas que no están en el menú
+
+Son indexables y entran en el sitemap, pero solo se llega a ellas desde el footer o desde el cuerpo de otras páginas.
+
+| Ruta | Qué es | Desde dónde se llega |
+| --- | --- | --- |
+| `/sobre-mi` | Perfil personal y trayectoria | Footer, firma de los posts del blog |
+| `/skills` | Stack agrupado por área | Footer, `/sobre-mi` |
+| `/faq` | Preguntas frecuentes (con JSON-LD `FAQPage`) | Footer, bloque de FAQ de la home |
+
+### Rutas ocultas
+
+Funcionan por URL directa, pero no tienen ningún enlace interno, llevan `noindex, nofollow`, están excluidas del sitemap y bloqueadas en `robots.txt` (ver `next-sitemap.config.js`).
+
+| Ruta | Qué es | Por qué está oculta |
+| --- | --- | --- |
+| `/detector-de-bots` | **Detector de granjas de contenido**: analiza la SERP de un keyword y estima qué porcentaje de resultados son sitios de baja calidad o coordinados. El informe llega por email. | Herramienta en pruebas. El flag maestro es `TOOL_IS_PUBLIC` en `lib/tools/serp-farm/config.ts`; ahí mismo están los pasos para hacerla pública |
+| `/presupuestos` | Generador de presupuestos en PDF para uso interno | Herramienta propia, no es para clientes |
+
+### Rutas dinámicas
+
+Se generan en el build (SSG) a partir de los archivos de datos.
+
+| Patrón | Origen de los slugs |
+| --- | --- |
+| `/blog/<slug>` | `data/posts.ts` (un objeto por post; el HTML vive en `content/blog/<slug>.html`) |
+| `/proyectos/<slug>` | `data/projects.ts` |
+
+Proyectos publicados hoy: `riviera-maya-pass`, `nacho-rodriguez`, `elune`, `caliber-3d`, `pixel-maker`, `portfolio`, `nimbus-crm`, `generador-presupuestos`, `creador-prompts-ia`, `golden-horses`, `maktub`.
+
+### API (route handlers)
+
+Todos son `POST`, corren con runtime `nodejs` y `dynamic = 'force-dynamic'`.
+
+| Endpoint | Lo usa | Qué hace |
+| --- | --- | --- |
+| `/api/seo-audit` | `/auditoria-seo` | Audita on-page y consulta Google PageSpeed (`PAGESPEED_API_KEY` es opcional) |
+| `/api/security-scan` | `/analisis-seguridad` | Revisa cabeceras de seguridad, TLS y exposiciones comunes |
+| `/api/tools/serp-farm/analyze` | `/detector-de-bots` | Valida y encola el análisis en Postgres, y dispara el worker de GitHub Actions (`repository_dispatch`). Rate limit: 3 análisis por email e IP cada 24 h |
+
+### Archivos servidos desde `public/`
+
+| Ruta | Qué es |
+| --- | --- |
+| `/sitemap.xml` | Lo regenera `next-sitemap` en cada build |
+| `/robots.txt` | Lo regenera `next-sitemap`; incluye el `disallow` de las rutas ocultas |
+| `/pdf/Ezequiel_Orazi-CV.pdf` | CV en PDF (la ruta está centralizada en `lib/links.ts`) |
+
+### Redirecciones
+
+Definidas en `netlify.toml`:
+
+- `/blog/*.html` → `/blog/*` (301): accesos directos al HTML viejo del blog.
+- `/blog/como-mejorar-el rendimiento-en-Next-con-imagenes-optimizadas` → el slug corregido (301).
+
 ## Estructura
 
 ```
