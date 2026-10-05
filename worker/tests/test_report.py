@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from selectolax.parser import HTMLParser
+from selectolax.lexbor import LexborHTMLParser
 
 from worker.clustering import build_networks
 from worker.enrich.domain import _dom_shingles
@@ -18,8 +18,8 @@ _SUSPECT = dict(
 
 
 def _sample():
-    sh_a = _dom_shingles(HTMLParser(load_fixture("twin_a.html")))
-    sh_b = _dom_shingles(HTMLParser(load_fixture("twin_b.html")))
+    sh_a = _dom_shingles(LexborHTMLParser(load_fixture("twin_a.html")))
+    sh_b = _dom_shingles(LexborHTMLParser(load_fixture("twin_b.html")))
     a = make_profile(domain="granja1.xyz", ip="5.5.5.5", dom_shingles=sh_a,
                      positions=[4], **_SUSPECT)
     b = make_profile(domain="granja2.xyz", ip="5.5.5.5", dom_shingles=sh_b,

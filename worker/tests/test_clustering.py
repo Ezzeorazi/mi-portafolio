@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from selectolax.parser import HTMLParser
+from selectolax.lexbor import LexborHTMLParser
 
 from worker.clustering import build_networks
 from worker.enrich.domain import _dom_shingles
@@ -30,8 +30,8 @@ def test_network_by_shared_ip():
 
 
 def test_network_by_template_twin():
-    sh_a = _dom_shingles(HTMLParser(load_fixture("twin_a.html")))
-    sh_b = _dom_shingles(HTMLParser(load_fixture("twin_b.html")))
+    sh_a = _dom_shingles(LexborHTMLParser(load_fixture("twin_a.html")))
+    sh_b = _dom_shingles(LexborHTMLParser(load_fixture("twin_b.html")))
     a = make_profile(domain="a.xyz", ip="1.1.1.1", dom_shingles=sh_a, **_SUSPECT)
     b = make_profile(domain="b.xyz", ip="2.2.2.2", dom_shingles=sh_b, **_SUSPECT)
     scored, ctx = analyze([a, b])
@@ -90,8 +90,8 @@ def test_mixed_naive_and_aware_dates_do_not_crash():
 
 def test_three_domain_network_merges_transitively():
     # a-b por IP, b-c por template → una sola red de 3 (componente conexo).
-    sh_b = _dom_shingles(HTMLParser(load_fixture("twin_a.html")))
-    sh_c = _dom_shingles(HTMLParser(load_fixture("twin_b.html")))
+    sh_b = _dom_shingles(LexborHTMLParser(load_fixture("twin_a.html")))
+    sh_c = _dom_shingles(LexborHTMLParser(load_fixture("twin_b.html")))
     a = make_profile(domain="a.xyz", ip="7.7.7.7", **_SUSPECT)
     b = make_profile(domain="b.xyz", ip="7.7.7.7", dom_shingles=sh_b, **_SUSPECT)
     c = make_profile(domain="c.xyz", ip="8.8.8.8", dom_shingles=sh_c, **_SUSPECT)

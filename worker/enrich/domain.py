@@ -6,7 +6,7 @@ nunca rompe el job. Fuentes, todas gratuitas y sin API key:
   - RDAP (rdap.org): fecha de registro, registrador, privacidad de WHOIS.
   - DNS A record → IP.
   - ipinfo.io: ASN + organización de hosting.
-  - HTML de la home y de la URL rankeada (selectolax): autor, contenido, ads, firma DOM.
+  - HTML de la home y de la URL rankeada (selectolax/lexbor): autor, contenido, ads, firma DOM.
   - /sitemap.xml (+ Sitemap de robots.txt): volumen y frecuencia de publicación.
 """
 
@@ -22,7 +22,7 @@ from urllib.parse import urljoin, urlparse
 
 import httpx
 from dateutil import parser as dateparser
-from selectolax.parser import HTMLParser
+from selectolax.lexbor import LexborHTMLParser
 
 from ..config import settings
 from ..models import DomainProfile, SerpResult
@@ -215,7 +215,7 @@ def _apply_html(p: DomainProfile, ranked_html: str | None, home_html: str | None
     if not primary:
         return
     try:
-        tree = HTMLParser(primary)
+        tree = LexborHTMLParser(primary)
 
         # Contenido delgado.
         body = tree.body or tree.root
@@ -243,7 +243,7 @@ def _apply_html(p: DomainProfile, ranked_html: str | None, home_html: str | None
         p.note_error("about_contact", exc)
 
 
-def _count_ad_slots(tree: HTMLParser, html: str) -> int:
+def _count_ad_slots(tree: LexborHTMLParser, html: str) -> int:
     count = 0
     count += len(tree.css("ins.adsbygoogle"))
     count += len(tree.css("[data-ad-client], [data-ad-slot], [data-ad]"))
@@ -264,7 +264,7 @@ def _count_ad_slots(tree: HTMLParser, html: str) -> int:
     return count
 
 
-def _detect_author(tree: HTMLParser) -> bool:
+def _detect_author(tree: LexborHTMLParser) -> bool:
     # meta author / article:author
     for meta in tree.css("meta"):
         name = (meta.attributes.get("name") or meta.attributes.get("property") or "").lower()
@@ -284,16 +284,16 @@ def _detect_author(tree: HTMLParser) -> bool:
     return False
 
 
-def _dom_tags(tree: HTMLParser) -> list[str]:
+def _dom_tags(tree: LexborHTMLParser) -> list[str]:
     tags: list[str] = []
     for node in tree.root.traverse(include_text=False):
         tag = node.tag
-        if tag and tag not in ("-text", "_comment"):
+        if tag and tag not in ("-text", "-comment", "_comment"):
             tags.append(tag)
     return tags
 
 
-def _dom_shingles(tree: HTMLParser) -> list[str]:
+def _dom_shingles(tree: LexborHTMLParser) -> list[str]:
     tags = _dom_tags(tree)
     k = settings.DOM_SHINGLE_SIZE
     shingles: set[str] = set()
@@ -303,7 +303,7 @@ def _dom_shingles(tree: HTMLParser) -> list[str]:
     return sorted(shingles)
 
 
-def _dom_signature(tree: HTMLParser) -> str:
+def _dom_signature(tree: LexborHTMLParser) -> str:
     seq = ">".join(_dom_tags(tree))
     return hashlib.md5(seq.encode()).hexdigest()[:16]
 
@@ -311,7 +311,7 @@ def _dom_signature(tree: HTMLParser) -> str:
 def _collect_hrefs(html: str | None) -> set[str]:
     if not html:
         return set()
-    tree = HTMLParser(html)
+    tree = LexborHTMLParser(html)
     return {
         (a.attributes.get("href") or "").lower()
         for a in tree.css("a")

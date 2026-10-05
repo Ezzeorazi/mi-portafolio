@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from selectolax.parser import HTMLParser
+from selectolax.lexbor import LexborHTMLParser
 
 from worker.config import weights
 from worker.enrich.domain import _dom_shingles
@@ -118,8 +118,8 @@ def test_shared_asn_and_registrar():
 
 
 def test_template_twin():
-    sh_a = _dom_shingles(HTMLParser(load_fixture("twin_a.html")))
-    sh_b = _dom_shingles(HTMLParser(load_fixture("twin_b.html")))
+    sh_a = _dom_shingles(LexborHTMLParser(load_fixture("twin_a.html")))
+    sh_b = _dom_shingles(LexborHTMLParser(load_fixture("twin_b.html")))
     a = make_profile(domain="a.com", dom_shingles=sh_a)
     b = make_profile(domain="b.com", dom_shingles=sh_b)
     ctx = _ctx([a, b])
@@ -170,8 +170,8 @@ def test_legit_media_scores_clean():
 
 def test_coordinated_network_scores_high_together():
     # Tres dominios nuevos, misma IP, mismo template → red coordinada.
-    sh = _dom_shingles(HTMLParser(load_fixture("twin_a.html")))
-    sh2 = _dom_shingles(HTMLParser(load_fixture("twin_b.html")))
+    sh = _dom_shingles(LexborHTMLParser(load_fixture("twin_a.html")))
+    sh2 = _dom_shingles(LexborHTMLParser(load_fixture("twin_b.html")))
     common = dict(
         registered_at=days_ago(45), has_author=False, has_about=False,
         ip="5.5.5.5", posts_per_day=35, word_count=200,

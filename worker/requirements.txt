@@ -3,7 +3,7 @@
 
 ddgs>=6.0            # SERP vía DuckDuckGo (sin key)
 httpx>=0.27          # cliente HTTP async para el enriquecimiento
-selectolax>=0.3.21   # parser HTML rápido (C)
+selectolax>=0.3.21   # parser HTML rápido (C) — backend lexbor (el modest quedó obsoleto en 1.0)
 tldextract>=5.1      # dominio registrable (dedup)
 python-dateutil>=2.9 # parseo de fechas RDAP / sitemap
 networkx>=3.3        # clustering de redes (paso 4)
