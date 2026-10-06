@@ -300,6 +300,9 @@ function PDFTemplate({ data, subtotal, tax, total }: PDFTemplateProps) {
     <div
       style={{
         width: '794px',
+        minHeight: '1123px', // A4 a 96dpi: firma y footer quedan al pie de la hoja
+        display: 'flex',
+        flexDirection: 'column',
         background: '#ffffff',
         fontFamily: 'Montserrat, sans-serif',
         color: '#1a1a1a',
@@ -307,7 +310,7 @@ function PDFTemplate({ data, subtotal, tax, total }: PDFTemplateProps) {
       }}
     >
       {/* ── HEADER ── */}
-      <div style={{ background: '#161a1e', padding: '36px 52px', position: 'relative' }}>
+      <div style={{ background: '#161a1e', padding: '22px 44px', position: 'relative' }}>
         {/* Rainbow top bar */}
         <div
           style={{
@@ -331,7 +334,7 @@ function PDFTemplate({ data, subtotal, tax, total }: PDFTemplateProps) {
             >
               Presupuesto
             </div>
-            <div style={{ fontSize: '32px', fontWeight: '800', color: '#f0eeed', lineHeight: 1 }}>
+            <div style={{ fontSize: '26px', fontWeight: '800', color: '#f0eeed', lineHeight: 1 }}>
               Ezequiel Orazi
             </div>
             <div style={{ fontSize: '12px', color: '#9ca3af', marginTop: '7px' }}>
@@ -341,10 +344,10 @@ function PDFTemplate({ data, subtotal, tax, total }: PDFTemplateProps) {
           <div style={{ textAlign: 'right' }}>
             <div
               style={{
-                fontSize: '22px',
+                fontSize: '20px',
                 fontWeight: '800',
                 color: '#f5d805',
-                marginBottom: '10px',
+                marginBottom: '6px',
                 letterSpacing: '-0.5px',
               }}
             >
@@ -374,7 +377,7 @@ function PDFTemplate({ data, subtotal, tax, total }: PDFTemplateProps) {
         <div
           style={{
             flex: 1,
-            padding: '24px 52px',
+            padding: '16px 44px',
             borderRight: '1px solid #e5e7eb',
           }}
         >
@@ -400,7 +403,7 @@ function PDFTemplate({ data, subtotal, tax, total }: PDFTemplateProps) {
         </div>
 
         {/* TO */}
-        <div style={{ flex: 1, padding: '24px 52px' }}>
+        <div style={{ flex: 1, padding: '16px 44px' }}>
           <div
             style={{
               fontSize: '8px',
@@ -433,7 +436,7 @@ function PDFTemplate({ data, subtotal, tax, total }: PDFTemplateProps) {
       </div>
 
       {/* ── SERVICES TABLE ── */}
-      <div style={{ padding: '28px 52px' }}>
+      <div style={{ padding: '20px 44px' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', tableLayout: 'fixed' }}>
           <colgroup>
             <col style={{ width: '44%' }} />
@@ -583,8 +586,8 @@ function PDFTemplate({ data, subtotal, tax, total }: PDFTemplateProps) {
 
       {/* ── WORK DESCRIPTION ── */}
       {data.comments && data.comments !== '<p></p>' && (
-        <div style={{ padding: '0 52px 28px' }}>
-          <div style={{ borderTop: '1px solid #e5e7eb', paddingTop: '24px' }}>
+        <div style={{ padding: '0 44px 18px' }}>
+          <div style={{ borderTop: '1px solid #e5e7eb', paddingTop: '16px' }}>
             <div
               style={{
                 fontSize: '8px',
@@ -607,8 +610,8 @@ function PDFTemplate({ data, subtotal, tax, total }: PDFTemplateProps) {
 
       {/* ── PAYMENT TERMS ── */}
       {data.paymentTerms && (
-        <div style={{ padding: '0 52px 28px' }}>
-          <div style={{ borderTop: '1px solid #e5e7eb', paddingTop: '20px' }}>
+        <div style={{ padding: '0 44px 18px' }}>
+          <div style={{ borderTop: '1px solid #e5e7eb', paddingTop: '16px' }}>
             <div
               style={{
                 fontSize: '8px',
@@ -629,11 +632,11 @@ function PDFTemplate({ data, subtotal, tax, total }: PDFTemplateProps) {
       )}
 
       {/* ── SIGNATURE ── */}
-      <div style={{ padding: '20px 52px 44px' }}>
+      <div style={{ padding: '8px 44px 24px', marginTop: 'auto' }}>
         <div
           style={{
             borderTop: '2px solid #e5e7eb',
-            paddingTop: '28px',
+            paddingTop: '16px',
             display: 'flex',
             justifyContent: 'flex-end',
           }}
@@ -643,7 +646,7 @@ function PDFTemplate({ data, subtotal, tax, total }: PDFTemplateProps) {
             <div
               style={{
                 fontFamily: 'var(--font-dancing), "Dancing Script", cursive',
-                fontSize: '42px',
+                fontSize: '36px',
                 color: '#111827',
                 lineHeight: 1.1,
                 paddingBottom: '8px',
@@ -681,7 +684,7 @@ function PDFTemplate({ data, subtotal, tax, total }: PDFTemplateProps) {
       <div
         style={{
           background: '#161a1e',
-          padding: '14px 52px',
+          padding: '14px 44px',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
@@ -837,11 +840,19 @@ export default function PresupuestosPage() {
       const pageW = pdf.internal.pageSize.getWidth();
       const pageH = pdf.internal.pageSize.getHeight();
       const imgH = (canvas.height * pageW) / canvas.width;
-      const pages = Math.ceil(imgH / pageH);
+      const img = canvas.toDataURL('image/png');
 
-      for (let i = 0; i < pages; i++) {
-        if (i > 0) pdf.addPage();
-        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, -(i * pageH), pageW, imgH);
+      if (imgH <= pageH * 1.3) {
+        // Entra en una hoja (o se pasa poco): se achica para no cortar la firma
+        const scale = Math.min(1, pageH / imgH);
+        const w = pageW * scale;
+        pdf.addImage(img, 'PNG', (pageW - w) / 2, 0, w, imgH * scale);
+      } else {
+        const pages = Math.ceil(imgH / pageH);
+        for (let i = 0; i < pages; i++) {
+          if (i > 0) pdf.addPage();
+          pdf.addImage(img, 'PNG', 0, -(i * pageH), pageW, imgH);
+        }
       }
 
       const slug = form.clientName ? `-${form.clientName.replace(/\s+/g, '-')}` : '';
