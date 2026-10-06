@@ -154,3 +154,16 @@ body {
 .pdf-rich-content th { background: #161a1e; color: #f5d805; border: 1px solid #d1d5db; padding: 7px 12px; font-weight: 700; text-align: left; font-size: 10px; letter-spacing: 0.5px; text-transform: uppercase; }
 .pdf-rich-content td { border: 1px solid #e5e7eb; padding: 7px 12px; color: #374151; }
 .pdf-rich-content tr:nth-child(even) td { background: #f9fafb; }
+
+/* ── Presupuestos: impresión / "Guardar como PDF" con texto real ── */
+.print-root { display: none; }
+@media print {
+  @page { size: A4; margin: 0; }
+  html, body { background: #fff !important; min-height: 0 !important; }
+  body > *:not(.print-root) { display: none !important; }
+  .print-root { display: block !important; }
+  .print-root * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  /* 1123px se pasa por décimas de A4 y generaría una hoja en blanco */
+  .print-root > div { min-height: calc(297mm - 2px) !important; }
+  .print-root tr, .print-root li { break-inside: avoid; }
+}

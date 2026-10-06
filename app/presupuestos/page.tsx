@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import {
   FiDownload,
   FiPlus,
@@ -16,6 +17,7 @@ import { TableRow } from '@tiptap/extension-table-row';
 import { TableCell } from '@tiptap/extension-table-cell';
 import { TableHeader } from '@tiptap/extension-table-header';
 import Placeholder from '@tiptap/extension-placeholder';
+import { dancing } from './fonts';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -864,6 +866,16 @@ export default function PresupuestosPage() {
     }
   };
 
+  // PDF con texto real: imprime la copia montada en <body> (ver .print-root en globals.css)
+  const printPDF = async () => {
+    await document.fonts.ready;
+    const prevTitle = document.title;
+    const slug = form.clientName ? `-${form.clientName.replace(/\s+/g, '-')}` : '';
+    document.title = `${form.quoteNumber}${slug}`; // Chrome lo usa como nombre del archivo
+    window.print();
+    document.title = prevTitle;
+  };
+
   if (!authed) return <PasswordGate onAuth={() => setAuthed(true)} />;
 
   return (
@@ -893,11 +905,19 @@ export default function PresupuestosPage() {
           <button
             onClick={generatePDF}
             disabled={generating}
+            title="PDF como imagen (el texto no se puede copiar)"
+            className="flex items-center gap-1.5 px-3 py-2 text-[11px] border border-[#2a2f36] rounded-lg text-[#c0cad4] hover:border-[#f5d805] hover:text-[#f5d805] transition-colors disabled:opacity-50"
+          >
+            <FiDownload size={11} />
+            {generating ? 'Generando...' : 'PDF imagen'}
+          </button>
+          <button
+            onClick={printPDF}
             className="flex items-center gap-2 px-5 py-2 text-[11px] font-bold rounded-lg text-black transition-all disabled:opacity-50 hover:scale-[1.02]"
             style={{ background: 'linear-gradient(90deg, #f5d805, #fbbf24)' }}
           >
             <FiDownload size={12} />
-            {generating ? 'Generando PDF...' : 'Descargar PDF'}
+            Descargar PDF
           </button>
         </div>
       </div>
@@ -1155,6 +1175,14 @@ export default function PresupuestosPage() {
           <PDFTemplate data={form} subtotal={subtotal} tax={tax} total={total} />
         </div>
       </div>
+
+      {/* ── PRINT TARGET (solo visible al imprimir) ── */}
+      {createPortal(
+        <div className={`print-root ${dancing.variable}`}>
+          <PDFTemplate data={form} subtotal={subtotal} tax={tax} total={total} />
+        </div>,
+        document.body,
+      )}
     </div>
   );
 }

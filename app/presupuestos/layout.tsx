@@ -1,12 +1,6 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import { Dancing_Script } from 'next/font/google';
-
-const dancing = Dancing_Script({
-  subsets: ['latin'],
-  weight: '700',
-  variable: '--font-dancing',
-});
+import { dancing } from './fonts';
 
 export const metadata: Metadata = {
   title: 'Presupuestos',
