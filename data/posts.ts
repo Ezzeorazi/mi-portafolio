@@ -799,6 +799,32 @@ const posts: Post[] = [
       },
     ],
   },
+  {
+    id: 46,
+    slug: 'noticias-tech-2026-10-07',
+    image: 'images/blog/noticias-tech-2026-10-07.svg',
+    title: "Resumen Tech Semanal: ¡Novedades de Gaming, IA y Seguridad!",
+    category: 'Noticias',
+    description: "Un vistazo a las noticias tecnológicas más relevantes de la semana, desde videojuegos hasta seguridad informática. ¡Analizado para vos!",
+    date: 'Publicado el 7 de octubre de 2026',
+    ReadingTime: '5 min de lectura',
+    publishedISO: '2026-10-07',
+    content: 'blog/noticias-tech-2026-10-07.html',
+    faq: [
+      {
+        q: "¿Cuándo se espera el lanzamiento de Forza Horizon 6 para PlayStation 5?",
+        a: "Según una filtración reciente, Forza Horizon 6 no llegaría a la PlayStation 5 antes de que finalice 2026. Se estima que su lanzamiento podría ser en 2027, pero aún no hay confirmación oficial por parte de Playground Games.",
+      },
+      {
+        q: "¿Qué es ZeroKeyUSB y cómo funciona?",
+        a: "ZeroKeyUSB es un gestor de contraseñas portátil que se presenta como un teclado. Permite almacenar hasta 64 credenciales cifradas con AES-128 bits en su memoria interna, ofreciendo una forma segura de llevar las contraseñas encima sin depender de la nube.",
+      },
+      {
+        q: "¿Por qué son preocupantes los péptidos de mercado gris?",
+        a: "La principal preocupación con los péptidos de mercado gris es la falta de datos concretos y la ausencia de ensayos clínicos rigurosos. Esto significa que no hay garantías sobre su seguridad, eficacia o efectos a largo plazo, a diferencia de los fármacos aprobados tras estrictos procesos regulatorios.",
+      },
+    ],
+  },
 ];
 
 export default posts;
