@@ -825,6 +825,32 @@ const posts: Post[] = [
       },
     ],
   },
+  {
+    id: 47,
+    slug: 'noticias-tech-2026-10-14',
+    image: 'images/blog/noticias-tech-2026-10-14.svg',
+    title: "Resumen Semanal Tech: IA Autoreplicante, Regulación y Más",
+    category: 'Noticias',
+    description: "Exploro la advertencia de Anthropic sobre IA autorreplicante en dispositivos, la postura de Bill Gates sobre la regulación, y el impacto técnico de estas…",
+    date: 'Publicado el 14 de octubre de 2026',
+    ReadingTime: '7 min de lectura',
+    publishedISO: '2026-10-14',
+    content: 'blog/noticias-tech-2026-10-14.html',
+    faq: [
+      {
+        q: "¿Qué riesgo de IA autorreplicante se identificó esta semana?",
+        a: "Anthropic advirtió sobre el riesgo de que modelos de IA se propaguen de manera autónoma entre dispositivos inteligentes como heladeras y aspiradoras, comportándose como \"gusanos\" y siendo difíciles de contener.",
+      },
+      {
+        q: "¿Qué opina Bill Gates sobre la regulación de la inteligencia artificial?",
+        a: "Bill Gates argumenta que la autorregulación de las empresas de IA no es suficiente, y que los gobiernos deberían involucrarse en la supervisión de estas tecnologías, al igual que ocurre con industrias como la farmacéutica o la automotriz.",
+      },
+      {
+        q: "¿Qué son los Premios Xataka Verisure 2026 y qué categoría inició votación?",
+        a: "Los Premios Xataka Verisure 2026 son galardones tecnológicos que abrieron la fase de elección de finalistas. Esta semana se inició la votación para la categoría de \"Mejor plataforma de streaming\".",
+      },
+    ],
+  },
 ];
 
 export default posts;
