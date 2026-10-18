@@ -45,6 +45,9 @@ export default function Footer() {
         { key: 'footer_link_blog', href: '/blog' },
         { key: 'footer_link_faq', href: '/faq' },
         { key: 'footer_link_contact', href: '/contacto' },
+        { key: 'footer_link_city_playa', href: '/paginas-web/playa-del-carmen' },
+        { key: 'footer_link_city_cancun', href: '/paginas-web/cancun' },
+        { key: 'footer_link_city_tulum', href: '/paginas-web/tulum' },
       ],
     },
   ];

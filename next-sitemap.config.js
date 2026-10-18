@@ -55,6 +55,9 @@ const config = {
     if (path.startsWith('/proyectos/')) {
       return { loc: path, changefreq: 'monthly', priority: 0.8, lastmod: new Date().toISOString() };
     }
+    if (path.startsWith('/paginas-web/')) {
+      return { loc: path, changefreq: 'monthly', priority: 0.8, lastmod: new Date().toISOString() };
+    }
     if (path === '/') {
       return { loc: path, changefreq: 'weekly', priority: 1.0, lastmod: new Date().toISOString() };
     }
