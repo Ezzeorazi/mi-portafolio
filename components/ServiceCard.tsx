@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { ReactNode } from 'react';
 import ScrollReveal from './ScrollReveal';
+import { approxMxn } from '@/lib/pricing';
 import { useTranslation } from '@/hooks/useTranslation';
 
 interface ServiceCardProps {
@@ -28,7 +29,12 @@ export default function ServiceCard({ title, description, icon, price, badge, de
       <h3 className="text-yellow font-bold text-lg">{title}</h3>
       <p className="text-light/80 text-sm leading-relaxed flex-1">{description}</p>
       {price && (
-        <p className="text-pink font-bold text-xl mt-1">{price}</p>
+        <p className="text-pink font-bold text-xl mt-1">
+          {price}
+          {approxMxn(price) && (
+            <span className="block text-light/50 text-xs font-medium mt-0.5">{approxMxn(price)}</span>
+          )}
+        </p>
       )}
       {href && (
         <span className="text-yellow text-sm font-semibold group-hover:text-pink transition-colors duration-300 mt-1">

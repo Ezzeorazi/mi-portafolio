@@ -6,9 +6,9 @@ import ScrollReveal from '@/components/ScrollReveal';
 import ArticleCard from '@/components/ArticleCard';
 import ProjectCard from '@/components/ProjectCard';
 import { useTranslation } from '@/hooks/useTranslation';
-import { FaBriefcase, FaFileDownload, FaUserTie } from 'react-icons/fa';
+import { FaBriefcase } from 'react-icons/fa';
 import type { Post } from '@/data/posts';
-import { CV_PDF, CALENDLY_URL } from '@/lib/links';
+import { CALENDLY_URL } from '@/lib/links';
 
 interface Project {
   id: number;
@@ -92,14 +92,6 @@ export default function HomeContent({ latestPosts, noticias, featuredProjects, s
             >
               {t('home_cta_contact')}
             </Link>
-            <a
-              href={CV_PDF}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border-2 border-light/40 text-light/90 font-bold px-6 py-3 rounded-lg hover:border-yellow hover:text-yellow transition-colors duration-300"
-            >
-              <FaFileDownload aria-hidden="true" /> {t('home_cta_cv')}
-            </a>
           </div>
         </div>
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-1 text-light/50 animate-bounce pointer-events-none">
@@ -110,39 +102,10 @@ export default function HomeContent({ latestPosts, noticias, featuredProjects, s
         </div>
       </section>
 
-      {/* Dual audience: recruiters vs. clients */}
+      {/* Audiencia: clientes */}
       <section className="bg-dark px-4 pt-16 pb-6">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="max-w-3xl mx-auto">
           <ScrollReveal direction="up">
-            <div className="h-full bg-gradient-to-br from-yellow/10 via-dark to-dark border border-yellow/30 rounded-2xl p-6 sm:p-8 flex flex-col gap-4">
-              <span className="inline-flex items-center gap-2 text-yellow text-2xl" aria-hidden="true">
-                <FaUserTie />
-              </span>
-              <h2 className="text-light font-bold text-xl md:text-2xl">
-                {t('home_audience_recruiter_title')}
-              </h2>
-              <p className="text-light/70 text-sm md:text-base leading-relaxed flex-1">
-                {t('home_audience_recruiter_desc')}
-              </p>
-              <div className="flex flex-wrap gap-3 mt-2">
-                <Link
-                  href="/curriculum"
-                  className="bg-yellow text-dark font-bold px-5 py-2.5 rounded-lg hover:bg-pink hover:text-white transition-colors duration-300 text-sm"
-                >
-                  {t('home_audience_recruiter_cta')}
-                </Link>
-                <a
-                  href={CV_PDF}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 border border-yellow/50 text-yellow font-bold px-5 py-2.5 rounded-lg hover:border-pink hover:text-pink transition-colors duration-300 text-sm"
-                >
-                  <FaFileDownload aria-hidden="true" /> {t('home_audience_recruiter_cta2')}
-                </a>
-              </div>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal direction="up" delay={0.1}>
             <div className="h-full bg-gradient-to-br from-pink/15 via-dark to-dark border border-pink/30 rounded-2xl p-6 sm:p-8 flex flex-col gap-4">
               <span className="inline-flex items-center gap-2 text-pink text-2xl" aria-hidden="true">
                 <FaBriefcase />

@@ -9,6 +9,7 @@ import {
 import { SiNextdotjs, SiTypescript, SiTailwindcss, SiSanity } from 'react-icons/si';
 import ScrollReveal from '@/components/ScrollReveal';
 import { useTranslation } from '@/hooks/useTranslation';
+import { approxMxn } from '@/lib/pricing';
 
 const stack = [
   { icon: <SiNextdotjs />, label: 'Next.js 15' },
@@ -360,6 +361,11 @@ export default function ServicesPageContent() {
                     <p className={`font-bold text-3xl ${isMedida ? 'text-yellow' : 'text-pink'}`}>
                       {service.price}
                     </p>
+                    {approxMxn(service.price) && (
+                      <p className="-mt-2 text-light/50 text-xs">
+                        {approxMxn(service.price)} · {t('services_price_vat_note')}
+                      </p>
+                    )}
                     <p className="text-light/40 text-xs font-mono">{service.tech}</p>
                     {noteText && (
                       <p className="text-light/40 text-xs italic">{noteText}</p>
@@ -513,6 +519,7 @@ export default function ServicesPageContent() {
               </div>
               <div className="text-center shrink-0">
                 <p className="text-pink font-bold text-3xl">$45 USD</p>
+                <p className="text-light/50 text-xs mt-1">{approxMxn('$45 USD')}</p>
                 <p className="text-light/50 text-xs mt-1">{t('services_maintenance_per_month')}</p>
               </div>
             </div>

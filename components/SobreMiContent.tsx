@@ -2,8 +2,8 @@
 import Link from 'next/link';
 import ScrollReveal from '@/components/ScrollReveal';
 import Caliber3DCarousel from '@/components/Caliber3DCarousel';
-import { CV_PDF, LINKEDIN_URL } from '@/components/CurriculumHeader';
-import { FaFileDownload, FaLinkedin } from 'react-icons/fa';
+import { LINKEDIN_URL } from '@/lib/links';
+import { FaLinkedin } from 'react-icons/fa';
 import { useTranslation } from '@/hooks/useTranslation';
 
 export default function SobreMiContent() {
@@ -12,7 +12,6 @@ export default function SobreMiContent() {
   const cards = [
     { labelKey: 'nav_skills', href: '/skills', descKey: 'about_card_skills_desc' },
     { labelKey: 'nav_projects', href: '/proyectos', descKey: 'about_card_projects_desc' },
-    { labelKey: 'nav_cv', href: '/curriculum', descKey: 'about_card_cv_desc' },
     { labelKey: 'nav_blog', href: '/blog', descKey: 'about_card_blog_desc' },
   ];
 
@@ -31,14 +30,6 @@ export default function SobreMiContent() {
             <span className="mt-1.5 shrink-0 rounded-full h-2 w-2 bg-green-500" aria-hidden="true" />
             {t('about_availability')}
           </span>
-          <a
-            href={CV_PDF}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-dark text-yellow font-bold px-4 py-2 rounded-lg hover:bg-pink hover:text-white transition-colors duration-300 text-sm"
-          >
-            <FaFileDownload aria-hidden="true" /> {t('cv_download')}
-          </a>
           <a
             href={LINKEDIN_URL}
             target="_blank"
@@ -84,7 +75,7 @@ export default function SobreMiContent() {
       </ScrollReveal>
 
       {/* Cards de navegación */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         {cards.map((card, i) => (
           <ScrollReveal key={card.href} direction="flip" delay={i * 0.1}>
             <Link

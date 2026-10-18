@@ -7,7 +7,6 @@ const translations: Record<Language, Record<string, string>> = {
     nav_about: 'Sobre mí',
     nav_skills: 'Skills',
     nav_projects: 'Proyectos',
-    nav_cv: 'Currículum',
     nav_services: 'Servicios',
     nav_blog: 'Blog',
     nav_contact: 'Contacto',
@@ -23,12 +22,6 @@ const translations: Record<Language, Record<string, string>> = {
     home_hero_available: 'Disponible para empleo remoto y proyectos freelance',
     home_cta_projects: 'Ver proyectos',
     home_cta_contact: 'Contactarme',
-    home_cta_cv: 'Descargar CV',
-    home_audience_recruiter_title: '¿Buscás sumar un desarrollador a tu equipo?',
-    home_audience_recruiter_desc:
-      'Fullstack con foco en Next.js, TypeScript y Node.js. Trabajo 100% remoto desde México (GMT-5) con clientes de toda Latinoamérica. Revisá mi experiencia, mi stack y mi código.',
-    home_audience_recruiter_cta: 'Ver currículum',
-    home_audience_recruiter_cta2: 'CV en PDF',
     home_audience_client_title: '¿Tenés un proyecto o un negocio?',
     home_audience_client_desc:
       'Landing pages, tiendas online, sistemas a medida y SEO con IA. Precios publicados, plazos claros y una reunión inicial gratuita para definir el alcance.',
@@ -63,7 +56,6 @@ const translations: Record<Language, Record<string, string>> = {
       'Combinar el desarrollo web con el mundo físico de la fabricación 3D me da una visión distinta: entiendo tanto el producto digital como el proceso detrás de un negocio real. Caliber 3D no es solo una empresa, es la prueba de que apostar por uno mismo funciona.',
     about_card_skills_desc: 'Tecnologías que domino',
     about_card_projects_desc: 'Mi trabajo real',
-    about_card_cv_desc: 'Experiencia y formación',
     about_card_blog_desc: 'Artículos técnicos',
 
     // SKILLS
@@ -210,7 +202,6 @@ const translations: Record<Language, Record<string, string>> = {
     contact_response: 'Respondo en menos de 24 horas',
     contact_whatsapp_btn: 'Escribirme por WhatsApp',
     contact_book_btn: 'Agendar reunión →',
-    contact_cv_btn: 'Descargar CV (PDF)',
     contact_err_name: 'El nombre es requerido.',
     contact_err_email_req: 'El email es requerido.',
     contact_err_email_invalid: 'El email no es válido.',
@@ -241,6 +232,7 @@ const translations: Record<Language, Record<string, string>> = {
     footer_link_meeting: 'Agendar reunión gratis',
     cta_bar_whatsapp: 'WhatsApp',
     cta_bar_meeting: 'Llamada gratis',
+    services_price_vat_note: 'IVA aparte si necesitás factura',
     cta_bar_whatsapp_msg: 'Hola Eze, vi tu web y quiero consultarte por un proyecto.',
     footer_link_blog: 'Blog',
     footer_link_contact: 'Contacto',
@@ -256,7 +248,6 @@ const translations: Record<Language, Record<string, string>> = {
     nav_about: 'About Me',
     nav_skills: 'Skills',
     nav_projects: 'Projects',
-    nav_cv: 'Resume',
     nav_services: 'Services',
     nav_blog: 'Blog',
     nav_contact: 'Contact',
@@ -272,12 +263,6 @@ const translations: Record<Language, Record<string, string>> = {
     home_hero_available: 'Open to remote roles and freelance projects',
     home_cta_projects: 'View projects',
     home_cta_contact: 'Contact me',
-    home_cta_cv: 'Download resume',
-    home_audience_recruiter_title: 'Hiring a developer for your team?',
-    home_audience_recruiter_desc:
-      'Fullstack developer focused on Next.js, TypeScript and Node.js. I work 100% remotely from Mexico (GMT-5) with clients across Latin America. Check my experience, my stack and my code.',
-    home_audience_recruiter_cta: 'View resume',
-    home_audience_recruiter_cta2: 'Resume (PDF)',
     home_audience_client_title: 'Got a project or a business?',
     home_audience_client_desc:
       'Landing pages, online stores, custom systems and AI SEO. Published prices, clear timelines and a free initial meeting to define the scope.',
@@ -312,7 +297,6 @@ const translations: Record<Language, Record<string, string>> = {
       "Combining web development with the physical world of 3D manufacturing gives me a unique perspective: I understand both the digital product and the process behind a real business. Caliber 3D is not just a company — it's proof that betting on yourself works.",
     about_card_skills_desc: 'Technologies I work with',
     about_card_projects_desc: 'Real work',
-    about_card_cv_desc: 'Experience and education',
     about_card_blog_desc: 'Technical articles',
 
     // SKILLS
@@ -458,7 +442,6 @@ const translations: Record<Language, Record<string, string>> = {
     contact_response: 'I reply within 24 hours',
     contact_whatsapp_btn: 'Message me on WhatsApp',
     contact_book_btn: 'Book a meeting →',
-    contact_cv_btn: 'Download resume (PDF)',
     contact_err_name: 'Name is required.',
     contact_err_email_req: 'Email is required.',
     contact_err_email_invalid: 'Email is not valid.',
@@ -488,6 +471,7 @@ const translations: Record<Language, Record<string, string>> = {
     footer_link_meeting: 'Book a free meeting',
     cta_bar_whatsapp: 'WhatsApp',
     cta_bar_meeting: 'Free call',
+    services_price_vat_note: 'VAT extra if you need an invoice',
     cta_bar_whatsapp_msg: 'Hi Eze, I saw your website and I would like to ask about a project.',
     footer_link_blog: 'Blog',
     footer_link_contact: 'Contact',

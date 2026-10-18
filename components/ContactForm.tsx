@@ -2,8 +2,8 @@
 import { useState, FormEvent } from 'react';
 import { useForm } from '@/hooks/useForm';
 import ScrollReveal from '@/components/ScrollReveal';
-import { CV_PDF, LINKEDIN_URL } from '@/components/CurriculumHeader';
-import { FaFileDownload, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
+import { LINKEDIN_URL } from '@/lib/links';
+import { FaLinkedin, FaWhatsapp } from 'react-icons/fa';
 import { useTranslation } from '@/hooks/useTranslation';
 
 const PHONE_E164 = '529982017863';
@@ -185,15 +185,7 @@ export default function ContactForm() {
             >
               {t('contact_book_btn')}
             </a>
-            <div className="grid grid-cols-2 gap-3">
-              <a
-                href={CV_PDF}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 border border-yellow/40 text-yellow font-bold px-3 py-2.5 rounded-lg hover:border-pink hover:text-pink transition-colors duration-300 text-xs"
-              >
-                <FaFileDownload aria-hidden="true" /> {t('contact_cv_btn')}
-              </a>
+            <div className="grid grid-cols-1 gap-3">
               <a
                 href={LINKEDIN_URL}
                 target="_blank"
