@@ -4,6 +4,7 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import { LanguageProvider } from '@/context/LanguageContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import MobileCtaBar from '@/components/MobileCtaBar';
 import './globals.css';
 
 const montserrat = Montserrat({
@@ -130,6 +131,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />
+          <MobileCtaBar />
         </LanguageProvider>
         <GoogleAnalytics gaId="G-LFXPH3MK7N" />
       </body>

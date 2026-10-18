@@ -51,7 +51,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-dark border-t border-yellow/10 mt-auto">
-      <div className="max-w-5xl mx-auto px-4 pt-14 pb-8">
+      <div className="max-w-5xl mx-auto px-4 pt-14 pb-24 md:pb-8">
 
         {/* Main grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
