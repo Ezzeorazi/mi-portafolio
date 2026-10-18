@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import Services from '@/components/Services';
+import Guarantees from '@/components/Guarantees';
 import HomeFAQ from '@/components/HomeFAQ';
 import ScrollReveal from '@/components/ScrollReveal';
 import ArticleCard from '@/components/ArticleCard';
@@ -235,6 +236,9 @@ export default function HomeContent({ latestPosts, noticias, featuredProjects, s
           </div>
         </ScrollReveal>
       </section>
+
+      {/* Compromisos de trabajo */}
+      <Guarantees />
 
       {/* FAQ */}
       <HomeFAQ />

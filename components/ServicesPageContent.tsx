@@ -10,6 +10,7 @@ import { SiNextdotjs, SiTypescript, SiTailwindcss, SiSanity } from 'react-icons/
 import ScrollReveal from '@/components/ScrollReveal';
 import { useTranslation } from '@/hooks/useTranslation';
 import { approxMxn } from '@/lib/pricing';
+import Guarantees from '@/components/Guarantees';
 
 const stack = [
   { icon: <SiNextdotjs />, label: 'Next.js 15' },
@@ -526,6 +527,9 @@ export default function ServicesPageContent() {
           </ScrollReveal>
         </div>
       </section>
+
+      {/* Compromisos de trabajo */}
+      <Guarantees />
 
       {/* Important info */}
       <section className="py-10 px-4 border-t border-yellow/10">

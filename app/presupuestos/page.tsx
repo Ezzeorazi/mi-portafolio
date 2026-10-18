@@ -64,7 +64,7 @@ const QUICK_SERVICES = [
   { name: 'Landing Page', price: 400 },
   { name: 'E-commerce / Tienda Online', price: 1200 },
   { name: 'Blog / CMS', price: 700 },
-  { name: 'Mantenimiento Mensual', price: 150 },
+  { name: 'Mantenimiento Mensual', price: 45 },
   { name: 'Optimización SEO', price: 300 },
   { name: 'Consultoría (1h)', price: 80 },
 ];
