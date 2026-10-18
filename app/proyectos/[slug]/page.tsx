@@ -151,6 +151,21 @@ export default async function ProjectPage({ params }: Props) {
                 </span>
                 <h2 className="text-yellow font-bold text-xl">Resultados</h2>
               </div>
+              {caseStudy.metrics && caseStudy.metrics.length > 0 && (
+                <div className="mb-6">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    {caseStudy.metrics.map((m) => (
+                      <div key={m.label} className="bg-yellow/5 border border-yellow/20 rounded-lg p-4">
+                        <p className="text-yellow font-bold text-2xl md:text-3xl">{m.value}</p>
+                        <p className="text-light/70 text-xs leading-snug mt-1">{m.label}</p>
+                      </div>
+                    ))}
+                  </div>
+                  {caseStudy.metricsNote && (
+                    <p className="text-light/40 text-xs mt-2">{caseStudy.metricsNote}</p>
+                  )}
+                </div>
+              )}
               <ul className="space-y-3">
                 {caseStudy.results.map((r, i) => (
                   <li key={i} className="flex items-start gap-3 text-light/80 text-sm leading-relaxed">

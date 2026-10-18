@@ -2,6 +2,9 @@ export type CaseStudy = {
   problem: string;
   decisions: { title: string; description: string }[];
   results: string[];
+  // Cifras destacadas (tarjetas). Solo datos verificables, con su período en la nota.
+  metrics?: { value: string; label: string }[];
+  metricsNote?: string;
   cta?: string;
 };
 
@@ -91,6 +94,42 @@ const projects: Project[] = [
     image: 'images/projects/portada-caliber3d.webp',
     technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Strapi'],
     liveLink: 'https://caliber3d.mx',
+    caseStudy: {
+      problem:
+        'Caliber 3D es mi propio taller de impresión 3D en Playa del Carmen. En un rubro donde casi todos venden por Instagram y WhatsApp, el desafío era que el cliente que busca "impresiones 3D en Playa del Carmen" llegara a mí y no a la competencia, y que pudiera pedir un presupuesto sin tener que escribir ni llamar.',
+      decisions: [
+        {
+          title: '¿Sitio vitrina o plataforma con herramientas?',
+          description:
+            'Una página con fotos y un botón de WhatsApp no diferencia a nadie. Construí una plataforma: catálogo, formulario de cotización y un Espacio Makers con una calculadora de costos de impresión 3D (material, electricidad, desgaste del equipo y mano de obra) que guarda los cálculos en la cuenta del usuario con Supabase.',
+        },
+        {
+          title: '¿WordPress o Next.js + CMS headless?',
+          description:
+            'Next.js 15 con TypeScript da control total del SEO técnico y del rendimiento. Strapi como CMS headless permite cargar productos y artículos sin tocar código, y Supabase resuelve base de datos, autenticación y almacenamiento sin mantener un servidor propio.',
+        },
+        {
+          title: '¿Anuncios pagos o contenido que responde preguntas reales?',
+          description:
+            'El blog existe desde el día del lanzamiento, con guías que responden lo que el cliente busca antes de comprar: cuánto tarda una impresión 3D, cómo calcular su costo, qué material elegir. Es el activo más barato y el que más dura.',
+        },
+      ],
+      metrics: [
+        { value: '7 días', label: 'hasta el primer cliente llegado desde Google' },
+        { value: '941', label: 'apariciones en Google en los primeros 2,5 meses' },
+        { value: '+68%', label: 'de apariciones en Google de mayo a junio' },
+        { value: '56%', label: 'del alcance en Google viene del blog' },
+      ],
+      metricsNote:
+        'Datos de Google Search Console, del 23 de abril al 5 de julio de 2026, desde el lanzamiento del sitio.',
+      results: [
+        'Primer cliente en la primera semana, que buscó "impresiones 3d playa del carmen": un pedido de 75 medallas para un torneo de pádel que pagó el sitio y una impresora nueva',
+        'De 0 a 941 apariciones en Google y 33 clics en los primeros dos meses y medio, con una posición promedio de entre 6 y 7',
+        'Entre los primeros resultados para búsquedas locales como "imprentas playa del carmen" y la propia marca',
+        'Las guías del blog ("cuánto tarda una impresión 3D", "cómo calcular el costo") generan más de la mitad de las apariciones en Google',
+        'Visible en búsquedas de más de 30 países, con México como principal mercado',
+      ],
+    },
   },
   {
     id: 2,
