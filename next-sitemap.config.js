@@ -29,6 +29,7 @@ const BLOG_LASTMOD = {
   'claude-ia-guia-prompts-negocios-emprendedores-parte-3': '2026-06-08',
   'herramienta-analisis-seo-gratis-como-funciona': '2026-06-15',
   'alertas-terremotos-android-google-venezuela': '2026-06-26',
+  'freelancer-vs-agencia-construir-con-ia': '2026-10-18',
 };
 
 /** @type {import('next-sitemap').IConfig} */
