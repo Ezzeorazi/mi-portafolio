@@ -882,6 +882,32 @@ const posts: Post[] = [
       },
     ],
   },
+  {
+    id: 49,
+    slug: 'noticias-tech-2026-10-21',
+    image: 'images/blog/noticias-tech-2026-10-21.svg',
+    title: "Resumen Semanal Tech: Apple Music, Cámaras Instantáneas y Más",
+    category: 'Noticias',
+    description: "Tu resumen semanal de noticias tech con análisis de Ezequiel Orazi. Esta semana: nuevo logo de Apple Music, la cámara instantánea de Lidl, juegos de mesa y más.",
+    date: 'Publicado el 21 de octubre de 2026',
+    ReadingTime: '6 min de lectura',
+    publishedISO: '2026-10-21',
+    content: 'blog/noticias-tech-2026-10-21.html',
+    faq: [
+      {
+        q: "¿Qué cambios importantes hizo Apple Music esta semana?",
+        a: "Apple Music lanzó oficialmente un rediseño de su marca, que incluye un nuevo logo, un wordmark actualizado y un nuevo sonido compuesto por el productor británico Fred Again.",
+      },
+      {
+        q: "¿Dónde puedo comprar la cámara instantánea Tronic de Lidl y cuánto cuesta?",
+        a: "La cámara instantánea Tronic de Lidl se agotó en la web, pero volverá a estar disponible en las tiendas físicas el viernes 23 de octubre a un precio de 17,99 euros.",
+      },
+      {
+        q: "¿Qué es la edición de Música Chilena de HITSTER?",
+        a: "HITSTER es un juego de mesa que lanzó una versión con 134 canciones nacionales chilenas, que se conecta con Spotify para ordenar éxitos en una línea de tiempo.",
+      },
+    ],
+  },
 ];
 
 export default posts;
