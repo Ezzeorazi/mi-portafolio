@@ -28,6 +28,7 @@ jobs:
         run: node scripts/generar-noticias.mjs
 
       - name: Commit y push
+        id: push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -40,7 +41,8 @@ jobs:
           # Reintentar el push rebasando por si origin/main avanzó durante la corrida.
           for intento in 1 2 3 4 5; do
             if git push; then
-              echo "✅ Post publicado. Netlify reconstruirá el sitio."
+              echo "✅ Post publicado."
+              echo "publicado=true" >> "$GITHUB_OUTPUT"
               exit 0
             fi
             echo "⚠️ Push rechazado (intento $intento). Rebaso sobre origin/main y reintento…"
@@ -48,3 +50,16 @@ jobs:
           done
           echo "❌ No se pudo pushear tras varios intentos."
           exit 1
+
+      # Netlify a veces no construye los commits del bot; el build hook lo fuerza.
+      - name: Disparar deploy en Netlify
+        if: steps.push.outputs.publicado == 'true'
+        env:
+          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+        run: |
+          if [ -z "$NETLIFY_BUILD_HOOK" ]; then
+            echo "⚠️ Falta el secret NETLIFY_BUILD_HOOK: el deploy depende de que Netlify detecte el push."
+            exit 0
+          fi
+          curl -fsS -X POST -d '{}' "$NETLIFY_BUILD_HOOK"
+          echo "🚀 Deploy de Netlify disparado."
