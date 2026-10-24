@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Montserrat } from 'next/font/google';
+import localFont from 'next/font/local';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { LanguageProvider } from '@/context/LanguageContext';
 import Navbar from '@/components/Navbar';
@@ -7,10 +7,14 @@ import Footer from '@/components/Footer';
 import MobileCtaBar from '@/components/MobileCtaBar';
 import './globals.css';
 
-const montserrat = Montserrat({
-  subsets: ['latin'],
-  weight: ['400', '700'],
+// Self-hosted (latin subset, variable 100–900) instead of next/font/google:
+// the Netlify build kept failing while fetching from Google Fonts.
+const montserrat = localFont({
+  src: './fonts/montserrat-latin-variable.woff2',
+  weight: '100 900',
+  style: 'normal',
   display: 'swap',
+  fallback: ['Arial', 'sans-serif'],
 });
 
 export const metadata: Metadata = {
