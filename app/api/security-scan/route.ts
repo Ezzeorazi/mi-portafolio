@@ -37,6 +37,28 @@ interface Disclosure {
   aspNet?: string;
 }
 
+/**
+ * PHP2Shell (CVE-2026-109618 / CVE-2026-109619) exposure, inferred passively
+ * from the response we already fetched. We never send exploit payloads: we
+ * only look at public signals (headers, cookies, HTML) and, when the server
+ * discloses it, compare the PHP version against the fixed releases.
+ */
+type PhpVerdict =
+  | 'not_detected' // no PHP signals found
+  | 'unknown_version' // PHP detected but version hidden → ask the host
+  | 'patched' // disclosed version is a fixed release (or newer)
+  | 'outdated' // supported branch, below the fix
+  | 'eol'; // 8.1 or older: no official fix
+
+interface PhpCheck {
+  verdict: PhpVerdict;
+  /** Human-readable evidence, e.g. "Cookie PHPSESSID", "WordPress". */
+  signals: string[];
+  version?: string;
+  /** Cloudflare in front: its WAF blocks known exploit attempts (not a fix). */
+  behindCloudflare: boolean;
+}
+
 interface ScanResponse {
   url: string;
   finalUrl: string;
@@ -48,6 +70,7 @@ interface ScanResponse {
   cookies: CookieInfo;
   disclosure: Disclosure;
   tls: TlsInfo | null;
+  php: PhpCheck;
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -230,6 +253,86 @@ function analyzeCookies(headers: Headers, isHttps: boolean): CheckResult & {
   };
 }
 
+// ─── PHP2Shell exposure (passive) ─────────────────────────────────────────────
+
+// First release of each supported branch that fixes PHP2Shell.
+const PHP_FIXED: Record<string, number> = { '8.2': 35, '8.3': 36, '8.4': 27, '8.5': 12 };
+
+function getSetCookies(headers: Headers): string[] {
+  const anyHeaders = headers as Headers & { getSetCookie?: () => string[] };
+  if (typeof anyHeaders.getSetCookie === 'function') return anyHeaders.getSetCookie();
+  const raw = headers.get('set-cookie');
+  return raw ? [raw] : [];
+}
+
+function classifyPhpVersion(version: string): PhpVerdict {
+  const [maj, min, patch] = version.split('.').map((n) => parseInt(n, 10));
+  if (!Number.isFinite(maj) || !Number.isFinite(min)) return 'unknown_version';
+  if (maj < 8 || (maj === 8 && min <= 1)) return 'eol';
+  const fixed = PHP_FIXED[`${maj}.${min}`];
+  if (fixed === undefined) return 'patched'; // 8.6+ ships with the fix
+  if (!Number.isFinite(patch)) return 'unknown_version';
+  return patch >= fixed ? 'patched' : 'outdated';
+}
+
+function analyzePhp(headers: Headers, html: string): PhpCheck {
+  const signals: string[] = [];
+
+  const poweredBy = headers.get('x-powered-by') ?? '';
+  const versionMatch = poweredBy.match(/PHP\/(\d+\.\d+(?:\.\d+)?)/i);
+  if (/php/i.test(poweredBy)) signals.push(`X-Powered-By: ${truncate(poweredBy, 40)}`);
+
+  const cookieNames = getSetCookies(headers).map((c) => c.split('=')[0].trim());
+  if (cookieNames.some((n) => /^PHPSESSID$/i.test(n))) signals.push('Cookie PHPSESSID');
+  if (cookieNames.some((n) => /^laravel_session$/i.test(n))) signals.push('Laravel');
+  if (cookieNames.some((n) => /^wordpress_|^wp-/i.test(n))) signals.push('WordPress');
+
+  const generator = html.match(/<meta[^>]+name=["']generator["'][^>]+content=["']([^"']+)/i)?.[1] ?? '';
+  // [name, generator match, asset-path fingerprint]. Plain words in the HTML
+  // are not enough (a blog post can mention "WordPress"), so we require the
+  // generator meta tag or a path/global that only that CMS emits.
+  const cms: [string, RegExp, RegExp][] = [
+    ['WordPress', /wordpress/i, /["'(][^"'()]*\/wp-(content|includes)\//i],
+    ['Joomla', /joomla/i, /\/media\/(jui|system)\/js\//i],
+    ['Drupal', /drupal/i, /\/sites\/default\/files\/|drupalSettings/],
+    ['PrestaShop', /prestashop/i, /var prestashop\s*=/i],
+    ['Magento', /magento/i, /Magento_[A-Z]\w+\//],
+    ['Moodle', /moodle/i, /M\.cfg\s*=/],
+  ];
+  for (const [name, gen, path] of cms) {
+    if ((gen.test(generator) || path.test(html)) && !signals.includes(name)) signals.push(name);
+  }
+
+  const behindCloudflare =
+    /cloudflare/i.test(headers.get('server') ?? '') || headers.has('cf-ray');
+
+  if (signals.length === 0) return { verdict: 'not_detected', signals, behindCloudflare };
+  if (!versionMatch) return { verdict: 'unknown_version', signals, behindCloudflare };
+  const version = versionMatch[1];
+  return { verdict: classifyPhpVersion(version), signals, version, behindCloudflare };
+}
+
+/** Reads at most `max` bytes of the body; we only need the <head> and links. */
+async function readBodyText(res: Response, max = 400_000): Promise<string> {
+  const type = res.headers.get('content-type') ?? '';
+  if (!/html|xml|text/i.test(type) || !res.body) return '';
+  const reader = res.body.getReader();
+  const decoder = new TextDecoder();
+  let text = '';
+  try {
+    while (text.length < max) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      text += decoder.decode(value, { stream: true });
+    }
+  } catch {
+    /* partial body is fine */
+  } finally {
+    reader.cancel().catch(() => {});
+  }
+  return text.slice(0, max);
+}
+
 // ─── HTTP → HTTPS redirect probe (best-effort) ────────────────────────────────
 
 async function checkHttpsRedirect(finalUrl: string): Promise<boolean | null> {
@@ -375,10 +478,15 @@ export async function POST(req: Request) {
   const headerChecks = analyzeHeaders(res.headers, isHttps);
   const cookie = analyzeCookies(res.headers, isHttps);
 
-  const [tlsResult, redirectResult] = await Promise.allSettled([
+  const [tlsResult, redirectResult, bodyResult] = await Promise.allSettled([
     isHttps && hostname ? getTlsInfo(hostname) : Promise.resolve(null),
     isHttps ? checkHttpsRedirect(finalUrl) : Promise.resolve(false),
+    readBodyText(res),
   ]);
+  const php = analyzePhp(
+    res.headers,
+    bodyResult.status === 'fulfilled' ? bodyResult.value : ''
+  );
 
   const checks = [...headerChecks, { id: cookie.id, status: cookie.status, present: cookie.present, value: cookie.value }];
 
@@ -402,6 +510,7 @@ export async function POST(req: Request) {
     cookies: cookie.info,
     disclosure,
     tls: tlsResult.status === 'fulfilled' ? tlsResult.value : null,
+    php,
   };
 
   return NextResponse.json(payload, {

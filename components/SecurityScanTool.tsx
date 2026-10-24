@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import {
   FaShieldAlt, FaCheckCircle, FaExclamationTriangle, FaTimesCircle,
-  FaWhatsapp, FaFileSignature, FaLock, FaSpinner, FaHistory, FaTimes, FaCertificate,
+  FaWhatsapp, FaFileSignature, FaLock, FaSpinner, FaHistory, FaTimes, FaCertificate, FaPhp,
 } from 'react-icons/fa';
 import ScrollReveal from '@/components/ScrollReveal';
 import { useTranslation } from '@/hooks/useTranslation';
@@ -36,6 +36,15 @@ interface ScanResponse {
   cookies: { total: number; insecure: number };
   disclosure: { server?: string; poweredBy?: string; aspNet?: string };
   tls: TlsInfo | null;
+  php?: PhpCheck;
+}
+
+type PhpVerdict = 'not_detected' | 'unknown_version' | 'patched' | 'outdated' | 'eol';
+interface PhpCheck {
+  verdict: PhpVerdict;
+  signals: string[];
+  version?: string;
+  behindCloudflare: boolean;
 }
 
 type Lang = 'es' | 'en';
@@ -51,7 +60,7 @@ const COPY = {
     placeholder: 'https://tu-sitio.com',
     analyze: 'Analizar seguridad',
     analyzing: 'Escaneando tu sitio…',
-    disclaimer: 'Sin registro. Analizamos cabeceras HTTP, certificado SSL/TLS y cookies.',
+    disclaimer: 'Sin registro. Analizamos cabeceras HTTP, certificado SSL/TLS, cookies y exposición a la falla PHP2Shell.',
     errInvalid: 'Ingresá una URL válida (ej: tu-sitio.com).',
     errFetch: 'No pudimos acceder a esa URL. Verificá que el sitio esté online y sea público.',
     errGeneric: 'Algo salió mal. Intentá de nuevo en unos segundos.',
@@ -89,6 +98,24 @@ const COPY = {
     newScan: 'Analizar otra URL',
     recentTitle: 'Análisis recientes',
     clearHistory: 'Limpiar',
+    phpTitle: 'Falla PHP2Shell (octubre 2026)',
+    phpSignals: 'Señales de PHP',
+    phpVersion: 'Versión visible',
+    phpVerdict: {
+      not_detected:
+        'No encontramos señales de PHP en esta página. Algunos sitios lo ocultan bien, así que si no sabés con qué está hecha tu web, preguntale a quien la mantiene. Y si tenés otras secciones (blog, tienda, webmail) en otro subdominio, analizalas también.',
+      unknown_version:
+        'Tu sitio usa PHP, pero el servidor no muestra su versión (eso es bueno). No podemos confirmar desde afuera si está corregido: preguntale a tu hosting si ya aplicó la actualización del 21 de octubre de 2026.',
+      patched:
+        'La versión de PHP que muestra tu servidor ya incluye la corrección. Igual conviene ocultar ese dato: no hace falta publicarlo.',
+      outdated:
+        'La versión de PHP que muestra tu servidor es anterior a la corrección. Si tu hosting aplicó un arreglo propio, el número puede no cambiar: confirmalo con ellos hoy.',
+      eol:
+        'Tu sitio usa una versión de PHP sin soporte oficial (8.1 o anterior). Es el caso de mayor riesgo: pedí que la actualicen a PHP 8.3 o más nueva cuanto antes.',
+    } as Record<PhpVerdict, string>,
+    phpCloudflare: 'Tu sitio está detrás de Cloudflare, que bloquea los intentos de ataque conocidos. Ayuda, pero no reemplaza actualizar PHP.',
+    phpNote: 'Revisión pasiva: solo miramos señales públicas, nunca probamos la falla contra tu sitio.',
+    phpGuide: 'Qué hacer según tu hosting',
   },
   en: {
     badge: 'Free tool',
@@ -98,7 +125,7 @@ const COPY = {
     placeholder: 'https://your-site.com',
     analyze: 'Scan security',
     analyzing: 'Scanning your site…',
-    disclaimer: 'No sign-up. We analyze HTTP headers, SSL/TLS certificate and cookies.',
+    disclaimer: 'No sign-up. We analyze HTTP headers, SSL/TLS certificate, cookies and exposure to the PHP2Shell flaw.',
     errInvalid: 'Enter a valid URL (e.g. your-site.com).',
     errFetch: "We couldn't reach that URL. Make sure the site is online and public.",
     errGeneric: 'Something went wrong. Please try again in a few seconds.',
@@ -136,6 +163,24 @@ const COPY = {
     newScan: 'Scan another URL',
     recentTitle: 'Recent scans',
     clearHistory: 'Clear',
+    phpTitle: 'PHP2Shell flaw (October 2026)',
+    phpSignals: 'PHP signals',
+    phpVersion: 'Visible version',
+    phpVerdict: {
+      not_detected:
+        "We found no PHP signals on this page. Some sites hide it well, so if you don't know what your site is built with, ask whoever maintains it. If you have other sections (blog, store, webmail) on another subdomain, scan them too.",
+      unknown_version:
+        "Your site runs PHP, but the server hides its version (that's good). We can't confirm from outside whether it's patched: ask your host if they applied the October 21, 2026 update.",
+      patched:
+        'The PHP version your server shows already includes the fix. Still, it is best to hide it: there is no need to publish it.',
+      outdated:
+        'The PHP version your server shows predates the fix. If your host applied its own backport the number may not change: confirm with them today.',
+      eol:
+        'Your site runs an unsupported PHP version (8.1 or older). This is the highest-risk case: ask to upgrade to PHP 8.3 or newer as soon as possible.',
+    } as Record<PhpVerdict, string>,
+    phpCloudflare: 'Your site is behind Cloudflare, which blocks known attack attempts. It helps, but does not replace updating PHP.',
+    phpNote: 'Passive check: we only look at public signals and never test the flaw against your site.',
+    phpGuide: 'What to do depending on your host',
   },
 } as const;
 
@@ -219,6 +264,57 @@ const STATUS_ICON: Record<CheckStatus, React.ReactNode> = {
   warn: <FaExclamationTriangle className="text-yellow shrink-0" />,
   fail: <FaTimesCircle className="text-pink shrink-0" />,
 };
+
+const PHP_TONE: Record<PhpVerdict, { status: CheckStatus; box: string }> = {
+  not_detected: { status: 'pass', box: 'border-green-400/20 bg-green-400/5' },
+  patched: { status: 'pass', box: 'border-green-400/20 bg-green-400/5' },
+  unknown_version: { status: 'warn', box: 'border-yellow/25 bg-yellow/5' },
+  outdated: { status: 'fail', box: 'border-pink/30 bg-pink/5' },
+  eol: { status: 'fail', box: 'border-pink/30 bg-pink/5' },
+};
+
+function PhpCard({ php, c }: { php: PhpCheck; c: (typeof COPY)[Lang] }) {
+  const tone = PHP_TONE[php.verdict];
+  return (
+    <div className={`border rounded-2xl p-6 md:p-8 ${tone.box}`}>
+      <div className="flex items-center gap-2 mb-4 justify-center">
+        <FaPhp className="text-yellow text-2xl" />
+        <h2 className="text-yellow font-bold text-lg text-center">{c.phpTitle}</h2>
+      </div>
+      <div className="flex items-start gap-3 max-w-2xl mx-auto">
+        <span className="text-lg mt-0.5">{STATUS_ICON[tone.status]}</span>
+        <p className="text-light/85 text-sm leading-relaxed">{c.phpVerdict[php.verdict]}</p>
+      </div>
+      {(php.signals.length > 0 || php.version) && (
+        <div className="flex flex-wrap gap-2 justify-center mt-5 text-xs">
+          {php.signals.length > 0 && (
+            <span className="bg-dark border border-yellow/20 rounded-lg px-3 py-1.5 text-light/80">
+              <span className="text-light/40">{c.phpSignals}:</span>{' '}
+              <span className="font-semibold text-light">{php.signals.join(', ')}</span>
+            </span>
+          )}
+          {php.version && (
+            <span className="bg-dark border border-yellow/20 rounded-lg px-3 py-1.5 text-light/80">
+              <span className="text-light/40">{c.phpVersion}:</span>{' '}
+              <span className="font-semibold text-light font-mono">PHP {php.version}</span>
+            </span>
+          )}
+        </div>
+      )}
+      {php.behindCloudflare && php.verdict !== 'not_detected' && (
+        <p className="text-light/60 text-xs text-center mt-4 max-w-2xl mx-auto">{c.phpCloudflare}</p>
+      )}
+      <p className="text-light/40 text-xs text-center mt-4">
+        {c.phpNote}{' '}
+        {php.verdict !== 'not_detected' && (
+          <Link href="/blog/php2shell-que-paso-que-hacer#segun-hosting" className="underline hover:text-yellow">
+            {c.phpGuide}
+          </Link>
+        )}
+      </p>
+    </div>
+  );
+}
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
@@ -436,6 +532,13 @@ export default function SecurityScanTool() {
                 </p>
               </div>
             </ScrollReveal>
+
+            {/* PHP2Shell exposure (passive) */}
+            {result.php && (
+              <ScrollReveal direction="up" delay={0.05}>
+                <PhpCard php={result.php} c={c} />
+              </ScrollReveal>
+            )}
 
             {/* TLS certificate + HTTPS redirect */}
             {(result.tls || result.https) && (
