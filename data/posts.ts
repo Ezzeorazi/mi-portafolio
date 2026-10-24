@@ -908,6 +908,41 @@ const posts: Post[] = [
       },
     ],
   },
+  {
+    id: 50,
+    slug: 'php2shell-que-paso-que-hacer',
+    image: 'images/blog/php2shell-que-paso-que-hacer.svg',
+    title: 'PHP2Shell: qué pasó con PHP y qué hacer con tu web',
+    category: 'Tecnología',
+    description:
+      'PHP2Shell explicado fácil: qué pasó con PHP esta semana, si tu WordPress está en riesgo, qué hacer según tu hosting y qué problemas te pueden aparecer.',
+    date: 'Publicado el 23 de octubre de 2026',
+    ReadingTime: '8 min de lectura',
+    publishedISO: '2026-10-23',
+    content: 'blog/php2shell-que-paso-que-hacer.html',
+    faq: [
+      {
+        q: '¿Qué es PHP2Shell?',
+        a: 'Es el nombre que se le dio a dos fallas graves en PHP, el lenguaje con el que funcionan WordPress y la mayoría de las webs. Permiten que un atacante tome el control de un sitio sin usuario ni contraseña. Se corrigieron el 21 de octubre de 2026.',
+      },
+      {
+        q: '¿Mi web de WordPress está en riesgo?',
+        a: 'Todo WordPress usa PHP, así que hay que confirmar que el servidor esté actualizado. Si estás en un hosting compartido o en un WordPress administrado, lo más probable es que tu proveedor ya lo haya corregido. Si tenés un VPS o un servidor propio, tenés que actualizarlo vos.',
+      },
+      {
+        q: '¿Alcanza con actualizar WordPress y los plugins?',
+        a: 'No. La falla está en PHP, que corre en el servidor, no en WordPress. Podés tener todo actualizado y seguir expuesto si tu hosting no actualizó PHP.',
+      },
+      {
+        q: '¿Cómo sé si mi hosting ya lo corrigió?',
+        a: 'Revisá si la versión de PHP es 8.5.12, 8.4.27, 8.3.36, 8.2.35 o más nueva, o si la fecha de compilación es del 21 de octubre de 2026 en adelante. Si no encontrás el dato, preguntale directamente al soporte de tu hosting.',
+      },
+      {
+        q: '¿Las webs hechas con Wix o Shopify están afectadas?',
+        a: 'No tenés que hacer nada. En esas plataformas vos no administrás el servidor; cualquier corrección necesaria la aplica la propia plataforma.',
+      },
+    ],
+  },
 ];
 
 export default posts;

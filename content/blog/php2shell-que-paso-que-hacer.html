@@ -1,0 +1,275 @@
+<blockquote>
+  <strong>En resumen:</strong> el 21 de octubre de 2026 se publicó una actualización de urgencia
+  de PHP, el lenguaje con el que funciona la mayoría de las páginas web del mundo, incluidas
+  todas las hechas con WordPress. Se descubrieron dos fallas graves, apodadas
+  <strong>PHP2Shell</strong>, que permiten a un atacante tomar el control de un sitio sin
+  usuario ni contraseña. Si tu web está en un hosting compartido conocido, lo más probable es
+  que tu proveedor ya lo haya resuelto, pero conviene confirmarlo. Si tenés un servidor propio
+  (un VPS) o una versión vieja de PHP, tenés que actuar vos. Abajo te explico todo en simple,
+  punto por punto.
+</blockquote>
+
+<nav aria-label="Tabla de contenidos">
+  <p><strong>En este artículo:</strong></p>
+  <ul>
+    <li><a href="#que-paso">Qué pasó con PHP, explicado fácil</a></li>
+    <li><a href="#me-afecta">¿Mi página web usa PHP?</a></li>
+    <li><a href="#segun-hosting">Qué te toca hacer según dónde está alojada tu web</a></li>
+    <li><a href="#que-hacer">Qué hacer hoy: 6 pasos</a></li>
+    <li><a href="#problemas">Problemas que te pueden aparecer esta semana</a></li>
+    <li><a href="#tercera-falla">La tercera falla del 23 de octubre</a></li>
+    <li><a href="#por-que-tanto-ruido">Por qué hizo tanto ruido</a></li>
+    <li><a href="#mi-caso">Por qué este sitio no se vio afectado</a></li>
+    <li><a href="#faq">Preguntas frecuentes</a></li>
+  </ul>
+</nav>
+
+<h2 id="que-paso">Qué pasó con PHP, explicado fácil</h2>
+<p>
+  PHP es el "motor" que hace funcionar millones de páginas web: el que arma la página cuando
+  alguien entra, procesa los formularios y guarda los pedidos de una tienda. Según estimaciones
+  de Wiz Research citadas por
+  <a href="https://www.newsweek.com/php-vunerability-php2shell-issue-websites-hack-server-12601225" target="_blank" rel="noopener">Newsweek</a>,
+  PHP está detrás de alrededor del 70% de los sitios del mundo.
+</p>
+<p>
+  Esta semana se supo que ese motor tenía <strong>dos fallas graves</strong>. Pensalo como una
+  cerradura que, si le hacés un movimiento muy específico, se abre sin llave. Un atacante podía
+  mandarle a tu web un pedido armado de cierta forma y lograr ejecutar sus propias órdenes en el
+  servidor. Sin usuario, sin contraseña.
+</p>
+<p>Lo que puede pasar si alguien lo aprovecha en tu sitio:</p>
+<ul>
+  <li>Te llenan la web de enlaces de spam o la redirigen a páginas de estafas.</li>
+  <li>Te roban datos: clientes, pedidos, contraseñas guardadas.</li>
+  <li>Usan tu servidor para mandar spam o atacar a otros, y tu hosting te suspende la cuenta.</li>
+</ul>
+<p>
+  La gravedad oficial es de 9,2 sobre 10. El equipo de PHP publicó las versiones corregidas el
+  21 de octubre, un día antes de lo previsto, porque los detalles se filtraron en redes sociales
+  y ya había gente intentando aprovecharlos. La agencia de ciberseguridad de Estados Unidos
+  (CISA) <a href="https://www.cisa.gov/news-events/alerts/2026/10/21/critical-vulnerabilities-php-require-immediate-patching" target="_blank" rel="noopener">pidió actualizar de inmediato</a>
+  y, si no se puede, desconectar el sitio hasta poder hacerlo.
+</p>
+
+<h2 id="me-afecta">¿Mi página web usa PHP?</h2>
+<p>Respuesta rápida según cómo está hecha tu web:</p>
+<ul>
+  <li><strong>WordPress o WooCommerce:</strong> sí, siempre. Todo WordPress funciona con PHP.</li>
+  <li><strong>Joomla, Drupal, PrestaShop, Magento, Moodle:</strong> sí.</li>
+  <li><strong>Sistemas hechos a medida en Laravel o "PHP puro":</strong> sí. Si no sabés con qué se hizo, preguntale a quien la desarrolló.</li>
+  <li><strong>Wix, Shopify, Squarespace:</strong> vos no administrás PHP; si hubiera algo que corregir, lo hace la plataforma. No tenés que hacer nada.</li>
+  <li><strong>Webs estáticas o hechas con Next.js</strong> y publicadas en Vercel o Netlify: en general no usan PHP, así que esta falla no las toca.</li>
+</ul>
+<p>
+  Ojo con un detalle: aunque tu web principal no use PHP, puede que tengas algo viejo que sí lo
+  use. Un blog de hace años en un subdominio, un panel de reservas, un webmail. Esos también cuentan.
+</p>
+
+<h2 id="segun-hosting">Qué te toca hacer según dónde está alojada tu web</h2>
+<p>
+  Acá está lo más importante. La falla está en el servidor, no en tu WordPress, así que
+  <strong>quién tiene que arreglarla depende de quién administra ese servidor</strong>.
+</p>
+
+<h3>Hosting compartido (el plan común de Hostinger, GoDaddy, SiteGround, Namecheap…)</h3>
+<p>
+  <strong>Lo arregla tu proveedor.</strong> La mayoría de los grandes ya lo hizo entre el 21 y
+  el 22 de octubre. Por ejemplo,
+  <a href="https://www.hostinger.com/blog/protecting-php2shell/" target="_blank" rel="noopener">Hostinger</a>
+  completó la actualización en todos sus planes excepto VPS, y
+  <a href="https://www.siteground.com/blog/critical-php-vulnerabilities-october-2026" target="_blank" rel="noopener">SiteGround</a>
+  dice que sus clientes no tienen que hacer nada. Si tu proveedor es más chico o local y no
+  publicó nada, escribile y preguntá (más abajo te dejo un mensaje modelo).
+</p>
+
+<h3>WordPress administrado (WP Engine, Kinsta, WordPress.com, Pressable)</h3>
+<p>
+  <strong>Ya está resuelto.</strong> Estos servicios se encargan de todo el servidor y
+  confirmaron que aplicaron la corrección. No tenés que tocar nada.
+</p>
+
+<h3>Servidor propio o VPS (DigitalOcean, AWS Lightsail, el VPS de Hostinger o GoDaddy)</h3>
+<p>
+  <strong>Te toca a vos o a tu técnico.</strong> En un VPS el proveedor te alquila la máquina,
+  pero lo que corre adentro es tu responsabilidad. Hostinger, GoDaddy y DigitalOcean lo aclararon:
+  sus clientes de VPS tienen que actualizar por su cuenta. En AWS Lightsail ni siquiera se puede
+  actualizar en el lugar: hay que recrear el servidor desde una imagen nueva, según un
+  <a href="https://www.activeset.co/blog/php2shell-host-status" target="_blank" rel="noopener">seguimiento del estado de los proveedores</a>.
+  Si no sabés si tenés un VPS, mirá tu factura: si dice "VPS", "servidor virtual", "Droplet" o "dedicado", es tu caso.
+</p>
+
+<h3>Si tu web la mantiene una agencia o un freelancer</h3>
+<p>
+  <strong>Escribile hoy.</strong> No des por hecho que ya lo vio. Preguntá dónde está alojada,
+  qué versión de PHP usa y si ya está actualizada.
+</p>
+
+<h3>Si tu web usa una versión vieja de PHP (7.4, 8.0 u 8.1)</h3>
+<p>
+  <strong>Es el caso más delicado.</strong> PHP ya no publica versiones oficiales para esas
+  ramas. Algunos hostings aplicaron igual una corrección "por debajo", pero no todos. La
+  recomendación general es pasar a PHP 8.3 o más nuevo. La 8.2 también está corregida, pero deja
+  de recibir soporte el 31 de diciembre de 2026, así que te conviene saltarla.
+</p>
+
+<h2 id="que-hacer">Qué hacer hoy: 6 pasos</h2>
+<ol>
+  <li>
+    <strong>Averiguá dónde está alojada tu web</strong> y si es un plan compartido o un VPS.
+    Buscá en tu mail la factura del hosting.
+  </li>
+  <li>
+    <strong>Mirá tu versión de PHP.</strong> En WordPress: <em>Herramientas → Salud del sitio →
+    Información → Servidor</em>. Las versiones corregidas son <strong>8.5.12, 8.4.27, 8.3.36 y
+    8.2.35</strong> o más nuevas.
+  </li>
+  <li>
+    <strong>No te asustes si el número no cambió.</strong> Cuando el hosting corrige una versión
+    vieja "por debajo", el número sigue igual. Lo que cambia es la fecha de compilación: si es del
+    21 de octubre de 2026 o posterior, está corregida. En Hostinger, por ejemplo, la ves en
+    <em>Sitios web → Panel → PHP Info</em>.
+  </li>
+  <li>
+    <strong>Si tenés dudas, preguntale al hosting.</strong> Copiá y pegá esto en el soporte:
+    <br><em>"Hola, quiero confirmar si mi plan ya tiene aplicada la corrección de PHP2Shell
+    (CVE-2026-109618 y CVE-2026-109619). ¿Qué versión de PHP uso y desde qué fecha está actualizada?"</em>
+  </li>
+  <li>
+    <strong>Actualizar WordPress y los plugins está bien, pero no alcanza.</strong> La falla es
+    del motor, no del WordPress. Podés tener todo al día y seguir expuesto si el PHP del servidor no se corrigió.
+  </li>
+  <li>
+    <strong>Sumá una capa de protección gratis.</strong>
+    <a href="https://blog.cloudflare.com/php-vulnerabilities-waf-protection/" target="_blank" rel="noopener">Cloudflare</a>
+    empezó a bloquear estos ataques horas antes del anuncio oficial, incluso en su plan gratuito.
+    No reemplaza la actualización, pero ayuda mientras tanto.
+  </li>
+</ol>
+
+<h2 id="problemas">Problemas que te pueden aparecer esta semana</h2>
+<p>
+  Algunos inconvenientes no vienen del ataque, sino del arreglo. Para que no te tomen por sorpresa:
+</p>
+
+<h3>Tu web estuvo caída un rato</h3>
+<p>
+  Muchos proveedores hicieron mantenimiento de urgencia. Incluso gobiernos de Países Bajos y
+  Finlandia apagaron sus sitios por precaución hasta actualizarlos. Si tu web se cayó unos
+  minutos el 21 o 22 de octubre, probablemente fue eso.
+</p>
+
+<h3>Después de actualizar PHP, la web muestra error o pantalla en blanco</h3>
+<p>
+  Pasa si saltaste de una versión vieja (7.4, 8.0) a una nueva y algún plugin o tema es muy
+  antiguo. No vuelvas a la versión vieja: desactivá el plugin que falla o pedí ayuda para
+  reemplazarlo. Algunos hostings tienen un botón para volver atrás automáticamente si algo se rompe.
+</p>
+
+<h3>No podés subir archivos o la barra de carga desapareció</h3>
+<p>
+  Para protegerse, varios proveedores desactivaron una función que muestra el progreso de las
+  subidas y bajaron los tamaños máximos permitidos. Si un formulario que recibía archivos grandes
+  ahora falla, consultá con tu hosting.
+</p>
+
+<h3>Un formulario o pago legítimo aparece bloqueado</h3>
+<p>
+  Los filtros de seguridad que se activaron esta semana a veces bloquean pedidos normales por
+  error. Si tus clientes reportan que algo dejó de andar, avisale a tu proveedor: puede ajustar la regla.
+</p>
+
+<h3>Señales de que alguien entró antes del arreglo</h3>
+<ul>
+  <li>Tu web redirige a sitios raros, sobre todo desde el celular.</li>
+  <li>Aparecen usuarios administradores que no creaste.</li>
+  <li>Google muestra "Este sitio puede estar hackeado" o Chrome avisa que es peligroso.</li>
+  <li>El hosting te avisa que tu cuenta manda spam o consume recursos de más.</li>
+</ul>
+<p>
+  Si ves alguna, pedí ayuda profesional: restaurar desde una copia de seguridad limpia, cambiar
+  todas las contraseñas (hosting, WordPress, base de datos, mail) y revisar el servidor. Cambiar
+  las contraseñas solo no alcanza si quedó una "puerta trasera" instalada.
+</p>
+
+<h2 id="tercera-falla">La tercera falla del 23 de octubre</h2>
+<p>
+  Dos días después, PHP publicó un
+  <a href="https://www.php.net/archive/2026.php" target="_blank" rel="noopener">aviso sobre una tercera falla</a>.
+  La buena noticia: solo afecta a sitios configurados de una forma poco común, y la medida para
+  frenarla es la misma que muchos hostings ya habían aplicado el 21. La corrección definitiva
+  llega en la próxima versión normal de PHP. Si estás en un hosting compartido, en general ya
+  estás cubierto; si tenés VPS, tu técnico tiene que aplicar esa configuración.
+</p>
+
+<h2 id="por-que-tanto-ruido">Por qué hizo tanto ruido</h2>
+<ul>
+  <li><strong>Por el tamaño:</strong> afecta a casi todas las versiones de PHP de los últimos años, y PHP está en la mayor parte de la web.</li>
+  <li><strong>Por la filtración:</strong> los detalles salieron antes de que el arreglo estuviera listo, y los ataques empezaron casi en simultáneo.</li>
+  <li><strong>Por cómo se descubrió:</strong> las fallas las encontraron equipos de seguridad usando inteligencia artificial, algo que va a ser cada vez más común. Lo que antes tardaba meses en encontrarse, ahora puede aparecer en días, para bien y para mal.</li>
+</ul>
+<p>
+  La lección para un negocio no es técnica: <strong>tenés que saber dónde está tu web, quién la
+  mantiene y cómo contactarlo rápido.</strong> Muchos dueños de negocio descubrieron esta semana
+  que no tenían ni idea.
+</p>
+
+<h2 id="mi-caso">Mi caso: por qué este sitio no se vio afectado</h2>
+<p>
+  Este sitio está hecho con Next.js y publicado en Netlify como páginas ya armadas, así que no
+  depende de un PHP que yo tenga que mantener. No es que una tecnología sea "mejor" que otra
+  para todo, pero sí es una diferencia real cuando pasa algo así: menos piezas expuestas,
+  menos cosas que actualizar de urgencia. Si estás evaluando cómo armar tu próxima web, lo
+  comparé en detalle en <a href="/blog/nextjs-vs-wordpress-cual-elegir-negocio-2026">Next.js vs
+  WordPress para negocios</a>. WordPress sigue siendo una buena opción para muchos casos;
+  solo necesita que alguien se ocupe del mantenimiento.
+</p>
+<p>
+  Y si querés una revisión rápida, sumé un chequeo de PHP2Shell a mi
+  <a href="/analisis-seguridad">análisis de seguridad web gratis</a>. Pegás tu URL y te dice si
+  tu web usa PHP, si el servidor muestra una versión vieja o sin soporte, y si estás detrás de
+  Cloudflare. Es una revisión desde afuera y sin atacar el sitio: si el servidor oculta su
+  versión (lo normal y recomendable), no puede confirmar si ya está corregido, y en ese caso te
+  dice que se lo preguntes a tu hosting. De paso, te muestra si tu sitio tiene las protecciones
+  básicas bien configuradas.
+</p>
+
+<h2 id="faq">Preguntas frecuentes</h2>
+<h3>¿Qué es PHP2Shell?</h3>
+<p>
+  Es el nombre que se le dio a dos fallas graves en PHP, el lenguaje con el que funcionan
+  WordPress y la mayoría de las webs. Permiten que un atacante tome el control de un sitio sin
+  usuario ni contraseña. Se corrigieron el 21 de octubre de 2026.
+</p>
+<h3>¿Mi web de WordPress está en riesgo?</h3>
+<p>
+  Todo WordPress usa PHP, así que hay que confirmar que el servidor esté actualizado. Si estás en
+  un hosting compartido o en un WordPress administrado, lo más probable es que tu proveedor ya lo
+  haya corregido. Si tenés un VPS o un servidor propio, tenés que actualizarlo vos.
+</p>
+<h3>¿Alcanza con actualizar WordPress y los plugins?</h3>
+<p>
+  No. La falla está en PHP, que corre en el servidor, no en WordPress. Podés tener todo
+  actualizado y seguir expuesto si tu hosting no actualizó PHP.
+</p>
+<h3>¿Cómo sé si mi hosting ya lo corrigió?</h3>
+<p>
+  Revisá si la versión de PHP es 8.5.12, 8.4.27, 8.3.36, 8.2.35 o más nueva, o si la fecha de
+  compilación es del 21 de octubre de 2026 en adelante. Si no encontrás el dato, preguntale
+  directamente al soporte de tu hosting.
+</p>
+<h3>¿Las webs hechas con Wix o Shopify están afectadas?</h3>
+<p>
+  No tenés que hacer nada. En esas plataformas vos no administrás el servidor; cualquier
+  corrección necesaria la aplica la propia plataforma.
+</p>
+
+<h2>Para cerrar</h2>
+<p>
+  Si tu web está en un hosting compartido conocido, lo más probable es que ya estés protegido:
+  confirmalo con una pregunta al soporte y listo. Si tenés un VPS, una versión vieja de PHP o no
+  sabés quién mantiene tu sitio, ese es el punto a resolver esta semana.
+</p>
+<p>
+  Si no sabés por dónde empezar, <a href="/contacto">escribime</a> y lo revisamos juntos.
+</p>

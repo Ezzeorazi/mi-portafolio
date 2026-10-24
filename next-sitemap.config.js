@@ -30,6 +30,7 @@ const BLOG_LASTMOD = {
   'herramienta-analisis-seo-gratis-como-funciona': '2026-06-15',
   'alertas-terremotos-android-google-venezuela': '2026-06-26',
   'freelancer-vs-agencia-construir-con-ia': '2026-10-18',
+  'php2shell-que-paso-que-hacer': '2026-10-23',
 };
 
 /** @type {import('next-sitemap').IConfig} */
