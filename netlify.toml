@@ -2,6 +2,11 @@
   command = "npm run build"
   publish = ".next"
 
+# Node 18 está fuera de soporte y algunas dependencias piden >=20.
+# Mismo major que se usa en local.
+[build.environment]
+  NODE_VERSION = "22"
+
 # Redirigir accesos directos a archivos .html del blog a la ruta Next.js limpia
 [[redirects]]
   from = "/blog/*.html"

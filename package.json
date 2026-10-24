@@ -15,7 +15,7 @@
     "db:studio": "prisma studio"
   },
   "dependencies": {
-    "@netlify/plugin-nextjs": "^5.15.9",
+    "@netlify/plugin-nextjs": "^5.16.4",
     "@next/third-parties": "^15.3.1",
     "@prisma/client": "^6.19.3",
     "@tiptap/extension-placeholder": "^3.23.6",
