@@ -24,9 +24,9 @@ const BLOG_LASTMOD = {
   'precio-pagina-web-mexico-2026': '2026-05-08',
   'claude-ia-guia-prompts-marketing-seo-diseno-parte-2': '2026-05-13',
   'caliber3d-plataforma-impresion-3d-mexico': '2026-05-18',
-  'nextjs-vs-wordpress-cual-elegir-negocio-2026': '2026-05-21',
+  'nextjs-vs-wordpress-cual-elegir-negocio-2026': '2026-10-23',
   '5-errores-seo-negocio-como-arreglarlos': '2026-05-26',
-  'claude-ia-guia-prompts-negocios-emprendedores-parte-3': '2026-06-08',
+  'claude-ia-guia-prompts-negocios-emprendedores-parte-3': '2026-10-23',
   'herramienta-analisis-seo-gratis-como-funciona': '2026-06-15',
   'alertas-terremotos-android-google-venezuela': '2026-06-26',
   'freelancer-vs-agencia-construir-con-ia': '2026-10-18',
@@ -46,7 +46,8 @@ const config = {
     ],
   },
   // /detector-de-bots: herramienta oculta (noindex). Al hacerla pública, quitarla de acá.
-  exclude: ['/presupuestos', '/detector-de-bots'],
+  // /blog/noticias-tech-*: resúmenes semanales con noindex (ver app/blog/[slug]/page.tsx).
+  exclude: ['/presupuestos', '/detector-de-bots', '/blog/noticias-tech-*'],
   transform: async (config, path) => {
     if (path.startsWith('/blog/')) {
       const slug = path.replace('/blog/', '');

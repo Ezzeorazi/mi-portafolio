@@ -315,11 +315,32 @@ const posts: Post[] = [
     image: 'images/blog/nextjs-vs-wordpress-2026.webp',
     title: 'Next.js vs WordPress: ¿cuál elegir para tu negocio en 2026?',
     category: 'Servicios Web',
-    description: 'Comparativa honesta entre Next.js y WordPress para dueños de negocios: performance, SEO, PWA, escalabilidad y cuándo cada tecnología tiene sentido. Incluye cómo un sitio puede convertirse en el alma de tu negocio.',
+    description:
+      'Next.js o WordPress para tu negocio: comparo velocidad, SEO, seguridad, costo y PWA, y te digo cuándo conviene cada uno, sin vender humo.',
     date: 'Publicado el 21 de mayo de 2026',
-    ReadingTime: '10 min de lectura',
     publishedISO: '2026-05-21',
+    updated: 'Actualizado el 23 de octubre de 2026',
+    updatedISO: '2026-10-23',
+    ReadingTime: '11 min de lectura',
     content: 'blog/nextjs-vs-wordpress-cual-elegir-negocio-2026.html',
+    faq: [
+      {
+        q: '¿Qué es mejor para SEO, Next.js o WordPress?',
+        a: 'Los dos pueden posicionar bien. WordPress necesita plugins, caché y optimización para lograr buena velocidad; Next.js genera páginas rápidas y con control total de metadatos desde el inicio. La diferencia real la hace cómo está construido el sitio y el contenido que publicás.',
+      },
+      {
+        q: '¿Es más caro hacer una página web con Next.js que con WordPress?',
+        a: 'El costo inicial suele ser mayor con Next.js porque requiere desarrollo a medida. A cambio, evita licencias de plugins, problemas de seguridad frecuentes y migraciones cuando el negocio necesita funcionalidades propias, así que a mediano plazo puede salir más barato.',
+      },
+      {
+        q: '¿Puedo editar el contenido yo mismo si mi sitio está hecho con Next.js?',
+        a: 'Sí, si se conecta a un CMS headless (un panel de administración separado). Sin CMS, cada cambio de contenido requiere a un desarrollador. En WordPress la edición viene incluida desde el primer día.',
+      },
+      {
+        q: '¿Cuándo conviene elegir WordPress?',
+        a: 'Cuando necesitás un sitio rápido y económico, que vas a administrar vos, sin funcionalidades a medida en los próximos dos años. Para un blog o un sitio de folleto, WordPress suele ser suficiente.',
+      },
+    ],
   },
   {
     id: 23,
@@ -337,13 +358,34 @@ const posts: Post[] = [
     id: 24,
     slug: 'claude-ia-guia-prompts-negocios-emprendedores-parte-3',
     image: 'images/blog/claude-prompts-negocios-parte3.webp',
-    title: 'Claude de Anthropic: Prompts para Dueños de Negocio — Parte 3',
+    title: 'Prompts de Claude para emprendedores y dueños de negocio',
     category: 'Inteligencia Artificial',
-    description: 'El cierre de la trilogía Claude: prompts concretos para emprendedores que quieren atraer clientes, cerrar ventas y crecer sin depender de un equipo de marketing. Bio de Instagram, presupuestos, follow-ups y más.',
+    description:
+      '10 prompts de Claude listos para copiar: bio de Instagram, respuestas de WhatsApp, presupuestos y follow-ups para vender más sin equipo de marketing.',
     date: 'Publicado el 8 de junio de 2026',
-    ReadingTime: '13 min de lectura',
     publishedISO: '2026-06-08',
+    updated: 'Actualizado el 23 de octubre de 2026',
+    updatedISO: '2026-10-23',
+    ReadingTime: '14 min de lectura',
     content: 'blog/claude-ia-guia-prompts-negocios-emprendedores-parte-3.html',
+    faq: [
+      {
+        q: '¿Qué prompts de Claude sirven para un negocio chico?',
+        a: 'Los que resuelven tareas repetitivas de venta y comunicación: la bio de Instagram, la descripción de productos, respuestas listas para los mensajes más frecuentes de WhatsApp o Instagram, presupuestos, follow-ups a clientes que no respondieron y pedidos de testimonios.',
+      },
+      {
+        q: '¿Cómo escribir un buen prompt para mi negocio?',
+        a: 'Dándole a Claude el contexto que no tiene: qué vendés, quién es tu cliente ideal, qué tono usa tu marca, qué objeciones aparecen y qué resultado querés. Pedí además un formato concreto (largo máximo, cantidad de versiones) y aclará qué frases evitar.',
+      },
+      {
+        q: '¿Claude puede responder los mensajes de mis clientes por WhatsApp?',
+        a: 'Puede redactar respuestas listas para copiar y pegar a las preguntas que más recibís, adaptadas al tono de tu marca. Para que responda solo, sin intervención, hace falta integrarlo con un bot de WhatsApp, que es un desarrollo aparte.',
+      },
+      {
+        q: '¿Necesito pagar Claude para usar estos prompts?',
+        a: 'No. Todos los prompts de esta guía funcionan con la versión gratuita de Claude. Los planes pagos dan más uso diario y acceso a los modelos más potentes, algo útil si lo usás todos los días.',
+      },
+    ],
   },
   {
     id: 25,

@@ -223,6 +223,17 @@ function selectNews(all) {
 
 // ─── 2. Redactar con Gemini ─────────────────────────────────────────────────
 
+// Bloque fijo al pie de cada resumen: los posts de noticias no se indexan, pero
+// sus links internos llevan a los lectores (y a Google) hacia los posts que sí
+// buscan posicionar. Se agrega fuera de Gemini para que nunca invente URLs.
+const LINKS_INTERNOS = `<h2>Más del blog</h2>
+<ul>
+<li><a href="/blog/claude-ia-guia-prompts-negocios-emprendedores-parte-3">Prompts de Claude para emprendedores y dueños de negocio</a></li>
+<li><a href="/blog/pagina-web-para-tu-negocio-latinoamerica-2026">¿Necesitás una página web para tu negocio?</a></li>
+<li><a href="/blog/precio-pagina-web-mexico-2026">¿Cuánto cuesta una página web en México en 2026?</a></li>
+<li><a href="/blog/5-errores-seo-negocio-como-arreglarlos">5 errores que arruinan el SEO de tu negocio</a></li>
+</ul>`;
+
 function buildPrompt(news, fechaTexto) {
   const lista = news
     .map(
@@ -525,7 +536,7 @@ async function main() {
 
   console.log('\n5) Escribiendo HTML y posts.ts…');
   const contentRel = `blog/${slug}.html`;
-  await fs.writeFile(path.join(ROOT, 'content', contentRel), post.html.trim() + '\n', 'utf-8');
+  await fs.writeFile(path.join(ROOT, 'content', contentRel), post.html.trim() + '\n' + LINKS_INTERNOS + '\n', 'utf-8');
   console.log(`  ✓ content/${contentRel}`);
 
   await insertarEnPosts({

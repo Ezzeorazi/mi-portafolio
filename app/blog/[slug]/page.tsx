@@ -20,10 +20,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPostBySlug(slug);
   if (!post) return {};
 
+  // Los resúmenes semanales de noticias son contenido efímero generado a partir
+  // de notas de terceros: se publican para los lectores pero no se indexan,
+  // para que no bajen la evaluación de calidad del resto del sitio.
+  const esNoticia = post.category === 'Noticias';
+
   return {
     title: post.title,
     description: post.description,
     alternates: { canonical: `https://ezequiel-orazi.online/blog/${post.slug}` },
+    ...(esNoticia && { robots: { index: false, follow: true } }),
     openGraph: {
       title: post.title,
       description: post.description,
