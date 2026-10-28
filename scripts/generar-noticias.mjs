@@ -381,6 +381,40 @@ function parseGeminiJson(text) {
   return parsed;
 }
 
+// Gemini a veces devuelve HTML roto: un "<" suelto delante de una palabra
+// ("<Desde mi perspectiva…", que el navegador lee como una etiqueta <desde>
+// que envuelve el resto del post) o párrafos sin <p>. En los dos casos el
+// texto queda fuera de los estilos de .blog-content y se ve oscuro.
+const TAGS_OK = 'blockquote|p|h2|h3|strong|em|b|i|a|ul|ol|li|br';
+const BLOQUES = 'blockquote|p|h2|h3|ul|ol|li';
+
+export function normalizarHtml(html) {
+  let s = html.replace(/\r\n?/g, '\n');
+  // 1) "<" que no abre ni cierra una etiqueta permitida → se descarta.
+  s = s.replace(new RegExp(`<(?!\\/?(?:${TAGS_OK})\\b)`, 'gi'), '');
+  // 2) Cada etiqueta de bloque en su propia línea, para poder recorrerlas.
+  s = s
+    .replace(new RegExp(`(<\\/(?:${BLOQUES})>)`, 'gi'), '$1\n')
+    .replace(new RegExp(`(<(?:${BLOQUES})\\b[^>]*>)`, 'gi'), '\n$1');
+  // 3) Texto suelto fuera de cualquier bloque → <p>.
+  const out = [];
+  let abiertos = 0;
+  for (const raw of s.split('\n')) {
+    const linea = raw.trim();
+    if (!linea) continue;
+    const empiezaBloque = new RegExp(`^<\\/?(?:${BLOQUES})\\b`, 'i').test(linea);
+    out.push(abiertos === 0 && !empiezaBloque ? `<p>${linea}</p>` : linea);
+    abiertos += (linea.match(new RegExp(`<(?:${BLOQUES})\\b`, 'gi')) || []).length;
+    abiertos -= (linea.match(new RegExp(`<\\/(?:${BLOQUES})>`, 'gi')) || []).length;
+    if (abiertos < 0) abiertos = 0;
+  }
+  // Une las líneas que quedaron dentro de un mismo bloque (ej. <p>\ntexto\n</p>).
+  return out
+    .join('\n')
+    .replace(new RegExp(`(<(?:p|h2|h3|li|blockquote)\\b[^>]*>)\\n`, 'gi'), '$1')
+    .replace(new RegExp(`\\n(<\\/(?:p|h2|h3|li|blockquote)>)`, 'gi'), '$1');
+}
+
 // ─── 3. Portada SVG ─────────────────────────────────────────────────────────
 
 function wrapText(text, maxChars, maxLines = 5) {
@@ -505,6 +539,14 @@ async function main() {
   const fechaTexto = fechaEs(hoy);
   const slug = `noticias-tech-${iso}`;
 
+  // Si ya se publicó hoy (p. ej. corrida manual antes de que llegue el cron,
+  // que GitHub suele demorar horas), salimos sin error y sin gastar Gemini.
+  const postsSrc = await fs.readFile(path.join(ROOT, 'data', 'posts.ts'), 'utf-8');
+  if (postsSrc.includes(`slug: '${slug}'`)) {
+    console.log(`ℹ️ El post "${slug}" ya existe. Nada que hacer.`);
+    return;
+  }
+
   console.log(`\n📰 Generando "Noticias Tech" del ${fechaTexto}\n`);
 
   console.log('1) Leyendo feeds RSS…');
@@ -536,7 +578,7 @@ async function main() {
 
   console.log('\n5) Escribiendo HTML y posts.ts…');
   const contentRel = `blog/${slug}.html`;
-  await fs.writeFile(path.join(ROOT, 'content', contentRel), post.html.trim() + '\n' + LINKS_INTERNOS + '\n', 'utf-8');
+  await fs.writeFile(path.join(ROOT, 'content', contentRel), normalizarHtml(post.html.trim()) + '\n' + LINKS_INTERNOS + '\n', 'utf-8');
   console.log(`  ✓ content/${contentRel}`);
 
   await insertarEnPosts({
@@ -554,7 +596,10 @@ async function main() {
   console.log('\n✅ Listo. Hacé commit & push y Netlify reconstruye solo.\n');
 }
 
-main().catch((err) => {
-  console.error('\n❌ Error:', err.message, '\n');
-  process.exit(1);
-});
+// Solo corre al ejecutar el script (no al importarlo para probar normalizarHtml).
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main().catch((err) => {
+    console.error('\n❌ Error:', err.message, '\n');
+    process.exit(1);
+  });
+}
