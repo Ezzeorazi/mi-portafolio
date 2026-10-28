@@ -985,6 +985,32 @@ const posts: Post[] = [
       },
     ],
   },
+  {
+    id: 51,
+    slug: 'noticias-tech-2026-10-28',
+    image: 'images/blog/noticias-tech-2026-10-28.svg',
+    title: "Resumen Semanal Tech: Trenes, Macs Táctiles y Más Novedades",
+    category: 'Noticias',
+    description: "Tu dosis semanal de noticias tech con análisis de Ezequiel Orazi: un accidente ferroviario \"inexplicable\", el MacBook táctil, y los problemas de Google en…",
+    date: 'Publicado el 28 de octubre de 2026',
+    ReadingTime: '5 min de lectura',
+    publishedISO: '2026-10-28',
+    content: 'blog/noticias-tech-2026-10-28.html',
+    faq: [
+      {
+        q: "¿Qué pasó con los trenes AVE e Iryo en Toledo esta semana?",
+        a: "Un tren AVE de Renfe arrolló a un tren Iryo que estaba detenido en la vía en Urda, Toledo. El ministro de Transportes, Óscar Puente, calificó el accidente como \"inexplicable\", siendo el segundo siniestro grave del año en España.",
+      },
+      {
+        q: "¿Apple lanzó un MacBook con pantalla táctil esta semana?",
+        a: "Apple presentó un nuevo iPad Mini con pantalla OLED y actualizaciones del chip M6 para el MacBook Pro y iMac. Aunque hubo rumores y expectativas en el evento, el artículo se enfoca en el \"live blog\" del evento sin confirmar el lanzamiento de un MacBook táctil, solo la expectativa alrededor de este.",
+      },
+      {
+        q: "¿Por qué Finlandia detuvo los proyectos de Google para centros de datos?",
+        a: "La Agencia de Licencias y Supervisión (LVV) de Finlandia ordenó a la filial de Google Tuike Finland detener los preparativos para dos nuevos centros de datos. La razón fue que las modificaciones planificadas \"modifican de manera significativa el entorno\", lo que implica problemas con la evaluación o cumplimiento ambiental.",
+      },
+    ],
+  },
 ];
 
 export default posts;
