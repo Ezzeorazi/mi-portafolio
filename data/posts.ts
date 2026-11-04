@@ -1011,6 +1011,32 @@ const posts: Post[] = [
       },
     ],
   },
+  {
+    id: 52,
+    slug: 'noticias-tech-2026-11-04',
+    image: 'images/blog/noticias-tech-2026-11-04.svg',
+    title: "Resumen Semanal Tech: AI, Robos de Datos y el Regreso de Zelda",
+    category: 'Noticias',
+    description: "Ezequiel Orazi te trae el resumen tech de la semana: Nothing lanza dispositivo AI sin pantalla, robos millonarios de componentes para centros de datos, y más.",
+    date: 'Publicado el 4 de noviembre de 2026',
+    ReadingTime: '6 min de lectura',
+    publishedISO: '2026-11-04',
+    content: 'blog/noticias-tech-2026-11-04.html',
+    faq: [
+      {
+        q: "¿Qué se sabe del nuevo dispositivo de IA de Nothing?",
+        a: "Nothing planea lanzar su primer dispositivo de inteligencia artificial en diciembre. Su CEO, Carl Pei, indicó que será un dispositivo “screen-free”, enfocándose en una nueva forma de interacción sin pantalla.",
+      },
+      {
+        q: "¿Por qué hay robos de componentes para centros de datos?",
+        a: "Bandas organizadas están robando camiones cargados de componentes para centros de datos, sumando 100 millones de dólares en pérdidas. Esto se atribuye a la alta demanda y valor de estos componentes, como GPUs, impulsada por la “fiebre del oro de la IA”.",
+      },
+      {
+        q: "¿Qué causó el accidente del Learjet 60 en Florida?",
+        a: "La NTSB (Junta Para la Seguridad en el Transporte) de Estados Unidos confirmó que el Learjet 60 que se estrelló en Florida perdió partes de su estabilizador antes del impacto. Se esperan más detalles en el informe preliminar.",
+      },
+    ],
+  },
 ];
 
 export default posts;
