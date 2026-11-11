@@ -1037,6 +1037,32 @@ const posts: Post[] = [
       },
     ],
   },
+  {
+    id: 53,
+    slug: 'noticias-tech-2026-11-11',
+    image: 'images/blog/noticias-tech-2026-11-11.svg',
+    title: "Resumen Tech Semanal: Microsoft, la UE y el Galaxy S27",
+    category: 'Noticias',
+    description: "Tu dosis semanal de tecnología con Ezequiel Orazi: Microsoft patenta un sistema para usar tu GPU, la UE propone una ley contra prácticas adictivas online y se…",
+    date: 'Publicado el 11 de noviembre de 2026',
+    ReadingTime: '6 min de lectura',
+    publishedISO: '2026-11-11',
+    content: 'blog/noticias-tech-2026-11-11.html',
+    faq: [
+      {
+        q: "¿Qué planea hacer Microsoft con las GPU de los usuarios?",
+        a: "Microsoft patentó un sistema para aprovechar la potencia de las tarjetas gráficas (GPU) de los usuarios cuando no las están utilizando. El objetivo es usar esta capacidad ociosa para entrenar sus modelos de inteligencia artificial y, según la noticia, te pagaría por ello.",
+      },
+      {
+        q: "¿Qué es la Digital Fairness Act de la Unión Europea?",
+        a: "La Digital Fairness Act (DFA) es una propuesta de ley de la Comisión Europea diseñada para hacer \"más justa\" la experiencia online de los usuarios. Busca regular prácticas que explotan a los consumidores en juegos, redes sociales y plataformas de e-commerce, como las \"loot boxes\" o funciones adictivas.",
+      },
+      {
+        q: "¿Qué cambios se esperan en las cámaras del Samsung Galaxy S27 Ultra?",
+        a: "Según filtraciones de SammyGuru, el Samsung Galaxy S27 Ultra podría eliminar el zoom óptico 3x. En su lugar, se integraría un sensor principal de 200 MP, lo que sugiere un enfoque en la alta resolución para la versatilidad fotográfica.",
+      },
+    ],
+  },
 ];
 
 export default posts;
