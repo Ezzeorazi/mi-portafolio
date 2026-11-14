@@ -1063,6 +1063,41 @@ const posts: Post[] = [
       },
     ],
   },
+  {
+    id: 54,
+    slug: 'jensen-huang-renuncia-nvidia-que-paso',
+    image: 'images/blog/jensen-huang-renuncia-nvidia-que-paso.svg',
+    title: 'Jensen Huang renunció a Nvidia: qué pasó y qué viene',
+    category: 'Tecnología',
+    description:
+      'Jensen Huang dejó de ser CEO de Nvidia tras 33 años. Cronología completa, qué está confirmado y qué no, el caso Megaspeed, el Congreso y la caída de la acción.',
+    date: 'Publicado el 14 de noviembre de 2026',
+    ReadingTime: '12 min de lectura',
+    publishedISO: '2026-11-14',
+    content: 'blog/jensen-huang-renuncia-nvidia-que-paso.html',
+    faq: [
+      {
+        q: '¿Por qué renunció Jensen Huang a Nvidia?',
+        a: 'Dejó el cargo de CEO el 12 de noviembre de 2026, cuatro días después de admitir en una carta a sus empleados que le fue infiel a su esposa. El agravante es que, según la prensa estadounidense, una de las relaciones fue con una ejecutiva de Megaspeed a la que funcionarios de Estados Unidos consideran una posible espía de China. Eso no está probado.',
+      },
+      {
+        q: '¿Quién es la nueva CEO de Nvidia?',
+        a: 'Colette Kress, directora financiera de la empresa desde hace unos 13 años, asumió como CEO interina y mantiene también su cargo anterior. Nvidia todavía no anunció un reemplazo definitivo ni un plazo para elegirlo.',
+      },
+      {
+        q: '¿Qué es Megaspeed y qué tiene que ver con Nvidia?',
+        a: 'Es una empresa de infraestructura de IA con sede en Singapur que compra chips de Nvidia y alquila capacidad de cómputo. Estados Unidos y Singapur la investigan por la sospecha de que desvió a China chips cuya venta está restringida. La empresa no fue condenada por nada.',
+      },
+      {
+        q: '¿Cuánto cayó la acción de Nvidia?',
+        a: 'Bajó 12,75% en la semana de la renuncia, su sexta semana consecutiva en baja, y el 13 de noviembre cerró por debajo de los 4 billones de dólares de valor de mercado por primera vez desde julio de 2025.',
+      },
+      {
+        q: '¿Esto afecta a los productos de Nvidia o a la IA que uso todos los días?',
+        a: 'A corto plazo, no. Los chips, los centros de datos y los servicios de IA siguen funcionando igual. Lo que cambia es quién toma las decisiones de largo plazo en la empresa que provee la mayor parte del hardware de la industria, y eso se va a notar con el tiempo, no esta semana.',
+      },
+    ],
+  },
 ];
 
 export default posts;
