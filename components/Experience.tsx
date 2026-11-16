@@ -6,12 +6,12 @@ const experiencesEs = [
   {
     id: 0,
     company: 'Mipsa',
-    role: 'Colaborador',
+    role: 'Técnico en refrigeración y encargado de personal operativo',
     startDate: 'Noviembre 2026',
     endDateKey: 'exp_present',
     description:
-      'Me incorporé a Mipsa el 9 de noviembre de 2026. En paralelo sigo abierto a nuevas oportunidades en programación web y desarrollo de software.',
-    technologies: ['Mipsa'],
+      'Desde el 9 de noviembre de 2026. Mantenimiento y reparación de equipos de refrigeración comercial en grandes hoteles de la Riviera Maya (Hilton, The Reef, Sandos, Barceló, entre otros): cámaras de conservación y congelación, fábricas de hielo, dispensadores de agua y lavalozas. Tengo a cargo al personal operativo. En paralelo sigo abierto a oportunidades en programación web y desarrollo de software.',
+    technologies: ['Refrigeración comercial', 'Cámaras frigoríficas', 'Fábricas de hielo', 'Lavalozas', 'Gestión de personal'],
   },
   {
     id: 1,
@@ -79,12 +79,12 @@ const experiencesEn = [
   {
     id: 0,
     company: 'Mipsa',
-    role: 'Team Member',
+    role: 'Refrigeration Technician and Operations Staff Supervisor',
     startDate: 'November 2026',
     endDateKey: 'exp_present',
     description:
-      'I joined Mipsa on November 9, 2026. Alongside it, I remain open to new opportunities in web programming and software development.',
-    technologies: ['Mipsa'],
+      'Since November 9, 2026. Maintenance and repair of commercial refrigeration equipment at large Riviera Maya hotels (Hilton, The Reef, Sandos, Barceló, among others): cold storage and freezer rooms, ice machines, water dispensers and dishwashers. I supervise the operations staff. Alongside it, I remain open to web programming and software development opportunities.',
+    technologies: ['Commercial Refrigeration', 'Cold Rooms', 'Ice Machines', 'Dishwashers', 'Staff Management'],
   },
   {
     id: 1,
