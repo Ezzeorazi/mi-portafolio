@@ -1098,6 +1098,45 @@ const posts: Post[] = [
       },
     ],
   },
+  {
+    id: 55,
+    slug: 'semana-tech-microsoft-vuelos-starship-lula-meta',
+    image: 'images/blog/semana-tech-microsoft-vuelos-starship-lula-meta.svg',
+    title: 'La semana en que falló todo: Microsoft, vuelos y Starship',
+    category: 'Tecnología',
+    description:
+      'Caída de Microsoft 365, todos los vuelos de EE.UU. en tierra, las luces de Starship sobre México, la nave atrapada por la torre, la multa a Meta y el triunfo de Lula.',
+    date: 'Publicado el 16 de noviembre de 2026',
+    ReadingTime: '11 min de lectura',
+    publishedISO: '2026-11-16',
+    content: 'blog/semana-tech-microsoft-vuelos-starship-lula-meta.html',
+    faq: [
+      {
+        q: '¿Por qué se frenaron todos los vuelos en Estados Unidos?',
+        a: 'El 13 de noviembre de 2026 la FAA detuvo los vuelos por más de cuatro horas por inestabilidad en los radares y las comunicaciones de sus centros de control. La investigación preliminar apunta a una actualización de equipos que sobrecargó la infraestructura antigua. No hay indicios de un ciberataque.',
+      },
+      {
+        q: '¿Cuánto hacía que no se frenaban todos los vuelos en Estados Unidos?',
+        a: 'Casi cuatro años. El anterior freno nacional fue en enero de 2023, por una falla en el sistema de avisos a pilotos. Antes de ese, hay que ir hasta los atentados del 11 de septiembre de 2001. El de noviembre de 2026 es apenas el segundo desde entonces.',
+      },
+      {
+        q: '¿La caída de Microsoft tuvo que ver con el freno de los vuelos?',
+        a: 'Según las autoridades, no. Microsoft atribuyó su caída del 12 de noviembre a un problema surgido durante una ampliación de su propia red, y la FAA a sus equipos de telecomunicaciones. Ninguno encontró señales de actividad maliciosa ni una conexión entre los dos hechos.',
+      },
+      {
+        q: '¿Qué eran las luces que se vieron en el cielo de México el viernes 13?',
+        a: 'El paso del cohete Starship de SpaceX, lanzado esa tarde desde Texas. El resplandor con forma de cono es el gas de los motores iluminado por el sol a gran altura. La nave llevaba 26 satélites Starlink, pero lo que se vio fue la estela del cohete, no los satélites.',
+      },
+      {
+        q: '¿Qué logró SpaceX con el vuelo 15 de Starship?',
+        a: 'Puso en órbita 26 satélites Starlink y, tras 22 horas y media de vuelo, la nave regresó y fue atrapada por los brazos de la torre de lanzamiento el 14 de noviembre. Es la primera vez que se atrapa la etapa superior. El propulsor, en cambio, no pudo ser atrapado y cayó en el Golfo de México.',
+      },
+      {
+        q: '¿Por qué multaron a Meta en Italia?',
+        a: 'Porque una función de Facebook accedió a las fotos y videos del teléfono de unos 20 millones de usuarios de Android sin un consentimiento claro y específico. La multa es de 805 millones de euros y es contra la empresa, no contra Mark Zuckerberg personalmente.',
+      },
+    ],
+  },
 ];
 
 export default posts;

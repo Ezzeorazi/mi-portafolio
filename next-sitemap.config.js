@@ -31,6 +31,7 @@ const BLOG_LASTMOD = {
   'alertas-terremotos-android-google-venezuela': '2026-06-26',
   'freelancer-vs-agencia-construir-con-ia': '2026-10-18',
   'jensen-huang-renuncia-nvidia-que-paso': '2026-11-14',
+  'semana-tech-microsoft-vuelos-starship-lula-meta': '2026-11-16',
   'php2shell-que-paso-que-hacer': '2026-10-23',
 };
 
