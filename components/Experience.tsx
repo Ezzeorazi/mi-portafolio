@@ -4,6 +4,16 @@ import { useTranslation } from '@/hooks/useTranslation';
 
 const experiencesEs = [
   {
+    id: 0,
+    company: 'Mipsa',
+    role: 'Colaborador',
+    startDate: 'Noviembre 2026',
+    endDateKey: 'exp_present',
+    description:
+      'Me incorporé a Mipsa el 9 de noviembre de 2026. En paralelo sigo abierto a nuevas oportunidades en programación web y desarrollo de software.',
+    technologies: ['Mipsa'],
+  },
+  {
     id: 1,
     company: 'Caliber 3d Printing',
     role: 'Técnico de impresión 3D, diseñador y desarrollador web',
@@ -66,6 +76,16 @@ const experiencesEs = [
 ];
 
 const experiencesEn = [
+  {
+    id: 0,
+    company: 'Mipsa',
+    role: 'Team Member',
+    startDate: 'November 2026',
+    endDateKey: 'exp_present',
+    description:
+      'I joined Mipsa on November 9, 2026. Alongside it, I remain open to new opportunities in web programming and software development.',
+    technologies: ['Mipsa'],
+  },
   {
     id: 1,
     company: 'Caliber 3d Printing',

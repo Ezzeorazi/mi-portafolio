@@ -45,7 +45,7 @@ const translations: Record<Language, Record<string, string>> = {
     about_title: 'Sobre mí',
     about_bio:
       'Soy desarrollador web fullstack. Construyo sitios, tiendas y sistemas para empresas y emprendedores de América Latina con Next.js, TypeScript, Tailwind CSS, Node.js y bases de datos como Supabase y PostgreSQL, y en los últimos proyectos incorporé Python y Machine Learning en producción. Antes de programar lideré durante cinco años un taller de reparación de maquinaria pesada y administré plataformas de e-commerce (VTEX y WordPress) durante tres: sé trabajar con clientes, plazos y equipos, y entiendo cómo funciona un negocio real. Además del desarrollo, integro diseño, contenido y SEO para entregar productos digitales completos y listos para escalar.',
-    about_availability: 'Disponible para empleo remoto y proyectos freelance',
+    about_availability: 'Actualmente trabajo en Mipsa (desde noviembre de 2026) · Abierto a oportunidades en programación web y desarrollo de software',
     about_life_title: 'Un volantazo a la vida',
     about_life_p1:
       'Hace un tiempo tomé la decisión de dejar Rosario y apostar por algo nuevo: emigrar a Playa del Carmen, Quintana Roo. Un cambio radical que trajo no solo un nuevo paisaje, sino también un nuevo proyecto de vida.',
@@ -76,7 +76,7 @@ const translations: Record<Language, Record<string, string>> = {
     cv_summary:
       'Desarrollo sitios y aplicaciones web para negocios de América Latina: desde landing pages hasta sistemas con base de datos y modelos de Machine Learning en producción. Antes de programar lideré un taller de maquinaria pesada durante cinco años y administré plataformas e-commerce durante tres, así que sé trabajar con clientes, plazos y equipos.',
     cv_location: 'Playa del Carmen, México · 100% remoto',
-    cv_availability: 'Disponible para empleo remoto y proyectos freelance',
+    cv_availability: 'Actualmente en Mipsa (desde el 9 de noviembre de 2026) · Abierto a oportunidades en programación web y desarrollo de software',
     cv_work_permit: 'Residente Temporal en México con permiso para trabajar · vigente hasta junio de 2027',
     cv_download: 'Descargar CV (PDF)',
     cv_contact: 'Contactarme',
@@ -312,7 +312,7 @@ const translations: Record<Language, Record<string, string>> = {
     about_title: 'About Me',
     about_bio:
       "I'm a fullstack web developer. I build websites, online stores and systems for companies and entrepreneurs across Latin America with Next.js, TypeScript, Tailwind CSS, Node.js and databases such as Supabase and PostgreSQL, and in my latest projects I've shipped Python and Machine Learning to production. Before programming I led a heavy machinery repair workshop for five years and managed e-commerce platforms (VTEX and WordPress) for three: I know how to work with clients, deadlines and teams, and I understand how a real business runs. Beyond development, I integrate design, content and SEO to deliver complete, scalable digital products.",
-    about_availability: 'Open to remote roles and freelance projects',
+    about_availability: 'Currently working at Mipsa (since November 2026) · Open to web programming and software development opportunities',
     about_life_title: 'A Life-Changing Turn',
     about_life_p1:
       'Some time ago I decided to leave Rosario and bet on something new: moving to Playa del Carmen, Quintana Roo. A radical change that brought not just a new landscape, but a whole new life project.',
@@ -343,7 +343,7 @@ const translations: Record<Language, Record<string, string>> = {
     cv_summary:
       'I build websites and web applications for Latin American businesses: from landing pages to database-backed systems and Machine Learning models in production. Before programming I led a heavy machinery workshop for five years and managed e-commerce platforms for three, so I know how to work with clients, deadlines and teams.',
     cv_location: 'Playa del Carmen, Mexico · 100% remote',
-    cv_availability: 'Open to remote roles and freelance projects',
+    cv_availability: 'Currently at Mipsa (since November 9, 2026) · Open to web programming and software development opportunities',
     cv_work_permit: 'Temporary Resident in Mexico with a valid work permit · through June 2027',
     cv_download: 'Download resume (PDF)',
     cv_contact: 'Contact me',
