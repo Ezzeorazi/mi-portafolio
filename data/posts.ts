@@ -1137,6 +1137,32 @@ const posts: Post[] = [
       },
     ],
   },
+  {
+    id: 56,
+    slug: 'noticias-tech-2026-11-18',
+    image: 'images/blog/noticias-tech-2026-11-18.svg',
+    title: "GTA 6, IA y consolas portátiles: tu resumen tech semanal",
+    category: 'Noticias',
+    description: "Tu resumen semanal de tecnología con Ezequiel Orazi: la polémica de GTA 6, artistas creados con IA, el futuro de las portátiles gaming y más. ¡No te lo pierdas!",
+    date: 'Publicado el 18 de noviembre de 2026',
+    ReadingTime: '7 min de lectura',
+    publishedISO: '2026-11-18',
+    content: 'blog/noticias-tech-2026-11-18.html',
+    faq: [
+      {
+        q: "¿Qué se sabe sobre la nueva consola portátil de Lenovo?",
+        a: "Se filtró información sobre el Lenovo Legion Go Beam, que se espera sea una consola portátil de gaming más accesible. Esto indicaría un posible cambio en la estrategia de precios de Lenovo en este segmento.",
+      },
+      {
+        q: "¿Quién es Antonio Roma y por qué es noticia?",
+        a: "Antonio Roma es un cantante de flamenco creado con inteligencia artificial que tiene 350.000 seguidores y dará un concierto en Madrid. Lo curioso es que en el concierto, una persona real le pondrá voz y habrá una banda de carne y hueso.",
+      },
+      {
+        q: "¿Por qué la misión del telescopio NICER fue tan importante?",
+        a: "La misión del telescopio espacial NICER de la NASA fue importante porque se dedicó a explorar la composición interna de las estrellas de neutrones. Superó su duración prevista en cinco veces, proporcionando datos valiosos para la ciencia espacial.",
+      },
+    ],
+  },
 ];
 
 export default posts;
